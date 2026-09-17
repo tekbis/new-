@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Review your Zander88LLC cart, delivery information and payment method.">
+  <title>Cart &amp; Checkout | Zander88LLC</title>
+  <style>
+    :root{--ink:#1d211a;--forest:#263716;--forest-2:#354d20;--purple:#6d2bd0;--purple-2:#8a42e8;--paper:#f5f2ec;--line:#ded9d0;--muted:#6e716a;--white:#fff;--shadow:0 20px 55px rgba(31,35,25,.1);--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;--serif:Georgia,"Times New Roman",serif}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#f8f6f1 0%,#f1eee7 100%);color:var(--ink);font-family:var(--sans);font-size:16px;min-height:100vh}button,input,select{font:inherit}button,a{cursor:pointer}a{color:inherit;text-decoration:none}.container{width:min(1180px,calc(100% - 36px));margin:auto}
+
+    .checkout-header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);border-bottom:1px solid rgba(38,55,22,.12);backdrop-filter:blur(16px);box-shadow:0 10px 32px rgba(31,35,25,.055)}.header-row{min-height:92px;display:grid;grid-template-columns:190px 1fr 190px;gap:24px;align-items:center}.header-logo{width:135px;height:auto;display:block}.back-link{justify-self:start;display:inline-flex;align-items:center;gap:9px;font-weight:750;color:#435034;transition:transform .2s,color .2s}.back-link:hover{transform:translateX(-3px);color:var(--purple)}.checkout-steps{display:flex;justify-content:center;align-items:center;gap:0}.step{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:#8a8c86}.step-number{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;border:1px solid #cbc7bf;background:#fff}.step.active{color:var(--forest)}.step.active .step-number{background:var(--forest);border-color:var(--forest);color:#fff}.step-line{width:54px;height:1px;background:#d6d1c8;margin:0 10px}.header-help{justify-self:end;font-size:13px;color:var(--muted)}
+    main{padding:48px 0 76px}.page-heading{margin-bottom:30px}.eyebrow{display:block;margin-bottom:9px;color:var(--purple);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:900}.page-heading h1{font-family:var(--serif);font-size:clamp(38px,5vw,58px);line-height:1;margin:0;letter-spacing:-.04em}.page-heading p{margin:12px 0 0;color:var(--muted);font-size:16px}
+    .checkout-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(340px,.8fr);gap:34px;align-items:start}.checkout-form{display:grid;gap:18px}.panel{background:rgba(255,255,255,.93);border:1px solid rgba(38,55,22,.11);border-radius:20px;padding:26px;box-shadow:0 14px 40px rgba(31,35,25,.06)}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}.panel-title{display:flex;align-items:center;gap:12px}.panel-index{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#f0e8fb;color:var(--purple);font-weight:900}.panel h2{font-family:var(--serif);font-size:24px;margin:0}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field{display:grid;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:800;color:#41473a}.field input,.field select{width:100%;min-height:49px;border:1px solid #d9d4cb;border-radius:10px;background:#fff;padding:12px 13px;color:var(--ink);outline:0;transition:border-color .2s,box-shadow .2s}.field input:focus,.field select:focus{border-color:rgba(109,43,208,.55);box-shadow:0 0 0 3px rgba(109,43,208,.09)}
+    .delivery-options{display:grid;gap:10px;margin-top:18px}.delivery-option{position:relative;display:grid;grid-template-columns:auto 1fr auto;gap:13px;align-items:center;padding:15px 16px;border:1px solid #d9d4cb;border-radius:12px;background:#fff;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s}.delivery-option:hover{transform:translateY(-1px);border-color:#bdb5aa}.delivery-option:has(input:checked){border-color:var(--purple);box-shadow:0 0 0 3px rgba(109,43,208,.08)}.delivery-option input{accent-color:var(--purple);width:18px;height:18px}.delivery-option b{display:block;font-size:14px}.delivery-option small{display:block;margin-top:3px;color:var(--muted);font-size:12px}.delivery-option strong{font-size:14px}
+    .method-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}.method-tab{position:relative;border:1px solid #d9d4cb;border-radius:12px;background:#fff;padding:15px;display:flex;justify-content:center;align-items:center;gap:8px;font-weight:850;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s}.method-tab:hover{transform:translateY(-1px)}.method-tab:has(input:checked){border-color:var(--purple);box-shadow:0 0 0 3px rgba(109,43,208,.08)}.method-tab input{position:absolute;opacity:0}.method-tab.paypal{font-size:18px;color:#063b80}.method-tab.paypal em{font-style:italic;color:#0782c9}.card-fields{display:grid;grid-template-columns:1fr 1fr;gap:15px}.card-fields .wide{grid-column:1/-1}.paypal-panel{display:none;padding:24px;border-radius:14px;background:#f4f8fc;text-align:center;color:#415165}.paypal-panel.show{display:block}.card-fields.hide{display:none}.paypal-panel b{display:block;color:#063b80;font-size:20px;margin-bottom:6px}.gateway-copy{margin:15px 0 0;color:var(--muted);font-size:12px;line-height:1.6}
+    .summary{position:sticky;top:118px;background:#172010;color:#fff;border-radius:22px;padding:25px;box-shadow:0 24px 60px rgba(18,27,11,.24);overflow:hidden}.summary:before{content:"";position:absolute;width:210px;height:210px;border-radius:50%;right:-105px;top:-100px;background:radial-gradient(circle,rgba(109,43,208,.34),transparent 70%);pointer-events:none}.summary h2{font-family:var(--serif);font-size:27px;margin:0 0 20px}.summary-items{display:grid;gap:14px;max-height:390px;overflow:auto;padding-right:3px}.summary-item{display:grid;grid-template-columns:74px 1fr auto;gap:13px;align-items:center;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12);animation:itemIn .4s cubic-bezier(.22,1,.36,1) both}.summary-image{width:74px;height:74px;border-radius:12px;object-fit:contain;background:#fff}.summary-name{font-size:14px;line-height:1.35;font-weight:800}.summary-price{font-size:13px;color:#d7ddcf;margin-top:5px}.qty-row{display:flex;align-items:center;gap:8px;margin-top:9px}.qty-button{width:27px;height:27px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;display:grid;place-items:center}.qty-value{font-size:13px;min-width:16px;text-align:center}.remove-item{border:0;background:transparent;color:#b9c2b2;font-size:20px;padding:5px}.totals{display:grid;gap:11px;margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.16)}.total-row{display:flex;justify-content:space-between;gap:16px;color:#d7ddcf;font-size:14px}.total-row.grand{color:#fff;font-size:20px;font-weight:900;padding-top:12px;border-top:1px solid rgba(255,255,255,.14)}.place-order{width:100%;min-height:54px;margin-top:20px;border:0;border-radius:12px;background:linear-gradient(135deg,var(--purple),var(--purple-2));color:#fff;font-weight:900;box-shadow:0 14px 30px rgba(109,43,208,.28);transition:transform .2s,box-shadow .2s,filter .2s}.place-order:hover{transform:translateY(-2px);box-shadow:0 18px 35px rgba(109,43,208,.34);filter:brightness(1.04)}.place-order:disabled{opacity:.45;cursor:not-allowed;transform:none}.empty-cart{padding:25px 8px;text-align:center;color:#d3d9cc}.empty-cart a{display:inline-block;margin-top:12px;color:#bd9bf3;font-weight:800}.payment-strip{margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.13)}.payment-strip-label{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#aeb8a7;margin-bottom:10px}.payment-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.payment-logo{height:34px;border-radius:6px;background:#fff;padding:4px;display:flex;align-items:center;justify-content:center;overflow:hidden}.payment-logo svg{width:100%!important;height:100%!important;display:block}
+    .gateway-modal{position:fixed;inset:0;z-index:90;display:none;place-items:center;padding:20px;background:rgba(10,14,8,.58);backdrop-filter:blur(8px)}.gateway-modal.open{display:grid}.modal-card{width:min(460px,100%);background:#fff;border-radius:20px;padding:28px;box-shadow:0 28px 80px rgba(0,0,0,.3);animation:modalIn .35s cubic-bezier(.22,1,.36,1) both}.modal-mark{width:46px;height:46px;border-radius:14px;background:#efe6fb;color:var(--purple);display:grid;place-items:center;font-family:var(--serif);font-size:26px;font-weight:900}.modal-card h2{font-family:var(--serif);font-size:29px;margin:18px 0 9px}.modal-card p{color:var(--muted);line-height:1.65;margin:0}.modal-close{width:100%;margin-top:20px;min-height:48px;border:0;border-radius:10px;background:var(--forest);color:#fff;font-weight:900}
+    .checkout-footer{padding:26px 0 36px}.footer-row{display:flex;align-items:center;justify-content:space-between;gap:20px;color:var(--muted);font-size:12px}.footer-logo{width:112px;height:auto;display:block}.footer-links{display:flex;gap:18px;flex-wrap:wrap}.reveal{opacity:0;transform:translateY(20px);animation:revealIn .7s cubic-bezier(.22,1,.36,1) forwards}.checkout-layout>.checkout-form{animation-delay:.08s}.checkout-layout>.summary{animation-delay:.16s}
+    @keyframes revealIn{to{opacity:1;transform:none}}@keyframes itemIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}@keyframes modalIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+    .progress-rail{display:flex;align-items:center;gap:0;margin:0 0 28px;padding:14px 18px;border:1px solid rgba(38,55,22,.11);border-radius:16px;background:rgba(255,255,255,.76);box-shadow:0 10px 25px rgba(31,35,25,.045)}.progress-step{display:flex;align-items:center;gap:9px;color:#989b94;font-size:13px;font-weight:850;white-space:nowrap}.progress-dot{width:29px;height:29px;border-radius:50%;display:grid;place-items:center;border:1px solid #d4d0c7;background:#fff;color:#858981;font-size:12px}.progress-step.active{color:var(--forest)}.progress-step.active .progress-dot{border-color:var(--forest);background:var(--forest);color:#fff}.progress-connector{height:1px;flex:1;min-width:30px;margin:0 14px;background:#d7d2c9}.payment-intro{margin:-7px 0 17px;color:var(--muted);font-size:13px;line-height:1.55}.billing-toggle{display:flex;align-items:center;gap:9px;margin-top:17px;color:#4c5148;font-size:13px;font-weight:700}.billing-toggle input{width:17px;height:17px;accent-color:var(--purple)}.coupon-panel{margin-top:18px;padding:15px;border:1px solid rgba(255,255,255,.15);border-radius:13px;background:rgba(255,255,255,.07)}.coupon-label{display:block;margin-bottom:8px;color:#dfe5d8;font-size:12px;font-weight:850;letter-spacing:.02em}.coupon-row{display:grid;grid-template-columns:1fr auto;gap:8px}.coupon-row input{width:100%;min-height:42px;border:1px solid rgba(255,255,255,.18);border-radius:9px;background:rgba(0,0,0,.15);color:#fff;padding:10px 11px;outline:0}.coupon-row input::placeholder{color:#9ca697}.coupon-row input:focus{border-color:rgba(189,155,243,.8);box-shadow:0 0 0 3px rgba(109,43,208,.18)}.coupon-row button{min-height:42px;border:0;border-radius:9px;padding:0 14px;background:#f0e8fb;color:var(--purple);font-size:13px;font-weight:900}.coupon-row button:hover{background:#fff}.coupon-message{margin:8px 0 0;color:#bfe4c6;font-size:12px;min-height:1em}.discount-row{color:#bfe4c6}.checkout-note{display:flex;align-items:flex-start;gap:11px;margin-top:18px;padding:14px 15px;border:1px solid rgba(255,255,255,.13);border-radius:12px;background:rgba(255,255,255,.055)}.note-mark{width:27px;height:27px;flex:0 0 27px;border-radius:50%;display:grid;place-items:center;background:rgba(189,155,243,.17);color:#d4bcf6;font-weight:900}.checkout-note b{display:block;color:#fff;font-size:13px}.checkout-note small{display:block;margin-top:3px;color:#aeb8a7;font-size:12px;line-height:1.45}
+    @media(max-width:900px){.header-row{grid-template-columns:1fr auto}.checkout-steps{display:none}.header-help{display:none}.checkout-layout{grid-template-columns:1fr}.summary{position:relative;top:auto;grid-row:1}.summary-items{max-height:none}}
+    @media(max-width:620px){.container{width:calc(100% - 24px)}.checkout-header{position:relative}.header-row{min-height:80px}.header-logo{width:116px}.back-link span{display:none}main{padding:34px 0 55px}.page-heading{margin-bottom:23px}.page-heading h1{font-size:40px}.panel{padding:20px 16px;border-radius:16px}.field-grid,.card-fields{grid-template-columns:1fr}.field.full,.card-fields .wide{grid-column:auto}.method-tabs{grid-template-columns:1fr}.summary{padding:21px 16px;border-radius:18px}.summary-item{grid-template-columns:64px 1fr auto}.summary-image{width:64px;height:64px}.payment-row{grid-template-columns:repeat(3,minmax(0,1fr))}.footer-row{display:grid;justify-items:center;text-align:center}.footer-links{justify-content:center}.progress-rail{padding:12px 13px;margin-bottom:22px;overflow:auto}.progress-connector{min-width:18px;margin:0 9px}.coupon-row{grid-template-columns:1fr}.coupon-row button{width:100%}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal,.summary-item,.modal-card{opacity:1;transform:none;animation:none}.delivery-option,.method-tab,.place-order,.back-link{transition:none}}
+  </style>
+  <link rel="stylesheet" href="assets/z88-upgrade.css?v=12">
+</head>
+<body>
+  <header class="checkout-header">
+    <div class="container header-row">
+      <a class="back-link" href="index.html" aria-label="Return to store">
+<b aria-hidden="true">←</b>
+<span>Continue shopping</span>
+</a>
+      <a href="index.html">
+<img class="header-logo" src="assets/zander88llc-logo.png?v=9" alt="Zander88LLC">
+</a>
+      <div class="header-help">Cart support</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="page-heading reveal">
+        <span class="eyebrow">Your order</span>
+        <h1>Cart &amp; checkout</h1>
+        <p>Review your items, delivery details and payment method.</p>
+      </div>
+
+      <div class="progress-rail reveal" aria-label="Checkout progress">
+        <div class="progress-step active">
+<span class="progress-dot">1</span>
+<span>Shipping</span>
+</div>
+        <span class="progress-connector" aria-hidden="true">
+</span>
+        <div class="progress-step">
+<span class="progress-dot">2</span>
+<span>Payment</span>
+</div>
+        <span class="progress-connector" aria-hidden="true">
+</span>
+        <div class="progress-step">
+<span class="progress-dot">3</span>
+<span>Review</span>
+</div>
+      </div>
+
+      <div class="checkout-layout">
+        <form class="checkout-form reveal" id="checkoutForm" novalidate>
+          <section class="panel" aria-labelledby="contactTitle">
+            <div class="panel-head">
+<div class="panel-title">
+<span class="panel-index">1</span>
+<h2 id="contactTitle">Contact</h2>
+</div>
+</div>
+            <div class="field-grid">
+              <div class="field full">
+<label for="email">Email address</label>
+<input id="email" name="email" type="email" autocomplete="email" required>
+</div>
+              <div class="field">
+<label for="firstName">First name</label>
+<input id="firstName" name="firstName" type="text" autocomplete="given-name" required>
+</div>
+              <div class="field">
+<label for="lastName">Last name</label>
+<input id="lastName" name="lastName" type="text" autocomplete="family-name" required>
+</div>
+              <div class="field full">
+<label for="phone">Phone number</label>
+<input id="phone" name="phone" type="tel" autocomplete="tel">
+</div>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="deliveryTitle">
+            <div class="panel-head">
+<div class="panel-title">
+<span class="panel-index">2</span>
+<h2 id="deliveryTitle">Delivery</h2>
+</div>
+</div>
+            <div class="field-grid">
+              <div class="field full">
+<label for="address">Street address</label>
+<input id="address" name="address" type="text" autocomplete="address-line1" required>
+</div>
+              <div class="field">
+<label for="city">City</label>
+<input id="city" name="city" type="text" autocomplete="address-level2" required>
+</div>
+              <div class="field">
+<label for="state">State</label>
+<select id="state" name="state" autocomplete="address-level1" required>
+<option value="">Select state</option>
+<option>Arizona</option>
+<option>California</option>
+<option>Florida</option>
+<option>Georgia</option>
+<option>Illinois</option>
+<option>New Mexico</option>
+<option>New York</option>
+<option>Texas</option>
+<option>Washington</option>
+</select>
+</div>
+              <div class="field">
+<label for="zip">ZIP code</label>
+<input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" required>
+</div>
+              <div class="field">
+<label for="country">Country</label>
+<select id="country" name="country" autocomplete="country-name" required>
+<option>United States</option>
+</select>
+</div>
+            </div>
+            <div class="delivery-options">
+              <label class="delivery-option">
+<input type="radio" name="shipping" value="6.95" checked>
+<span>
+<b>Standard delivery</b>
+<small>Estimated 4–7 business days</small>
+</span>
+<strong>$6.95</strong>
+</label>
+              <label class="delivery-option">
+<input type="radio" name="shipping" value="14.95">
+<span>
+<b>Priority delivery</b>
+<small>Estimated 2–3 business days</small>
+</span>
+<strong>$14.95</strong>
+</label>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="paymentTitle">
+            <div class="panel-head">
+<div class="panel-title">
+<span class="panel-index">3</span>
+<h2 id="paymentTitle">Payment</h2>
+</div>
+</div>
+            <p class="payment-intro">Choose how you would like to pay. Your payment details stay in this checkout until you confirm the order.</p>
+            <div class="method-tabs" role="radiogroup" aria-label="Payment method">
+              <label class="method-tab">
+<input type="radio" name="paymentMethod" value="card" checked>
+<span>Credit or debit card</span>
+</label>
+              <label class="method-tab paypal">
+<input type="radio" name="paymentMethod" value="paypal">
+<span>Pay<em>Pal</em>
+</span>
+</label>
+            </div>
+            <div class="card-fields" id="cardFields">
+              <div class="field wide">
+<label for="cardNumber">Card number</label>
+<input id="cardNumber" name="cardNumber" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456" required maxlength="19">
+</div>
+              <div class="field">
+<label for="expiry">Expiration</label>
+<input id="expiry" name="expiry" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="MM / YY" required maxlength="7">
+</div>
+              <div class="field">
+<label for="securityCode">Security code</label>
+<input id="securityCode" name="securityCode" type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="CVV" required maxlength="4">
+</div>
+              <div class="field wide">
+<label for="cardName">Name on card</label>
+<input id="cardName" name="cardName" type="text" autocomplete="cc-name" required>
+</div>
+            </div>
+            <div class="paypal-panel" id="paypalPanel">
+<b>PayPal</b>
+<span>You’ll continue through PayPal after reviewing your order.</span>
+</div>
+            <label class="billing-toggle">
+<input id="sameBilling" name="sameBilling" type="checkbox" checked>
+<span>Billing address matches delivery address</span>
+</label>
+            <p class="gateway-copy">Live transactions require the store owner’s Stripe or PayPal account connection.</p>
+          </section>
+        </form>
+
+        <aside class="summary reveal" aria-labelledby="summaryTitle">
+          <h2 id="summaryTitle">Order summary</h2>
+          <div class="summary-items" id="summaryItems" aria-live="polite">
+</div>
+          <div class="coupon-panel" id="couponPanel">
+            <label class="coupon-label" for="couponCode">Have a discount code?</label>
+            <div class="coupon-row">
+<input id="couponCode" type="text" inputmode="text" autocomplete="off" placeholder="Enter code">
+<button id="applyCoupon" type="button">Apply</button>
+</div>
+            <p class="coupon-message" id="couponMessage" aria-live="polite">
+</p>
+          </div>
+          <div class="totals" id="totals">
+            <div class="total-row">
+<span>Subtotal</span>
+<strong id="summarySubtotal">$0.00</strong>
+</div>
+            <div class="total-row discount-row" id="discountRow" hidden>
+<span>Discount</span>
+<strong id="summaryDiscount">-$0.00</strong>
+</div>
+            <div class="total-row">
+<span>Delivery</span>
+<strong id="summaryShipping">$6.95</strong>
+</div>
+            <div class="total-row">
+<span>Estimated tax</span>
+<strong>Calculated later</strong>
+</div>
+            <div class="total-row grand">
+<span>Total</span>
+<strong id="summaryTotal">$0.00</strong>
+</div>
+          </div>
+          <button class="place-order" id="placeOrder" type="submit" form="checkoutForm">Place order</button>
+          <div class="payment-strip">
+            <div class="payment-strip-label">Accepted payment methods</div>
+            <div class="payment-row">
+<span class="payment-logo" role="img" aria-label="American Express" title="American Express">
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 780 500" aria-hidden="true" focusable="false">
+<path fill="#2557D6" d="m575.61 145.11-15.092 35.039h30.266L575.61 145.11zm-174.15 21.713c2.845-1.422 4.52-4.515 4.52-8.356 0-3.764-1.76-6.49-4.604-7.771-2.591-1.42-6.577-1.584-10.399-1.584h-27v19.523h26.638c4.266.001 7.831-.059 10.845-1.812zM55.49 145.11l-14.921 35.039h29.932L55.49 145.11zm694.7 224.47h-42.344v-18.852h42.173c4.181 0 7.109-.525 8.872-2.178 1.667-1.473 2.609-3.555 2.592-5.732 0-2.562-1.062-4.596-2.68-5.813-1.588-1.342-3.907-1.953-7.726-1.953-20.588-.67-46.273.609-46.273-27.211 0-12.75 8.451-26.172 31.461-26.172h43.677v-17.492h-40.58c-12.246 0-21.144 2.81-27.443 7.181v-7.181h-60.022c-9.597 0-20.863 2.279-26.191 7.181v-7.181h-107.19v7.181c-8.529-5.897-22.925-7.181-29.565-7.181h-70.702v7.181c-6.747-6.262-21.758-7.181-30.902-7.181H308.22l-18.104 18.775-16.959-18.775h-118.2v122.68h115.97l18.655-19.076 17.575 19.076 71.484.06v-28.859h7.03c9.484.146 20.67-.223 30.542-4.311v33.106h58.962v-31.976h2.844c3.628 0 3.988.146 3.988 3.621v28.348h179.12c11.372 0 23.26-2.786 29.841-7.853v7.853h56.817c11.822 0 23.369-1.588 32.154-5.653V358.34c-5.324 7.462-15.707 11.245-29.751 11.245zm-363.58-28.967h-27.36v29.488h-42.618l-27-29.102-28.058 29.102H174.72v-87.914h88.19l26.976 28.818 27.89-28.818h70.064c17.401 0 36.952 4.617 36.952 28.963 0 24.422-19.016 29.463-38.182 29.463zm131.56-3.986c3.097 4.291 3.544 8.297 3.634 16.047v17.428h-22.016v-10.998c0-5.289.533-13.121-3.544-17.209-3.2-3.148-8.086-3.9-16.088-3.9h-23.432v32.107h-22.031v-87.914h50.62c11.105 0 19.188.473 26.384 4.148 6.92 4.006 11.275 9.494 11.275 19.523-.002 14.031-9.769 21.189-15.541 23.389 4.878 1.725 8.866 4.818 10.739 7.379zm90.575-36.258h-51.346v15.982h50.091v17.938h-50.091v17.492l51.346.078v18.242h-73.182v-87.914h73.182v18.182zm56.344 69.731h-42.705v-18.852h42.535c4.16 0 7.109-.527 8.957-2.178 1.507-1.359 2.591-3.336 2.591-5.73 0-2.564-1.174-4.598-2.676-5.818-1.678-1.34-3.993-1.947-7.809-1.947-20.506-.674-46.186.605-46.186-27.213 0-12.752 8.363-26.174 31.35-26.174h43.96v18.709h-40.225c-3.987 0-6.579.146-8.783 1.592-2.405 1.424-3.295 3.535-3.295 6.322 0 3.316 2.04 5.574 4.797 6.549 2.314.771 4.797.996 8.533.996l11.805.309c11.899.273 20.073 2.25 25.04 7.068 4.266 4.232 6.559 9.578 6.559 18.625-.002 18.913-12.335 27.742-34.448 27.742zm-170.06-68.313c-2.649-1.508-6.559-1.588-10.461-1.588h-27.001v19.744h26.64c4.265 0 7.892-.145 10.822-1.812 2.842-1.646 4.543-4.678 4.543-8.438s-1.701-6.482-4.543-7.906zm244.99-1.59c-3.988 0-6.641.145-8.873 1.588-2.314 1.426-3.202 3.537-3.202 6.326 0 3.314 1.953 5.572 4.794 6.549 2.315.771 4.796.996 8.448.996l11.887.303c11.99.285 19.998 2.262 24.879 7.08.889.668 1.423 1.42 2.034 2.174v-25.014h-39.965l-.002-.002zm-352.65 0h-28.59v22.391h28.336c8.424 0 13.663-4.006 13.667-11.611-.004-7.688-5.497-10.78-13.413-10.78zm-190.81 0v15.984h48.136v17.938h-48.136v17.49h53.909l25.047-25.791-23.983-25.621h-54.973zm140.77 61.479v-70.482l-33.664 34.674 33.664 35.808zm-138.93-141.15v15.148h183.19l-.085-32.046h3.545c2.483.083 3.205.302 3.205 4.229v27.818h94.748v-7.461c7.642 3.924 19.527 7.461 35.168 7.461h39.86l8.531-19.522h18.913l8.342 19.522h76.811v-18.544l11.629 18.543h61.555v-122.58h-60.915v14.477l-8.53-14.477h-62.507v14.477l-7.833-14.477h-84.434c-14.135 0-26.555 1.89-36.591 7.158v-7.158h-58.268v7.158c-6.387-5.43-15.089-7.158-24.762-7.158h-212.87l-14.282 31.662-14.668-31.662H91.104v14.477l-7.367-14.477h-57.18L.004 171.378v46.621l39.264-87.894h32.579l37.29 83.217v-83.217h35.789l28.695 59.625 26.362-59.625h36.507v87.894h-22.475l-.082-68.837-31.796 68.837h-19.252l-31.877-68.898v68.898h-44.6l-8.425-19.605H32.329l-8.512 19.605H.003v17.682h37.466l8.447-19.523H64.83l8.425 19.523h73.713v-14.927l6.579 14.989h38.266l6.58-15.214zm288.67-80.176c7.085-7.015 18.188-10.25 33.298-10.25h21.227v18.833h-20.782c-7.998 0-12.521 1.14-16.871 5.208-3.74 3.7-6.304 10.696-6.304 19.908 0 9.417 1.955 16.206 6.028 20.641 3.376 3.478 9.513 4.533 15.283 4.533h9.851l30.902-69.12h32.853l37.124 83.134v-83.133h33.386l38.543 61.213v-61.213h22.46v87.891h-31.072l-41.562-65.968v65.968h-44.656l-8.532-19.605h-45.55l-8.278 19.605h-25.66c-10.657 0-24.151-2.258-31.793-9.722-7.707-7.462-11.713-17.571-11.713-33.553-.004-13.037 2.389-24.953 11.818-34.37zm-45.101-10.249h22.372v87.894h-22.372v-87.894zm-100.87 0h50.432c11.203 0 19.464.285 26.553 4.21 6.936 3.926 11.095 9.658 11.095 19.46 0 14.015-9.763 21.254-15.448 23.429 4.796 1.75 8.896 4.841 10.849 7.401 3.096 4.372 3.629 8.277 3.629 16.126v17.267h-22.115l-.083-11.084c0-5.29.528-12.896-3.461-17.122-3.203-3.09-8.088-3.763-15.983-3.763h-23.538v31.97h-21.927l-.003-87.894zm-88.393 0h73.249v18.303h-51.32v15.843h50.088v18.017h-50.088v17.553h51.32v18.177h-73.249v-87.893z">
+</path>
+</svg>
+</span>
+<span class="payment-logo" role="img" aria-label="Diners Club" title="Diners Club">
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 780 500" aria-hidden="true" focusable="false">
+<path fill="#0079BE" d="M599.93 251.45c0-99.416-82.979-168.13-173.9-168.1h-78.241c-92.003-.033-167.73 68.705-167.73 168.1 0 90.931 75.729 165.64 167.73 165.2h78.241c90.913.437 173.9-74.293 173.9-165.2z">
+</path>
+<path fill="#fff" d="M348.28 97.432c-84.069.026-152.19 68.308-152.22 152.58.021 84.258 68.145 152.53 152.22 152.56 84.088-.025 152.23-68.301 152.24-152.56-.011-84.274-68.15-152.55-152.24-152.58z">
+</path>
+<path fill="#0079BE" d="M252.07 249.6c.08-41.18 25.747-76.296 61.94-90.25v180.48c-36.193-13.946-61.861-49.044-61.94-90.229zm131 90.275v-180.52c36.208 13.921 61.915 49.057 61.98 90.256-.066 41.212-25.772 76.322-61.98 90.269z">
+</path>
+</svg>
+</span>
+<span class="payment-logo" role="img" aria-label="Discover" title="Discover">
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 780 500" aria-hidden="true" focusable="false">
+<path fill="#F47216" d="M409.41 197.26c30.938 0 56.02 23.58 56.02 52.709v.033c0 29.129-25.082 52.742-56.02 52.742-30.941 0-56.022-23.613-56.022-52.742v-.033c0-29.129 25.081-52.709 56.022-52.709z">
+</path>
+<path d="M321.43 197.94c8.836 0 16.247 1.785 25.27 6.09v22.753c-8.544-7.863-15.955-11.154-25.757-11.154-19.265 0-34.413 15.015-34.413 34.051 0 20.074 14.681 34.195 35.368 34.195 9.312 0 16.586-3.12 24.802-10.856v22.764c-9.343 4.142-16.912 5.775-25.757 5.775-31.277 0-55.581-22.597-55.581-51.736-.002-28.83 24.949-51.882 56.068-51.882zm-97.113.626c11.546 0 22.109 3.721 30.942 10.994l-10.748 13.248c-5.351-5.646-10.411-8.027-16.563-8.027-8.854 0-15.301 4.744-15.301 10.988 0 5.354 3.618 8.188 15.944 12.481 23.364 8.043 30.289 15.176 30.289 30.926 0 19.193-14.976 32.554-36.319 32.554-15.631 0-26.993-5.795-36.457-18.871l13.268-12.03c4.73 8.608 12.622 13.223 22.42 13.223 9.163 0 15.947-5.95 15.947-13.983 0-4.164-2.056-7.733-6.158-10.258-2.066-1.195-6.158-2.978-14.199-5.646-19.292-6.538-25.91-13.527-25.91-27.186-.001-16.227 14.213-28.413 32.845-28.413zm234.72 1.729h22.436l28.084 66.592 28.447-66.592h22.267l-45.493 101.69h-11.054l-44.687-101.69zm-301.21.152h20.541v99.143h-20.541v-99.143zm411.73 0h58.253v16.799h-37.726v22.006h36.336v16.791h-36.336v26.762h37.726v16.785h-58.253v-99.143zm115.59 57.377c15.471-2.965 23.983-12.926 23.983-28.105 0-18.562-13.575-29.271-37.266-29.271H641.41v99.144h20.516v-39.83h2.681l28.43 39.828h25.26l-33.15-41.766zm-17.218-11.736h-6.002v-30.025h6.326c12.791 0 19.744 5.049 19.744 14.697.002 9.967-6.951 15.328-20.068 15.328zm-576.09-45.641H61.69v99.143h29.992c15.946 0 27.465-3.543 37.573-11.445 12.014-9.359 19.117-23.467 19.117-38.057.001-29.259-23.221-49.641-56.533-49.641zm23.997 74.479c-6.454 5.484-14.837 7.879-28.108 7.879h-5.514v-65.559h5.513c13.271 0 21.323 2.238 28.108 8.018 7.104 5.956 11.377 15.184 11.377 24.682.001 9.513-4.273 19.024-11.376 24.98z">
+</path>
+</svg>
+</span>
+<span class="payment-logo" role="img" aria-label="JCB" title="JCB">
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 780 500" aria-hidden="true" focusable="false">
+<path fill="#fff" d="M632.24 361.27c0 41.615-33.729 75.36-75.357 75.36h-409.13V138.75c0-41.626 33.73-75.371 75.364-75.371h409.12l-.001 297.89z">
+</path>
+<linearGradient id="jcb_svg__a" x1="908.72" x2="909.72" y1="313.21" y2="313.21" gradientTransform="matrix(132.87 0 0 323.02 -120270 -100930)" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="#007B40">
+</stop>
+<stop offset="1" stop-color="#55B330">
+</stop>
+</linearGradient>
+<path fill="url(#jcb_svg__a)" d="M498.86 256.54c11.686.254 23.438-.516 35.077.4 11.787 2.199 14.628 20.043 4.156 25.887-7.145 3.85-15.633 1.434-23.379 2.113H498.86v-28.4zm41.834-32.145c2.596 9.164-6.238 17.392-15.064 16.13h-26.77c.188-8.642-.367-18.022.272-26.209 10.724.302 21.547-.616 32.209.48 4.581 1.151 8.415 4.917 9.353 9.599zm64.425-135.9c.498 17.501.072 35.927.215 53.783-.033 72.596.07 145.19-.057 217.79-.47 27.207-24.582 50.848-51.601 51.391-27.045.11-54.094.017-81.143.047v-109.75c29.471-.152 58.957.309 88.416-.23 13.666-.858 28.635-9.875 29.271-24.914 1.609-15.104-12.631-25.551-26.151-27.201-5.197-.135-5.045-1.515 0-2.117 12.895-2.787 23.021-16.133 19.227-29.499-3.233-14.058-18.771-19.499-31.695-19.472-26.352-.179-52.709-.025-79.062-.077.17-20.489-.355-41 .283-61.474 2.088-26.716 26.807-48.748 53.446-48.27 26.287-.004 52.57-.004 78.851-.005z">
+</path>
+<linearGradient id="jcb_svg__b" x1="908.73" x2="909.73" y1="313.21" y2="313.21" gradientTransform="matrix(133.43 0 0 323.02 -121080 -100920)" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="#1D2970">
+</stop>
+<stop offset="1" stop-color="#006DBA">
+</stop>
+</linearGradient>
+<path fill="url(#jcb_svg__b)" d="M174.74 139.54c.673-27.164 24.888-50.611 51.872-51.008 26.945-.083 53.894-.012 80.839-.036-.074 90.885.146 181.78-.111 272.66-1.038 26.834-24.989 49.834-51.679 50.309-26.996.098-53.995.014-80.992.041v-113.45c26.223 6.195 53.722 8.832 80.474 4.723 15.991-2.573 33.487-10.426 38.901-27.016 3.984-14.191 1.741-29.126 2.334-43.691v-33.825h-46.297c-.208 22.371.426 44.781-.335 67.125-1.248 13.734-14.849 22.46-27.802 21.994-16.064.17-47.897-11.642-47.897-11.642-.08-41.914.466-94.405.693-136.18z">
+</path>
+<linearGradient id="jcb_svg__c" x1="908.72" x2="909.72" y1="313.21" y2="313.21" gradientTransform="matrix(132.96 0 0 323.03 -120500 -100930)" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="#6E2B2F">
+</stop>
+<stop offset="1" stop-color="#E30138">
+</stop>
+</linearGradient>
+<path fill="url(#jcb_svg__c)" d="M324.72 211.89c-2.437.517-.49-8.301-1.113-11.646.166-21.15-.347-42.323.283-63.458 2.082-26.829 26.991-48.916 53.738-48.288h78.768c-.074 90.885.145 181.78-.111 272.66-1.039 26.834-24.992 49.833-51.683 50.309-26.997.102-53.997.016-80.996.042v-124.3c18.439 15.129 43.5 17.484 66.472 17.525 17.318-.006 34.535-2.676 51.353-6.67v-22.772c-18.953 9.446-41.233 15.446-62.243 10.019-14.656-3.648-25.295-17.812-25.058-32.937-1.698-15.729 7.522-32.335 22.979-37.011 19.191-6.008 40.107-1.413 58.096 6.398 3.854 2.018 7.766 4.521 6.225-1.921v-17.899c-30.086-7.158-62.104-9.792-92.33-2.005-8.749 2.468-17.273 6.211-24.38 11.956z">
+</path>
+</svg>
+</span>
+<span class="payment-logo" role="img" aria-label="Maestro" title="Maestro">
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 780 500" aria-hidden="true" focusable="false">
+<path fill="#D9222A" d="M690 250.01c0 99.133-80.351 179.5-179.48 179.5-99.12 0-179.48-80.361-179.48-179.5 0-99.142 80.358-179.51 179.48-179.51C609.653 70.5 690 150.867 690 250.01">
+</path>
+<path fill="#0097D0" d="M371.87 363.99a178.152 178.152 0 0 1-13.675-19.01h63.611a178.658 178.658 0 0 0 10.343-19.013h-84.292a178.381 178.381 0 0 1-7.597-19h99.477c5.986-17.903 9.229-37.05 9.229-56.962 0-13.046-1.392-25.763-4.028-38.013h-109.86a178.282 178.282 0 0 1 5.209-19.008h99.44a181.508 181.508 0 0 0-7.592-19.004h-84.254a181.058 181.058 0 0 1 10.337-19.009h63.571a181.406 181.406 0 0 0-13.671-18.991h-36.224a181.04 181.04 0 0 1 18.112-19c-31.854-28.884-74.138-46.483-120.52-46.483-99.126.001-179.48 80.368-179.48 179.51 0 99.133 80.358 179.5 179.49 179.5 46.388 0 88.667-17.596 120.52-46.475a180.505 180.505 0 0 0 18.133-19.037h-36.267">
+</path>
+<path d="M666.07 350.04c0-3.2 2.596-5.796 5.801-5.796a5.794 5.794 0 0 1 5.791 5.796c0 3.204-2.592 5.8-5.791 5.8a5.8 5.8 0 0 1-5.801-5.8zm5.801 4.408a4.401 4.401 0 0 0 4.403-4.397v-.011a4.396 4.396 0 0 0-4.395-4.396h-.009a4.4 4.4 0 0 0-4.409 4.391v.005a4.406 4.406 0 0 0 4.404 4.408h.006zm-.788-1.862h-1.184v-5.092h2.149c.446 0 .904.004 1.3.258.417.283.646.775.646 1.271 0 .582-.338 1.111-.88 1.315l.934 2.246h-1.315l-.775-2.009h-.875v2.011zm0-2.879h.658c.246 0 .505.016.726-.102a.716.716 0 0 0 .301-.592.656.656 0 0 0-.288-.513c-.212-.125-.541-.101-.763-.101h-.634v1.308zm-283.64-51.205c-7.671 2.033-15.088 3.025-22.93 3.01-25.017-.024-38.046-11.418-38.046-33.201 0-25.458 16.587-44.183 39.101-44.183 18.417 0 30.175 10.5 30.175 26.946 0 5.458-.796 10.771-2.745 18.296H348.51c-1.583 10.633 6.188 15.306 19.413 15.306 7.925 0 15.092-1.427 23.024-4.613l-3.504 18.439zm-11.963-44.151c0-1.607 2.476-13.033-10.399-13.283-7.108 0-12.208 4.725-14.271 13.283h24.67zm27.034-4.99c0 9.404 5.296 15.9 17.329 20.736 9.199 3.771 10.649 4.859 10.649 8.222 0 4.663-4.066 6.805-13.092 6.745-6.778-.049-12.962-.87-20.263-2.896l-3.229 17.154c6.487 1.504 15.588 2 23.649 2.188 24.024 0 35.116-7.867 35.116-24.867 0-10.217-4.625-16.233-16.033-20.713-9.537-3.809-10.657-4.638-10.657-8.083 0-4.05 3.778-6.1 11.148-6.1 4.463 0 10.579.413 16.38 1.108l3.259-17.242c-5.912-.825-14.884-1.483-20.075-1.483-25.448.001-34.256 11.46-34.181 25.231m-88.242 50.92H295.61l.445-7.82c-5.691 6.17-13.271 9.041-23.558 9.041-12.175 0-20.517-8.324-20.517-20.295 0-18.195 14.5-28.691 39.429-28.691 2.563 0 5.821.191 9.167.562.691-2.434.879-3.479.879-4.808 0-4.979-3.921-6.813-14.412-6.813-10.342.042-17.321 1.571-23.796 3.313l3.188-16.7c11.195-2.846 18.529-3.941 26.825-3.941 19.304 0 29.499 7.566 29.499 21.796.167 3.795-1.158 11.413-1.82 14.746-.759 4.852-6.109 32.973-6.667 39.61zm-16.379-33.191c-2.366-.242-3.396-.312-5.013-.312-12.729 0-19.183 3.787-19.183 11.267 0 4.692 3.149 7.634 8.058 7.634 9.147-.001 15.75-7.652 16.138-18.589zm194.11 32.011c-6.125 1.68-10.896 2.408-16.059 2.408-11.435 0-17.676-5.842-17.676-16.25-.357-2.857 2.435-16.059 3.066-19.736.634-3.691 10.538-57.492 10.538-57.492h22.212l-3.362 17.8h11.393l-3.097 18.171h-11.44s-6.279 31.529-6.279 33.934c0 3.824 2.316 5.487 7.633 5.487 2.546 0 4.51-.237 6.029-.692l-2.958 16.37m99.246-74.974c-16.279 0-29 6.7-36.388 17.892l6.412-16.596c-11.816-4.337-19.435 1.85-26.325 10.65 0 0-1.154 1.462-2.3 2.8v-13.05H511.79c-2.825 23.029-7.82 46.379-11.729 69.446l-.941 5.021h22.438c2.125-11.708 3.875-21.213 5.617-28.788 4.768-20.787 12.787-27.141 24.829-24.333-2.779 5.979-4.305 12.892-4.305 20.554 0 18.58 10.092 33.789 35.149 33.789 25.287 0 43.597-13.51 43.597-44.31 0-18.579-12.201-33.075-35.196-33.075zm-6.529 59.316c-7.926.125-12.729-6.524-12.729-16.471 0-11.791 7.013-25.112 18.274-25.112 9.087 0 12.199 7.204 12.199 14.879.001 16.78-6.874 26.704-17.744 26.704zM241.53 300.29h-22.342l13.279-69.954-30.571 69.954H181.53l-3.726-69.55-13.32 69.55h-20.271l17.267-90.996h34.913l2.912 50.726 22.117-50.726h37.721L241.53 300.29">
+</path>
+<path fill="#fff" d="M628.15 288.88a5.8 5.8 0 0 1 5.796-5.795c3.204 0 5.796 2.6 5.796 5.795a5.796 5.796 0 0 1-5.688 5.904 5.795 5.795 0 0 1-5.904-5.904zm5.796 4.413a4.414 4.414 0 0 0 4.408-4.413 4.405 4.405 0 0 0-4.408-4.402 4.405 4.405 0 0 0-4.408 4.402 4.414 4.414 0 0 0 4.408 4.413zm-.784-1.866h-1.188v-5.084h2.15c.449 0 .908 0 1.304.25.408.279.646.769.646 1.271 0 .578-.337 1.115-.883 1.316l.934 2.246h-1.316l-.771-2.01h-.875v2.011h-.001zm0-2.888h.658c.242 0 .504.017.725-.097a.702.702 0 0 0 .296-.588.633.633 0 0 0-.283-.512c-.212-.13-.541-.097-.763-.097h-.633v1.294zm-240.11 4.354c-7.667 2.033-15.088 3.028-22.925 3.012-25.017-.025-38.046-11.42-38.046-33.208 0-25.45 16.579-44.179 39.096-44.179 18.421 0 30.175 10.496 30.175 26.942 0 5.467-.8 10.771-2.74 18.301h-44.487c-1.584 10.629 6.179 15.308 19.408 15.308 7.925 0 15.087-1.425 23.028-4.616l-3.509 18.44zm-11.963-44.15c0-1.604 2.472-13.033-10.398-13.279-7.108 0-12.204 4.729-14.271 13.279h24.669zm27.038-4.996c0 9.408 5.287 15.9 17.325 20.746 9.204 3.768 10.648 4.857 10.648 8.213 0 4.666-4.065 6.809-13.087 6.75-6.783-.047-12.967-.871-20.263-2.896l-3.237 17.146c6.491 1.516 15.597 2.012 23.653 2.199 24.025 0 35.121-7.871 35.121-24.871 0-10.217-4.629-16.236-16.041-20.712-9.538-3.809-10.654-4.638-10.654-8.083 0-4.05 3.783-6.1 11.146-6.1 4.471 0 10.583.417 16.388 1.113l3.25-17.246c-5.913-.825-14.879-1.483-20.065-1.483-25.459-.001-34.263 11.453-34.184 25.224m-88.242 50.93h-18.666l.45-7.82c-5.696 6.158-13.275 9.033-23.559 9.033-12.175 0-20.521-8.326-20.521-20.287 0-18.205 14.495-28.696 39.429-28.696 2.563 0 5.816.192 9.171.563.691-2.433.875-3.475.875-4.808 0-4.983-3.917-6.813-14.408-6.813-10.342.042-17.321 1.575-23.796 3.313l3.184-16.696c11.199-2.85 18.529-3.946 26.829-3.946 19.304 0 29.495 7.567 29.495 21.792.167 3.8-1.158 11.413-1.816 14.754-.763 4.848-6.112 32.968-6.667 39.611zm-16.387-33.198c-2.358-.244-3.392-.312-5.013-.312-12.721 0-19.18 3.788-19.18 11.268 0 4.694 3.154 7.633 8.055 7.633 9.155-.001 15.758-7.654 16.138-18.589zm194.11 32.018c-6.12 1.676-10.896 2.408-16.055 2.408-11.434 0-17.671-5.846-17.671-16.254-.361-2.854 2.435-16.059 3.063-19.737.634-3.692 10.537-57.492 10.537-57.492h22.209l-3.354 17.8h11.393l-3.097 18.171h-11.44s-6.283 31.53-6.283 33.933c0 3.825 2.32 5.479 7.633 5.479 2.542 0 4.509-.229 6.029-.691l-2.964 16.383m110.47-42.367c0 16.775-6.88 26.709-17.755 26.709-7.921.112-12.726-6.525-12.726-16.475 0-11.792 7.009-25.113 18.271-25.113 9.093 0 12.21 7.213 12.21 14.879zm23.979.467c0-18.579-12.208-33.079-35.194-33.079-26.45 0-43.551 17.625-43.551 43.596 0 18.578 10.084 33.791 35.149 33.791 25.288 0 43.596-13.512 43.596-44.308zm-114.66-31.383c-2.821 23.029-7.816 46.375-11.722 69.45l-.946 5.021h22.435c8.088-44.558 10.8-57.253 27.741-52.782l8.149-21.087c-11.815-4.337-19.425 1.854-26.309 10.658.621-3.962 1.792-7.783 1.509-11.258l-20.857-.002m-270.26 74.47h-22.338l13.275-69.958-30.575 69.958h-20.362l-3.726-69.555-13.32 69.555H149.82l17.263-91h34.921l1.846 56.334 24.575-56.334h36.325l-17.613 91">
+</path>
+</svg>
+</span>
+<span class="payment-logo" role="img" aria-label="Mastercard" title="Mastercard">
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 780 500" aria-hidden="true" focusable="false">
+<path fill="#D9222A" d="M449.01 250c0 99.143-80.371 179.5-179.51 179.5S90 349.139 90 250c0-99.133 80.362-179.5 179.5-179.5 99.137 0 179.51 80.371 179.51 179.5">
+</path>
+<path fill="#EE9F2D" d="M510.49 70.496c-46.379 0-88.643 17.596-120.5 46.467a182.443 182.443 0 0 0-18.125 18.996h36.267a182.049 182.049 0 0 1 13.685 19.012h-63.635a179.132 179.132 0 0 0-10.342 19.008h84.313a179.278 179.278 0 0 1 7.601 19.004h-99.513a177.252 177.252 0 0 0-5.217 19.008h109.94a180.388 180.388 0 0 1 4.042 38.008c0 19.935-3.254 39.112-9.254 57.021h-99.513a177.287 177.287 0 0 0 7.596 19.008h84.316a179.424 179.424 0 0 1-10.347 19.013h-63.625a181.2 181.2 0 0 0 13.685 18.996h36.259a179.35 179.35 0 0 1-18.13 19.013c31.857 28.866 74.117 46.454 120.5 46.454 99.139 0 179.51-80.361 179.51-179.5 0-99.129-80.371-179.5-179.51-179.5">
+</path>
+<path d="M666.07 350.06c0-3.199 2.592-5.801 5.796-5.801s5.796 2.602 5.796 5.801-2.592 5.801-5.796 5.801-5.796-2.602-5.796-5.801zm5.796 4.408a4.41 4.41 0 0 0 4.408-4.408 4.405 4.405 0 0 0-4.402-4.404h-.006a4.398 4.398 0 0 0-4.404 4.391v.014a4.404 4.404 0 0 0 4.4 4.408l.004-.001zm-.783-1.86h-1.187v-5.096h2.149c.45 0 .908 0 1.305.254.413.279.646.771.646 1.279 0 .571-.338 1.104-.884 1.312l.938 2.25h-1.315l-.779-2.017h-.871l-.002 2.018zm0-2.89h.658c.246 0 .505.021.726-.1.195-.125.296-.359.296-.584a.638.638 0 0 0-.288-.518c-.207-.129-.536-.101-.758-.101h-.634v1.303zm-443.5-80.063c-2.046-.238-2.945-.301-4.35-.301-11.046 0-16.638 3.787-16.638 11.268 0 4.611 2.729 7.545 6.987 7.545 7.939 0 13.659-7.559 14.001-18.512zm14.171 32.996h-16.146l.371-7.676c-4.926 6.065-11.496 8.949-20.426 8.949-10.563 0-17.804-8.25-17.804-20.229 0-18.024 12.596-28.541 34.217-28.541 2.208 0 5.042.199 7.941.57.604-2.441.763-3.488.763-4.801 0-4.908-3.396-6.737-12.5-6.737-9.533-.108-17.396 2.271-20.625 3.333.204-1.229 2.7-16.659 2.7-16.659 9.712-2.846 16.116-3.917 23.325-3.917 16.732 0 25.596 7.513 25.579 21.712.033 3.805-.597 8.5-1.579 14.671-1.691 10.734-5.32 33.721-5.816 39.325zm-62.158 0h-19.487l11.162-69.997-24.925 69.997h-13.279l-1.642-69.597-11.733 69.597H101.45l15.237-91.056h28.021l1.7 50.968 17.092-50.968h31.167l-15.071 91.056m354.97-32.996c-2.037-.238-2.941-.301-4.342-.301-11.041 0-16.634 3.787-16.634 11.268 0 4.611 2.726 7.545 6.983 7.545 7.94 0 13.664-7.559 13.993-18.512zm14.184 32.996h-16.146l.366-7.676c-4.926 6.065-11.5 8.949-20.422 8.949-10.565 0-17.8-8.25-17.8-20.229 0-18.024 12.588-28.541 34.213-28.541 2.208 0 5.037.199 7.934.57.604-2.441.763-3.488.763-4.801 0-4.908-3.392-6.737-12.496-6.737-9.533-.108-17.387 2.271-20.629 3.333.204-1.229 2.709-16.659 2.709-16.659 9.712-2.846 16.112-3.917 23.313-3.917 16.74 0 25.604 7.513 25.587 21.712.032 3.805-.597 8.5-1.579 14.671-1.684 10.734-5.321 33.721-5.813 39.325zm-220.39-1.125c-5.333 1.679-9.491 2.398-14 2.398-9.962 0-15.399-5.725-15.399-16.267-.142-3.271 1.433-11.88 2.671-19.737 1.125-6.917 8.449-50.529 8.449-50.529h19.371l-2.263 11.208h11.699l-2.642 17.796h-11.742c-2.25 14.083-5.454 31.625-5.491 33.95 0 3.816 2.037 5.483 6.671 5.483 2.221 0 3.94-.227 5.254-.7l-2.578 16.398m59.392-.6c-6.654 2.034-13.075 3.017-19.879 3-21.684-.021-32.987-11.346-32.987-33.032 0-25.313 14.38-43.947 33.899-43.947 15.971 0 26.171 10.433 26.171 26.796 0 5.429-.7 10.729-2.388 18.212h-38.574c-1.305 10.741 5.57 15.217 16.837 15.217 6.935 0 13.188-1.429 20.142-4.663l-3.221 18.417zm-10.888-43.9c.107-1.543 2.055-13.217-9.013-13.217-6.171 0-10.583 4.704-12.38 13.217h21.393zm-123.42-5.017c0 9.367 4.542 15.826 14.842 20.676 7.892 3.709 9.112 4.81 9.112 8.17 0 4.617-3.479 6.701-11.191 6.701-5.813 0-11.221-.908-17.458-2.922 0 0-2.563 16.321-2.68 17.102 4.43.967 8.38 1.861 20.279 2.19 20.563 0 30.059-7.829 30.059-24.75 0-10.175-3.976-16.146-13.737-20.634-8.171-3.75-9.108-4.587-9.108-8.045 0-4.004 3.237-6.046 9.537-6.046 3.825 0 9.05.408 14 1.112l2.775-17.175c-5.046-.8-12.696-1.442-17.15-1.442-21.801.001-29.347 11.388-29.28 25.063m229.09-23.116c5.412 0 10.458 1.421 17.412 4.921l3.188-19.763c-2.854-1.121-12.904-7.7-21.417-7.7-13.041 0-24.065 6.471-31.82 17.15-11.309-3.746-15.958 3.825-21.657 11.367l-5.063 1.179c.383-2.483.729-4.95.612-7.446h-17.896c-2.445 22.917-6.778 46.128-10.171 69.075l-.884 4.976h19.496c3.254-21.143 5.037-34.68 6.121-43.842l7.341-4.084c1.097-4.078 4.529-5.458 11.417-5.291a82.974 82.974 0 0 0-1.383 15.184c0 24.225 13.07 39.308 34.05 39.308 5.404 0 10.041-.712 17.221-2.658l3.43-20.759c-6.458 3.181-11.759 4.677-16.559 4.677-11.329 0-18.184-8.363-18.184-22.185 0-20.051 10.196-34.109 24.746-34.109">
+</path>
+<path fill="#fff" d="M185.21 297.24h-19.491l11.171-69.988-24.926 69.988h-13.283l-1.642-69.588-11.733 69.588h-18.241l15.237-91.042h28.021l.788 56.362 18.904-56.362h30.267L185.21 297.24">
+</path>
+<path d="m647.52 211.6-4.321 26.309c-5.329-7.013-11.054-12.088-18.612-12.088-9.833 0-18.783 7.455-24.642 18.425-8.158-1.692-16.597-4.563-16.597-4.563l-.004.067c.658-6.134.921-9.875.862-11.146h-17.9c-2.438 22.917-6.771 46.128-10.157 69.075l-.893 4.976h19.492c2.633-17.096 4.648-31.291 6.133-42.551 6.658-6.016 9.992-11.266 16.721-10.916-2.979 7.205-4.725 15.503-4.725 24.017 0 18.513 9.366 30.725 23.533 30.725 7.142 0 12.621-2.462 17.967-8.171l-.913 6.884h18.435l14.842-91.042-19.221-.001zm-24.371 73.941c-6.634 0-9.983-4.908-9.983-14.596 0-14.555 6.271-24.875 15.112-24.875 6.695 0 10.32 5.104 10.32 14.509.001 14.679-6.37 24.962-15.449 24.962z">
+</path>
+<path fill="#fff" d="M233.19 264.26c-2.042-.236-2.946-.299-4.346-.299-11.046 0-16.634 3.787-16.634 11.266 0 4.604 2.729 7.547 6.979 7.547 7.947-.001 13.668-7.559 14.001-18.514zm14.178 32.984h-16.146l.367-7.663c-4.921 6.054-11.5 8.95-20.421 8.95-10.567 0-17.805-8.25-17.805-20.229 0-18.032 12.592-28.542 34.217-28.542 2.208 0 5.042.2 7.938.571.604-2.441.763-3.487.763-4.808 0-4.909-3.392-6.729-12.496-6.729-9.537-.108-17.396 2.271-20.629 3.321.204-1.225 2.7-16.637 2.7-16.637 9.708-2.858 16.12-3.929 23.32-3.929 16.737 0 25.604 7.517 25.588 21.704.029 3.821-.604 8.513-1.584 14.675-1.687 10.724-5.319 33.724-5.812 39.316zm261.38-88.592-3.191 19.767c-6.95-3.496-12-4.92-17.407-4.92-14.551 0-24.75 14.058-24.75 34.106 0 13.821 6.857 22.181 18.184 22.181 4.8 0 10.096-1.492 16.554-4.675l-3.421 20.75c-7.184 1.957-11.816 2.67-17.225 2.67-20.977 0-34.051-15.084-34.051-39.309 0-32.55 18.059-55.3 43.888-55.3 8.507.001 18.561 3.609 21.419 4.73m31.443 55.608c-2.041-.236-2.941-.299-4.347-.299-11.041 0-16.633 3.787-16.633 11.266 0 4.604 2.729 7.547 6.983 7.547 7.938-.001 13.663-7.559 13.997-18.514zm14.178 32.984h-16.15l.371-7.663c-4.925 6.054-11.5 8.95-20.421 8.95-10.563 0-17.804-8.25-17.804-20.229 0-18.032 12.596-28.542 34.212-28.542 2.213 0 5.042.2 7.941.571.601-2.441.763-3.487.763-4.808 0-4.909-3.393-6.729-12.495-6.729-9.533-.108-17.396 2.271-20.63 3.321.204-1.225 2.704-16.637 2.704-16.637 9.709-2.858 16.116-3.929 23.316-3.929 16.741 0 25.604 7.517 25.583 21.704.033 3.821-.596 8.513-1.579 14.675-1.682 10.724-5.323 33.724-5.811 39.316zm-220.39-1.121c-5.338 1.679-9.496 2.408-14 2.408-9.962 0-15.399-5.726-15.399-16.268-.138-3.279 1.438-11.88 2.675-19.736 1.12-6.926 8.445-50.534 8.445-50.534h19.368l-2.26 11.212h9.941l-2.646 17.788h-9.975c-2.25 14.092-5.463 31.62-5.496 33.95 0 3.83 2.041 5.482 6.671 5.482 2.221 0 3.938-.216 5.254-.691l-2.578 16.389m59.391-.592c-6.65 2.033-13.079 3.012-19.879 3-21.685-.021-32.987-11.346-32.987-33.033 0-25.321 14.379-43.95 33.899-43.95 15.971 0 26.171 10.429 26.171 26.8 0 5.434-.7 10.733-2.384 18.212h-38.574c-1.306 10.741 5.569 15.222 16.837 15.222 6.93 0 13.188-1.435 20.138-4.677l-3.221 18.426zm-10.891-43.912c.116-1.538 2.06-13.217-9.013-13.217-6.167 0-10.579 4.717-12.375 13.217h21.388zm-123.42-5.005c0 9.367 4.542 15.818 14.842 20.675 7.892 3.709 9.112 4.812 9.112 8.172 0 4.616-3.483 6.699-11.188 6.699-5.816 0-11.225-.908-17.467-2.921 0 0-2.554 16.321-2.671 17.101 4.421.967 8.375 1.85 20.275 2.191 20.566 0 30.059-7.829 30.059-24.746 0-10.18-3.971-16.15-13.737-20.637-8.167-3.759-9.113-4.584-9.113-8.046 0-4 3.246-6.059 9.542-6.059 3.821 0 9.046.421 14.004 1.125l2.771-17.179c-5.042-.8-12.692-1.441-17.146-1.441-21.804 0-29.346 11.379-29.283 25.066m398.45 50.63h-18.438l.917-6.893c-5.347 5.717-10.825 8.18-17.968 8.18-14.166 0-23.528-12.213-23.528-30.726 0-24.63 14.521-45.392 31.708-45.392 7.559 0 13.279 3.087 18.604 10.096l4.325-26.308h19.221l-14.841 91.043zm-28.746-17.109c9.075 0 15.45-10.283 15.45-24.953 0-9.405-3.629-14.509-10.325-14.509-8.837 0-15.115 10.315-15.115 24.875-.001 9.686 3.357 14.587 9.99 14.587zm-56.842-56.929c-2.441 22.917-6.773 46.13-10.162 69.063l-.892 4.976h19.491c6.972-45.275 8.658-54.117 19.588-53.009 1.742-9.267 4.982-17.383 7.399-21.479-8.163-1.7-12.721 2.913-18.688 11.675.471-3.788 1.333-7.467 1.162-11.225l-17.898-.001m-160.42 0c-2.446 22.917-6.779 46.13-10.167 69.063l-.888 4.976h19.5c6.963-45.275 8.646-54.117 19.57-53.009 1.75-9.267 4.991-17.383 7.399-21.479-8.154-1.7-12.717 2.913-18.679 11.675.471-3.788 1.324-7.467 1.162-11.225l-17.897-.001m254.57 68.241a5.792 5.792 0 0 1 5.784-5.799h.012a5.79 5.79 0 0 1 5.796 5.783v.016a5.799 5.799 0 0 1-5.796 5.797 5.799 5.799 0 0 1-5.796-5.797zm5.796 4.405a4.4 4.4 0 0 0 4.403-4.399v-.004a4.403 4.403 0 0 0-4.399-4.408h-.004a4.41 4.41 0 0 0-4.408 4.408 4.408 4.408 0 0 0 4.408 4.403zm-.784-1.871h-1.188v-5.082h2.153c.446 0 .909.009 1.296.254.417.283.654.767.654 1.274 0 .575-.337 1.112-.888 1.317l.941 2.236h-1.32l-.779-2.009h-.87l.001 2.01zm0-2.879h.653c.246 0 .513.019.729-.1.196-.125.296-.361.296-.588a.668.668 0 0 0-.287-.523c-.204-.117-.542-.084-.763-.084h-.629l.001 1.295z">
+</path>
+</svg>
+</span>
+<span class="payment-logo" role="img" aria-label="PayPal" title="PayPal">
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 780 500" aria-hidden="true" focusable="false">
+<path fill="#003087" d="M168.38 169.35c-8.399-5.774-19.359-8.668-32.88-8.668H83.154c-4.145 0-6.435 2.073-6.87 6.215L55.02 300.377c-.221 1.311.107 2.51.981 3.6.869 1.092 1.962 1.635 3.271 1.635h24.864c4.361 0 6.758-2.068 7.198-6.215l5.888-35.986c.215-1.744.982-3.162 2.291-4.254 1.308-1.09 2.944-1.803 4.907-2.129 1.963-.324 3.814-.488 5.562-.488 1.743 0 3.814.111 6.217.328 2.397.217 3.925.324 4.58.324 18.756 0 33.478-5.285 44.167-15.867 10.684-10.576 16.032-25.242 16.032-44.004 0-12.868-4.203-22.191-12.598-27.974zm-26.989 40.08c-1.094 7.635-3.926 12.649-8.506 15.049-4.581 2.403-11.124 3.599-19.629 3.599l-10.797.326 5.563-35.007c.434-2.397 1.851-3.597 4.252-3.597h6.218c8.72 0 15.049 1.257 18.975 3.761 3.924 2.51 5.233 7.801 3.924 15.869z">
+</path>
+<path fill="#009CDE" d="M720.79 160.68h-24.207c-2.406 0-3.822 1.2-4.254 3.601l-21.266 136.1-.328.654c0 1.096.436 2.127 1.311 3.109.867.98 1.963 1.471 3.27 1.471h21.596c4.137 0 6.428-2.068 6.871-6.215l21.264-133.81v-.325c-.001-3.055-1.423-4.581-4.257-4.581z">
+</path>
+<path fill="#003087" d="M428.31 213.36c0-1.088-.438-2.126-1.305-3.105-.875-.981-1.857-1.475-2.945-1.475h-25.191c-2.404 0-4.367 1.096-5.891 3.271L358.3 263.09l-14.395-49.074c-1.096-3.487-3.492-5.236-7.197-5.236h-24.541c-1.093 0-2.074.492-2.941 1.475-.875.979-1.309 2.019-1.309 3.105 0 .439 2.127 6.871 6.379 19.303 4.252 12.436 8.832 25.85 13.74 40.246 4.908 14.393 7.469 22.031 7.688 22.896-17.886 24.432-26.825 37.518-26.825 39.26 0 2.838 1.415 4.254 4.253 4.254h25.191c2.398 0 4.36-1.088 5.89-3.27l83.427-120.4c.433-.432.65-1.192.65-2.29z">
+</path>
+<path fill="#009CDE" d="M662.89 208.78h-24.865c-3.057 0-4.904 3.6-5.559 10.799-5.678-8.722-16.031-13.089-31.084-13.089-15.703 0-29.064 5.89-40.076 17.668-11.016 11.778-16.521 25.632-16.521 41.552 0 12.871 3.762 23.121 11.285 30.752 7.525 7.639 17.611 11.451 30.266 11.451 6.324 0 12.758-1.311 19.301-3.926 6.543-2.617 11.664-6.105 15.379-10.469 0 .219-.223 1.197-.654 2.941-.441 1.748-.656 3.061-.656 3.926 0 3.494 1.414 5.234 4.254 5.234h22.576c4.139 0 6.541-2.068 7.193-6.215l13.416-85.39c.215-1.31-.111-2.507-.982-3.599-.877-1.088-1.965-1.635-3.273-1.635zm-42.694 64.454c-5.562 5.453-12.27 8.178-20.121 8.178-6.328 0-11.449-1.742-15.377-5.234-3.928-3.482-5.891-8.281-5.891-14.395 0-8.064 2.727-14.886 8.182-20.447 5.445-5.562 12.213-8.342 20.283-8.342 6.102 0 11.174 1.799 15.213 5.396 4.031 3.6 6.055 8.562 6.055 14.889-.002 7.851-2.783 14.505-8.344 19.955z">
+</path>
+<path fill="#003087" d="M291.23 208.78h-24.865c-3.058 0-4.908 3.6-5.563 10.799-5.889-8.722-16.25-13.089-31.081-13.089-15.704 0-29.065 5.89-40.078 17.668-11.016 11.778-16.521 25.632-16.521 41.552 0 12.871 3.763 23.121 11.288 30.752 7.525 7.639 17.61 11.451 30.262 11.451 6.104 0 12.433-1.311 18.975-3.926 6.543-2.617 11.778-6.105 15.704-10.469-.875 2.615-1.309 4.906-1.309 6.867 0 3.494 1.417 5.234 4.253 5.234h22.574c4.141 0 6.543-2.068 7.198-6.215l13.413-85.39c.215-1.31-.111-2.507-.981-3.599-.873-1.088-1.962-1.635-3.269-1.635zm-42.695 64.616c-5.563 5.35-12.382 8.016-20.447 8.016-6.329 0-11.4-1.742-15.214-5.234-3.819-3.482-5.726-8.281-5.726-14.395 0-8.064 2.725-14.886 8.18-20.447 5.449-5.562 12.211-8.343 20.284-8.343 6.104 0 11.175 1.8 15.214 5.397 4.032 3.6 6.052 8.562 6.052 14.889-.001 8.07-2.781 14.779-8.343 20.117z">
+</path>
+<path fill="#009CDE" d="M540.04 169.35c-8.398-5.774-19.355-8.668-32.879-8.668h-52.02c-4.363 0-6.764 2.073-7.197 6.215l-21.266 133.48c-.221 1.311.107 2.51.982 3.6.865 1.092 1.961 1.635 3.27 1.635h26.826c2.617 0 4.361-1.416 5.236-4.252l5.889-37.949c.217-1.744.98-3.162 2.291-4.254 1.309-1.09 2.943-1.803 4.908-2.129 1.961-.324 3.812-.488 5.561-.488 1.744 0 3.814.111 6.215.328 2.398.217 3.93.324 4.58.324 18.76 0 33.479-5.285 44.168-15.867 10.688-10.576 16.031-25.242 16.031-44.004.001-12.868-4.2-22.192-12.595-27.974zm-33.533 53.819c-4.799 3.271-11.998 4.906-21.592 4.906l-10.471.328 5.562-35.008c.432-2.396 1.85-3.598 4.252-3.598h5.887c4.799 0 8.615.219 11.455.654 2.83.438 5.561 1.799 8.178 4.088 2.619 2.291 3.926 5.619 3.926 9.979 0 9.164-2.402 15.377-7.197 18.651z">
+</path>
+</svg>
+</span>
+<span class="payment-logo" role="img" aria-label="UnionPay" title="UnionPay">
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 780 500" aria-hidden="true" focusable="false">
+<path fill="#D10429" d="M216.4 69.791h142.39c19.87 0 32.287 16.406 27.63 36.47l-66.333 287.48c-4.656 20.063-24.629 36.47-44.498 36.47h-142.39c-19.87 0-32.287-16.406-27.63-36.47l66.331-287.48c4.657-20.168 24.526-36.47 44.395-36.47h.104z">
+</path>
+<path fill="#022E64" d="M346.34 69.791h163.82c19.867 0 10.865 16.406 6.209 36.47l-66.334 287.48c-4.658 20.063-3.209 36.47-23.078 36.47h-163.81c-19.972 0-32.287-16.406-27.527-36.47l66.334-287.48c4.656-20.168 24.524-36.47 44.498-36.47h-.104z">
+</path>
+<path fill="#076F74" d="M504.41 69.791H646.8c19.869 0 32.287 16.406 27.631 36.47l-66.334 287.48c-4.656 20.063-24.629 36.47-44.498 36.47h-142.39c-19.973 0-32.288-16.406-27.631-36.47l66.334-287.48c4.656-20.168 24.525-36.47 44.393-36.47h.105z">
+</path>
+<path fill="#FEFEFE" d="M480.5 340.81h13.453l3.828-13.063h-13.35L480.5 340.81zm10.762-35.95-4.658 15.467s5.072-2.613 7.865-3.449c2.795-.627 6.934-1.15 6.934-1.15l3.207-10.763h-13.451l.103-.105zm6.726-22.153-4.449 14.839s4.967-2.3 7.76-3.029c2.795-.732 6.934-.941 6.934-.941l3.207-10.764h-13.348l-.104-.105zm29.7 0-17.385 57.997h4.656l-3.621 12.018h-4.658l-1.137 3.657h-16.559l1.139-3.657h-33.529l3.311-11.076h3.416l17.594-58.938 3.518-11.913H501.3l-1.76 5.956s4.449-3.239 8.797-4.39c4.244-1.148 28.666-1.566 28.666-1.566l-3.623 11.809h-5.795l.103.103z">
+</path>
+<path fill="#FEFEFE" d="M534.59 270.79h18.006l.207 6.792c-.102 1.149.828 1.672 3.002 1.672h3.621l-3.311 11.183h-9.729c-8.381.627-11.59-3.03-11.383-7.106l-.311-12.437-.102-.104zm2.217 53.2h-17.178l2.896-9.927h19.662l2.793-9.092h-19.35l3.311-11.182h53.812l-3.312 11.182h-18.109l-2.793 9.092h18.109l-3.002 9.927h-19.559l-3.518 4.18h7.969l1.965 12.54c.207 1.254.207 2.09.621 2.613.414.418 2.795.627 4.139.627h2.381l-3.725 12.227h-6.107c-.93 0-2.379-.104-4.346-.104-1.863-.21-3.104-1.255-4.346-1.882-1.139-.522-2.793-1.881-3.207-4.284l-1.863-12.54-8.9 12.331c-2.795 3.866-6.621 6.897-13.143 6.897H509.59l3.311-10.869h4.762c1.346 0 2.588-.521 3.52-1.045.93-.418 1.758-.836 2.586-2.193l13.038-18.498zm-187.9-27.2h45.429l-3.312 10.973h-18.11l-2.793 9.299h18.627l-3.415 11.287h-18.524l-4.553 15.152c-.517 1.672 4.45 1.881 6.209 1.881l9.313-1.254-3.726 12.54h-20.904c-1.654 0-2.896-.209-4.76-.627-1.76-.418-2.587-1.254-3.311-2.403-.726-1.254-1.968-2.195-1.14-4.912l6.002-20.063h-10.347l3.415-11.495h10.348l2.794-9.3h-10.347l3.312-10.974-.207-.104zm31.387-19.835h18.626l-3.414 11.39h-25.458l-2.794 2.404c-1.242 1.15-1.552.732-3.105 1.568-1.447.73-4.449 2.193-8.382 2.193h-8.175l3.311-10.972h2.484c2.07 0 3.52-.21 4.243-.627.828-.522 1.76-1.672 2.69-3.554l4.656-8.568h18.526l-3.208 6.27v-.104zm35.106 18.81s5.07-4.701 13.764-6.164c1.967-.418 14.385-.211 14.385-.211l1.863-6.27H419.23l-3.83 12.75v-.105zm24.629 4.807h-25.975l-1.551 5.329h22.559c2.691-.313 3.209.104 3.416-.104l1.654-5.225h-.103zm-33.734-29.678h15.832l-2.275 8.047s4.967-4.075 8.484-5.539c3.52-1.254 11.383-2.508 11.383-2.508l25.664-.104-8.795 29.469c-1.449 5.016-3.209 8.256-4.244 9.823-.93 1.463-2.07 2.821-4.346 4.075-2.172 1.15-4.141 1.881-6.002 1.986-1.656.104-4.346.209-7.865.209h-24.732l-6.934 23.303c-.619 2.299-.93 3.447-.516 4.074.309.523 1.24 1.15 2.379 1.15l10.865-1.045-3.725 12.749h-12.211c-3.932 0-6.727-.104-8.693-.21-1.862-.208-3.83 0-5.174-1.044-1.138-1.045-2.896-2.403-2.794-3.763.104-1.254.621-3.344 1.45-6.27l22.249-74.402z">
+</path>
+<path fill="#FEFEFE" d="m452.43 317.79-1.449 7.105c-.619 2.194-1.137 3.867-2.793 5.33-1.76 1.463-3.725 3.03-8.484 3.03l-8.797.418-.104 7.942c-.104 2.193.518 1.984.828 2.402.414.418.723.523 1.137.732l2.795-.21 8.383-.417-3.52 11.704h-9.623c-6.727 0-11.797-.21-13.35-1.463-1.656-1.046-1.863-2.3-1.863-4.599l.621-31.141h15.42l-.207 6.374h3.725c1.242 0 2.174-.104 2.691-.418.516-.313.828-.836 1.035-1.567l1.551-5.016h12.109l-.105-.206zm-219.37-156c-.517 2.508-10.451 48.592-10.451 48.592-2.174 9.3-3.726 15.989-8.9 20.273-3.001 2.508-6.52 3.657-10.555 3.657-6.52 0-10.245-3.239-10.866-9.404l-.104-2.09s1.966-12.436 1.966-12.54c0 0 10.349-42.009 12.212-47.548.103-.313.103-.522.103-.627-20.18.21-23.801 0-24.008-.313-.104.418-.621 3.03-.621 3.03l-10.556 47.34-.932 3.97-1.758 13.168c0 3.866.724 7.105 2.277 9.718 4.863 8.569 18.627 9.823 26.388 9.823 10.038 0 19.455-2.195 25.767-6.061 11.073-6.584 13.97-16.929 16.454-26.02l1.242-4.703s10.659-43.576 12.522-49.219c.103-.314.103-.523.207-.627-14.695.104-18.938 0-20.387-.314v-.105zm59.029 86.623c-7.141-.105-9.728-.105-18.11.313l-.311-.627c.724-3.24 1.552-6.374 2.173-9.614l1.035-4.389c1.552-6.792 3.001-14.839 3.208-17.242.207-1.463.62-5.12-3.519-5.12-1.759 0-3.518.835-5.38 1.671-1.036 3.658-3.002 13.899-4.037 18.497-2.07 9.823-2.173 10.972-3.104 15.78l-.621.626c-7.347-.104-9.934-.104-18.42.314l-.414-.732c1.449-5.852 2.794-11.704 4.14-17.556 3.518-15.78 4.45-21.84 5.38-29.887l.725-.418c8.279-1.149 10.245-1.463 19.248-3.239l.724.836-1.345 5.016c1.552-.94 3.001-1.881 4.553-2.613 4.243-2.09 8.9-2.717 11.487-2.717 3.932 0 8.279 1.15 10.038 5.748 1.656 4.075.62 9.091-1.656 19.019l-1.138 5.016c-2.277 11.077-2.69 13.062-3.933 20.586l-.827.627.104.105zm29.058.027c-4.346 0-7.14-.104-9.83 0-2.691 0-5.278.21-9.314.314l-.207-.314-.207-.418c1.138-4.18 1.656-5.643 2.277-7.106.517-1.463 1.034-2.926 2.07-7.21 1.241-5.539 2.069-9.405 2.586-12.854.621-3.24.932-6.06 1.346-9.3l.31-.209.31-.313c4.347-.627 7.038-1.045 9.832-1.463s5.691-.94 10.141-1.776l.207.418.103.418-2.482 10.345c-.828 3.449-1.656 6.897-2.38 10.346-1.554 7.315-2.277 10.032-2.587 12.017-.414 1.881-.519 2.822-1.14 6.584l-.414.313-.414.314-.207-.106zm45.941-25.675c-.31 1.881-1.966 8.883-4.139 11.809-1.553 2.194-3.312 3.553-5.382 3.553-.62 0-4.14 0-4.242-5.33 0-2.612.517-5.33 1.138-8.255 1.863-8.465 4.14-15.466 9.831-15.466 4.451 0 4.76 5.225 2.794 13.689zm18.731.836c2.483-11.077.518-16.302-1.862-19.437-3.726-4.807-10.348-6.374-17.178-6.374-4.141 0-13.867.418-21.525 7.524-5.484 5.12-8.071 12.122-9.52 18.81-1.554 6.792-3.312 19.019 7.864 23.617 3.414 1.463 8.382 1.88 11.59 1.88 8.176 0 16.558-2.298 22.87-8.986 4.863-5.434 7.036-13.585 7.864-17.034h-.103zm174.43 26.08c-8.693-.104-11.176-.104-19.145.314l-.518-.627c2.174-8.256 4.346-16.616 6.312-24.976 2.484-10.868 3.105-15.466 3.934-21.84l.619-.522c8.59-1.254 10.971-1.567 19.973-3.239l.207.731c-1.656 6.897-3.207 13.69-4.863 20.482-3.311 14.317-4.451 21.632-5.691 29.156l-.828.627v-.106z">
+</path>
+<path fill="#FEFEFE" d="M547.75 224.16c-.414 1.776-2.07 8.882-4.242 11.808-1.449 2.09-4.967 3.449-6.934 3.449-.621 0-4.035 0-4.242-5.225 0-2.613.516-5.33 1.137-8.256 1.863-8.255 4.141-15.257 9.832-15.257 4.449 0 6.416 5.12 4.449 13.585v-.104zm17.076.836c2.482-11.077-7.658-.94-9.211-4.598-2.484-5.748-.932-17.243-10.865-21.109-3.83-1.568-12.832.418-20.49 7.524-5.381 5.016-8.072 12.017-9.52 18.705-1.555 6.688-3.312 19.02 7.76 23.304 3.52 1.567 6.727 1.985 9.934 1.776 11.178-.627 19.662-17.661 25.977-24.349 4.86-5.329 5.689 1.986 6.415-1.253zm-129.94 23.413c-7.141-.105-9.625-.105-18.006.313l-.311-.627c.725-3.24 1.553-6.374 2.275-9.614l.932-4.389c1.553-6.792 3.105-14.839 3.207-17.242.207-1.463.621-5.12-3.414-5.12-1.76 0-3.621.835-5.381 1.671-.932 3.658-3.002 13.899-4.037 18.497-1.965 9.823-2.172 10.972-3.104 15.78l-.621.626c-7.346-.104-9.934-.104-18.419.314l-.414-.732c1.449-5.852 2.794-11.704 4.14-17.556 3.518-15.78 4.346-21.84 5.379-29.887l.621-.418c8.281-1.149 10.35-1.463 19.248-3.239l.727.836-1.242 5.016c1.449-.94 3-1.881 4.449-2.613 4.244-2.09 8.9-2.717 11.486-2.717 3.934 0 8.176 1.15 10.037 5.748 1.656 4.075.52 9.091-1.758 19.019l-1.139 5.016c-2.379 11.077-2.689 13.062-3.934 20.586l-.826.627.105.105zm62-86.519-6.002.105c-15.523.209-21.732.104-24.215-.209-.207 1.15-.621 3.135-.621 3.135s-5.588 25.916-5.588 26.02c0 0-13.246 55.176-13.867 57.788 13.557-.209 19.041-.209 21.422.105.518-2.613 3.621-17.974 3.725-17.974 0 0 2.691-11.286 2.795-11.704 0 0 .826-1.15 1.654-1.672h1.242c11.695 0 24.836 0 35.186-7.628 7.037-5.225 11.797-13.063 13.971-22.468.516-2.299.93-5.016.93-7.837 0-3.658-.723-7.21-2.793-10.032-5.279-7.42-15.732-7.524-27.839-7.629zm7.762 27.066c-1.242 5.747-4.967 10.659-9.727 12.958-3.934 1.985-8.693 2.194-13.66 2.194h-3.209l.207-1.254s5.9-25.916 5.9-25.811l.205-1.359.104-1.045 2.381.21s12.211 1.044 12.418 1.044c4.759 1.881 6.83 6.688 5.381 13.063zm127.21 8.666-.725-.836c-8.795 1.776-10.451 2.09-18.523 3.24l-.621.626c0 .105-.104.21-.104.418v-.104c-6.002 14.107-5.898 11.077-10.762 22.154 0-.523 0-.836-.104-1.359l-1.242-24.035-.725-.836c-9.314 1.777-9.52 2.09-18.006 3.24l-.621.627c-.104.313-.104.627-.104.94l.104.105c1.035 5.538.828 4.284 1.863 12.958.518 4.284 1.139 8.569 1.654 12.749.828 7.106 1.348 10.554 2.381 21.318-5.795 9.613-7.141 13.271-12.729 21.734l.311.836c8.383-.312 10.244-.312 16.453-.312l1.348-1.568c4.654-10.135 40.254-71.79 40.254-71.79l-.102-.105zm-302.72 6.922c4.76-3.344 5.38-7.942 1.345-10.345-4.036-2.404-11.176-1.672-15.937 1.672-4.76 3.24-5.277 7.837-1.241 10.345 3.932 2.3 11.073 1.672 15.833-1.672z">
+</path>
+<path fill="#FEFEFE" d="m590.33 270.9-6.936 12.019c-2.172 4.075-6.311 7.21-12.727 7.21l-11.074-.209 3.209-10.868h2.172c1.139 0 1.967-.104 2.588-.418.621-.209.932-.627 1.449-1.254l4.139-6.583h17.281l-.101.103z">
+</path>
+</svg>
+</span>
+<span class="payment-logo" role="img" aria-label="Visa" title="Visa">
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 780 500" aria-hidden="true" focusable="false">
+<path fill="#0E4595" d="m293.2 348.73 33.359-195.76h53.358l-33.384 195.76H293.2zm246.11-191.54c-10.569-3.966-27.135-8.222-47.821-8.222-52.726 0-89.863 26.551-90.181 64.604-.297 28.129 26.515 43.822 46.754 53.185 20.771 9.598 27.752 15.716 27.652 24.283-.133 13.123-16.586 19.115-31.924 19.115-21.355 0-32.701-2.967-50.225-10.273l-6.878-3.111-7.487 43.822c12.463 5.467 35.508 10.199 59.438 10.445 56.09 0 92.502-26.248 92.916-66.885.199-22.27-14.016-39.215-44.801-53.188-18.65-9.056-30.072-15.099-29.951-24.269 0-8.137 9.668-16.838 30.56-16.838 17.446-.271 30.088 3.534 39.936 7.5l4.781 2.259 7.231-42.427m137.31-4.223h-41.23c-12.772 0-22.332 3.486-27.94 16.234l-79.245 179.4h56.031s9.159-24.121 11.231-29.418c6.123 0 60.555.084 68.336.084 1.596 6.854 6.492 29.334 6.492 29.334h49.512l-43.187-195.64zm-65.417 126.41c4.414-11.279 21.26-54.724 21.26-54.724-.314.521 4.381-11.334 7.074-18.684l3.606 16.878s10.217 46.729 12.353 56.527h-44.293v.003zm-363.3-126.41-52.239 133.5-5.565-27.129c-9.726-31.274-40.025-65.157-73.898-82.12l47.767 171.2 56.455-.063 84.004-195.39-56.524-.001">
+</path>
+<path fill="#F2AE14" d="M146.92 152.96H60.879l-.682 4.073c66.939 16.204 111.23 55.363 129.62 102.42l-18.709-89.96c-3.229-12.396-12.597-16.096-24.186-16.528">
+</path>
+</svg>
+</span>
+</div>
+          </div>
+          <div class="checkout-note">
+<span class="note-mark" aria-hidden="true">Z</span>
+<div>
+<b>Protected checkout</b>
+<small>Payment details are encrypted in transit and only sent after you confirm.</small>
+</div>
+</div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="checkout-footer">
+    <div class="container footer-row">
+      <img class="footer-logo" src="assets/zander88llc-logo.png?v=9" alt="Zander88LLC">
+      <span>© 2026 Zander88LLC. All rights reserved.</span>
+      <nav class="footer-links" aria-label="Checkout policies">
+<a href="#">Privacy</a>
+<a href="#">Returns</a>
+<a href="#">Terms</a>
+</nav>
+    </div>
+  </footer>
+
+  <script src="assets/z88-upgrade.js" defer></script>
+
+  <div class="gateway-modal" id="gatewayModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="modal-mark" aria-hidden="true">Z</div>
+      <h2 id="modalTitle">Payment connection needed</h2>
+      <p>The checkout experience is complete. Connect the store’s Stripe or PayPal account to process live orders and payments.</p>
+      <button class="modal-close" id="modalClose" type="button">Return to checkout</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var CART_KEY = 'zander88Cart';
+      var cart = [];
+      try { cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]'); if (!Array.isArray(cart)) cart = []; } catch (error) { cart = []; }
+
+      var items = document.getElementById('summaryItems');
+      var subtotalNode = document.getElementById('summarySubtotal');
+      var shippingNode = document.getElementById('summaryShipping');
+      var totalNode = document.getElementById('summaryTotal');
+      var totals = document.getElementById('totals');
+      var placeOrder = document.getElementById('placeOrder');
+      var form = document.getElementById('checkoutForm');
+      var gatewayModal = document.getElementById('gatewayModal');
+      var modalClose = document.getElementById('modalClose');
+      var cardFields = document.getElementById('cardFields');
+      var paypalPanel = document.getElementById('paypalPanel');
+      var cardInputs = Array.prototype.slice.call(cardFields.querySelectorAll('input'));
+      var couponPanel = document.getElementById('couponPanel');
+      var couponInput = document.getElementById('couponCode');
+      var couponButton = document.getElementById('applyCoupon');
+      var couponMessage = document.getElementById('couponMessage');
+      var discountRow = document.getElementById('discountRow');
+      var discountNode = document.getElementById('summaryDiscount');
+      var modalTitle = document.getElementById('modalTitle');
+      var modalCopy = gatewayModal.querySelector('p');
+      var couponApplied = false;
+
+      function saveCart() { try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch (error) {} }
+      function money(value) { return '$' + Number(value).toFixed(2); }
+      function shippingCost() { var selected = document.querySelector('input[name="shipping"]:checked'); return selected ? Number(selected.value) : 0; }
+
+      function render() {
+        var subtotal = cart.reduce(function (sum, item) { return sum + Number(item.price) * Number(item.qty); }, 0);
+        var discount = couponApplied && cart.length ? Math.round(subtotal * 0.10 * 100) / 100 : 0;
+        if (!cart.length) {
+          items.innerHTML = '<div class="empty-cart">Your cart is empty.<br><a href="index.html#products">Return to products</a></div>';
+          totals.style.display = 'none';
+          couponPanel.hidden = true;
+          placeOrder.disabled = true;
+        } else {
+          totals.style.display = 'grid';
+          couponPanel.hidden = false;
+          placeOrder.disabled = false;
+          items.innerHTML = cart.map(function (item) {
+            return '<article class="summary-item"><img class="summary-image" src="' + item.img + '" alt="' + item.name.replace(/"/g, '&quot;') + '"><div><div class="summary-name">' + item.name + '</div><div class="summary-price">' + money(item.price) + '</div><div class="qty-row"><button class="qty-button" type="button" data-action="minus" data-id="' + item.id + '" aria-label="Decrease quantity">−</button><span class="qty-value">' + item.qty + '</span><button class="qty-button" type="button" data-action="plus" data-id="' + item.id + '" aria-label="Increase quantity">+</button></div></div><button class="remove-item" type="button" data-action="remove" data-id="' + item.id + '" aria-label="Remove ' + item.name.replace(/"/g, '&quot;') + '">×</button></article>';
+          }).join('');
+        }
+        var shipping = cart.length ? shippingCost() : 0;
+        subtotalNode.textContent = money(subtotal);
+        discountRow.hidden = discount <= 0;
+        discountNode.textContent = '-' + money(discount);
+        shippingNode.textContent = money(shipping);
+        totalNode.textContent = money(Math.max(0, subtotal + shipping - discount));
+        saveCart();
+      }
+
+      items.addEventListener('click', function (event) {
+        var button = event.target.closest('[data-action]');
+        if (!button) return;
+        var id = Number(button.getAttribute('data-id'));
+        var action = button.getAttribute('data-action');
+        var item = cart.find(function (entry) { return Number(entry.id) === id; });
+        if (!item) return;
+        if (action === 'plus') item.qty += 1;
+        if (action === 'minus') item.qty = Math.max(1, item.qty - 1);
+        if (action === 'remove') cart = cart.filter(function (entry) { return Number(entry.id) !== id; });
+        render();
+      });
+
+      function applyCoupon() {
+        var code = couponInput.value.trim().toUpperCase();
+        if (code === 'SAVE10') {
+          couponApplied = true;
+          couponMessage.textContent = 'SAVE10 applied — 10% off your items.';
+          couponInput.setAttribute('aria-invalid', 'false');
+        } else {
+          couponApplied = false;
+          couponMessage.textContent = code ? 'That code is not available.' : 'Enter a code to apply a discount.';
+          couponInput.setAttribute('aria-invalid', 'true');
+        }
+        render();
+      }
+      couponButton.addEventListener('click', applyCoupon);
+      couponInput.addEventListener('keydown', function (event) { if (event.key === 'Enter') { event.preventDefault(); applyCoupon(); } });
+
+      document.querySelectorAll('input[name="shipping"]').forEach(function (radio) { radio.addEventListener('change', render); });
+      document.querySelectorAll('input[name="paymentMethod"]').forEach(function (radio) {
+        radio.addEventListener('change', function () {
+          var paypal = radio.value === 'paypal' && radio.checked;
+          cardFields.classList.toggle('hide', paypal);
+          paypalPanel.classList.toggle('show', paypal);
+          cardInputs.forEach(function (input) { input.required = !paypal; });
+          placeOrder.textContent = paypal ? 'Continue with PayPal' : 'Place order';
+        });
+      });
+
+      document.getElementById('cardNumber').addEventListener('input', function () { this.value = this.value.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim(); });
+      document.getElementById('expiry').addEventListener('input', function () { var value = this.value.replace(/\D/g, '').slice(0, 4); this.value = value.length > 2 ? value.slice(0, 2) + ' / ' + value.slice(2) : value; });
+      document.getElementById('securityCode').addEventListener('input', function () { this.value = this.value.replace(/\D/g, '').slice(0, 4); });
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (!cart.length) return;
+        if (!form.reportValidity()) return;
+        var paypalSelected = document.querySelector('input[name="paymentMethod"]:checked').value === 'paypal';
+        modalTitle.textContent = paypalSelected ? 'PayPal connection needed' : 'Payment connection needed';
+        modalCopy.textContent = paypalSelected ? 'Your order is ready for PayPal. Connect the store’s PayPal account to finish live payment.' : 'Your order is ready. Connect the store’s Stripe account to process live card payments.';
+        gatewayModal.classList.add('open');
+        modalClose.focus();
+      });
+      function closeModal() { gatewayModal.classList.remove('open'); placeOrder.focus(); }
+      modalClose.addEventListener('click', closeModal);
+      gatewayModal.addEventListener('click', function (event) { if (event.target === gatewayModal) closeModal(); });
+      document.addEventListener('keydown', function (event) { if (event.key === 'Escape' && gatewayModal.classList.contains('open')) closeModal(); });
+
+      render();
+    });
+  </script>
+</body>
+</html>
