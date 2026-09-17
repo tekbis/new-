@@ -1,5 +1,5 @@
 /* Snapshot of Zander88LLC public catalog, 2026-09-15. Images are served by the source store's Wix CDN. */
-window.ZanderCatalog = [
+var ZanderCatalog = [
   {
     "cat": "HOUSEHOLD",
     "cats": [
@@ -1910,3 +1910,5 @@ window.ZanderCatalog = [
     "url": "https://www.zander88llc.net/product-page/inverness-walnut-black-leather"
   }
 ];
+if (typeof window !== 'undefined') window.ZanderCatalog = ZanderCatalog;
+if (typeof module !== 'undefined' && module.exports) module.exports = ZanderCatalog;

@@ -1,0 +1,11 @@
+{
+  "name": "zander88llc",
+  "private": true,
+  "description": "Zander88LLC storefront with Stripe and PayPal checkout on Vercel",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "stripe": "^17.7.0"
+  }
+}

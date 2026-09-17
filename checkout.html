@@ -24,6 +24,16 @@
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal,.summary-item,.modal-card{opacity:1;transform:none;animation:none}.delivery-option,.method-tab,.place-order,.back-link{transition:none}}
   </style>
   <link rel="stylesheet" href="assets/z88-upgrade.css?v=12">
+  <style>
+    #stripeFields.hide{display:none}
+    #payment-element{min-height:48px}
+    #payment-message,#paypal-message{color:#b42318;font-size:13px;min-height:1.2em;margin:10px 0 0;line-height:1.45}
+    #stripeHint{margin-top:12px}
+    #paypal-button-container{margin-top:16px;text-align:left}
+    .place-order[hidden]{display:none}
+  </style>
+  <script src="https://js.stripe.com/v3/" defer></script>
+  <script src="assets/catalog-data.js"></script>
 </head>
 <body>
   <header class="checkout-header">
@@ -115,15 +125,15 @@
 <label for="state">State</label>
 <select id="state" name="state" autocomplete="address-level1" required>
 <option value="">Select state</option>
-<option>Arizona</option>
-<option>California</option>
-<option>Florida</option>
-<option>Georgia</option>
-<option>Illinois</option>
-<option>New Mexico</option>
-<option>New York</option>
-<option>Texas</option>
-<option>Washington</option>
+<option value="AZ">Arizona</option>
+<option value="CA">California</option>
+<option value="FL">Florida</option>
+<option value="GA">Georgia</option>
+<option value="IL">Illinois</option>
+<option value="NM">New Mexico</option>
+<option value="NY">New York</option>
+<option value="TX">Texas</option>
+<option value="WA">Washington</option>
 </select>
 </div>
               <div class="field">
@@ -164,7 +174,7 @@
 <h2 id="paymentTitle">Payment</h2>
 </div>
 </div>
-            <p class="payment-intro">Choose how you would like to pay. Your payment details stay in this checkout until you confirm the order.</p>
+            <p class="payment-intro">Pay securely with Stripe. Cards, Apple Pay, Google Pay and other enabled methods appear below.</p>
             <div class="method-tabs" role="radiogroup" aria-label="Payment method">
               <label class="method-tab">
 <input type="radio" name="paymentMethod" value="card" checked>
@@ -176,33 +186,23 @@
 </span>
 </label>
             </div>
-            <div class="card-fields" id="cardFields">
-              <div class="field wide">
-<label for="cardNumber">Card number</label>
-<input id="cardNumber" name="cardNumber" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456" required maxlength="19">
+            <div id="stripeFields">
+              <div id="payment-element">
 </div>
-              <div class="field">
-<label for="expiry">Expiration</label>
-<input id="expiry" name="expiry" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="MM / YY" required maxlength="7">
-</div>
-              <div class="field">
-<label for="securityCode">Security code</label>
-<input id="securityCode" name="securityCode" type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="CVV" required maxlength="4">
-</div>
-              <div class="field wide">
-<label for="cardName">Name on card</label>
-<input id="cardName" name="cardName" type="text" autocomplete="cc-name" required>
-</div>
+              <p class="gateway-copy" id="stripeHint">Live card payments start after Stripe keys are added.</p>
+              <p id="payment-message" role="alert">
+</p>
             </div>
             <div class="paypal-panel" id="paypalPanel">
 <b>PayPal</b>
-<span>You’ll continue through PayPal after reviewing your order.</span>
+<p class="gateway-copy" id="paypalHint">Live PayPal payments start after PayPal keys are added.</p>
+<div id="paypal-button-container"></div>
+<p id="paypal-message" role="alert"></p>
 </div>
             <label class="billing-toggle">
 <input id="sameBilling" name="sameBilling" type="checkbox" checked>
 <span>Billing address matches delivery address</span>
 </label>
-            <p class="gateway-copy">Live transactions require the store owner’s Stripe or PayPal account connection.</p>
           </section>
         </form>
 
@@ -411,8 +411,25 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var CART_KEY = 'zander88Cart';
+      var MAX_QTY = 20;
       var cart = [];
       try { cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]'); if (!Array.isArray(cart)) cart = []; } catch (error) { cart = []; }
+
+      (function syncCartWithCatalog() {
+        var catalog = window.ZanderCatalog;
+        if (!Array.isArray(catalog) || !catalog.length) return;
+        var byId = {};
+        catalog.forEach(function (product) { byId[Number(product.id)] = product; });
+        cart = cart.filter(function (item) {
+          var product = byId[Number(item && item.id)];
+          if (!product || !product.stock || product.price == null) return false;
+          item.name = product.name;
+          item.price = product.price;
+          item.img = product.image;
+          item.qty = Math.min(MAX_QTY, Math.max(1, parseInt(item.qty, 10) || 1));
+          return true;
+        });
+      }());
 
       var items = document.getElementById('summaryItems');
       var subtotalNode = document.getElementById('summarySubtotal');
@@ -423,9 +440,8 @@
       var form = document.getElementById('checkoutForm');
       var gatewayModal = document.getElementById('gatewayModal');
       var modalClose = document.getElementById('modalClose');
-      var cardFields = document.getElementById('cardFields');
+      var stripeFields = document.getElementById('stripeFields');
       var paypalPanel = document.getElementById('paypalPanel');
-      var cardInputs = Array.prototype.slice.call(cardFields.querySelectorAll('input'));
       var couponPanel = document.getElementById('couponPanel');
       var couponInput = document.getElementById('couponCode');
       var couponButton = document.getElementById('applyCoupon');
@@ -434,11 +450,226 @@
       var discountNode = document.getElementById('summaryDiscount');
       var modalTitle = document.getElementById('modalTitle');
       var modalCopy = gatewayModal.querySelector('p');
+      var stripeHint = document.getElementById('stripeHint');
+      var paypalHint = document.getElementById('paypalHint');
+      var paymentMessage = document.getElementById('payment-message');
+      var paypalMessage = document.getElementById('paypal-message');
       var couponApplied = false;
+      var stripe = null;
+      var elements = null;
+      var paymentElement = null;
+      var stripeConfigured = false;
+      var paypalConfigured = false;
+      var paypalClientId = '';
+      var paypalButtonsRendered = false;
+      var clientSecret = '';
+      var paymentIntentId = '';
+      var intentTimer = null;
+      var submitting = false;
 
       function saveCart() { try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch (error) {} }
       function money(value) { return '$' + Number(value).toFixed(2); }
       function shippingCost() { var selected = document.querySelector('input[name="shipping"]:checked'); return selected ? Number(selected.value) : 0; }
+      function selectedShipping() { var selected = document.querySelector('input[name="shipping"]:checked'); return selected ? selected.value : '6.95'; }
+      function selectedPayment() { var selected = document.querySelector('input[name="paymentMethod"]:checked'); return selected ? selected.value : 'card'; }
+      function setPaymentMessage(message) { paymentMessage.textContent = message || ''; }
+      function setPaypalMessage(message) { if (paypalMessage) paypalMessage.textContent = message || ''; }
+      function fieldValue(id) { var node = document.getElementById(id); return node ? String(node.value || '').trim() : ''; }
+      function paypalSelected() { return selectedPayment() === 'paypal'; }
+      function sameBillingChecked() {
+        var node = document.getElementById('sameBilling');
+        return !node || node.checked;
+      }
+      function billingDetails() {
+        var details = {
+          name: (fieldValue('firstName') + ' ' + fieldValue('lastName')).trim(),
+          email: fieldValue('email'),
+          address: {
+            line1: fieldValue('address'),
+            city: fieldValue('city'),
+            state: fieldValue('state'),
+            postal_code: fieldValue('zip'),
+            country: 'US'
+          }
+        };
+        if (fieldValue('phone')) details.phone = fieldValue('phone');
+        return details;
+      }
+
+      function updatePaymentMethodUi() {
+        var paypal = paypalSelected();
+        stripeFields.classList.toggle('hide', paypal);
+        paypalPanel.classList.toggle('show', paypal);
+        if (paypal && paypalConfigured) {
+          placeOrder.hidden = true;
+          renderPayPalButtons();
+        } else {
+          placeOrder.hidden = false;
+          placeOrder.textContent = paypal ? 'Continue with PayPal' : (submitting ? 'Processing…' : 'Place order');
+        }
+      }
+
+      function loadPayPalSdk(clientId) {
+        if (!clientId || document.getElementById('paypal-sdk')) {
+          if (window.paypal && paypalSelected()) renderPayPalButtons();
+          return;
+        }
+        var script = document.createElement('script');
+        script.id = 'paypal-sdk';
+        script.src = 'https://www.paypal.com/sdk/js?client-id=' + encodeURIComponent(clientId) + '&currency=USD&intent=capture&commit=true';
+        script.onload = function () {
+          if (paypalSelected()) renderPayPalButtons();
+        };
+        document.head.appendChild(script);
+      }
+
+      function renderPayPalButtons() {
+        if (paypalButtonsRendered || !window.paypal) return;
+        var container = document.getElementById('paypal-button-container');
+        if (!container) return;
+        paypalButtonsRendered = true;
+        window.paypal.Buttons({
+          style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
+          onClick: function (data, actions) {
+            if (!cart.length) return actions.reject();
+            if (!form.reportValidity()) return actions.reject();
+            setPaypalMessage('');
+            return actions.resolve();
+          },
+          createOrder: function () {
+            return fetch('/api/paypal-create-order', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(orderPayload())
+            }).then(function (response) {
+              return response.json().then(function (data) { return { ok: response.ok, data: data }; });
+            }).then(function (result) {
+              if (!result.ok || !result.data.id) throw new Error(result.data.error || 'PayPal order failed');
+              return result.data.id;
+            }).catch(function (error) {
+              setPaypalMessage(error.message || 'PayPal order failed');
+              throw error;
+            });
+          },
+          onApprove: function (data) {
+            return fetch('/api/paypal-capture-order', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ orderID: data.orderID })
+            }).then(function (response) {
+              return response.json().then(function (result) { return { ok: response.ok, data: result }; });
+            }).then(function (result) {
+              if (!result.ok || !result.data.success) throw new Error(result.data.error || 'PayPal capture failed');
+              try { localStorage.removeItem(CART_KEY); } catch (error) {}
+              window.location.href = 'order-confirmation.html?paypal=1&token=' + encodeURIComponent(data.orderID);
+            }).catch(function (error) {
+              setPaypalMessage(error.message || 'The PayPal payment could not be completed.');
+              showModal('PayPal payment failed', error.message || 'The PayPal payment could not be completed.');
+            });
+          },
+          onError: function () {
+            setPaypalMessage('PayPal could not start. Check the PayPal keys and try again.');
+            showModal('PayPal error', 'PayPal could not start. Check the PayPal keys and try again.');
+          },
+          onCancel: function () {
+            setPaypalMessage('PayPal payment was canceled.');
+          }
+        }).render('#paypal-button-container');
+      }
+
+      function showModal(title, copy) {
+        modalTitle.textContent = title;
+        modalCopy.textContent = copy;
+        gatewayModal.classList.add('open');
+        modalClose.focus();
+      }
+
+      function orderPayload() {
+        return {
+          cart: cart.map(function (item) { return { id: item.id, qty: item.qty }; }),
+          shipping: selectedShipping(),
+          coupon: couponApplied ? 'SAVE10' : '',
+          paymentIntentId: paymentIntentId || undefined,
+          email: fieldValue('email'),
+          firstName: fieldValue('firstName'),
+          lastName: fieldValue('lastName'),
+          phone: fieldValue('phone'),
+          address: fieldValue('address'),
+          city: fieldValue('city'),
+          state: fieldValue('state'),
+          zip: fieldValue('zip')
+        };
+      }
+
+      function mountPaymentElement(secret) {
+        if (!stripe || !secret) return;
+        if (paymentElement) {
+          paymentElement.unmount();
+          paymentElement = null;
+        }
+        elements = stripe.elements({
+          clientSecret: secret,
+          appearance: {
+            theme: 'stripe',
+            variables: {
+              colorPrimary: '#6d2bd0',
+              colorBackground: '#ffffff',
+              colorText: '#1d211a',
+              colorDanger: '#b42318',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif',
+              borderRadius: '10px'
+            }
+          }
+        });
+        paymentElement = elements.create('payment', {
+          defaultValues: { billingDetails: billingDetails() },
+          fields: {
+            billingDetails: {
+              name: 'never',
+              email: 'never',
+              phone: 'never',
+              address: sameBillingChecked() ? 'never' : 'auto'
+            }
+          }
+        });
+        paymentElement.mount('#payment-element');
+      }
+
+      function createOrUpdateIntent() {
+        return fetch('/api/create-payment-intent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(orderPayload())
+        }).then(function (response) {
+          return response.json().then(function (data) { return { ok: response.ok, data: data }; });
+        }).then(function (result) {
+          if (!result.ok || !result.data.clientSecret) {
+            var err = new Error(result.data.error || 'Unable to prepare Stripe payment.');
+            err.configured = result.data.configured;
+            throw err;
+          }
+          setPaymentMessage('');
+          paymentIntentId = result.data.id;
+          var remounted = result.data.clientSecret !== clientSecret || !elements;
+          if (remounted) {
+            clientSecret = result.data.clientSecret;
+            mountPaymentElement(clientSecret);
+          } else if (elements && typeof elements.fetchUpdates === 'function') {
+            elements.fetchUpdates();
+          }
+          return { remounted: remounted };
+        });
+      }
+
+      function syncPaymentIntent() {
+        window.clearTimeout(intentTimer);
+        if (!stripeConfigured || !cart.length || paypalSelected()) return;
+        intentTimer = window.setTimeout(function () {
+          createOrUpdateIntent().catch(function (error) {
+            setPaymentMessage(error.message || 'Unable to reach the payment service.');
+          });
+        }, 350);
+      }
 
       function render() {
         var subtotal = cart.reduce(function (sum, item) { return sum + Number(item.price) * Number(item.qty); }, 0);
@@ -451,7 +682,7 @@
         } else {
           totals.style.display = 'grid';
           couponPanel.hidden = false;
-          placeOrder.disabled = false;
+          placeOrder.disabled = submitting;
           items.innerHTML = cart.map(function (item) {
             return '<article class="summary-item"><img class="summary-image" src="' + item.img + '" alt="' + item.name.replace(/"/g, '&quot;') + '"><div><div class="summary-name">' + item.name + '</div><div class="summary-price">' + money(item.price) + '</div><div class="qty-row"><button class="qty-button" type="button" data-action="minus" data-id="' + item.id + '" aria-label="Decrease quantity">−</button><span class="qty-value">' + item.qty + '</span><button class="qty-button" type="button" data-action="plus" data-id="' + item.id + '" aria-label="Increase quantity">+</button></div></div><button class="remove-item" type="button" data-action="remove" data-id="' + item.id + '" aria-label="Remove ' + item.name.replace(/"/g, '&quot;') + '">×</button></article>';
           }).join('');
@@ -463,6 +694,8 @@
         shippingNode.textContent = money(shipping);
         totalNode.textContent = money(Math.max(0, subtotal + shipping - discount));
         saveCart();
+        updatePaymentMethodUi();
+        syncPaymentIntent();
       }
 
       items.addEventListener('click', function (event) {
@@ -472,7 +705,7 @@
         var action = button.getAttribute('data-action');
         var item = cart.find(function (entry) { return Number(entry.id) === id; });
         if (!item) return;
-        if (action === 'plus') item.qty += 1;
+        if (action === 'plus') item.qty = Math.min(MAX_QTY, item.qty + 1);
         if (action === 'minus') item.qty = Math.max(1, item.qty - 1);
         if (action === 'remove') cart = cart.filter(function (entry) { return Number(entry.id) !== id; });
         render();
@@ -495,36 +728,162 @@
       couponInput.addEventListener('keydown', function (event) { if (event.key === 'Enter') { event.preventDefault(); applyCoupon(); } });
 
       document.querySelectorAll('input[name="shipping"]').forEach(function (radio) { radio.addEventListener('change', render); });
+      ['email', 'firstName', 'lastName', 'phone', 'address', 'city', 'state', 'zip'].forEach(function (id) {
+        var node = document.getElementById(id);
+        if (node) node.addEventListener('change', syncPaymentIntent);
+      });
       document.querySelectorAll('input[name="paymentMethod"]').forEach(function (radio) {
         radio.addEventListener('change', function () {
-          var paypal = radio.value === 'paypal' && radio.checked;
-          cardFields.classList.toggle('hide', paypal);
-          paypalPanel.classList.toggle('show', paypal);
-          cardInputs.forEach(function (input) { input.required = !paypal; });
-          placeOrder.textContent = paypal ? 'Continue with PayPal' : 'Place order';
+          updatePaymentMethodUi();
+          if (!paypalSelected()) syncPaymentIntent();
         });
       });
-
-      document.getElementById('cardNumber').addEventListener('input', function () { this.value = this.value.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim(); });
-      document.getElementById('expiry').addEventListener('input', function () { var value = this.value.replace(/\D/g, '').slice(0, 4); this.value = value.length > 2 ? value.slice(0, 2) + ' / ' + value.slice(2) : value; });
-      document.getElementById('securityCode').addEventListener('input', function () { this.value = this.value.replace(/\D/g, '').slice(0, 4); });
+      var sameBilling = document.getElementById('sameBilling');
+      if (sameBilling) {
+        sameBilling.addEventListener('change', function () {
+          if (clientSecret && !paypalSelected()) mountPaymentElement(clientSecret);
+        });
+      }
 
       form.addEventListener('submit', function (event) {
         event.preventDefault();
-        if (!cart.length) return;
+        event.stopPropagation();
+        if (!cart.length || submitting) return;
         if (!form.reportValidity()) return;
-        var paypalSelected = document.querySelector('input[name="paymentMethod"]:checked').value === 'paypal';
-        modalTitle.textContent = paypalSelected ? 'PayPal connection needed' : 'Payment connection needed';
-        modalCopy.textContent = paypalSelected ? 'Your order is ready for PayPal. Connect the store’s PayPal account to finish live payment.' : 'Your order is ready. Connect the store’s Stripe account to process live card payments.';
-        gatewayModal.classList.add('open');
-        modalClose.focus();
+        if (paypalSelected()) {
+          if (paypalConfigured) {
+            setPaypalMessage('Use the PayPal button to complete payment.');
+            return;
+          }
+          showModal('PayPal keys needed', 'Add PayPal keys to complete payment.');
+          return;
+        }
+        if (!stripeConfigured) {
+          showModal('Stripe keys needed', 'Add Stripe keys to complete payment.');
+          return;
+        }
+        if (!stripe) {
+          showModal('Payment still loading', 'Wait a moment for Stripe to finish loading, then try again.');
+          return;
+        }
+
+        window.clearTimeout(intentTimer);
+        submitting = true;
+        placeOrder.disabled = true;
+        placeOrder.textContent = 'Processing…';
+        setPaymentMessage('');
+
+        function walletBillingError(error) {
+          var msg = (error && error.message) || '';
+          return /billing details|payment_method_data|already collected/i.test(msg);
+        }
+
+        function confirmParams(withBilling) {
+          var params = {
+            return_url: window.location.origin + '/order-confirmation.html'
+          };
+          if (fieldValue('email')) params.receipt_email = fieldValue('email');
+          if (withBilling && sameBillingChecked()) {
+            params.payment_method_data = { billing_details: billingDetails() };
+          }
+          return params;
+        }
+
+        function confirmWithElements(withBilling) {
+          return stripe.confirmPayment({
+            elements: elements,
+            confirmParams: confirmParams(withBilling !== false),
+            redirect: 'if_required'
+          }).then(function (result) {
+            if (result.error && withBilling !== false && walletBillingError(result.error)) {
+              return confirmWithElements(false);
+            }
+            if (result.error) {
+              submitting = false;
+              placeOrder.disabled = false;
+              placeOrder.textContent = 'Place order';
+              setPaymentMessage(result.error.message || 'Payment could not be completed.');
+              return;
+            }
+            if (result.paymentIntent && (result.paymentIntent.status === 'succeeded' || result.paymentIntent.status === 'processing')) {
+              try { localStorage.removeItem(CART_KEY); } catch (error) {}
+              var secret = result.paymentIntent.client_secret || clientSecret;
+              window.location.href = 'order-confirmation.html?redirect_status=' + encodeURIComponent(result.paymentIntent.status) + (secret ? '&payment_intent_client_secret=' + encodeURIComponent(secret) : '');
+              return;
+            }
+            submitting = false;
+            placeOrder.disabled = false;
+            placeOrder.textContent = 'Place order';
+            setPaymentMessage('Payment needs another step. Please try again.');
+          }).catch(function () {
+            submitting = false;
+            placeOrder.disabled = false;
+            placeOrder.textContent = 'Place order';
+            setPaymentMessage('Payment could not be completed.');
+          });
+        }
+
+        createOrUpdateIntent().then(function (info) {
+          if (info.remounted) {
+            submitting = false;
+            placeOrder.disabled = false;
+            placeOrder.textContent = 'Place order';
+            setPaymentMessage('Enter your card details below, then place the order.');
+            return;
+          }
+          return confirmWithElements();
+        }).catch(function (error) {
+          submitting = false;
+          placeOrder.disabled = false;
+          placeOrder.textContent = 'Place order';
+          if (error.configured === false) {
+            showModal('Stripe keys needed', 'Add Stripe keys to complete payment.');
+            return;
+          }
+          setPaymentMessage(error.message || 'Unable to start payment.');
+        });
       });
-      function closeModal() { gatewayModal.classList.remove('open'); placeOrder.focus(); }
+
+      function closeModal() { gatewayModal.classList.remove('open'); if (!placeOrder.hidden) placeOrder.focus(); }
       modalClose.addEventListener('click', closeModal);
       gatewayModal.addEventListener('click', function (event) { if (event.target === gatewayModal) closeModal(); });
       document.addEventListener('keydown', function (event) { if (event.key === 'Escape' && gatewayModal.classList.contains('open')) closeModal(); });
 
-      render();
+      fetch('/api/stripe-config')
+        .then(function (response) { return response.json(); })
+        .then(function (config) {
+          function start() {
+            stripeConfigured = Boolean(config.configured && config.publishableKey && window.Stripe);
+            paypalConfigured = Boolean(config.paypal && config.paypal.configured && config.paypal.clientId);
+            paypalClientId = paypalConfigured ? config.paypal.clientId : '';
+            if (stripeConfigured) {
+              stripe = window.Stripe(config.publishableKey);
+              stripeHint.textContent = 'Cards, Apple Pay, Google Pay and other Stripe methods are encrypted and never stored on this site.';
+            }
+            if (paypalConfigured) {
+              paypalHint.textContent = 'PayPal checkout is encrypted. Your order total is calculated on the server before payment.';
+              loadPayPalSdk(paypalClientId);
+            }
+            render();
+          }
+          if (window.Stripe || !config.configured) {
+            start();
+            return;
+          }
+          var tries = 0;
+          var timer = window.setInterval(function () {
+            tries += 1;
+            if (window.Stripe || tries > 40) {
+              window.clearInterval(timer);
+              start();
+            }
+          }, 50);
+        })
+        .catch(function () {
+          stripeConfigured = false;
+          paypalConfigured = false;
+          render();
+        });
     });
   </script>
 </body>

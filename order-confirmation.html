@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Order confirmation | Zander88LLC</title>
+  <link rel="stylesheet" href="assets/z88-upgrade.css?v=12">
+  <style>
+    :root{--ink:#1d211a;--forest:#263716;--purple:#6d2bd0;--paper:#f5f2ec;--muted:#6e716a;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;--serif:Georgia,"Times New Roman",serif}
+    *{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#f8f6f1 0%,#f1eee7 100%);color:var(--ink);font-family:var(--sans);min-height:100vh}
+    a{color:inherit;text-decoration:none}.container{width:min(720px,calc(100% - 36px));margin:auto}
+    .checkout-header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);border-bottom:1px solid rgba(38,55,22,.12)}
+    .header-row{min-height:92px;display:flex;align-items:center;justify-content:center}
+    .header-logo{width:135px;height:auto;display:block}
+    main{padding:64px 0 80px}
+    .card{background:rgba(255,255,255,.93);border:1px solid rgba(38,55,22,.11);border-radius:20px;padding:36px;box-shadow:0 14px 40px rgba(31,35,25,.06);text-align:center}
+    .eyebrow{display:block;margin-bottom:10px;color:var(--purple);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:900}
+    h1{font-family:var(--serif);font-size:clamp(32px,5vw,48px);line-height:1.05;margin:0 0 14px}
+    p{color:var(--muted);line-height:1.65;margin:0 0 18px}
+    .primary{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:12px;background:linear-gradient(135deg,var(--purple),#8a42e8);color:#fff;font-weight:900}
+  </style>
+  <script src="https://js.stripe.com/v3/" defer></script>
+</head>
+<body>
+  <header class="checkout-header">
+    <div class="container header-row">
+      <a href="index.html"><img class="header-logo z88-clear-logo" src="assets/zander88llc-logo.png?v=9" alt="Zander88LLC"></a>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <section class="card" id="confirmCard">
+        <span class="eyebrow">Checkout</span>
+        <h1 id="confirmTitle">Checking payment…</h1>
+        <p id="confirmCopy">Please wait while we confirm your Stripe payment.</p>
+        <a class="primary" href="index.html">Back to store</a>
+      </section>
+    </div>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var title = document.getElementById('confirmTitle');
+      var copy = document.getElementById('confirmCopy');
+      var params = new URLSearchParams(window.location.search);
+      var status = params.get('redirect_status');
+      var clientSecret = params.get('payment_intent_client_secret');
+      var paypal = params.get('paypal') === '1';
+
+      function succeeded(message) {
+        try { localStorage.removeItem('zander88Cart'); } catch (error) {}
+        title.textContent = 'Payment received';
+        copy.textContent = message || 'Thank you. Your payment went through and your order is being prepared.';
+      }
+
+      function failed(message) {
+        title.textContent = 'Payment not completed';
+        copy.textContent = message || 'The payment was not finished. You can return to checkout and try again.';
+      }
+
+      function waitForStripe(done) {
+        if (window.Stripe) return done();
+        var tries = 0;
+        var timer = window.setInterval(function () {
+          tries += 1;
+          if (window.Stripe || tries > 40) {
+            window.clearInterval(timer);
+            done();
+          }
+        }, 50);
+      }
+
+      if (paypal) {
+        var orderId = params.get('token') || params.get('orderID');
+        if (!orderId) {
+          failed('No PayPal payment was found for this page.');
+          return;
+        }
+        fetch('/api/paypal-capture-order?orderID=' + encodeURIComponent(orderId))
+          .then(function (response) { return response.json().then(function (data) { return { ok: response.ok, data: data }; }); })
+          .then(function (result) {
+            if (result.ok && result.data.success) {
+              succeeded('Thank you. Your PayPal payment went through and your order is being prepared.');
+            } else {
+              failed(result.data.error || 'The PayPal payment was not finished. You can return to checkout and try again.');
+            }
+          })
+          .catch(function () { failed('The PayPal payment could not be confirmed.'); });
+        return;
+      }
+
+      if (status === 'failed' || status === 'canceled') {
+        failed();
+        return;
+      }
+      if (!clientSecret) {
+        failed('No payment was found for this page.');
+        return;
+      }
+
+      waitForStripe(function () {
+        fetch('/api/stripe-config').then(function (response) { return response.json(); }).then(function (config) {
+          if (!config.configured || !window.Stripe) {
+            failed('Stripe is not configured, so this payment cannot be confirmed here.');
+            return;
+          }
+          return window.Stripe(config.publishableKey).retrievePaymentIntent(clientSecret).then(function (result) {
+            if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
+              succeeded('Thank you. Your Stripe payment went through and your order is being prepared.');
+            } else if (result.paymentIntent && result.paymentIntent.status === 'processing') {
+              title.textContent = 'Payment processing';
+              copy.textContent = 'Stripe is still confirming this payment. You will receive a receipt if it completes.';
+            } else failed(result.error && result.error.message);
+          });
+        }).catch(function () { failed(); });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -6,4 +6,4 @@ Travel/Luggage is a dedicated department for the four rolling suitcase listings.
 Product listing photos are loaded from the original store's public Wix CDN, rather than bundled in this ZIP, so an internet connection and continued availability of those URLs are required.
 Catalog prices and stock are a dated snapshot; they do not automatically synchronize with the original store. Refresh assets/catalog-data.js as inventory changes.
 Fonts use system sans-serif and Georgia; no external font download is required.
-Checkout is a demonstration; real payments require a payment-provider integration.
+Checkout charges through Stripe or PayPal using Vercel functions in /api. Add STRIPE_SECRET_KEY and STRIPE_PUBLISHABLE_KEY, plus PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, and PAYPAL_ENV (sandbox or live) in the Vercel project environment.
