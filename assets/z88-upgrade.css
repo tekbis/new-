@@ -1197,6 +1197,11 @@ body.z88-enhanced .header-main.z88-header-rebuilt {
 .catalog-more[hidden]{display:none!important;}
 .product-card .add-btn:disabled{background:#eeefe9;color:#696e63;box-shadow:none;cursor:not-allowed;transform:none;}
 .product-card .product-tag{max-width:calc(100% - 24px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+@media(max-width:700px){
+  .product-card{display:flex;flex-direction:column}
+  .product-card .product-copy{display:flex;flex-direction:column;flex:1 1 auto}
+  .product-card .product-row{margin-top:auto}
+}
 @media(prefers-reduced-motion:reduce){.catalog-more{transition:none;}}
 /* Let the editorial imagery lead without a second border or glow frame. */
 .hero-shell:has(.z88-hero-slider),.hero-shell.z88-hero-ready,.hero-shell:has(.z88-hero-first){border:0!important;outline:0!important;box-shadow:none!important;background:#fff!important;}
