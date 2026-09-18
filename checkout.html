@@ -416,6 +416,10 @@
       try { cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]'); if (!Array.isArray(cart)) cart = []; } catch (error) { cart = []; }
 
       (function syncCartWithCatalog() {
+        try {
+          var live = JSON.parse(localStorage.getItem('zander88CatalogLive') || 'null');
+          if (Array.isArray(live) && live.length) window.ZanderCatalog = live;
+        } catch (error) {}
         var catalog = window.ZanderCatalog;
         if (!Array.isArray(catalog) || !catalog.length) return;
         var byId = {};

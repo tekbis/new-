@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Shop curated products from Zander88LLC.">
+  <meta name="theme-color" content="#7132b7">
+  <title>Zander88LLC Product</title>
+  <link rel="stylesheet" href="assets/product-page.css">
+  <script src="assets/catalog-data.js?v=13"></script>
+  <script src="assets/products-data.js?v=5"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to product</a>
+  <div class="announcement">Free U.S. delivery on orders $75+ &nbsp;·&nbsp; Secure shopping &nbsp;·&nbsp; New finds added regularly</div>
+
+  <header class="site-header">
+    <div class="wrap header-top">
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="#trending">Trending</a>
+      </nav>
+      <a class="brand" href="index.html" aria-label="Zander88LLC product pages">
+        <img src="assets/images/zander88llc-logo.webp" alt="Zander88LLC" width="420" height="310">
+      </a>
+      <nav class="desktop-nav" aria-label="Product pages">
+        <a href="product.html?id=1042">Fragrance</a>
+        <button class="cart-button" type="button" data-cart-open>Cart <span class="cart-count" data-cart-count>0</span></button>
+      </nav>
+      <button class="cart-button mobile-cart" type="button" data-cart-open aria-label="Open cart">
+        <svg class="cart-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l2.2 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L20 7H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        <span class="cart-count" data-cart-count>0</span>
+      </button>
+    </div>
+    <div class="search-row">
+      <form class="wrap search-shell" id="siteSearch" role="search">
+        <label class="sr-only" for="searchInput">Search these product pages</label>
+        <input id="searchInput" type="search" placeholder="Search Zander products" autocomplete="off">
+        <button type="submit" aria-label="Search">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        </button>
+      </form>
+    </div>
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile product navigation">
+      <a href="index.html">Body Care</a>
+      <a href="product.html?id=1025">Travel</a>
+      <a href="product.html?id=1042">Fragrance</a>
+      <a href="product.html?id=1008">Accessories</a>
+    </nav>
+  </header>
+
+  <noscript><p class="wrap">Please enable JavaScript to view this interactive product-page preview.</p></noscript>
+
+  <main id="main">
+    <nav class="wrap breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+      <a href="#trending" id="breadcrumbCategory">Category</a>
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+      <span id="breadcrumbName">Product</span>
+    </nav>
+
+    <section class="wrap product-section" aria-labelledby="productTitle">
+      <div class="gallery-column">
+        <div class="main-media">
+          <span class="image-badge" id="imageBadge">Zander collection</span>
+          <button class="wishlist" id="wishlistButton" type="button" aria-pressed="false" aria-label="Add product to wishlist">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
+          </button>
+          <img id="mainImage" alt="Zander88LLC product" width="1000" height="1000" fetchpriority="high">
+          <script>
+            (function () {
+              var product = window.ZANDER_PAGE && window.ZANDER_PAGE.product;
+              var image = product && product.images && product.images[0];
+              var main = document.getElementById('mainImage');
+              if (main && image && image.src) {
+                main.src = image.src;
+                main.alt = image.alt || product.name || '';
+              }
+            }());
+          </script>
+          <span class="zoom-note">Select a thumbnail for a closer view</span>
+        </div>
+        <div class="thumbnail-row" id="thumbnailRow" aria-label="Product image gallery"></div>
+      </div>
+
+      <div class="product-panel">
+        <a class="store-link" href="https://www.zander88llc.net/" target="_blank" rel="noopener">
+          Visit the Zander88 store
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+        <span class="eyebrow" id="productCategory">Category</span>
+        <h1 id="productTitle">Product name</h1>
+        <div class="rating-row">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <strong id="ratingValue">4.8</strong>
+          <span id="reviewCount">Reviews</span>
+          <span class="sku">Item <span id="productSku">Z88</span></span>
+        </div>
+        <p class="price" id="productPrice">$0.00</p>
+        <p class="installment">or 4 interest-free payments of <strong id="installmentAmount">$0.00</strong></p>
+        <div class="status-grid">
+          <div class="status-item"><strong>Stock</strong><span class="in-stock">● In stock</span></div>
+          <div class="status-item"><strong>Ships in</strong>3–7 business days</div>
+        </div>
+        <p class="intro" id="productIntro"></p>
+        <ul class="highlights" id="productHighlights" aria-label="Product highlights"></ul>
+        <div class="purchase-row">
+          <div class="quantity" aria-label="Quantity selector">
+            <button type="button" data-qty="-1" aria-label="Decrease quantity">−</button>
+            <input id="quantity" type="number" min="1" max="20" value="1" aria-label="Quantity">
+            <button type="button" data-qty="1" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="primary-button" type="button" data-add-main>Add to Cart</button>
+        </div>
+        <button class="secondary-button" type="button" data-buy-main>Buy Now</button>
+        <p class="purchase-message" id="purchaseMessage" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="wrap benefits" aria-label="Shopping benefits">
+      <article class="benefit">
+        <span class="benefit-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <div><strong>Secure Shopping</strong><span>Protected, familiar cart experience</span></div>
+      </article>
+      <article class="benefit">
+        <span class="benefit-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h13v10H3zM16 10h3l2 3v3h-5z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></span>
+        <div><strong>Fast U.S. Shipping</strong><span>Delivery details shown clearly</span></div>
+      </article>
+      <article class="benefit">
+        <span class="benefit-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></span>
+        <div><strong>7-Day Returns</strong><span>Simple return-policy presentation</span></div>
+      </article>
+    </section>
+
+    <section class="wrap details-card" aria-label="Product information">
+      <div class="tab-list" role="tablist" aria-label="Product details tabs">
+        <button class="tab-button is-active" id="descriptionTab" type="button" role="tab" aria-selected="true" aria-controls="descriptionPanel">Description</button>
+        <button class="tab-button" id="detailsTab" type="button" role="tab" aria-selected="false" aria-controls="detailsPanel">Details &amp; Delivery</button>
+        <button class="tab-button" id="reviewsTab" type="button" role="tab" aria-selected="false" aria-controls="reviewsPanel">Reviews</button>
+      </div>
+      <div class="tab-panel is-active" id="descriptionPanel" role="tabpanel" aria-labelledby="descriptionTab">
+        <p id="descriptionCopy"></p>
+      </div>
+      <div class="tab-panel" id="detailsPanel" role="tabpanel" aria-labelledby="detailsTab">
+        <dl class="spec-grid" id="specGrid"></dl>
+      </div>
+      <div class="tab-panel" id="reviewsPanel" role="tabpanel" aria-labelledby="reviewsTab">
+        <div class="review-summary">
+          <strong class="review-score" id="reviewScore">4.8</strong>
+          <div class="review-copy"><strong><span class="stars" aria-hidden="true">★★★★★</span> Customer favorite</strong><span id="reviewSentence">Based on product reviews in this design preview.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap trending-section" id="trending" aria-labelledby="trendingTitle">
+      <div class="section-heading">
+        <div><span class="eyebrow">You may also like</span><h2 id="trendingTitle">Trending products</h2></div>
+        <div class="slider-controls" aria-label="Trending product slider controls">
+          <button type="button" data-slide="-1" aria-label="Previous products"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button>
+          <button type="button" data-slide="1" aria-label="Next products"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button>
+        </div>
+      </div>
+      <div class="product-slider" id="productSlider" aria-label="Relevant trending products"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-main">
+      <a class="footer-brand" href="index.html"><img src="assets/images/zander88llc-logo.webp" alt="Zander88LLC" width="420" height="310"></a>
+      <nav class="footer-links" aria-label="Footer product pages">
+        <a href="index.html">Body Care</a>
+        <a href="product.html?id=1025">Travel</a>
+        <a href="product.html?id=1042">Fragrance</a>
+        <a href="product.html?id=1008">Accessories</a>
+      </nav>
+    </div>
+    <div class="wrap footer-bottom"><span>© 2026 Zander88LLC. All rights reserved.</span><span>Product-page design preview</span></div>
+  </footer>
+
+  <div class="drawer-backdrop" id="drawerBackdrop" data-cart-close></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer-header"><h2>Your Cart</h2><button class="drawer-close" type="button" data-cart-close aria-label="Close cart">×</button></div>
+    <div class="drawer-items" id="drawerItems"></div>
+    <div class="drawer-footer">
+      <div class="subtotal"><span>Subtotal</span><span id="drawerSubtotal">$0.00</span></div>
+      <button class="primary-button" id="checkoutPreview" type="button" style="width:100%">Continue to Checkout</button>
+      <p class="checkout-note">Continue with the same cart and checkout as the store.</p>
+    </div>
+  </aside>
+
+  <div class="mobile-actions" aria-label="Product purchase actions">
+    <button class="mobile-buy" type="button" data-buy-main>Buy Now</button>
+    <button class="mobile-add" type="button" data-add-main>Add to Cart</button>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/product-page.js?v=4"></script>
+</body>
+</html>

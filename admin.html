@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#12180e">
+  <title>Admin | Zander88LLC</title>
+  <link rel="stylesheet" href="assets/admin.css?v=4">
+</head>
+<body>
+  <div id="loginView" class="login-shell">
+    <form class="login-card" id="loginForm">
+      <div class="login-brand">
+        <img src="assets/images/zander88llc-logo.webp" alt="Zander88LLC" width="220" height="160">
+        <p>Catalog, inventory, and store controls</p>
+      </div>
+      <div class="login-body">
+        <p class="eyebrow">Staff access</p>
+        <h1>Admin dashboard</h1>
+        <p class="login-copy" id="loginCopy">Sign in to manage products, categories, prices, and stock.</p>
+        <label for="adminPassword">Password</label>
+        <input id="adminPassword" name="password" type="password" autocomplete="current-password" required>
+        <button class="primary" type="submit">Sign in</button>
+        <p class="form-message" id="loginMessage" aria-live="polite"></p>
+      </div>
+    </form>
+  </div>
+
+  <div id="dashView" class="dash hidden">
+    <aside class="sidebar">
+      <a class="brand" href="index.html">
+        <img src="assets/images/zander88llc-logo.webp" alt="Zander88LLC">
+        <span>Store Admin</span>
+      </a>
+      <nav>
+        <button type="button" class="nav-btn is-active" data-view="overview">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 13h7V4H4v9Zm9 7h7v-9h-7v9ZM4 20h7v-5H4v5Zm9-9h7V4h-7v7Z"/></svg>
+          Overview
+        </button>
+        <button type="button" class="nav-btn" data-view="products">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+          Products
+        </button>
+        <button type="button" class="nav-btn" data-view="categories">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h7v7H4V7Zm9 0h7v4h-7V7Zm0 6h7v5h-7v-5ZM4 16h7v3H4v-3Z"/></svg>
+          Categories
+        </button>
+      </nav>
+      <div class="sidebar-foot">
+        <a class="store-link" href="index.html">Open storefront</a>
+        <button class="ghost" id="logoutButton" type="button">Sign out</button>
+      </div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" id="pageEyebrow">Overview</p>
+          <h1 id="pageTitle">Dashboard</h1>
+        </div>
+        <div class="topbar-actions">
+          <button class="ghost hidden" id="addCategoryButton" type="button">Add category</button>
+          <button class="primary" id="addProductButton" type="button">Add product</button>
+        </div>
+      </header>
+
+      <main class="main">
+        <section id="overviewSection" class="panel-stack">
+          <div class="stat-grid" id="statGrid"></div>
+          <div class="overview-split">
+            <article class="panel">
+              <div class="panel-head">
+                <div>
+                  <h2>Inventory snapshot</h2>
+                  <p>Live catalog used by the store and checkout.</p>
+                </div>
+              </div>
+              <div class="snapshot" id="snapshotList"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-head">
+                <div>
+                  <h2>Top categories</h2>
+                  <p>Product count by department.</p>
+                </div>
+              </div>
+              <div class="category-mix" id="categoryMix"></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="productsSection" class="panel-stack hidden">
+          <article class="panel">
+            <div class="toolbar">
+              <input id="productSearch" type="search" placeholder="Search products, IDs, or categories" autocomplete="off">
+              <select id="categoryFilter">
+                <option value="">All categories</option>
+              </select>
+              <select id="stockFilter">
+                <option value="">All stock</option>
+                <option value="in">In stock</option>
+                <option value="out">Out of stock</option>
+              </select>
+            </div>
+            <div class="table-wrap">
+              <table class="product-table">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>ID</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="productTable"></tbody>
+              </table>
+            </div>
+            <p class="table-note" id="tableNote"></p>
+          </article>
+        </section>
+
+        <section id="categoriesSection" class="panel-stack hidden">
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Store categories</h2>
+                <p>Add a department first, then assign products to it.</p>
+              </div>
+            </div>
+            <form class="category-form" id="categoryForm">
+              <label class="sr-only" for="newCategoryName">New category name</label>
+              <input id="newCategoryName" type="text" maxlength="40" placeholder="e.g. Home Decor" required>
+              <button class="primary" type="submit">Add category</button>
+            </form>
+            <p class="form-message" id="categoryMessage" aria-live="polite"></p>
+            <div class="table-wrap">
+              <table class="product-table">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Products</th>
+                    <th>In stock</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="categoryTable"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="productModal" hidden>
+    <form class="modal-card" id="productForm">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow" id="modalEyebrow">Catalog</p>
+          <h2 id="modalTitle">Add product</h2>
+        </div>
+        <button class="icon-close" id="closeModal" type="button" aria-label="Close">×</button>
+      </div>
+      <input id="productId" type="hidden">
+      <div class="field-grid">
+        <label class="full">Product name
+          <input id="productName" type="text" maxlength="180" required>
+        </label>
+        <label>Short name
+          <input id="productShortName" type="text" maxlength="80" placeholder="Shown in the breadcrumb">
+        </label>
+        <label>Collection badge
+          <input id="productCollection" type="text" maxlength="80" placeholder="Shown on the photo">
+        </label>
+        <label>Category
+          <select id="productCategory" required></select>
+        </label>
+        <label>Item code
+          <input id="productSku" type="text" maxlength="40" placeholder="Z88-1002">
+        </label>
+        <label>Price (USD)
+          <input id="productPrice" type="number" min="0" max="100000" step="0.01">
+        </label>
+        <label>Rating
+          <input id="productRating" type="number" min="1" max="5" step="0.1" placeholder="4.8">
+        </label>
+        <label>Review count
+          <input id="productReviews" type="number" min="0" max="9999" step="1" placeholder="18">
+        </label>
+        <label class="check">
+          <input id="productStock" type="checkbox" checked>
+          <span>In stock and available to buy</span>
+        </label>
+        <label class="full">Intro
+          <textarea id="productIntro" rows="3" maxlength="600" placeholder="Short intro under the price"></textarea>
+        </label>
+        <label class="full">Highlights
+          <textarea id="productHighlights" rows="4" placeholder="One highlight per line"></textarea>
+        </label>
+        <label class="full">Description
+          <textarea id="productDescription" rows="5" maxlength="4000" placeholder="Full description for the Description tab"></textarea>
+        </label>
+        <label class="full">Details &amp; delivery
+          <textarea id="productSpecs" rows="5" placeholder="Category | HOUSEHOLD&#10;Ships in | 3–7 business days"></textarea>
+        </label>
+        <div class="full image-field">
+          <span>Product photos</span>
+          <p class="field-help">Upload the gallery images shown on the details page. First photo is the main image.</p>
+          <div class="image-picker" id="imagePicker"></div>
+          <label class="upload-btn">
+            Add images
+            <input id="productImages" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple>
+          </label>
+        </div>
+      </div>
+      <p class="form-message" id="modalMessage" aria-live="polite"></p>
+      <div class="modal-actions">
+        <button class="ghost" id="cancelModal" type="button">Cancel</button>
+        <button class="primary" type="submit">Save product</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="assets/admin.js?v=4"></script>
+</body>
+</html>

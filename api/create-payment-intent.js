@@ -57,7 +57,7 @@ module.exports = async function handler(req, res) {
 
   try {
     const body = await readJsonBody(req);
-    const quote = quoteOrder(body.cart, body.shipping, body.coupon);
+    const quote = await quoteOrder(body.cart, body.shipping, body.coupon);
     const customer = customerFromBody(body);
     const existingId = typeof body.paymentIntentId === 'string' && /^pi_[A-Za-z0-9]+$/.test(body.paymentIntentId)
       ? body.paymentIntentId

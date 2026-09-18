@@ -1,6 +1,11 @@
 /* Render the sourced catalog before the existing storefront binds filters/cart. */
 (function () {
   'use strict';
+  try {
+    var live = JSON.parse(localStorage.getItem('zander88CatalogLive') || 'null');
+    if (Array.isArray(live) && live.length) window.ZanderCatalog = live;
+  } catch (error) { /* Storage can be unavailable in private browsing. */ }
+
   var grid = document.querySelector('.product-grid');
   var catalog = window.ZanderCatalog;
   if (!grid || !Array.isArray(catalog) || !catalog.length) return;
@@ -10,7 +15,7 @@
     var article = document.createElement('article');
     article.className = 'product-card';
     article.dataset.cat = product.cat;
-    article.dataset.cats = product.cats.join('|');
+    article.dataset.cats = Array.isArray(product.cats) ? product.cats.join('|') : String(product.cat || '');
     article.dataset.name = product.name.toLowerCase();
     article.dataset.catalogId = String(product.id);
 
@@ -25,7 +30,13 @@
     image.loading = 'lazy';
     image.decoding = 'async';
     image.referrerPolicy = 'no-referrer';
-    media.append(tag, image);
+    var detailHref = 'product.html?id=' + product.id;
+    var mediaLink = document.createElement('a');
+    mediaLink.className = 'product-detail-link';
+    mediaLink.href = detailHref;
+    mediaLink.setAttribute('aria-label', 'View ' + product.name);
+    mediaLink.appendChild(image);
+    media.append(tag, mediaLink);
 
     var copy = document.createElement('div');
     copy.className = 'product-copy';
@@ -33,7 +44,11 @@
     category.className = 'eyebrow';
     category.textContent = product.cat;
     var title = document.createElement('h3');
-    title.textContent = product.name;
+    var titleLink = document.createElement('a');
+    titleLink.className = 'product-title-link';
+    titleLink.href = detailHref;
+    titleLink.textContent = product.name;
+    title.appendChild(titleLink);
     var row = document.createElement('div');
     row.className = 'product-row';
     var price = document.createElement('strong');
@@ -75,6 +90,52 @@
     }
   } catch (error) { /* Storage can be unavailable in private browsing. */ }
 
+  function hasFilter(name) {
+    var nodes = document.querySelectorAll('[data-filter]');
+    for (var i = 0; i < nodes.length; i += 1) {
+      if (nodes[i].getAttribute('data-filter') === name) return true;
+    }
+    return false;
+  }
+
+  function ensureStoreCategories(list) {
+    var names = [];
+    (list || []).forEach(function (item) {
+      if (item && item.cat && names.indexOf(item.cat) === -1) names.push(item.cat);
+    });
+    try {
+      var extra = JSON.parse(localStorage.getItem('zander88Categories') || 'null');
+      if (Array.isArray(extra)) {
+        extra.forEach(function (name) {
+          if (name && names.indexOf(name) === -1) names.push(name);
+        });
+      }
+    } catch (error) {}
+    var grid = document.querySelector('.cat-grid');
+    var row = document.querySelector('.dept-row');
+    var sampleCat = document.querySelector('.cat');
+    var sampleChip = document.querySelector('.dept-chip:not(.active)');
+    names.forEach(function (name) {
+      if (hasFilter(name)) return;
+      if (grid && sampleCat) {
+        var button = sampleCat.cloneNode(true);
+        button.classList.remove('selected');
+        button.setAttribute('data-filter', name);
+        var label = button.querySelector('.cat-name');
+        if (label) label.textContent = name;
+        grid.appendChild(button);
+      }
+      if (row && sampleChip) {
+        var chip = sampleChip.cloneNode(true);
+        chip.className = 'dept-chip';
+        chip.setAttribute('data-filter', name);
+        chip.textContent = name;
+        row.appendChild(chip);
+      }
+    });
+  }
+
+  ensureStoreCategories(catalog);
   window.z88VisibleLimit = 24;
   var more = document.getElementById('catalogMore');
   if (more) {
@@ -84,4 +145,16 @@
       if (select && typeof select.onchange === 'function') select.onchange();
     });
   }
+
+  fetch('/api/catalog', { cache: 'no-store' }).then(function (res) {
+    return res.ok ? res.json() : null;
+  }).then(function (data) {
+    if (!data || !Array.isArray(data.products) || !data.products.length) return;
+    try { localStorage.setItem('zander88CatalogLive', JSON.stringify(data.products)); } catch (error) {}
+    if (Array.isArray(data.categories)) {
+      try { localStorage.setItem('zander88Categories', JSON.stringify(data.categories)); } catch (error) {}
+    }
+    window.ZanderCatalog = data.products;
+    ensureStoreCategories(data.products);
+  }).catch(function () { /* Keep the bundled catalog if the live API is offline. */ });
 }());

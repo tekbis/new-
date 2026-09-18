@@ -1,4 +1,4 @@
-const catalog = require('../../assets/catalog-data.js');
+const { loadCatalog } = require('./catalog-store');
 
 const MAX_QTY = 20;
 const SHIPPING_CENTS = {
@@ -25,12 +25,6 @@ function normalizeState(value) {
   return STATE_BY_NAME[raw.toLowerCase()] || raw;
 }
 
-function asCatalog() {
-  if (Array.isArray(catalog)) return catalog;
-  if (catalog && Array.isArray(catalog.default)) return catalog.default;
-  throw new Error('Catalog could not be loaded.');
-}
-
 function shippingCents(value) {
   if (value == null || value === '') return SHIPPING_CENTS.standard;
   const key = String(value);
@@ -41,59 +35,60 @@ function shippingCents(value) {
 }
 
 function quoteOrder(cart, shippingValue, couponCode) {
-  const products = asCatalog();
-  const byId = new Map(products.map(function (product) {
-    return [Number(product.id), product];
-  }));
+  return loadCatalog().then(function (products) {
+    const byId = new Map(products.map(function (product) {
+      return [Number(product.id), product];
+    }));
 
-  if (!Array.isArray(cart) || !cart.length) {
-    throw new Error('Your cart is empty.');
-  }
-
-  const merged = new Map();
-  cart.forEach(function (item) {
-    const id = Number(item && item.id);
-    if (!Number.isFinite(id)) {
-      throw new Error('One or more items are unavailable.');
+    if (!Array.isArray(cart) || !cart.length) {
+      throw new Error('Your cart is empty.');
     }
-    const qty = Math.min(MAX_QTY, Math.max(1, parseInt(item.qty, 10) || 1));
-    merged.set(id, Math.min(MAX_QTY, (merged.get(id) || 0) + qty));
-  });
 
-  const lines = [];
-  merged.forEach(function (qty, id) {
-    const product = byId.get(id);
-    if (!product || !product.stock || product.price == null) {
-      throw new Error('One or more items are unavailable.');
-    }
-    lines.push({
-      id: product.id,
-      name: product.name,
-      unitAmount: Math.round(Number(product.price) * 100),
-      qty: qty
+    const merged = new Map();
+    cart.forEach(function (item) {
+      const id = Number(item && item.id);
+      if (!Number.isFinite(id)) {
+        throw new Error('One or more items are unavailable.');
+      }
+      const qty = Math.min(MAX_QTY, Math.max(1, parseInt(item.qty, 10) || 1));
+      merged.set(id, Math.min(MAX_QTY, (merged.get(id) || 0) + qty));
     });
+
+    const lines = [];
+    merged.forEach(function (qty, id) {
+      const product = byId.get(id);
+      if (!product || !product.stock || product.price == null) {
+        throw new Error('One or more items are unavailable.');
+      }
+      lines.push({
+        id: product.id,
+        name: product.name,
+        unitAmount: Math.round(Number(product.price) * 100),
+        qty: qty
+      });
+    });
+
+    const subtotal = lines.reduce(function (sum, line) {
+      return sum + line.unitAmount * line.qty;
+    }, 0);
+    const coupon = String(couponCode || '').trim().toUpperCase();
+    const discount = coupon === 'SAVE10' ? Math.round(subtotal * 0.10) : 0;
+    const shipping = shippingCents(shippingValue);
+    const amount = Math.max(0, subtotal - discount + shipping);
+
+    if (amount < 50) {
+      throw new Error('Order total is too small to charge.');
+    }
+
+    return {
+      lines: lines,
+      subtotal: subtotal,
+      discount: discount,
+      shipping: shipping,
+      amount: amount,
+      coupon: discount ? 'SAVE10' : ''
+    };
   });
-
-  const subtotal = lines.reduce(function (sum, line) {
-    return sum + line.unitAmount * line.qty;
-  }, 0);
-  const coupon = String(couponCode || '').trim().toUpperCase();
-  const discount = coupon === 'SAVE10' ? Math.round(subtotal * 0.10) : 0;
-  const shipping = shippingCents(shippingValue);
-  const amount = Math.max(0, subtotal - discount + shipping);
-
-  if (amount < 50) {
-    throw new Error('Order total is too small to charge.');
-  }
-
-  return {
-    lines: lines,
-    subtotal: subtotal,
-    discount: discount,
-    shipping: shipping,
-    amount: amount,
-    coupon: discount ? 'SAVE10' : ''
-  };
 }
 
 function customerFromBody(body) {
