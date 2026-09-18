@@ -105,6 +105,12 @@ const server = http.createServer(async function (req, res) {
     return;
   }
 
+  if (url.pathname === '/index.html') {
+    res.writeHead(302, { Location: '/' + url.search });
+    res.end();
+    return;
+  }
+
   const filePath = safeFile(url.pathname);
   if (!filePath) {
     res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });

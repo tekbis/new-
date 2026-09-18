@@ -38,11 +38,11 @@
 <body>
   <header class="checkout-header">
     <div class="container header-row">
-      <a class="back-link" href="index.html" aria-label="Return to store">
+      <a class="back-link" href="/" aria-label="Return to store">
 <b aria-hidden="true">←</b>
 <span>Continue shopping</span>
 </a>
-      <a href="index.html">
+      <a href="/">
 <img class="header-logo" src="assets/zander88llc-logo.png?v=9" alt="Zander88LLC">
 </a>
       <div class="header-help">Cart support</div>
@@ -679,7 +679,7 @@
         var subtotal = cart.reduce(function (sum, item) { return sum + Number(item.price) * Number(item.qty); }, 0);
         var discount = couponApplied && cart.length ? Math.round(subtotal * 0.10 * 100) / 100 : 0;
         if (!cart.length) {
-          items.innerHTML = '<div class="empty-cart">Your cart is empty.<br><a href="index.html#products">Return to products</a></div>';
+          items.innerHTML = '<div class="empty-cart">Your cart is empty.<br><a href="/#products">Return to products</a></div>';
           totals.style.display = 'none';
           couponPanel.hidden = true;
           placeOrder.disabled = true;
