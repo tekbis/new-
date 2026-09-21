@@ -505,9 +505,7 @@
   request('/api/admin-session').then(function (session) {
     closeModal();
     if (!session.configured) {
-      showLogin('Admin page is live, but ADMIN_PASSWORD is missing on the host. Add it in Vercel → Project Settings → Environment Variables, then Redeploy.');
-      $('adminPassword').disabled = true;
-      $('loginForm').querySelector('button').disabled = true;
+      showLogin();
       return;
     }
     if (session.authenticated) return loadDashboard();
