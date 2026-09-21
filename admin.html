@@ -4,21 +4,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
-  <meta name="theme-color" content="#12180e">
-  <title>Admin | Zander88LLC</title>
-  <link rel="stylesheet" href="assets/admin.css?v=6">
+  <meta name="theme-color" content="#1f2a18">
+  <title>Catalog desk | Zander88LLC</title>
+  <link rel="stylesheet" href="assets/admin.css?v=13">
 </head>
 <body>
   <div id="loginView" class="login-shell">
     <form class="login-card" id="loginForm">
       <div class="login-brand">
         <img src="assets/images/zander88llc-logo.webp" alt="Zander88LLC" width="220" height="160">
-        <p>Catalog, inventory, and store controls</p>
+        <p>Private catalog controls</p>
       </div>
       <div class="login-body">
-        <p class="eyebrow">Staff access</p>
-        <h1>Admin dashboard</h1>
-        <p class="login-copy" id="loginCopy">Sign in to manage products, categories, prices, and stock.</p>
+        <p class="eyebrow">Zander88LLC</p>
+        <h1>Catalog desk</h1>
+        <p class="login-copy" id="loginCopy">Staff sign-in for products, categories, and stock.</p>
         <label for="adminPassword">Password</label>
         <input id="adminPassword" name="password" type="password" autocomplete="current-password" required>
         <button class="primary" type="submit">Sign in</button>
@@ -31,7 +31,7 @@
     <aside class="sidebar">
       <a class="brand" href="/">
         <img src="assets/images/zander88llc-logo.webp" alt="Zander88LLC">
-        <span>Store Admin</span>
+        <span>Catalog desk</span>
       </a>
       <nav>
         <button type="button" class="nav-btn is-active" data-view="overview">
@@ -73,7 +73,7 @@
               <div class="panel-head">
                 <div>
                   <h2>Inventory snapshot</h2>
-                  <p>Live catalog used by the store and checkout.</p>
+                  <p>What checkout is using right now.</p>
                 </div>
               </div>
               <div class="snapshot" id="snapshotList"></div>
@@ -82,12 +82,21 @@
               <div class="panel-head">
                 <div>
                   <h2>Top categories</h2>
-                  <p>Product count by department.</p>
+                  <p>How the catalog is split.</p>
                 </div>
               </div>
               <div class="category-mix" id="categoryMix"></div>
             </article>
           </div>
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Out of stock</h2>
+                <p>Hidden from the store until you restock them.</p>
+              </div>
+            </div>
+            <div id="outOfStockList"></div>
+          </article>
         </section>
 
         <section id="productsSection" class="panel-stack hidden">
@@ -127,7 +136,7 @@
             <div class="panel-head">
               <div>
                 <h2>Store categories</h2>
-                <p>Use Add category to create a department with a name and photo, like the storefront tiles.</p>
+                <p>Add a name and photo, same as the store tiles.</p>
               </div>
             </div>
             <form class="category-form hidden" id="categoryForm">
@@ -233,6 +242,6 @@
   </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="assets/admin.js?v=8"></script>
+  <script src="assets/admin.js?v=10"></script>
 </body>
 </html>

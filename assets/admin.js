@@ -11,7 +11,7 @@
   var categoryPreviewUrl = '';
   var toastTimer;
   var viewNames = {
-    overview: ['Overview', 'Dashboard'],
+    overview: ['Today', 'Overview'],
     products: ['Catalog', 'Products'],
     categories: ['Catalog', 'Categories']
   };
@@ -180,15 +180,21 @@
     if (selected) select.value = selected;
   }
 
+  function isAvailable(item) {
+    return Boolean(item && item.stock && item.price != null);
+  }
+
   function renderStats() {
     var stats = state.stats || {};
     $('statGrid').innerHTML = [
-      [stats.total || 0, 'Total products', 'Live catalog listings'],
-      [stats.inStock || 0, 'In stock', 'Ready for checkout'],
-      [stats.outOfStock || 0, 'Out of stock', 'Hidden from purchase'],
-      [money(stats.inventoryValue), 'Catalog value', 'In-stock retail total']
+      [stats.total || 0, 'Total products', 'Live catalog listings', ''],
+      [stats.inStock || 0, 'In stock', 'Ready for checkout', ''],
+      [stats.outOfStock || 0, 'Out of stock', 'Tap to view products', 'oos'],
+      [money(stats.inventoryValue), 'Catalog value', 'In-stock retail total', '']
     ].map(function (item) {
-      return '<article class="stat"><small>' + item[1] + '</small><b>' + item[0] + '</b><em>' + item[2] + '</em></article>';
+      var tag = item[3] === 'oos' ? 'button type="button" class="stat is-link" data-jump-oos' : 'article class="stat"';
+      var close = item[3] === 'oos' ? 'button' : 'article';
+      return '<' + tag + '><small>' + item[1] + '</small><b>' + item[0] + '</b><em>' + item[2] + '</em></' + close + '>';
     }).join('');
 
     $('snapshotList').innerHTML = [
@@ -210,6 +216,51 @@
     }).join('') || '<div class="mix-row">No categories yet</div>';
 
     fillCategorySelects();
+    renderOutOfStock();
+  }
+
+  function renderOutOfStock() {
+    var items = state.products.filter(function (item) { return !isAvailable(item); });
+    var box = $('outOfStockList');
+    if (!box) return;
+    if (!items.length) {
+      box.innerHTML = '<p class="empty-note">No products are out of stock.</p>';
+      return;
+    }
+    box.innerHTML = '<div class="table-wrap"><table class="product-table"><thead><tr>' +
+      '<th>Product</th><th>Category</th><th>Price</th><th>Stock</th></tr></thead><tbody>' +
+      items.map(function (item) {
+        var reason = item.price == null ? 'Add a price before restocking' : 'Unavailable for checkout';
+        var action = item.price == null
+          ? '<button class="ghost" type="button" data-edit="' + item.id + '">Set price</button>'
+          : '<button class="primary" type="button" data-stock="' + item.id + '" data-stock-on="1">Mark in stock</button>';
+        return '<tr>' +
+          '<td><div class="product-cell"><img src="' + escapeHtml(item.image) + '" alt="">' +
+          '<div><strong>' + escapeHtml(item.name) + '</strong><span class="stock-reason">' + reason + '</span></div></div></td>' +
+          '<td>' + escapeHtml(item.cat) + '</td>' +
+          '<td>' + (item.price == null ? '—' : money(item.price)) + '</td>' +
+          '<td><div class="row-actions">' + action + '</div></td></tr>';
+      }).join('') +
+      '</tbody></table></div>';
+  }
+
+  function updateStock(id, stock) {
+    var current = state.products.filter(function (item) { return Number(item.id) === Number(id); })[0];
+    if (!current) return;
+    if (stock && current.price == null) {
+      showToast('Set a price before marking this in stock.');
+      openModal(current);
+      return;
+    }
+    request('/api/admin-products?id=' + id, {
+      method: 'PUT',
+      body: JSON.stringify({ stock: stock })
+    }).then(function (payload) {
+      applyPayload(payload);
+      showToast(stock ? 'Marked in stock.' : 'Marked out of stock.');
+    }).catch(function (error) {
+      showToast(error.message);
+    });
   }
 
   function filteredProducts() {
@@ -239,6 +290,9 @@
         '<td><span class="pill ' + (available ? 'pill-ok' : 'pill-out') + '">' + (available ? 'In stock' : 'Out of stock') + '</span></td>' +
         '<td>' + item.id + '</td>' +
         '<td><div class="row-actions">' +
+        (available
+          ? '<button class="ghost" type="button" data-stock="' + item.id + '" data-stock-on="0">Mark out of stock</button>'
+          : '<button class="primary" type="button" data-stock="' + item.id + '" data-stock-on="1">Mark in stock</button>') +
         '<button class="ghost" type="button" data-edit="' + item.id + '">Edit</button>' +
         '<button class="danger" type="button" data-delete="' + item.id + '">Delete</button>' +
         '</div></td></tr>';
@@ -419,8 +473,13 @@
   });
 
   $('productTable').addEventListener('click', function (event) {
+    var stockBtn = event.target.closest('[data-stock]');
     var edit = event.target.closest('[data-edit]');
     var remove = event.target.closest('[data-delete]');
+    if (stockBtn) {
+      updateStock(stockBtn.getAttribute('data-stock'), stockBtn.getAttribute('data-stock-on') === '1');
+      return;
+    }
     if (edit) {
       var current = state.products.filter(function (item) {
         return String(item.id) === String(edit.dataset.edit);
@@ -436,6 +495,25 @@
         showToast('Product deleted.');
       }).catch(function (error) { showToast(error.message); });
     }
+  });
+
+  $('outOfStockList').addEventListener('click', function (event) {
+    var stockBtn = event.target.closest('[data-stock]');
+    var edit = event.target.closest('[data-edit]');
+    if (stockBtn) updateStock(stockBtn.getAttribute('data-stock'), stockBtn.getAttribute('data-stock-on') === '1');
+    if (edit) {
+      var current = state.products.filter(function (item) {
+        return String(item.id) === String(edit.dataset.edit);
+      })[0];
+      if (current) openModal(current);
+    }
+  });
+
+  $('statGrid').addEventListener('click', function (event) {
+    var jump = event.target.closest('[data-jump-oos]');
+    if (!jump) return;
+    var list = $('outOfStockList');
+    if (list) list.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
   $('categoryForm').addEventListener('submit', function (event) {
