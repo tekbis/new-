@@ -7,6 +7,8 @@
     categories: []
   };
   var gallery = [];
+  var categoryFile = null;
+  var categoryPreviewUrl = '';
   var toastTimer;
   var viewNames = {
     overview: ['Overview', 'Dashboard'],
@@ -28,6 +30,14 @@
     });
   }
 
+  function catName(cat) {
+    return typeof cat === 'string' ? String(cat || '') : String((cat && cat.name) || '');
+  }
+
+  function catImage(cat) {
+    return typeof cat === 'string' ? '' : String((cat && cat.image) || '');
+  }
+
   function renderGallery() {
     $('imagePicker').innerHTML = gallery.map(function (item, index) {
       return '<div class="image-tile"><img src="' + escapeHtml(item.preview || item.src) + '" alt="">' +
@@ -47,6 +57,22 @@
       });
     });
     renderGallery();
+  }
+
+  function clearCategoryImage() {
+    if (categoryPreviewUrl) URL.revokeObjectURL(categoryPreviewUrl);
+    categoryFile = null;
+    categoryPreviewUrl = '';
+    $('categoryPicker').innerHTML = '';
+  }
+
+  function renderCategoryPreview() {
+    if (!categoryFile) {
+      $('categoryPicker').innerHTML = '';
+      return;
+    }
+    $('categoryPicker').innerHTML = '<div class="image-tile"><img src="' + escapeHtml(categoryPreviewUrl) + '" alt="">' +
+      '<button type="button" data-clear-category-image aria-label="Remove image">×</button></div>';
   }
 
   function uploadImage(file) {
@@ -116,6 +142,22 @@
     document.querySelectorAll('.nav-btn').forEach(function (button) {
       button.classList.toggle('is-active', button.dataset.view === name);
     });
+    if (name !== 'categories') closeCategoryForm();
+  }
+
+  function openCategoryForm() {
+    $('categoryForm').classList.remove('hidden');
+    $('categoryMessage').classList.remove('hidden');
+    $('categoryMessage').textContent = '';
+    $('newCategoryName').focus();
+  }
+
+  function closeCategoryForm() {
+    $('categoryForm').classList.add('hidden');
+    $('categoryMessage').classList.add('hidden');
+    $('categoryMessage').textContent = '';
+    $('newCategoryName').value = '';
+    clearCategoryImage();
   }
 
   function categoryCounts(name) {
@@ -126,7 +168,8 @@
 
   function fillCategorySelects(selected) {
     var options = (state.categories || []).map(function (cat) {
-      return '<option value="' + escapeHtml(cat) + '">' + escapeHtml(cat) + '</option>';
+      var name = catName(cat);
+      return '<option value="' + escapeHtml(name) + '">' + escapeHtml(name) + '</option>';
     }).join('');
     var filter = $('categoryFilter');
     var current = filter.value;
@@ -157,12 +200,13 @@
     }).join('');
 
     var max = Math.max.apply(null, (state.categories || []).map(function (cat) {
-      return categoryCounts(cat).total;
+      return categoryCounts(catName(cat)).total;
     }).concat([1]));
     $('categoryMix').innerHTML = (state.categories || []).slice(0, 8).map(function (cat) {
-      var count = categoryCounts(cat).total;
+      var name = catName(cat);
+      var count = categoryCounts(name).total;
       var width = Math.max(8, Math.round((count / max) * 100));
-      return '<div class="mix-row"><div><strong>' + escapeHtml(cat) + '</strong><span class="mix-bar"><span style="width:' + width + '%"></span></span></div><strong>' + count + '</strong></div>';
+      return '<div class="mix-row"><div><strong>' + escapeHtml(name) + '</strong><span class="mix-bar"><span style="width:' + width + '%"></span></span></div><strong>' + count + '</strong></div>';
     }).join('') || '<div class="mix-row">No categories yet</div>';
 
     fillCategorySelects();
@@ -204,11 +248,14 @@
 
   function renderCategories() {
     $('categoryTable').innerHTML = (state.categories || []).map(function (cat) {
-      var counts = categoryCounts(cat);
+      var name = catName(cat);
+      var image = catImage(cat);
+      var counts = categoryCounts(name);
       var deleteBtn = counts.total
         ? '<span class="table-note">In use</span>'
-        : '<button class="danger" type="button" data-delete-cat="' + escapeHtml(cat) + '">Delete</button>';
-      return '<tr><td><strong>' + escapeHtml(cat) + '</strong></td><td>' + counts.total + '</td><td>' + counts.inStock + '</td><td><div class="row-actions">' + deleteBtn + '</div></td></tr>';
+        : '<button class="danger" type="button" data-delete-cat="' + escapeHtml(name) + '">Delete</button>';
+      var photo = image ? '<img src="' + escapeHtml(image) + '" alt="">' : '';
+      return '<tr><td><div class="product-cell">' + photo + '<div><strong>' + escapeHtml(name) + '</strong></div></div></td><td>' + counts.total + '</td><td>' + counts.inStock + '</td><td><div class="row-actions">' + deleteBtn + '</div></td></tr>';
     }).join('') || '<tr><td colspan="4">No categories yet. Add one above.</td></tr>';
   }
 
@@ -328,13 +375,16 @@
     if (!state.categories.length) {
       showToast('Add a category first.');
       setView('categories');
-      $('newCategoryName').focus();
+      openCategoryForm();
       return;
     }
     openModal(null);
   });
   $('addCategoryButton').addEventListener('click', function () {
-    $('newCategoryName').focus();
+    openCategoryForm();
+  });
+  $('cancelCategory').addEventListener('click', function () {
+    closeCategoryForm();
   });
   $('productSearch').addEventListener('input', renderTable);
   $('categoryFilter').addEventListener('change', renderTable);
@@ -342,6 +392,19 @@
   $('productImages').addEventListener('change', function (event) {
     addGalleryFiles(event.target.files);
     event.target.value = '';
+  });
+  $('newCategoryImage').addEventListener('change', function (event) {
+    var file = event.target.files && event.target.files[0];
+    event.target.value = '';
+    if (!file || !file.type || file.type.indexOf('image/') !== 0) return;
+    if (categoryPreviewUrl) URL.revokeObjectURL(categoryPreviewUrl);
+    categoryFile = file;
+    categoryPreviewUrl = URL.createObjectURL(file);
+    renderCategoryPreview();
+  });
+  $('categoryPicker').addEventListener('click', function (event) {
+    if (!event.target.closest('[data-clear-category-image]')) return;
+    clearCategoryImage();
   });
   $('imagePicker').addEventListener('click', function (event) {
     var remove = event.target.closest('[data-remove-image]');
@@ -378,15 +441,25 @@
   $('categoryForm').addEventListener('submit', function (event) {
     event.preventDefault();
     $('categoryMessage').textContent = '';
-    request('/api/admin-categories', {
-      method: 'POST',
-      body: JSON.stringify({ name: $('newCategoryName').value })
+    if (!categoryFile) {
+      $('categoryMessage').textContent = 'Add a category image.';
+      return;
+    }
+    var saveBtn = $('categoryForm').querySelector('button[type="submit"]');
+    saveBtn.disabled = true;
+    uploadImage(categoryFile).then(function (src) {
+      return request('/api/admin-categories', {
+        method: 'POST',
+        body: JSON.stringify({ name: $('newCategoryName').value, image: src })
+      });
     }).then(function (payload) {
       applyPayload(payload);
-      $('newCategoryName').value = '';
+      closeCategoryForm();
       showToast('Category added.');
     }).catch(function (error) {
       $('categoryMessage').textContent = error.message;
+    }).then(function () {
+      saveBtn.disabled = false;
     });
   });
 
@@ -432,7 +505,7 @@
   request('/api/admin-session').then(function (session) {
     closeModal();
     if (!session.configured) {
-      showLogin('Add an admin password to open this dashboard.');
+      showLogin('Admin page is live, but ADMIN_PASSWORD is missing on the host. Add it in Vercel → Project Settings → Environment Variables, then Redeploy.');
       $('adminPassword').disabled = true;
       $('loginForm').querySelector('button').disabled = true;
       return;

@@ -6,7 +6,7 @@
   <meta name="description" content="Shop curated products from Zander88LLC.">
   <meta name="theme-color" content="#7132b7">
   <title>Zander88LLC Product</title>
-  <link rel="stylesheet" href="assets/product-page.css?v=3">
+  <link rel="stylesheet" href="assets/product-page.css?v=6">
   <script src="assets/catalog-data.js?v=13"></script>
   <script src="assets/products-data.js?v=5"></script>
 </head>
@@ -16,21 +16,18 @@
 
   <header class="site-header">
     <div class="wrap header-top">
-      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-      <nav class="desktop-nav" aria-label="Primary navigation">
-        <a href="/">Home</a>
-        <a href="#trending">Trending</a>
-      </nav>
-      <a class="brand" href="/" aria-label="Zander88LLC product pages">
+      <div class="header-left">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <a href="/">Home</a>
+        </nav>
+      </div>
+      <a class="brand" href="/" aria-label="Zander88LLC home">
         <img src="assets/images/zander88llc-logo.webp" alt="Zander88LLC" width="420" height="310">
       </a>
-      <nav class="desktop-nav" aria-label="Product pages">
-        <a href="product.html?id=1042">Fragrance</a>
-        <button class="cart-button" type="button" data-cart-open>Cart <span class="cart-count" data-cart-count>0</span></button>
-      </nav>
-      <button class="cart-button mobile-cart" type="button" data-cart-open aria-label="Open cart">
+      <button class="cart-button" type="button" data-cart-open aria-label="Open cart">
         <svg class="cart-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l2.2 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L20 7H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
         <span class="cart-count" data-cart-count>0</span>
       </button>
@@ -45,10 +42,9 @@
       </form>
     </div>
     <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile product navigation">
-      <a href="/">Body Care</a>
-      <a href="product.html?id=1025">Travel</a>
-      <a href="product.html?id=1042">Fragrance</a>
-      <a href="product.html?id=1008">Accessories</a>
+      <a href="/">Home</a>
+      <a href="/#categories">Shop Categories</a>
+      <a href="/#products">Products</a>
     </nav>
   </header>
 

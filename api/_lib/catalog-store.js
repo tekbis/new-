@@ -19,6 +19,41 @@ function seedCatalog() {
   throw new Error('Catalog could not be loaded.');
 }
 
+const DEFAULT_CATEGORY_IMAGES = {
+  Clothing: 'assets/category-hi/tile-00.webp',
+  Electronics: 'assets/category-hi/tile-01.webp',
+  FRAGRANCE: 'assets/category-hi/tile-02.webp',
+  'HANDBAG/PURSES': 'assets/category-hi/tile-03.webp',
+  'TRAVEL/LUGGAGE': 'assets/category-hi/tile-14.webp',
+  HOUSEHOLD: 'assets/category-hi/tile-04.webp',
+  JEWELRY: 'assets/category-hi/tile-05.webp',
+  'KIDS/BABIES': 'assets/category-hi/tile-06.webp',
+  'LAWN/GARDEN': 'assets/category-hi/tile-07.webp',
+  "MEN'CLOTHING": 'assets/category-hi/tile-08.webp',
+  SHOES: 'assets/category-hi/tile-09.webp',
+  'TOOLS/HARDWARE': 'assets/category-hi/tile-10.webp',
+  TOYS: 'assets/category-hi/tile-11.webp',
+  'WATCHES MAN/WOMAN': 'assets/category-hi/tile-12.webp',
+  "WOMEN'SCLOTHING": 'assets/category-hi/tile-13.webp'
+};
+
+function categoryName(item) {
+  if (typeof item === 'string') return String(item || '').trim();
+  return String((item && item.name) || '').trim();
+}
+
+function categoryImage(item) {
+  if (typeof item === 'string') return DEFAULT_CATEGORY_IMAGES[item] || '';
+  return String((item && item.image) || '').trim() || DEFAULT_CATEGORY_IMAGES[categoryName(item)] || '';
+}
+
+function serializeCategory(item) {
+  const name = categoryName(item);
+  if (!name) return null;
+  const image = categoryImage(item);
+  return image ? { name: name, image: image } : { name: name };
+}
+
 function categoriesFromProducts(products) {
   return Array.from(new Set((products || []).map(function (item) {
     return String((item && item.cat) || '').trim();
@@ -26,13 +61,22 @@ function categoriesFromProducts(products) {
 }
 
 function mergeCategories(extra, products) {
-  const names = {};
-  (extra || []).concat(categoriesFromProducts(products)).forEach(function (name) {
-    const clean = String(name || '').trim();
-    if (clean) names[clean] = true;
-  });
-  return Object.keys(names).sort(function (a, b) {
+  const map = {};
+  function add(item) {
+    const record = serializeCategory(item);
+    if (!record) return;
+    if (!map[record.name]) {
+      map[record.name] = record;
+      return;
+    }
+    if (record.image && !map[record.name].image) map[record.name].image = record.image;
+  }
+  (extra || []).forEach(add);
+  categoriesFromProducts(products).forEach(add);
+  return Object.keys(map).sort(function (a, b) {
     return a.localeCompare(b);
+  }).map(function (name) {
+    return map[name];
   });
 }
 
@@ -44,6 +88,24 @@ function normalizeCategoryName(value) {
     throw err;
   }
   return name;
+}
+
+function normalizeCategoryImage(value, required) {
+  const src = String(value || '').trim();
+  if (!src) {
+    if (required) {
+      const err = new Error('Add a category image.');
+      err.statusCode = 400;
+      throw err;
+    }
+    return '';
+  }
+  if (src.length > 2000 || /[\s<>'"]/.test(src) || /^(javascript|data):/i.test(src) || !/^(assets\/|https?:\/\/)/i.test(src)) {
+    const err = new Error('Use a valid category image.');
+    err.statusCode = 400;
+    throw err;
+  }
+  return src;
 }
 
 function readCatalogDocument(filePath) {
@@ -312,18 +374,19 @@ async function saveCatalog(products) {
   return saveState(products, current.categories);
 }
 
-async function addCategory(name) {
+async function addCategory(name, image) {
   const state = await loadState();
   const category = normalizeCategoryName(name);
+  const src = normalizeCategoryImage(image, true);
   const exists = state.categories.some(function (item) {
-    return item.toLowerCase() === category.toLowerCase();
+    return categoryName(item).toLowerCase() === category.toLowerCase();
   });
   if (exists) {
     const err = new Error('That category already exists.');
     err.statusCode = 409;
     throw err;
   }
-  return saveState(state.products, state.categories.concat([category]));
+  return saveState(state.products, state.categories.concat([{ name: category, image: src }]));
 }
 
 async function deleteCategory(name) {
@@ -337,7 +400,7 @@ async function deleteCategory(name) {
     err.statusCode = 400;
     throw err;
   }
-  const next = state.categories.filter(function (item) { return item !== category; });
+  const next = state.categories.filter(function (item) { return categoryName(item) !== category; });
   if (next.length === state.categories.length) {
     const err = new Error('Category not found.');
     err.statusCode = 404;
@@ -353,6 +416,7 @@ module.exports = {
   saveState: saveState,
   addCategory: addCategory,
   deleteCategory: deleteCategory,
+  categoryName: categoryName,
   normalizeProduct: normalizeProduct,
   catalogStats: catalogStats,
   slugify: slugify

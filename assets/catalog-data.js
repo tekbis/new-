@@ -1,4 +1,4 @@
-/* Snapshot of Zander88LLC public catalog, 2026-09-15. Images are served by the source store's Wix CDN. */
+/* Snapshot of Zander88LLC public catalog, 2026-09-21. Images are served by the source store's Wix CDN. */
 var ZanderCatalog = [
   {
     "cat": "HOUSEHOLD",

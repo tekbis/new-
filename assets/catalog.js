@@ -98,38 +98,56 @@
     return false;
   }
 
-  function ensureStoreCategories(list) {
-    var names = [];
+  function ensureStoreCategories(list, extraCategories) {
+    var records = [];
+    var seen = {};
+    function add(item) {
+      var rec = null;
+      if (typeof item === 'string') rec = { name: item, image: '' };
+      else if (item && item.name) rec = { name: String(item.name), image: String(item.image || '') };
+      else if (item && item.cat) rec = { name: String(item.cat), image: '' };
+      var name = rec && rec.name ? rec.name.trim() : '';
+      if (!name) return;
+      if (seen[name]) {
+        if (rec.image && !seen[name].image) seen[name].image = rec.image;
+        return;
+      }
+      seen[name] = rec;
+      records.push(rec);
+    }
     (list || []).forEach(function (item) {
-      if (item && item.cat && names.indexOf(item.cat) === -1) names.push(item.cat);
+      if (item && item.cat) add(item.cat);
     });
+    (extraCategories || []).forEach(add);
     try {
       var extra = JSON.parse(localStorage.getItem('zander88Categories') || 'null');
-      if (Array.isArray(extra)) {
-        extra.forEach(function (name) {
-          if (name && names.indexOf(name) === -1) names.push(name);
-        });
-      }
+      if (Array.isArray(extra)) extra.forEach(add);
     } catch (error) {}
     var grid = document.querySelector('.cat-grid');
     var row = document.querySelector('.dept-row');
     var sampleCat = document.querySelector('.cat');
     var sampleChip = document.querySelector('.dept-chip:not(.active)');
-    names.forEach(function (name) {
-      if (hasFilter(name)) return;
+    records.forEach(function (rec) {
+      if (hasFilter(rec.name)) return;
       if (grid && sampleCat) {
         var button = sampleCat.cloneNode(true);
         button.classList.remove('selected');
-        button.setAttribute('data-filter', name);
+        button.setAttribute('data-filter', rec.name);
         var label = button.querySelector('.cat-name');
-        if (label) label.textContent = name;
+        if (label) label.textContent = rec.name;
+        var photo = button.querySelector('.cat-photo');
+        if (photo && rec.image) {
+          photo.src = rec.image;
+          photo.removeAttribute('srcset');
+        }
+        if (rec.image) button.style.setProperty('--cat-image', 'url("' + String(rec.image).replace(/"/g, '\\"') + '")');
         grid.appendChild(button);
       }
       if (row && sampleChip) {
         var chip = sampleChip.cloneNode(true);
         chip.className = 'dept-chip';
-        chip.setAttribute('data-filter', name);
-        chip.textContent = name;
+        chip.setAttribute('data-filter', rec.name);
+        chip.textContent = rec.name;
         row.appendChild(chip);
       }
     });
@@ -155,6 +173,6 @@
       try { localStorage.setItem('zander88Categories', JSON.stringify(data.categories)); } catch (error) {}
     }
     window.ZanderCatalog = data.products;
-    ensureStoreCategories(data.products);
+    ensureStoreCategories(data.products, data.categories);
   }).catch(function () { /* Keep the bundled catalog if the live API is offline. */ });
 }());

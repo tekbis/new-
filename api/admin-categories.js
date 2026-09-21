@@ -19,7 +19,7 @@ module.exports = async function handler(req, res) {
   try {
     if (req.method === 'POST') {
       const body = await readJsonBody(req);
-      const saved = await addCategory(body && body.name);
+      const saved = await addCategory(body && body.name, body && body.image);
       return json(res, 201, payload(saved));
     }
 

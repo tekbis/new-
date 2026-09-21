@@ -4,7 +4,7 @@ const path = require('path');
 const { URL } = require('url');
 
 const ROOT = __dirname;
-const PORT = Number(process.env.PORT || 8787);
+const PORT = Number(process.env.PORT || 8087);
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -108,6 +108,11 @@ const server = http.createServer(async function (req, res) {
   if (url.pathname === '/index.html') {
     res.writeHead(302, { Location: '/' + url.search });
     res.end();
+    return;
+  }
+
+  if (url.pathname === '/admin') {
+    sendFile(res, path.join(ROOT, 'admin.html'));
     return;
   }
 

@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#12180e">
   <title>Admin | Zander88LLC</title>
-  <link rel="stylesheet" href="assets/admin.css?v=4">
+  <link rel="stylesheet" href="assets/admin.css?v=6">
 </head>
 <body>
   <div id="loginView" class="login-shell">
@@ -18,7 +18,7 @@
       <div class="login-body">
         <p class="eyebrow">Staff access</p>
         <h1>Admin dashboard</h1>
-        <p class="login-copy" id="loginCopy">Sign in to manage products, categories, prices, and stock.</p>
+        <p class="login-copy" id="loginCopy">Sign in to manage products, categories, prices, and stock. If sign-in is locked, add ADMIN_PASSWORD in Vercel environment variables and redeploy.</p>
         <label for="adminPassword">Password</label>
         <input id="adminPassword" name="password" type="password" autocomplete="current-password" required>
         <button class="primary" type="submit">Sign in</button>
@@ -127,15 +127,23 @@
             <div class="panel-head">
               <div>
                 <h2>Store categories</h2>
-                <p>Add a department first, then assign products to it.</p>
+                <p>Use Add category to create a department with a name and photo, like the storefront tiles.</p>
               </div>
             </div>
-            <form class="category-form" id="categoryForm">
+            <form class="category-form hidden" id="categoryForm">
               <label class="sr-only" for="newCategoryName">New category name</label>
               <input id="newCategoryName" type="text" maxlength="40" placeholder="e.g. Home Decor" required>
-              <button class="primary" type="submit">Add category</button>
+              <button class="ghost" id="cancelCategory" type="button">Cancel</button>
+              <button class="primary" type="submit">Save category</button>
+              <div class="category-image-field">
+                <div class="image-picker" id="categoryPicker"></div>
+                <label class="upload-btn">
+                  Add image
+                  <input id="newCategoryImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif">
+                </label>
+              </div>
             </form>
-            <p class="form-message" id="categoryMessage" aria-live="polite"></p>
+            <p class="form-message hidden" id="categoryMessage" aria-live="polite"></p>
             <div class="table-wrap">
               <table class="product-table">
                 <thead>
@@ -225,6 +233,6 @@
   </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="assets/admin.js?v=4"></script>
+  <script src="assets/admin.js?v=7"></script>
 </body>
 </html>
