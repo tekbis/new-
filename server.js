@@ -111,8 +111,30 @@ const server = http.createServer(async function (req, res) {
     return;
   }
 
+  if (url.pathname === '/checkout.html') {
+    res.writeHead(302, { Location: '/checkout' + url.search });
+    res.end();
+    return;
+  }
+
+  if (url.pathname === '/about.html') {
+    res.writeHead(302, { Location: '/about' + url.search });
+    res.end();
+    return;
+  }
+
   if (url.pathname === '/admin') {
     sendFile(res, path.join(ROOT, 'admin.html'));
+    return;
+  }
+
+  if (url.pathname === '/checkout') {
+    sendFile(res, path.join(ROOT, 'checkout.html'));
+    return;
+  }
+
+  if (url.pathname === '/about') {
+    sendFile(res, path.join(ROOT, 'about.html'));
     return;
   }
 

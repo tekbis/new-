@@ -4,12 +4,30 @@
       "source": "/index.html",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/checkout.html",
+      "destination": "/checkout",
+      "permanent": true
+    },
+    {
+      "source": "/about.html",
+      "destination": "/about",
+      "permanent": true
     }
   ],
   "rewrites": [
     {
       "source": "/admin",
       "destination": "/admin.html"
+    },
+    {
+      "source": "/checkout",
+      "destination": "/checkout.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html"
     },
     {
       "source": "/product-page/:path*",

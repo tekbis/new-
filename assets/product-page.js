@@ -431,7 +431,7 @@
 
   var checkout = document.getElementById('checkoutPreview');
   if (checkout) checkout.addEventListener('click', function () {
-    window.location.href = 'checkout.html';
+    window.location.href = '/checkout';
   });
 
   setupGallery();
