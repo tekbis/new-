@@ -76,12 +76,56 @@
     return String(url || '').replace(/w_\d+,h_\d+/g, 'w_1000,h_1000');
   }
 
+  function prettyCatName(name) {
+    var labels = {
+      Clothing: 'Clothing',
+      Electronics: 'Electronics',
+      FRAGRANCE: 'Fragrance',
+      'HANDBAG/PURSES': 'Handbags & purses',
+      'TRAVEL/LUGGAGE': 'Travel & luggage',
+      HOUSEHOLD: 'Household',
+      JEWELRY: 'Jewelry',
+      'KIDS/BABIES': 'Kids & babies',
+      'LAWN/GARDEN': 'Lawn & garden',
+      "MEN'CLOTHING": "Men's clothing",
+      SHOES: 'Shoes',
+      'TOOLS/HARDWARE': 'Tools & hardware',
+      TOYS: 'Toys',
+      'WATCHES MAN/WOMAN': 'Watches',
+      "WOMEN'SCLOTHING": "Women's clothing"
+    };
+    if (labels[name]) return labels[name];
+    return String(name || 'Collection').replace(/\//g, ' & ');
+  }
+
+  function asImage(entry, name) {
+    if (!entry) return null;
+    if (typeof entry === 'string') {
+      var fromString = String(entry).trim();
+      return fromString ? { src: largerImage(fromString), alt: name } : null;
+    }
+    var src = String(entry.src || '').trim();
+    if (!src) return null;
+    return { src: largerImage(src), alt: entry.alt || name };
+  }
+
   function requestedId() {
     var params = new URLSearchParams(window.location.search);
     var fromQuery = Number(params.get('id'));
     if (Number.isFinite(fromQuery) && fromQuery > 0) return fromQuery;
-    var file = (window.location.pathname.split('/').pop() || '').toLowerCase();
+    var path = (window.location.pathname || '').replace(/\/+$/, '').toLowerCase();
+    var file = path.split('/').pop() || '';
     if (file.indexOf('apricot') !== -1) return 1002;
+    var marker = '/product-page/';
+    var at = path.indexOf(marker);
+    if (at !== -1) {
+      var slug = decodeURIComponent(path.slice(at + marker.length));
+      var match = catalogList().filter(function (item) {
+        var url = String(item.url || '').toLowerCase();
+        return url.indexOf('/product-page/' + slug) !== -1 || url.split('/').pop() === slug;
+      })[0];
+      if (match) return Number(match.id);
+    }
     return 0;
   }
 
@@ -94,13 +138,19 @@
   }
 
   function galleryFor(product, extra, image) {
-    if (product.images && product.images.length) return product.images;
-    if (extra.images && extra.images.length) return extra.images;
-    return [
-      { src: image, alt: product.name },
-      { src: image, alt: product.name + ' detail' },
-      { src: image, alt: product.name + ' close-up' }
-    ];
+    var source = (product.images && product.images.length) ? product.images
+      : (extra.images && extra.images.length) ? extra.images
+      : [image];
+    var list = [];
+    source.forEach(function (entry) {
+      var item = asImage(entry, product.name);
+      if (item) list.push(item);
+    });
+    if (!list.length && image) list.push({ src: image, alt: product.name });
+    while (list.length && list.length < 3) {
+      list.push({ src: list[0].src, alt: product.name });
+    }
+    return list;
   }
 
   function trendingFor(product) {
@@ -120,7 +170,7 @@
         price: item.price,
         stock: true,
         image: item.image,
-        category: item.cat,
+        category: prettyCatName(item.cat),
         cat: item.cat,
         page: 'product.html?id=' + item.id
       };
@@ -131,7 +181,7 @@
     var extra = extras[Number(product.id)] || {};
     var inStock = Boolean(product.stock && product.price != null);
     var image = extra.image || largerImage(product.image);
-    var category = extra.category || product.cat || 'Collection';
+    var category = extra.category || prettyCatName(product.cat || 'Collection');
     var collection = product.collection || extra.collection || category;
     var highlights = (product.highlights && product.highlights.length) ? product.highlights : extra.highlights;
     var specs = (product.specs && product.specs.length) ? product.specs : extra.specs;
@@ -173,6 +223,9 @@
 
   var product = findProduct(requestedId());
   window.ZANDER_PAGE = product ? buildPage(product) : { product: {}, trending: [] };
+  if (product && /\/product-page\//i.test(window.location.pathname || '')) {
+    try { window.history.replaceState({}, '', 'product.html?id=' + product.id + window.location.hash); } catch (error) {}
+  }
 
   var firstImage = window.ZANDER_PAGE.product && window.ZANDER_PAGE.product.images && window.ZANDER_PAGE.product.images[0];
   if (firstImage && firstImage.src && document.head) {

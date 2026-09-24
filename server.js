@@ -116,6 +116,11 @@ const server = http.createServer(async function (req, res) {
     return;
   }
 
+  if (url.pathname.indexOf('/product-page/') === 0) {
+    sendFile(res, path.join(ROOT, 'product.html'));
+    return;
+  }
+
   const filePath = safeFile(url.pathname);
   if (!filePath) {
     res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
