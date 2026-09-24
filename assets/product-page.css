@@ -215,7 +215,6 @@ h1 { margin: 10px 0 12px; font-family: Georgia, "Times New Roman", serif; font-s
 .subtotal { display: flex; justify-content: space-between; margin-bottom: 13px; font-weight: 850; }
 .checkout-note { margin: 9px 0 0; color: var(--muted); font-size: 11px; text-align: center; }
 
-.mobile-actions { display: none; }
 .toast { position: fixed; z-index: 130; left: 50%; bottom: 28px; max-width: calc(100% - 30px); padding: 12px 18px; border-radius: 999px; color: #fff; background: #201724; box-shadow: 0 12px 34px rgba(23,12,28,.3); opacity: 0; transform: translate(-50%, 14px); pointer-events: none; transition: opacity .2s ease, transform .2s ease; font-size: 13px; font-weight: 760; }
 .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
 
@@ -264,12 +263,6 @@ h1 { margin: 10px 0 12px; font-family: Georgia, "Times New Roman", serif; font-s
   .footer-main { grid-template-columns: 1fr; }
   .footer-links { justify-content: flex-start; }
   .footer-bottom { flex-direction: column; gap: 7px; }
-  .mobile-actions { position: fixed; z-index: 65; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: 1fr 1fr; padding-bottom: env(safe-area-inset-bottom); box-shadow: 0 -8px 30px rgba(21,12,25,.15); }
-  .mobile-actions button { min-height: 61px; border: 0; color: #fff; font-weight: 860; }
-  .mobile-buy { background: var(--olive); }
-  .mobile-add { background: var(--purple); }
-  .site-footer { padding-bottom: 90px; }
-  .toast { bottom: 78px; }
 }
 
 @media (max-width: 400px) {
