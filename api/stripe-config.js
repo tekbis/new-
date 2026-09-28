@@ -1,4 +1,5 @@
 const { paypalConfigured, paypalEnv } = require('./_lib/paypal');
+const { json } = require('./_lib/http');
 
 function looksLikePlaceholder(value) {
   return /your_|example|placeholder|changeme|dummy/i.test(String(value || ''));
@@ -7,7 +8,7 @@ function looksLikePlaceholder(value) {
 module.exports = async function handler(req, res) {
   if (req.method !== 'GET') {
     res.setHeader('Allow', 'GET');
-    return res.status(405).json({ error: 'Method not allowed' });
+    return json(res, 405, { error: 'Method not allowed' });
   }
 
   const publishableKey = String(process.env.STRIPE_PUBLISHABLE_KEY || '').trim();
@@ -22,7 +23,7 @@ module.exports = async function handler(req, res) {
   const paypal = paypalConfigured();
   const paypalClientId = paypal ? paypalEnv().clientId : '';
 
-  return res.status(200).json({
+  return json(res, 200, {
     configured: configured,
     publishableKey: configured ? publishableKey : '',
     paypal: {

@@ -1,5 +1,5 @@
 const { capturePaypalOrder, getPaypalOrder, orderPaid } = require('./_lib/paypal');
-const { readJsonBody, json } = require('./_lib/http');
+const { readJsonBody, json, clientMessage } = require('./_lib/http');
 
 function readOrderId(req, body) {
   const fromBody = body && (body.orderID || body.orderId || body.token);
@@ -45,8 +45,7 @@ module.exports = async function handler(req, res) {
       status: order.status
     });
   } catch (error) {
-    const message = error && error.message ? error.message : 'Unable to complete PayPal payment.';
-    const status = error.statusCode || (/Invalid/i.test(message) ? 400 : 500);
-    return json(res, status, { error: message, success: false });
+    const status = error.statusCode || (/Invalid|Missing/i.test(error && error.message ? error.message : '') ? 400 : 500);
+    return json(res, status, { error: clientMessage(error, 'Unable to complete PayPal payment.'), success: false });
   }
 };

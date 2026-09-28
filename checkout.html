@@ -675,6 +675,18 @@
         }, 350);
       }
 
+      function escapeHtml(value) {
+        return String(value == null ? '' : value).replace(/[&<>"']/g, function (ch) {
+          return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch];
+        });
+      }
+
+      function safeSrc(value) {
+        var src = String(value || '');
+        if (/^(https?:\/\/|assets\/)/i.test(src) && !/[\s<>'"\\]/.test(src) && src.indexOf('..') === -1) return src;
+        return 'assets/images/product-placeholder.svg';
+      }
+
       function render() {
         var subtotal = cart.reduce(function (sum, item) { return sum + Number(item.price) * Number(item.qty); }, 0);
         var discount = couponApplied && cart.length ? Math.round(subtotal * 0.10 * 100) / 100 : 0;
@@ -688,7 +700,9 @@
           couponPanel.hidden = false;
           placeOrder.disabled = submitting;
           items.innerHTML = cart.map(function (item) {
-            return '<article class="summary-item"><img class="summary-image" src="' + item.img + '" alt="' + item.name.replace(/"/g, '&quot;') + '"><div><div class="summary-name">' + item.name + '</div><div class="summary-price">' + money(item.price) + '</div><div class="qty-row"><button class="qty-button" type="button" data-action="minus" data-id="' + item.id + '" aria-label="Decrease quantity">−</button><span class="qty-value">' + item.qty + '</span><button class="qty-button" type="button" data-action="plus" data-id="' + item.id + '" aria-label="Increase quantity">+</button></div></div><button class="remove-item" type="button" data-action="remove" data-id="' + item.id + '" aria-label="Remove ' + item.name.replace(/"/g, '&quot;') + '">×</button></article>';
+            var name = escapeHtml(item.name);
+            var id = encodeURIComponent(String(item.id));
+            return '<article class="summary-item"><img class="summary-image" src="' + escapeHtml(safeSrc(item.img)) + '" alt="' + name + '"><div><div class="summary-name">' + name + '</div><div class="summary-price">' + money(item.price) + '</div><div class="qty-row"><button class="qty-button" type="button" data-action="minus" data-id="' + id + '" aria-label="Decrease quantity">−</button><span class="qty-value">' + escapeHtml(item.qty) + '</span><button class="qty-button" type="button" data-action="plus" data-id="' + id + '" aria-label="Increase quantity">+</button></div></div><button class="remove-item" type="button" data-action="remove" data-id="' + id + '" aria-label="Remove ' + name + '">×</button></article>';
           }).join('');
         }
         var shipping = cart.length ? shippingCost() : 0;

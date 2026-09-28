@@ -9,6 +9,12 @@
   var wishlist = readList(wishlistKey);
   var toastTimer;
 
+  function safeMediaUrl(value) {
+    var src = String(value || '');
+    if (/^(https?:\/\/|assets\/)/i.test(src) && !/[\s<>'"\\]/.test(src) && src.indexOf('..') === -1) return src;
+    return 'assets/images/product-placeholder.svg';
+  }
+
   function text(id, value) {
     var node = document.getElementById(id);
     if (node) node.textContent = value;
@@ -45,7 +51,7 @@
     var main = document.getElementById('mainImage');
     if (main && product.images && product.images.length) {
       if (main.getAttribute('src') !== product.images[0].src) {
-        main.src = product.images[0].src;
+        main.src = safeMediaUrl(product.images[0].src);
       }
       main.alt = product.images[0].alt;
       main.width = 1000;
@@ -59,12 +65,12 @@
         var button = document.createElement('button');
         button.type = 'button';
         button.className = 'thumbnail' + (index === 0 ? ' is-active' : '');
-        button.dataset.galleryImage = image.src;
+        button.dataset.galleryImage = safeMediaUrl(image.src);
         button.dataset.galleryAlt = image.alt;
         button.setAttribute('aria-pressed', String(index === 0));
         button.setAttribute('aria-label', 'Show image ' + (index + 1) + ' of ' + product.name);
         var thumb = document.createElement('img');
-        thumb.src = image.src;
+        thumb.src = safeMediaUrl(image.src);
         thumb.alt = '';
         thumb.width = 250;
         thumb.height = 250;
@@ -192,7 +198,7 @@
         row.className = 'drawer-item';
 
         var image = document.createElement('img');
-        image.src = item.img || 'assets/images/product-placeholder.svg';
+        image.src = safeMediaUrl(item.img || 'assets/images/product-placeholder.svg');
         image.alt = '';
         image.loading = 'lazy';
 
@@ -251,7 +257,7 @@
           item.setAttribute('aria-pressed', String(active));
         });
         window.setTimeout(function () {
-          main.src = button.dataset.galleryImage;
+          main.src = safeMediaUrl(button.dataset.galleryImage);
           main.alt = button.dataset.galleryAlt || product.name;
           main.classList.remove('is-switching');
         }, 100);
@@ -308,7 +314,7 @@
       var media = document.createElement('div');
       media.className = 'trending-media';
       var image = document.createElement('img');
-      image.src = item.image;
+      image.src = safeMediaUrl(item.image);
       image.alt = item.name;
       image.loading = 'lazy';
       image.decoding = 'async';

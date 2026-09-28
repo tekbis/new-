@@ -1,6 +1,19 @@
 /* Render the sourced catalog before the existing storefront binds filters/cart. */
 (function () {
   'use strict';
+
+  function safeMediaUrl(value) {
+    var src = String(value || '');
+    if (/^(https?:\/\/|assets\/)/i.test(src) && !/[\s<>'"\\]/.test(src) && src.indexOf('..') === -1) return src;
+    return 'assets/images/product-placeholder.svg';
+  }
+
+  function safeCssUrl(value) {
+    var src = String(value || '');
+    if (!/^(https?:\/\/|assets\/)/i.test(src) || /[\s<>'"\\)]/.test(src) || src.indexOf('..') !== -1) return '';
+    return src;
+  }
+
   try {
     var live = JSON.parse(localStorage.getItem('zander88CatalogLive') || 'null');
     if (Array.isArray(live) && live.length) window.ZanderCatalog = live;
@@ -25,7 +38,7 @@
     tag.className = 'product-tag';
     tag.textContent = product.stock ? product.cat : 'Out of stock';
     var image = document.createElement('img');
-    image.src = product.image;
+    image.src = safeMediaUrl(product.image);
     image.alt = product.name;
     image.loading = 'lazy';
     image.decoding = 'async';
@@ -136,11 +149,12 @@
         var label = button.querySelector('.cat-name');
         if (label) label.textContent = rec.name;
         var photo = button.querySelector('.cat-photo');
-        if (photo && rec.image) {
-          photo.src = rec.image;
+        var catImage = safeCssUrl(rec.image);
+        if (photo && catImage) {
+          photo.src = catImage;
           photo.removeAttribute('srcset');
         }
-        if (rec.image) button.style.setProperty('--cat-image', 'url("' + String(rec.image).replace(/"/g, '\\"') + '")');
+        if (catImage) button.style.setProperty('--cat-image', 'url("' + catImage + '")');
         grid.appendChild(button);
       }
       if (row && sampleChip) {

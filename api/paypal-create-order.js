@@ -1,6 +1,6 @@
 const { quoteOrder, customerFromBody, centsToAmount } = require('./_lib/order');
 const { paypalRequest } = require('./_lib/paypal');
-const { readJsonBody, json } = require('./_lib/http');
+const { readJsonBody, json, clientMessage } = require('./_lib/http');
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -81,8 +81,7 @@ module.exports = async function handler(req, res) {
     }
     return json(res, 200, { id: created.id });
   } catch (error) {
-    const message = error && error.message ? error.message : 'Unable to start PayPal payment.';
-    const status = error.statusCode || (/cart|unavailable|shipping|small|Invalid/i.test(message) ? 400 : 500);
-    return json(res, status, { error: message });
+    const status = error.statusCode || (/cart|unavailable|shipping|small|Invalid|Too many/i.test(error && error.message ? error.message : '') ? 400 : 500);
+    return json(res, status, { error: clientMessage(error, 'Unable to start PayPal payment.') });
   }
 };

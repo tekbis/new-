@@ -2,8 +2,9 @@ const fs = require('fs');
 const http = require('http');
 const path = require('path');
 const { URL } = require('url');
+const { applySecurityHeaders } = require('./api/_lib/http');
 
-const ROOT = __dirname;
+const ROOT = path.resolve(__dirname);
 const PORT = Number(process.env.PORT || 8087);
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -14,9 +15,12 @@ const TYPES = {
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
   '.webp': 'image/webp',
+  '.gif': 'image/gif',
   '.svg': 'image/svg+xml',
   '.ico': 'image/x-icon',
-  '.txt': 'text/plain; charset=utf-8'
+  '.txt': 'text/plain; charset=utf-8',
+  '.woff': 'font/woff',
+  '.woff2': 'font/woff2'
 };
 
 function loadEnv() {
@@ -28,23 +32,37 @@ function loadEnv() {
     const split = trimmed.indexOf('=');
     if (split < 1) return;
     const key = trimmed.slice(0, split).trim();
+    if (!/^[A-Z0-9_]+$/.test(key)) return;
     const value = trimmed.slice(split + 1).trim().replace(/^['"]|['"]$/g, '');
     if (!process.env[key]) process.env[key] = value;
   });
 }
 
+function securityHeaders() {
+  return {
+    'X-Content-Type-Options': 'nosniff',
+    'X-Frame-Options': 'SAMEORIGIN',
+    'Referrer-Policy': 'strict-origin-when-cross-origin',
+    'Permissions-Policy': 'camera=(), microphone=(), geolocation=()'
+  };
+}
+
 function wrapRes(res) {
-  const headers = {};
+  const headers = securityHeaders();
+  const write = function (code, payload, contentType) {
+    const body = Buffer.from(typeof payload === 'string' ? payload : JSON.stringify(payload));
+    headers['Content-Type'] = contentType || 'application/json; charset=utf-8';
+    headers['Content-Length'] = String(body.length);
+    if (!res.headersSent) res.writeHead(code, headers);
+    res.end(body);
+  };
   return {
     setHeader: function (key, value) { headers[key] = value; },
     status: function (code) {
       return {
-        json: function (payload) {
-          const body = Buffer.from(JSON.stringify(payload));
-          headers['Content-Type'] = 'application/json; charset=utf-8';
-          headers['Content-Length'] = String(body.length);
-          res.writeHead(code, headers);
-          res.end(body);
+        json: function (payload) { write(code, payload, 'application/json; charset=utf-8'); },
+        send: function (payload) {
+          write(code, payload, typeof payload === 'string' ? 'text/plain; charset=utf-8' : 'application/json; charset=utf-8');
         }
       };
     }
@@ -55,41 +73,66 @@ function sendFile(res, filePath) {
   const ext = path.extname(filePath).toLowerCase();
   fs.readFile(filePath, function (error, data) {
     if (error) {
-      res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+      res.writeHead(404, Object.assign(securityHeaders(), { 'Content-Type': 'text/plain; charset=utf-8' }));
       res.end('Not found');
       return;
     }
-    res.writeHead(200, { 'Content-Type': TYPES[ext] || 'application/octet-stream' });
+    const headers = Object.assign(securityHeaders(), {
+      'Content-Type': TYPES[ext] || 'application/octet-stream'
+    });
+    if (path.basename(filePath) === 'admin.html') headers['X-Frame-Options'] = 'DENY';
+    res.writeHead(200, headers);
     res.end(data);
   });
 }
 
+function isPublicPath(rel) {
+  const name = String(rel || '').replace(/\\/g, '/');
+  if (!name || name.indexOf('\0') !== -1 || name.startsWith('.') || name.indexOf('/.') !== -1) return false;
+  if (name === 'robots.txt' || name === 'favicon.ico') return true;
+  if (/^[a-z0-9._-]+\.html$/i.test(name)) return true;
+  if (name.indexOf('assets/') === 0) {
+    return /\.(css|js|png|jpe?g|webp|gif|svg|ico|woff2?|ttf)$/i.test(name);
+  }
+  return false;
+}
+
 function safeFile(urlPath) {
-  const clean = decodeURIComponent(urlPath.split('?')[0]);
-  const relative = clean === '/' ? 'index.html' : clean.replace(/^\//, '');
-  const resolved = path.normalize(path.join(ROOT, relative));
-  if (resolved.indexOf(ROOT) !== 0) return null;
+  let clean;
+  try {
+    clean = decodeURIComponent(String(urlPath || '').split('?')[0]);
+  } catch (error) {
+    return null;
+  }
+  const relative = clean === '/' ? 'index.html' : clean.replace(/^\/+/, '');
+  const resolved = path.resolve(ROOT, relative);
+  if (resolved !== ROOT && resolved.indexOf(ROOT + path.sep) !== 0) return null;
+  const rel = path.relative(ROOT, resolved);
+  if (!isPublicPath(rel)) return null;
   if (fs.existsSync(resolved) && fs.statSync(resolved).isFile()) return resolved;
-  if (fs.existsSync(resolved + '.html') && fs.statSync(resolved + '.html').isFile()) return resolved + '.html';
+  if (fs.existsSync(resolved + '.html') && isPublicPath(rel + '.html') && fs.statSync(resolved + '.html').isFile()) {
+    return resolved + '.html';
+  }
   return null;
 }
 
 loadEnv();
 
 const server = http.createServer(async function (req, res) {
+  applySecurityHeaders(res);
   const url = new URL(req.url, 'http://' + (req.headers.host || 'localhost'));
   req.query = Object.fromEntries(url.searchParams.entries());
 
   if (url.pathname.indexOf('/api/') === 0) {
     const name = url.pathname.replace(/^\/api\//, '').replace(/\/$/, '');
     if (!/^[a-z0-9-]+$/i.test(name)) {
-      res.writeHead(404, { 'Content-Type': 'application/json' });
+      res.writeHead(404, Object.assign(securityHeaders(), { 'Content-Type': 'application/json' }));
       res.end(JSON.stringify({ error: 'Not found' }));
       return;
     }
     const file = path.join(ROOT, 'api', name + '.js');
-    if (!fs.existsSync(file)) {
-      res.writeHead(404, { 'Content-Type': 'application/json' });
+    if (!fs.existsSync(file) || path.dirname(file) !== path.join(ROOT, 'api')) {
+      res.writeHead(404, Object.assign(securityHeaders(), { 'Content-Type': 'application/json' }));
       res.end(JSON.stringify({ error: 'Not found' }));
       return;
     }
@@ -98,7 +141,7 @@ const server = http.createServer(async function (req, res) {
       await handler(req, wrapRes(res));
     } catch (error) {
       if (!res.headersSent) {
-        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.writeHead(500, Object.assign(securityHeaders(), { 'Content-Type': 'application/json' }));
         res.end(JSON.stringify({ error: 'Server error' }));
       }
     }
@@ -106,19 +149,19 @@ const server = http.createServer(async function (req, res) {
   }
 
   if (url.pathname === '/index.html') {
-    res.writeHead(302, { Location: '/' + url.search });
+    res.writeHead(302, Object.assign(securityHeaders(), { Location: '/' + url.search }));
     res.end();
     return;
   }
 
   if (url.pathname === '/checkout.html') {
-    res.writeHead(302, { Location: '/checkout' + url.search });
+    res.writeHead(302, Object.assign(securityHeaders(), { Location: '/checkout' + url.search }));
     res.end();
     return;
   }
 
   if (url.pathname === '/about.html') {
-    res.writeHead(302, { Location: '/about' + url.search });
+    res.writeHead(302, Object.assign(securityHeaders(), { Location: '/about' + url.search }));
     res.end();
     return;
   }
@@ -145,7 +188,7 @@ const server = http.createServer(async function (req, res) {
 
   const filePath = safeFile(url.pathname);
   if (!filePath) {
-    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.writeHead(404, Object.assign(securityHeaders(), { 'Content-Type': 'text/plain; charset=utf-8' }));
     res.end('Not found');
     return;
   }

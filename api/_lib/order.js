@@ -1,6 +1,7 @@
 const { loadCatalog } = require('./catalog-store');
 
 const MAX_QTY = 20;
+const MAX_CART_LINES = 40;
 const SHIPPING_CENTS = {
   '6.95': 695,
   '14.95': 1495,
@@ -29,7 +30,9 @@ function shippingCents(value) {
   if (value == null || value === '') return SHIPPING_CENTS.standard;
   const key = String(value);
   if (!Object.prototype.hasOwnProperty.call(SHIPPING_CENTS, key)) {
-    throw new Error('Invalid shipping method.');
+    const err = new Error('Invalid shipping method.');
+    err.statusCode = 400;
+    throw err;
   }
   return SHIPPING_CENTS[key];
 }
@@ -41,15 +44,24 @@ function quoteOrder(cart, shippingValue, couponCode) {
     }));
 
     if (!Array.isArray(cart) || !cart.length) {
-      throw new Error('Your cart is empty.');
+      const err = new Error('Your cart is empty.');
+      err.statusCode = 400;
+      throw err;
+    }
+    if (cart.length > MAX_CART_LINES) {
+      const err = new Error('Too many items in the cart.');
+      err.statusCode = 400;
+      throw err;
     }
 
     const merged = new Map();
     cart.forEach(function (item) {
       const id = Number(item && item.id);
-      if (!Number.isFinite(id)) {
-        throw new Error('One or more items are unavailable.');
-      }
+    if (!Number.isFinite(id)) {
+      const err = new Error('One or more items are unavailable.');
+      err.statusCode = 400;
+      throw err;
+    }
       const qty = Math.min(MAX_QTY, Math.max(1, parseInt(item.qty, 10) || 1));
       merged.set(id, Math.min(MAX_QTY, (merged.get(id) || 0) + qty));
     });
@@ -57,9 +69,11 @@ function quoteOrder(cart, shippingValue, couponCode) {
     const lines = [];
     merged.forEach(function (qty, id) {
       const product = byId.get(id);
-      if (!product || !product.stock || product.price == null) {
-        throw new Error('One or more items are unavailable.');
-      }
+    if (!product || !product.stock || product.price == null) {
+      const err = new Error('One or more items are unavailable.');
+      err.statusCode = 400;
+      throw err;
+    }
       lines.push({
         id: product.id,
         name: product.name,
@@ -77,7 +91,9 @@ function quoteOrder(cart, shippingValue, couponCode) {
     const amount = Math.max(0, subtotal - discount + shipping);
 
     if (amount < 50) {
-      throw new Error('Order total is too small to charge.');
+      const err = new Error('Order total is too small to charge.');
+      err.statusCode = 400;
+      throw err;
     }
 
     return {
@@ -91,15 +107,19 @@ function quoteOrder(cart, shippingValue, couponCode) {
   });
 }
 
+function clip(value, max) {
+  return String(value || '').trim().slice(0, max);
+}
+
 function customerFromBody(body) {
-  const firstName = String((body && body.firstName) || '').trim();
-  const lastName = String((body && body.lastName) || '').trim();
-  const email = String((body && body.email) || '').trim();
-  const phone = String((body && body.phone) || '').trim();
-  const address = String((body && body.address) || '').trim();
-  const city = String((body && body.city) || '').trim();
-  const state = String((body && body.state) || '').trim();
-  const zip = String((body && body.zip) || '').trim();
+  const firstName = clip(body && body.firstName, 80);
+  const lastName = clip(body && body.lastName, 80);
+  const email = clip(body && body.email, 254);
+  const phone = clip(body && body.phone, 32);
+  const address = clip(body && body.address, 200);
+  const city = clip(body && body.city, 80);
+  const state = clip(body && body.state, 40);
+  const zip = clip(body && body.zip, 20);
   const name = (firstName + ' ' + lastName).trim();
   const shipping = name && address && city && state && zip ? {
     name: name,

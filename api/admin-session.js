@@ -6,7 +6,10 @@ const {
   isAuthed,
   signToken,
   cookieHeader,
-  sameOrigin
+  sameOrigin,
+  loginAllowed,
+  loginFailed,
+  loginSucceeded
 } = require('./_lib/admin-auth');
 
 module.exports = async function handler(req, res) {
@@ -40,12 +43,18 @@ module.exports = async function handler(req, res) {
     return json(res, 403, { error: 'This request is not allowed.' });
   }
 
+  if (!loginAllowed(req)) {
+    return json(res, 429, { error: 'Too many sign-in attempts. Try again later.' });
+  }
+
   try {
     const body = await readJsonBody(req);
     const password = String((body && body.password) || '');
     if (!safeEqual(password, adminPassword())) {
+      loginFailed(req);
       return json(res, 401, { error: 'Wrong password.' });
     }
+    loginSucceeded(req);
     res.setHeader('Set-Cookie', cookieHeader(signToken(), false, req));
     return json(res, 200, { ok: true, authenticated: true });
   } catch (error) {

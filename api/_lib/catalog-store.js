@@ -90,6 +90,23 @@ function normalizeCategoryName(value) {
   return name;
 }
 
+function isSafeMediaUrl(value) {
+  const src = String(value || '').trim();
+  if (!src || src.length > 2000) return false;
+  if (/[\s<>'"\\]/.test(src) || src.indexOf('..') !== -1) return false;
+  if (/^(javascript|data|file|vbscript|blob):/i.test(src)) return false;
+  if (/^assets\//i.test(src)) return true;
+  if (/^https?:\/\//i.test(src)) {
+    try {
+      const parsed = new URL(src);
+      return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+    } catch (error) {
+      return false;
+    }
+  }
+  return false;
+}
+
 function normalizeCategoryImage(value, required) {
   const src = String(value || '').trim();
   if (!src) {
@@ -100,7 +117,7 @@ function normalizeCategoryImage(value, required) {
     }
     return '';
   }
-  if (src.length > 2000 || /[\s<>'"]/.test(src) || /^(javascript|data):/i.test(src) || !/^(assets\/|https?:\/\/)/i.test(src)) {
+  if (!isSafeMediaUrl(src)) {
     const err = new Error('Use a valid category image.');
     err.statusCode = 400;
     throw err;
@@ -156,7 +173,7 @@ function normalizeImages(input, name) {
   if (Array.isArray(input && input.images)) {
     list = input.images.map(function (image) {
       const src = String((typeof image === 'string' ? image : image && image.src) || '').trim();
-      if (!src || src.length > 2000) return null;
+      if (!isSafeMediaUrl(src)) return null;
       return {
         src: src,
         alt: optionalText((image && image.alt) || name, 180) || name
@@ -164,7 +181,7 @@ function normalizeImages(input, name) {
     }).filter(Boolean);
   }
   const fallback = String((input && input.image) || '').trim();
-  if (!list.length && fallback) {
+  if (!list.length && isSafeMediaUrl(fallback)) {
     list = [{ src: fallback, alt: name }];
   }
   if (!list.length) {
@@ -250,8 +267,10 @@ function normalizeProduct(input, fallbackId) {
     throw err;
   }
 
-  const url = String((input && input.url) || '').trim() ||
-    ('https://www.zander88llc.net/product-page/' + slugify(name));
+  const requestedUrl = String((input && input.url) || '').trim();
+  const url = /^https:\/\/(www\.)?zander88llc\.net\//i.test(requestedUrl) || /^\/(product-page\/|product\.html)/i.test(requestedUrl)
+    ? requestedUrl.slice(0, 300)
+    : ('https://www.zander88llc.net/product-page/' + slugify(name));
   const ratingRaw = Number(input && input.rating);
   const reviewsRaw = parseInt(input && input.reviews, 10);
   const product = {
