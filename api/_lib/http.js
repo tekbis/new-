@@ -67,6 +67,19 @@ function json(res, status, payload) {
   return res.status(status).json(payload);
 }
 
+function html(res, status, body) {
+  applySecurityHeaders(res);
+  if (typeof res.setHeader === 'function') {
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
+  }
+  if (res && typeof res.status === 'function') {
+    const reply = res.status(status || 200);
+    if (reply && typeof reply.send === 'function') return reply.send(body);
+  }
+  if (res && typeof res.end === 'function') return res.end(body);
+}
+
 function clientMessage(error, fallback) {
   const message = error && error.message ? String(error.message) : '';
   const status = Number(error && error.statusCode) || 0;
@@ -83,5 +96,6 @@ module.exports = {
   readJsonBody: readJsonBody,
   readRawBody: readRawBody,
   json: json,
+  html: html,
   clientMessage: clientMessage
 };

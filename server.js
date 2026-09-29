@@ -62,7 +62,8 @@ function wrapRes(res) {
       return {
         json: function (payload) { write(code, payload, 'application/json; charset=utf-8'); },
         send: function (payload) {
-          write(code, payload, typeof payload === 'string' ? 'text/plain; charset=utf-8' : 'application/json; charset=utf-8');
+          const type = headers['Content-Type'] || (typeof payload === 'string' ? 'text/plain; charset=utf-8' : 'application/json; charset=utf-8');
+          write(code, payload, type);
         }
       };
     }
@@ -181,8 +182,19 @@ const server = http.createServer(async function (req, res) {
     return;
   }
 
-  if (url.pathname.indexOf('/product-page/') === 0) {
-    sendFile(res, path.join(ROOT, 'product.html'));
+  if (url.pathname === '/product.html' || url.pathname.indexOf('/product-page/') === 0) {
+    if (url.pathname.indexOf('/product-page/') === 0) {
+      req.query.slug = decodeURIComponent(url.pathname.slice('/product-page/'.length).replace(/\/+$/, ''));
+    }
+    try {
+      const handler = require('./api/share-product');
+      await handler(req, wrapRes(res));
+    } catch (error) {
+      if (!res.headersSent) {
+        res.writeHead(500, Object.assign(securityHeaders(), { 'Content-Type': 'text/plain; charset=utf-8' }));
+        res.end('Server error');
+      }
+    }
     return;
   }
 

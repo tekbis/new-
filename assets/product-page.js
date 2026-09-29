@@ -24,7 +24,40 @@
     if (!product.id) return;
     document.title = config.pageTitle || (product.name + ' | Zander88LLC');
     var descriptionMeta = document.querySelector('meta[name="description"]');
-    if (descriptionMeta) descriptionMeta.content = 'Shop ' + product.name + ' from Zander88LLC for ' + money(product.price) + '.';
+    var shareDesc = 'Shop ' + product.name + ' from Zander88LLC for ' + money(product.price) + '.';
+    if (descriptionMeta) descriptionMeta.content = shareDesc;
+
+    var shareUrl = 'https://www.zander88llc.net/product.html?id=' + product.id;
+    var shareImage = (product.images && product.images[0] && product.images[0].src) || product.image || '';
+    if (/^https?:\/\//i.test(shareImage)) {
+      shareImage = shareImage.replace(/w_\d+,h_\d+/g, 'w_1200,h_1200').replace(/,enc_avif/g, '');
+    } else if (/^assets\//i.test(shareImage)) {
+      shareImage = 'https://www.zander88llc.net/' + shareImage.replace(/^\/+/, '');
+    } else {
+      shareImage = 'https://www.zander88llc.net/assets/zander88llc-logo.png';
+    }
+    function setShare(key, content, isName) {
+      var attr = isName ? 'name' : 'property';
+      var node = document.querySelector('meta[' + attr + '="' + key + '"]');
+      if (!node) {
+        node = document.createElement('meta');
+        node.setAttribute(attr, key);
+        document.head.appendChild(node);
+      }
+      node.setAttribute('content', content);
+    }
+    setShare('og:title', document.title);
+    setShare('og:description', shareDesc);
+    setShare('og:url', shareUrl);
+    setShare('og:image', shareImage);
+    setShare('og:image:secure_url', shareImage);
+    setShare('twitter:title', document.title, true);
+    setShare('twitter:description', shareDesc, true);
+    setShare('twitter:image', shareImage, true);
+    var canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute('href', shareUrl);
+    var imageSrc = document.querySelector('link[rel="image_src"]');
+    if (imageSrc) imageSrc.setAttribute('href', shareImage);
 
     text('breadcrumbCategory', product.category);
     text('breadcrumbName', product.shortName || product.name);

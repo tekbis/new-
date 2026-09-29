@@ -30,10 +30,19 @@
       "destination": "/about.html"
     },
     {
-      "source": "/product-page/:path*",
-      "destination": "/product.html"
+      "source": "/product.html",
+      "destination": "/api/share-product"
+    },
+    {
+      "source": "/product-page/:slug*",
+      "destination": "/api/share-product?slug=:slug*"
     }
   ],
+  "functions": {
+    "api/share-product.js": {
+      "includeFiles": "views/product.html"
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",
