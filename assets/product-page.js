@@ -34,7 +34,7 @@
     } else if (/^assets\//i.test(shareImage)) {
       shareImage = 'https://www.zander88llc.net/' + shareImage.replace(/^\/+/, '');
     } else {
-      shareImage = 'https://www.zander88llc.net/assets/zander88llc-logo.png';
+      shareImage = 'https://www.zander88llc.net/assets/og-share.jpg';
     }
     function setShare(key, content, isName) {
       var attr = isName ? 'name' : 'property';

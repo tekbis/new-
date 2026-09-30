@@ -1,5 +1,5 @@
 const SITE = 'https://www.zander88llc.net';
-const DEFAULT_IMAGE = SITE + '/assets/zander88llc-logo.png';
+const DEFAULT_IMAGE = SITE + '/assets/og-share.jpg';
 
 function escapeAttr(value) {
   return String(value == null ? '' : value)
@@ -33,7 +33,9 @@ function shareTags(meta) {
   const url = escapeAttr(meta.url || SITE + '/');
   const image = escapeAttr(absoluteMedia(meta.image));
   const type = escapeAttr(meta.type || 'website');
-  const mime = escapeAttr(imageType(meta.image || DEFAULT_IMAGE));
+  const isCard = image.indexOf('/assets/og-share.jpg') !== -1;
+  const mime = escapeAttr(isCard ? 'image/jpeg' : imageType(image));
+  const height = isCard ? '630' : '1200';
   return [
     '<link rel="canonical" href="' + url + '">',
     '<meta property="og:type" content="' + type + '">',
@@ -45,6 +47,8 @@ function shareTags(meta) {
     '<meta property="og:image" content="' + image + '">',
     '<meta property="og:image:secure_url" content="' + image + '">',
     '<meta property="og:image:type" content="' + mime + '">',
+    '<meta property="og:image:width" content="1200">',
+    '<meta property="og:image:height" content="' + height + '">',
     '<meta property="og:image:alt" content="' + title + '">',
     '<meta name="twitter:card" content="summary_large_image">',
     '<meta name="twitter:title" content="' + title + '">',
