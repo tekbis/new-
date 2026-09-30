@@ -62,6 +62,13 @@ function wrapRes(res) {
       return {
         json: function (payload) { write(code, payload, 'application/json; charset=utf-8'); },
         send: function (payload) {
+          if (Buffer.isBuffer(payload)) {
+            if (!headers['Content-Type']) headers['Content-Type'] = 'application/octet-stream';
+            headers['Content-Length'] = String(payload.length);
+            if (!res.headersSent) res.writeHead(code, headers);
+            res.end(payload);
+            return;
+          }
           const type = headers['Content-Type'] || (typeof payload === 'string' ? 'text/plain; charset=utf-8' : 'application/json; charset=utf-8');
           write(code, payload, type);
         }
@@ -169,6 +176,26 @@ const server = http.createServer(async function (req, res) {
 
   if (url.pathname === '/admin') {
     sendFile(res, path.join(ROOT, 'admin.html'));
+    return;
+  }
+
+  if (url.pathname === '/og.jpg') {
+    const img = path.join(ROOT, 'assets/og-share.jpg');
+    fs.readFile(img, function (error, data) {
+      if (error) {
+        res.writeHead(404, Object.assign(securityHeaders(), { 'Content-Type': 'text/plain; charset=utf-8' }));
+        res.end('Not found');
+        return;
+      }
+      res.writeHead(200, Object.assign(securityHeaders(), {
+        'Content-Type': 'image/jpeg',
+        'Content-Length': String(data.length),
+        'Cache-Control': 'public, max-age=86400, immutable',
+        'Access-Control-Allow-Origin': '*',
+        'Content-Disposition': 'inline'
+      }));
+      res.end(req.method === 'HEAD' ? undefined : data);
+    });
     return;
   }
 

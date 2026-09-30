@@ -30,6 +30,10 @@
       "destination": "/about.html"
     },
     {
+      "source": "/og.jpg",
+      "destination": "/api/og-image"
+    },
+    {
       "source": "/product.html",
       "destination": "/api/share-product"
     },
@@ -41,6 +45,9 @@
   "functions": {
     "api/share-product.js": {
       "includeFiles": "views/product.html"
+    },
+    "api/og-image.js": {
+      "includeFiles": "assets/og-share.jpg"
     }
   },
   "headers": [
@@ -55,9 +62,19 @@
       ]
     },
     {
-      "source": "/assets/og-share.jpg",
+      "source": "/og.jpg",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        { "key": "Cache-Control", "value": "public, max-age=86400" },
+        { "key": "Content-Disposition", "value": "inline" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/api/og-image",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" },
+        { "key": "Content-Disposition", "value": "inline" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
       ]
     },
     {

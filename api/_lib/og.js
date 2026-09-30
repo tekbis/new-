@@ -1,5 +1,5 @@
 const SITE = 'https://www.zander88llc.net';
-const DEFAULT_IMAGE = SITE + '/assets/og-share.jpg';
+const DEFAULT_IMAGE = SITE + '/og.jpg';
 
 function escapeAttr(value) {
   return String(value == null ? '' : value)
@@ -33,7 +33,7 @@ function shareTags(meta) {
   const url = escapeAttr(meta.url || SITE + '/');
   const image = escapeAttr(absoluteMedia(meta.image));
   const type = escapeAttr(meta.type || 'website');
-  const isCard = image.indexOf('/assets/og-share.jpg') !== -1;
+  const isCard = image.indexOf('/og.jpg') !== -1 || image.indexOf('/assets/og-share.jpg') !== -1;
   const mime = escapeAttr(isCard ? 'image/jpeg' : imageType(image));
   const height = isCard ? '630' : '1200';
   return [
