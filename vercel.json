@@ -14,6 +14,26 @@
       "source": "/about.html",
       "destination": "/about",
       "permanent": true
+    },
+    {
+      "source": "/privacy.html",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/terms.html",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/shipping.html",
+      "destination": "/shipping",
+      "permanent": true
+    },
+    {
+      "source": "/returns.html",
+      "destination": "/returns",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -28,6 +48,22 @@
     {
       "source": "/about",
       "destination": "/about.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html"
+    },
+    {
+      "source": "/shipping",
+      "destination": "/shipping.html"
+    },
+    {
+      "source": "/returns",
+      "destination": "/returns.html"
     },
     {
       "source": "/og.jpg",

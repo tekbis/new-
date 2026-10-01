@@ -174,6 +174,30 @@ const server = http.createServer(async function (req, res) {
     return;
   }
 
+  if (url.pathname === '/privacy.html') {
+    res.writeHead(302, Object.assign(securityHeaders(), { Location: '/privacy' + url.search }));
+    res.end();
+    return;
+  }
+
+  if (url.pathname === '/terms.html') {
+    res.writeHead(302, Object.assign(securityHeaders(), { Location: '/terms' + url.search }));
+    res.end();
+    return;
+  }
+
+  if (url.pathname === '/shipping.html') {
+    res.writeHead(302, Object.assign(securityHeaders(), { Location: '/shipping' + url.search }));
+    res.end();
+    return;
+  }
+
+  if (url.pathname === '/returns.html') {
+    res.writeHead(302, Object.assign(securityHeaders(), { Location: '/returns' + url.search }));
+    res.end();
+    return;
+  }
+
   if (url.pathname === '/admin') {
     sendFile(res, path.join(ROOT, 'admin.html'));
     return;
@@ -206,6 +230,26 @@ const server = http.createServer(async function (req, res) {
 
   if (url.pathname === '/about') {
     sendFile(res, path.join(ROOT, 'about.html'));
+    return;
+  }
+
+  if (url.pathname === '/privacy') {
+    sendFile(res, path.join(ROOT, 'privacy.html'));
+    return;
+  }
+
+  if (url.pathname === '/terms') {
+    sendFile(res, path.join(ROOT, 'terms.html'));
+    return;
+  }
+
+  if (url.pathname === '/shipping') {
+    sendFile(res, path.join(ROOT, 'shipping.html'));
+    return;
+  }
+
+  if (url.pathname === '/returns') {
+    sendFile(res, path.join(ROOT, 'returns.html'));
     return;
   }
 

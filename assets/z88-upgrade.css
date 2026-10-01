@@ -1367,7 +1367,7 @@ body.z88-enhanced .header-main.z88-header-rebuilt {
   .nav.z88-mobile-drawer a {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 100%;
     margin: 0;
     padding: 15px 12px;
@@ -1379,30 +1379,14 @@ body.z88-enhanced .header-main.z88-header-rebuilt {
   }
 
   .nav.z88-mobile-drawer a::after {
-    content: "›";
-    position: static;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    height: auto;
-    background: none;
-    color: #b3aea4;
-    font-size: 22px;
-    font-weight: 400;
-    line-height: 1;
-    transform: none;
+    content: none;
+    display: none;
   }
 
   .nav.z88-mobile-drawer a:hover,
   .nav.z88-mobile-drawer a.z88-nav-active {
     color: var(--z88-purple);
     background: #faf7ff;
-    transform: none;
-  }
-
-  .nav.z88-mobile-drawer a:hover::after,
-  .nav.z88-mobile-drawer a.z88-nav-active::after {
-    color: var(--z88-purple);
     transform: none;
   }
 }
