@@ -156,6 +156,79 @@
     }
   }
 
+  function setupNavDrawer() {
+    var nav = document.getElementById('primaryNav');
+    var menu = document.getElementById('menuButton');
+    var headerMain = document.querySelector('.header-main');
+    if (!nav || !menu || nav.dataset.z88Drawer === 'true') return;
+    nav.dataset.z88Drawer = 'true';
+
+    var backdrop = document.createElement('div');
+    backdrop.className = 'z88-nav-backdrop';
+    backdrop.setAttribute('aria-hidden', 'true');
+
+    if (!nav.querySelector('.z88-nav-drawer-head')) {
+      var head = document.createElement('div');
+      head.className = 'z88-nav-drawer-head';
+      head.innerHTML = '<span class="z88-nav-drawer-brand"><img src="assets/zander88llc-logo.png?v=9" alt="" class="z88-clear-logo"><strong>Menu</strong></span><button type="button" class="z88-nav-close" aria-label="Close menu">×</button>';
+      nav.insertBefore(head, nav.firstChild);
+    }
+
+    var closeBtn = nav.querySelector('.z88-nav-close');
+    var home = headerMain && headerMain.parentNode;
+    var isMobile = function () {
+      return window.matchMedia('(max-width: 780px)').matches;
+    };
+
+    var setOpen = function (open) {
+      if (open && isMobile()) {
+        if (backdrop.parentNode !== document.body) document.body.appendChild(backdrop);
+        if (nav.parentNode !== document.body) document.body.appendChild(nav);
+        nav.classList.add('z88-mobile-drawer', 'open');
+        nav.setAttribute('role', 'dialog');
+        nav.setAttribute('aria-modal', 'true');
+        document.body.classList.add('z88-nav-open');
+        menu.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-label', 'Close navigation');
+        var filterPanel = document.querySelector('.z88-filter-panel');
+        if (filterPanel) {
+          filterPanel.hidden = true;
+          var filterButton = document.querySelector('.z88-filter-button');
+          if (filterButton) filterButton.setAttribute('aria-expanded', 'false');
+        }
+        return;
+      }
+
+      nav.classList.remove('z88-mobile-drawer', 'open');
+      nav.removeAttribute('role');
+      nav.removeAttribute('aria-modal');
+      document.body.classList.remove('z88-nav-open');
+      menu.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-label', 'Open navigation');
+      if (home && headerMain && nav.parentNode !== home) headerMain.after(nav);
+      if (backdrop.parentNode) backdrop.remove();
+    };
+
+    menu.addEventListener('click', function (event) {
+      if (!isMobile()) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      setOpen(!nav.classList.contains('open'));
+    }, true);
+
+    if (closeBtn) closeBtn.addEventListener('click', function () { setOpen(false); });
+    backdrop.addEventListener('click', function () { setOpen(false); });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') setOpen(false);
+    });
+    Array.prototype.forEach.call(nav.querySelectorAll('a'), function (link) {
+      link.addEventListener('click', function () { setOpen(false); });
+    });
+    window.addEventListener('resize', function () {
+      if (!isMobile()) setOpen(false);
+    }, { passive: true });
+  }
+
   function setupSearchAndFilter() {
     var search = document.querySelector('.search');
     var input = document.getElementById('searchInput');
@@ -462,6 +535,7 @@
     setupScrollProgress();
     setupPointerGlow();
     rebuildHeader();
+    setupNavDrawer();
     buildHeroSlider();
     setupCategoryCarousel();
     setupSearchAndFilter();
