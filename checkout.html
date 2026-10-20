@@ -693,11 +693,6 @@
           showModal('PayPal keys needed', 'Add PayPal keys to complete payment.');
           return;
         }
-        if (!stripeConfigured) {
-          showModal('Stripe keys needed', 'Add Stripe keys to complete payment.');
-          return;
-        }
-
         submitting = true;
         placeOrder.disabled = true;
         placeOrder.textContent = 'Redirecting to Stripe…';

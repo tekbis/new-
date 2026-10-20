@@ -1,10 +1,10 @@
 const Stripe = require('stripe');
 const { applySecurityHeaders, readRawBody, json } = require('./_lib/http');
+const { stripeSecretKey, stripeSecretReady } = require('./_lib/stripe-env');
 
 function stripeClient() {
-  const key = String(process.env.STRIPE_SECRET_KEY || '').trim();
-  if (!key || (!key.startsWith('sk_test_') && !key.startsWith('sk_live_'))) return null;
-  return new Stripe(key);
+  if (!stripeSecretReady()) return null;
+  return new Stripe(stripeSecretKey());
 }
 
 async function handler(req, res) {

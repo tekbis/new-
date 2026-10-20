@@ -1,12 +1,11 @@
 const Stripe = require('stripe');
 const { quoteOrder, customerFromBody, metadataFromQuote } = require('./_lib/order');
 const { readJsonBody, json, clientMessage } = require('./_lib/http');
+const { stripeSecretKey, stripeSecretReady } = require('./_lib/stripe-env');
 
 function stripeClient() {
-  const key = String(process.env.STRIPE_SECRET_KEY || '').trim();
-  if (!key || (!key.startsWith('sk_test_') && !key.startsWith('sk_live_'))) return null;
-  if (/your_|example|placeholder|changeme|dummy/i.test(key)) return null;
-  return new Stripe(key);
+  if (!stripeSecretReady()) return null;
+  return new Stripe(stripeSecretKey());
 }
 
 function checkoutOrigin(req) {
