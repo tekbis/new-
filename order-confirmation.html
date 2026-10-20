@@ -55,6 +55,7 @@
       var params = new URLSearchParams(window.location.search);
       var status = params.get('redirect_status');
       var clientSecret = params.get('payment_intent_client_secret');
+      var sessionId = params.get('session_id');
       var paypal = params.get('paypal') === '1';
 
       function succeeded(message) {
@@ -78,6 +79,20 @@
             done();
           }
         }, 50);
+      }
+
+      if (sessionId) {
+        fetch('/api/checkout-session?session_id=' + encodeURIComponent(sessionId))
+          .then(function (response) { return response.json().then(function (data) { return { ok: response.ok, data: data }; }); })
+          .then(function (result) {
+            if (result.ok && result.data.paid) {
+              succeeded('Thank you. Your Stripe payment went through and your order is being prepared.');
+            } else {
+              failed(result.data.error || 'The Stripe payment was not finished. You can return to checkout and try again.');
+            }
+          })
+          .catch(function () { failed('The Stripe payment could not be confirmed.'); });
+        return;
       }
 
       if (paypal) {

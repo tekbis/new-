@@ -33,6 +33,11 @@ async function handler(req, res) {
     return json(res, 400, { error: 'Webhook signature verification failed.' });
   }
 
+  if (event && event.type === 'checkout.session.completed') {
+    const session = event.data && event.data.object ? event.data.object : {};
+    console.log('Stripe Checkout completed', session.id, session.amount_total);
+  }
+
   if (event && event.type === 'payment_intent.succeeded') {
     const intent = event.data && event.data.object ? event.data.object : {};
     console.log('Stripe payment succeeded', intent.id, intent.amount);
