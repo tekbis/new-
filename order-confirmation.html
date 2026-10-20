@@ -82,7 +82,7 @@
       }
 
       if (sessionId) {
-        fetch('/api/checkout-session?session_id=' + encodeURIComponent(sessionId))
+        fetch('/api/create-checkout-session?session_id=' + encodeURIComponent(sessionId))
           .then(function (response) { return response.json().then(function (data) { return { ok: response.ok, data: data }; }); })
           .then(function (result) {
             if (result.ok && result.data.paid) {

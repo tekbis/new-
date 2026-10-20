@@ -29,9 +29,32 @@ function clipName(value) {
   return String(value || 'Item').trim().slice(0, 120) || 'Item';
 }
 
+async function retrieveSession(req, res) {
+  const stripe = stripeClient();
+  if (!stripe) {
+    return json(res, 503, { error: 'Stripe is not configured yet.', paid: false });
+  }
+
+  const sessionId = String((req.query && req.query.session_id) || '').trim();
+  if (!/^cs_(test|live)_[A-Za-z0-9]+$/.test(sessionId)) {
+    return json(res, 400, { error: 'Missing checkout session.', paid: false });
+  }
+
+  try {
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
+    const paid = session && (session.payment_status === 'paid' || session.status === 'complete');
+    return json(res, 200, { paid: Boolean(paid), status: session && session.status });
+  } catch (error) {
+    return json(res, 400, { error: 'Checkout session could not be confirmed.', paid: false });
+  }
+}
+
 module.exports = async function handler(req, res) {
+  if (req.method === 'GET') {
+    return retrieveSession(req, res);
+  }
   if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
+    res.setHeader('Allow', 'GET, POST');
     return json(res, 405, { error: 'Method not allowed' });
   }
 
