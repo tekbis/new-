@@ -83,6 +83,9 @@ function html(res, status, body) {
 function clientMessage(error, fallback) {
   const message = error && error.message ? String(error.message) : '';
   const status = Number(error && error.statusCode) || 0;
+  if (/sk_|rk_|pk_|whsec_/i.test(message) || error && error.type === 'StripeAuthenticationError' || status === 401) {
+    return fallback || 'Request failed.';
+  }
   if (status >= 400 && status < 500 && message && message.length <= 180) return message;
   if (/^(Your cart|One or more items|Invalid shipping|Order total|Too many|Enter |Add |Choose |Use |Wrong |Please |This request|Missing |PayPal payment)/i.test(message)) {
     return message;

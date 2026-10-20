@@ -32,7 +32,7 @@ function stripePublishableKey() {
 
 function stripeSecretReady() {
   const key = stripeSecretKey();
-  return (key.startsWith('sk_test_') || key.startsWith('sk_live_')) && !looksLikePlaceholder(key);
+  return /^(sk|rk)_(test|live)_/.test(key) && !looksLikePlaceholder(key);
 }
 
 function stripePublishableReady() {
