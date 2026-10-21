@@ -100,7 +100,7 @@
     {
       "source": "/og.jpg",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400" },
+        { "key": "Cache-Control", "value": "public, max-age=3600" },
         { "key": "Content-Disposition", "value": "inline" },
         { "key": "Access-Control-Allow-Origin", "value": "*" }
       ]
@@ -108,7 +108,7 @@
     {
       "source": "/api/og-image",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400" },
+        { "key": "Cache-Control", "value": "public, max-age=3600" },
         { "key": "Content-Disposition", "value": "inline" },
         { "key": "Access-Control-Allow-Origin", "value": "*" }
       ]

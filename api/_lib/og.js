@@ -1,5 +1,5 @@
 const SITE = 'https://www.zander88llc.net';
-const DEFAULT_IMAGE = SITE + '/og.jpg';
+const DEFAULT_IMAGE = SITE + '/og.jpg?v=3';
 
 function escapeAttr(value) {
   return String(value == null ? '' : value)

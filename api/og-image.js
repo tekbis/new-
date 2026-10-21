@@ -7,7 +7,7 @@ function sendJpeg(res, buf) {
   if (typeof res.setHeader === 'function') {
     res.setHeader('Content-Type', 'image/jpeg');
     res.setHeader('Content-Length', String(buf.length));
-    res.setHeader('Cache-Control', 'public, max-age=86400, immutable');
+    res.setHeader('Cache-Control', 'public, max-age=3600');
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('Content-Disposition', 'inline');
@@ -34,7 +34,7 @@ async function handler(req, res) {
     if (typeof res.setHeader === 'function') {
       res.setHeader('Content-Type', 'image/jpeg');
       res.setHeader('Content-Length', String(buf.length));
-      res.setHeader('Cache-Control', 'public, max-age=86400, immutable');
+      res.setHeader('Cache-Control', 'public, max-age=3600');
       res.setHeader('Access-Control-Allow-Origin', '*');
       res.setHeader('Content-Disposition', 'inline');
     }

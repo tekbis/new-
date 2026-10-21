@@ -214,7 +214,7 @@ const server = http.createServer(async function (req, res) {
       res.writeHead(200, Object.assign(securityHeaders(), {
         'Content-Type': 'image/jpeg',
         'Content-Length': String(data.length),
-        'Cache-Control': 'public, max-age=86400, immutable',
+        'Cache-Control': 'public, max-age=3600',
         'Access-Control-Allow-Origin': '*',
         'Content-Disposition': 'inline'
       }));
