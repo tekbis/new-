@@ -10,7 +10,14 @@
   var toastTimer;
 
   function safeMediaUrl(value) {
-    var src = String(value || '');
+    var src = String(value || '').trim();
+    if (/^\/\//.test(src)) src = 'https:' + src;
+    if (/static\.wixstatic\.com/i.test(src)) {
+      src = src.replace(/,enc_avif/gi, '').replace(/w_\d+,h_\d+/g, 'w_800,h_800');
+      if (/^https?:\/\//i.test(src) && !/[\s<>'"\\]/.test(src) && src.indexOf('..') === -1) {
+        return 'https://wsrv.nl/?url=' + encodeURIComponent(src) + '&w=800&h=800&fit=contain';
+      }
+    }
     if (/^(https?:\/\/|assets\/)/i.test(src) && !/[\s<>'"\\]/.test(src) && src.indexOf('..') === -1) return src;
     return 'assets/images/product-placeholder.svg';
   }

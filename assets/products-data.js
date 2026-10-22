@@ -63,6 +63,7 @@
       trendingTitle: 'More statement accessories'
     }
   };
+  window.ZanderProductExtras = extras;
 
   function catalogList() {
     try {

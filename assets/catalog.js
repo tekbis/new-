@@ -3,14 +3,22 @@
   'use strict';
 
   function safeMediaUrl(value) {
-    var src = String(value || '');
+    var src = String(value || '').trim();
+    if (/^\/\//.test(src)) src = 'https:' + src;
+    if (/static\.wixstatic\.com/i.test(src)) {
+      src = src.replace(/,enc_avif/gi, '').replace(/w_\d+,h_\d+/g, 'w_400,h_400');
+      if (/^https?:\/\//i.test(src) && !/[\s<>'"\\]/.test(src) && src.indexOf('..') === -1) {
+        return 'https://wsrv.nl/?url=' + encodeURIComponent(src) + '&w=400&h=400&fit=contain';
+      }
+    }
     if (/^(https?:\/\/|assets\/)/i.test(src) && !/[\s<>'"\\]/.test(src) && src.indexOf('..') === -1) return src;
     return 'assets/images/product-placeholder.svg';
   }
 
   function safeCssUrl(value) {
-    var src = String(value || '');
-    if (!/^(https?:\/\/|assets\/)/i.test(src) || /[\s<>'"\\)]/.test(src) || src.indexOf('..') !== -1) return '';
+    var src = safeMediaUrl(value);
+    if (!src || src.indexOf('product-placeholder') !== -1) return '';
+    if (/[\s<>'"\\)]/.test(src) || src.indexOf('..') !== -1) return '';
     return src;
   }
 

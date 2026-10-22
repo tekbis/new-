@@ -49,6 +49,8 @@ async function retrieveSession(req, res) {
 }
 
 module.exports = async function handler(req, res) {
+  res.setHeader('Cache-Control', 'no-store');
+
   if (req.method === 'GET') {
     return retrieveSession(req, res);
   }
@@ -71,6 +73,10 @@ module.exports = async function handler(req, res) {
     const customer = customerFromBody(body);
     const origin = checkoutOrigin(req);
     const metadata = metadataFromQuote(quote);
+    metadata.shipping_method = String(body.shipping) === '14.95' ? 'priority' : 'standard';
+    const note = String((body && body.note) || '').replace(/\s+/g, ' ').trim().slice(0, 300);
+    if (note) metadata.note = note;
+
     const lineItems = quote.lines.map(function (line) {
       return {
         quantity: line.qty,

@@ -2,6 +2,11 @@ const { loadCatalog } = require('./catalog-store');
 
 const MAX_QTY = 20;
 const MAX_CART_LINES = 40;
+// Percent-off discount codes. Z88WELCOME is the code advertised in the storefront top bar.
+const COUPONS = {
+  SAVE10: 10,
+  Z88WELCOME: 10
+};
 const SHIPPING_CENTS = {
   '6.95': 695,
   '14.95': 1495,
@@ -86,7 +91,8 @@ function quoteOrder(cart, shippingValue, couponCode) {
       return sum + line.unitAmount * line.qty;
     }, 0);
     const coupon = String(couponCode || '').trim().toUpperCase();
-    const discount = coupon === 'SAVE10' ? Math.round(subtotal * 0.10) : 0;
+    const percentOff = Object.prototype.hasOwnProperty.call(COUPONS, coupon) ? COUPONS[coupon] : 0;
+    const discount = percentOff ? Math.round(subtotal * percentOff / 100) : 0;
     const shipping = shippingCents(shippingValue);
     const amount = Math.max(0, subtotal - discount + shipping);
 
@@ -102,7 +108,7 @@ function quoteOrder(cart, shippingValue, couponCode) {
       discount: discount,
       shipping: shipping,
       amount: amount,
-      coupon: discount ? 'SAVE10' : ''
+      coupon: discount ? coupon : ''
     };
   });
 }
@@ -117,6 +123,7 @@ function customerFromBody(body) {
   const email = clip(body && body.email, 254);
   const phone = clip(body && body.phone, 32);
   const address = clip(body && body.address, 200);
+  const address2 = clip(body && body.address2, 200);
   const city = clip(body && body.city, 80);
   const state = clip(body && body.state, 40);
   const zip = clip(body && body.zip, 20);
@@ -125,6 +132,7 @@ function customerFromBody(body) {
     name: name,
     address: {
       line1: address,
+      line2: address2 || undefined,
       city: city,
       state: normalizeState(state),
       postal_code: zip,
