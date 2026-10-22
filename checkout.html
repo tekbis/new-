@@ -411,8 +411,8 @@
           </div>
 
           <div class="pay-area" id="cardPanel">
-            <p class="note" id="stripeHint">After you confirm, you’ll finish payment on Stripe’s secure page. Cards, Apple Pay, and Google Pay appear there when enabled.</p>
-            <p class="note" id="walletNote" hidden>Apple Pay and Google Pay open on Stripe’s secure checkout page when your device supports them.</p>
+            <p class="note" id="stripeHint">After you confirm, you will finish payment on Stripe’s secure page with card, Apple Pay, or Google Pay.</p>
+            <p class="note" id="walletNote" hidden>Apple Pay and Google Pay open on Stripe’s secure checkout page.</p>
             <p class="msg" id="payment-message" role="alert"></p>
           </div>
 
@@ -831,7 +831,7 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(function (cfg) {
       stripeConfigured = Boolean(cfg.configured);
       if (stripeConfigured) {
-        $('stripeHint').textContent = 'After you confirm, you will finish payment on Stripe\'s secure page. Cards, Apple Pay, and Google Pay appear there when enabled.';
+        $('stripeHint').textContent = 'After you confirm, you will finish payment on Stripe\'s secure page with card, Apple Pay, or Google Pay.';
       } else {
         $('stripeHint').textContent = 'Live card payments start after Stripe keys are added.';
       }
