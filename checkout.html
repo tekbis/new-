@@ -523,6 +523,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var s = String(v || '').trim();
     if (!s) return 'assets/images/product-placeholder.svg';
     if (/^\/\//.test(s)) s = 'https:' + s;
+    if (/^https?:\/\/(wsrv\.nl|images\.weserv\.nl)\//i.test(s)) return s;
     // Wix CDN often fails DNS (ERR_NAME_NOT_RESOLVED) — load via image proxy instead.
     if (/static\.wixstatic\.com/i.test(s)) {
       s = s.replace(/,enc_avif/gi, '').replace(/w_\d+,h_\d+/g, 'w_400,h_400');

@@ -12,6 +12,8 @@
   function safeMediaUrl(value) {
     var src = String(value || '').trim();
     if (/^\/\//.test(src)) src = 'https:' + src;
+    // Already proxied — do not wrap again (wsrv URLs still contain "wixstatic" in ?url=).
+    if (/^https?:\/\/(wsrv\.nl|images\.weserv\.nl)\//i.test(src)) return src;
     if (/static\.wixstatic\.com/i.test(src)) {
       src = src.replace(/,enc_avif/gi, '').replace(/w_\d+,h_\d+/g, 'w_800,h_800');
       if (/^https?:\/\//i.test(src) && !/[\s<>'"\\]/.test(src) && src.indexOf('..') === -1) {
@@ -90,12 +92,15 @@
 
     var main = document.getElementById('mainImage');
     if (main && product.images && product.images.length) {
-      if (main.getAttribute('src') !== product.images[0].src) {
-        main.src = safeMediaUrl(product.images[0].src);
-      }
-      main.alt = product.images[0].alt;
+      main.src = safeMediaUrl(product.images[0].src);
+      main.alt = product.images[0].alt || product.name || '';
       main.width = 1000;
       main.height = 1000;
+      main.referrerPolicy = 'no-referrer';
+      main.onerror = function () {
+        main.onerror = null;
+        main.src = 'assets/images/product-placeholder.svg';
+      };
     }
 
     var thumbnails = document.getElementById('thumbnailRow');
@@ -297,7 +302,7 @@
           item.setAttribute('aria-pressed', String(active));
         });
         window.setTimeout(function () {
-          main.src = safeMediaUrl(button.dataset.galleryImage);
+          main.src = button.dataset.galleryImage || safeMediaUrl(product.image);
           main.alt = button.dataset.galleryAlt || product.name;
           main.classList.remove('is-switching');
         }, 100);

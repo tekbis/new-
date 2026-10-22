@@ -74,7 +74,14 @@
   }
 
   function largerImage(url) {
-    return String(url || '').replace(/w_\d+,h_\d+/g, 'w_1000,h_1000');
+    var s = String(url || '').trim();
+    if (/^\/\//.test(s)) s = 'https:' + s;
+    // Wix CDN often fails DNS locally — serve through an image proxy.
+    if (/static\.wixstatic\.com/i.test(s)) {
+      s = s.replace(/,enc_avif/gi, '').replace(/w_\d+,h_\d+/g, 'w_1000,h_1000');
+      return 'https://wsrv.nl/?url=' + encodeURIComponent(s) + '&w=1000&h=1000&fit=contain';
+    }
+    return s.replace(/w_\d+,h_\d+/g, 'w_1000,h_1000');
   }
 
   function prettyCatName(name) {
