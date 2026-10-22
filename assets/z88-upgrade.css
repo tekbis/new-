@@ -1397,3 +1397,32 @@ body.z88-enhanced .header-main.z88-header-rebuilt {
     transition: none;
   }
 }
+
+.tekbis-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: .01em;
+  white-space: nowrap;
+}
+.tekbis-credit img {
+  height: 15px;
+  width: auto;
+  display: block;
+  mix-blend-mode: lighten;
+}
+.tekbis-credit:hover {
+  color: #fff;
+}
+.checkout-footer .tekbis-credit img {
+  mix-blend-mode: normal;
+  filter: invert(1);
+}
+.checkout-footer .tekbis-credit:hover {
+  color: inherit;
+  opacity: .82;
+}

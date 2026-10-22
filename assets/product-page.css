@@ -195,7 +195,10 @@ h1 { margin: 10px 0 12px; font-family: Georgia, "Times New Roman", serif; font-s
 .footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 22px; font-size: 13px; color: #ddd8df; }
 .footer-links a { color: inherit; }
 .footer-links a:hover { color: #fff; }
-.footer-bottom { display: flex; justify-content: space-between; gap: 24px; padding-top: 20px; color: #a9a1ac; font-size: 12px; }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 20px; color: #a9a1ac; font-size: 12px; }
+.tekbis-credit { display: inline-flex; align-items: center; gap: 8px; color: inherit; text-decoration: none; white-space: nowrap; }
+.tekbis-credit img { height: 15px; width: auto; display: block; mix-blend-mode: lighten; }
+.tekbis-credit:hover { color: #fff; }
 
 .drawer-backdrop { position: fixed; inset: 0; z-index: 90; visibility: hidden; opacity: 0; background: rgba(15,10,18,.46); transition: opacity .25s ease, visibility .25s ease; }
 .drawer-backdrop.is-open { visibility: visible; opacity: 1; }
