@@ -26,9 +26,9 @@
   <meta name="twitter:image" content="https://www.zander88llc.net/og.jpg?v=3">
   <link rel="image_src" href="https://www.zander88llc.net/og.jpg?v=3">
   <!-- /share-meta -->
-  <link rel="stylesheet" href="assets/product-page.css?v=8">
+  <link rel="stylesheet" href="assets/product-page.css?v=9">
   <script src="assets/catalog-data.js?v=13"></script>
-  <script src="assets/products-data.js?v=7"></script>
+  <script src="assets/products-data.js?v=8"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to product</a>
@@ -86,22 +86,7 @@
           <button class="wishlist" id="wishlistButton" type="button" aria-pressed="false" aria-label="Add product to wishlist">
             <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
           </button>
-          <img id="mainImage" alt="Zander88LLC product" width="1000" height="1000" fetchpriority="high" referrerpolicy="no-referrer">
-          <script>
-            (function () {
-              var product = window.ZANDER_PAGE && window.ZANDER_PAGE.product;
-              var image = product && product.images && product.images[0];
-              var main = document.getElementById('mainImage');
-              if (main && image && image.src) {
-                main.src = image.src;
-                main.alt = image.alt || product.name || '';
-                main.onerror = function () {
-                  main.onerror = null;
-                  main.src = 'assets/images/product-placeholder.svg';
-                };
-              }
-            }());
-          </script>
+          <img id="mainImage" alt="Zander88LLC product" width="1000" height="1000" fetchpriority="high" referrerpolicy="no-referrer" decoding="async">
           <span class="zoom-note">Select a thumbnail for a closer view</span>
         </div>
         <div class="thumbnail-row" id="thumbnailRow" aria-label="Product image gallery"></div>
@@ -214,6 +199,6 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="assets/product-page.js?v=9"></script>
+  <script src="assets/product-page.js?v=10"></script>
 </body>
 </html>

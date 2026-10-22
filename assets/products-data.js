@@ -76,10 +76,15 @@
   function largerImage(url) {
     var s = String(url || '').trim();
     if (/^\/\//.test(s)) s = 'https:' + s;
-    // Wix CDN often fails DNS locally — serve through an image proxy.
     if (/static\.wixstatic\.com/i.test(s)) {
-      s = s.replace(/,enc_avif/gi, '').replace(/w_\d+,h_\d+/g, 'w_1000,h_1000');
-      return 'https://wsrv.nl/?url=' + encodeURIComponent(s) + '&w=1000&h=1000&fit=contain';
+      // Short JPEG/PNG URL — avoids AVIF and keeps mobile Safari happier.
+      var base = s.match(/^(https?:\/\/static\.wixstatic\.com\/media\/[^/?#]+)/i);
+      if (base) {
+        var file = base[1];
+        var name = file.split('/').pop();
+        return file + '/v1/fill/w_1000,h_1000,al_c,q_85/' + name;
+      }
+      return s.replace(/,enc_avif(?:,quality_auto)?/gi, '').replace(/w_\d+,h_\d+/g, 'w_1000,h_1000');
     }
     return s.replace(/w_\d+,h_\d+/g, 'w_1000,h_1000');
   }

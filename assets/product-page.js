@@ -9,19 +9,66 @@
   var wishlist = readList(wishlistKey);
   var toastTimer;
 
+  function cleanWixUrl(value, size) {
+    var s = String(value || '').trim();
+    var dim = size || 800;
+    if (/^\/\//.test(s)) s = 'https:' + s;
+    if (!/static\.wixstatic\.com/i.test(s)) return s;
+    var base = s.match(/^(https?:\/\/static\.wixstatic\.com\/media\/[^/?#]+)/i);
+    if (base) {
+      var file = base[1];
+      var name = file.split('/').pop();
+      return file + '/v1/fill/w_' + dim + ',h_' + dim + ',al_c,q_85/' + name;
+    }
+    return s.replace(/,enc_avif(?:,quality_auto)?/gi, '').replace(/w_\d+,h_\d+/g, 'w_' + dim + ',h_' + dim);
+  }
+
+  function proxyMediaUrl(value, size) {
+    var direct = cleanWixUrl(value, size);
+    if (!/static\.wixstatic\.com/i.test(direct)) return direct;
+    var dim = size || 800;
+    return 'https://wsrv.nl/?url=' + encodeURIComponent(direct) + '&w=' + dim + '&h=' + dim + '&fit=contain';
+  }
+
   function safeMediaUrl(value) {
     var src = String(value || '').trim();
     if (/^\/\//.test(src)) src = 'https:' + src;
-    // Already proxied — do not wrap again (wsrv URLs still contain "wixstatic" in ?url=).
     if (/^https?:\/\/(wsrv\.nl|images\.weserv\.nl)\//i.test(src)) return src;
-    if (/static\.wixstatic\.com/i.test(src)) {
-      src = src.replace(/,enc_avif/gi, '').replace(/w_\d+,h_\d+/g, 'w_800,h_800');
-      if (/^https?:\/\//i.test(src) && !/[\s<>'"\\]/.test(src) && src.indexOf('..') === -1) {
-        return 'https://wsrv.nl/?url=' + encodeURIComponent(src) + '&w=800&h=800&fit=contain';
-      }
-    }
-    if (/^(https?:\/\/|assets\/)/i.test(src) && !/[\s<>'"\\]/.test(src) && src.indexOf('..') === -1) return src;
+    if (/^assets\//i.test(src) && !/[\s<>'"\\]/.test(src) && src.indexOf('..') === -1) return src;
+    if (/static\.wixstatic\.com/i.test(src)) return proxyMediaUrl(src, 800);
+    if (/^https?:\/\//i.test(src) && !/[\s<>'"\\]/.test(src) && src.indexOf('..') === -1) return src;
     return 'assets/images/product-placeholder.svg';
+  }
+
+  // Mobile often blocks the image proxy; desktop often cannot resolve Wix DNS.
+  // Try direct Wix first, then proxy, then placeholder.
+  function bindProductImage(el, rawSrc, size) {
+    if (!el) return;
+    var src = String(rawSrc || '').trim();
+    if (!src) {
+      el.src = 'assets/images/product-placeholder.svg';
+      return;
+    }
+    if (/^assets\//i.test(src)) {
+      el.referrerPolicy = 'no-referrer';
+      el.src = src;
+      return;
+    }
+    var direct = cleanWixUrl(src, size || 800);
+    var proxied = proxyMediaUrl(src, size || 800);
+    var stage = 0;
+    el.referrerPolicy = 'no-referrer';
+    el.decoding = 'async';
+    el.onerror = function () {
+      stage += 1;
+      if (stage === 1 && proxied && el.src !== proxied) {
+        el.src = proxied;
+        return;
+      }
+      el.onerror = null;
+      el.src = 'assets/images/product-placeholder.svg';
+    };
+    el.src = /static\.wixstatic\.com/i.test(src) ? direct : safeMediaUrl(src);
   }
 
   function text(id, value) {
@@ -92,15 +139,10 @@
 
     var main = document.getElementById('mainImage');
     if (main && product.images && product.images.length) {
-      main.src = safeMediaUrl(product.images[0].src);
       main.alt = product.images[0].alt || product.name || '';
       main.width = 1000;
       main.height = 1000;
-      main.referrerPolicy = 'no-referrer';
-      main.onerror = function () {
-        main.onerror = null;
-        main.src = 'assets/images/product-placeholder.svg';
-      };
+      bindProductImage(main, product.images[0].src, 1000);
     }
 
     var thumbnails = document.getElementById('thumbnailRow');
@@ -110,15 +152,16 @@
         var button = document.createElement('button');
         button.type = 'button';
         button.className = 'thumbnail' + (index === 0 ? ' is-active' : '');
-        button.dataset.galleryImage = safeMediaUrl(image.src);
+        button.dataset.galleryImage = image.src;
         button.dataset.galleryAlt = image.alt;
         button.setAttribute('aria-pressed', String(index === 0));
         button.setAttribute('aria-label', 'Show image ' + (index + 1) + ' of ' + product.name);
         var thumb = document.createElement('img');
-        thumb.src = safeMediaUrl(image.src);
         thumb.alt = '';
         thumb.width = 250;
         thumb.height = 250;
+        thumb.loading = 'lazy';
+        bindProductImage(thumb, image.src, 400);
         button.appendChild(thumb);
         thumbnails.appendChild(button);
       });
@@ -302,7 +345,7 @@
           item.setAttribute('aria-pressed', String(active));
         });
         window.setTimeout(function () {
-          main.src = button.dataset.galleryImage || safeMediaUrl(product.image);
+          bindProductImage(main, button.dataset.galleryImage || product.image, 1000);
           main.alt = button.dataset.galleryAlt || product.name;
           main.classList.remove('is-switching');
         }, 100);
@@ -359,11 +402,10 @@
       var media = document.createElement('div');
       media.className = 'trending-media';
       var image = document.createElement('img');
-      image.src = safeMediaUrl(item.image);
       image.alt = item.name;
       image.loading = 'lazy';
       image.decoding = 'async';
-      image.referrerPolicy = 'no-referrer';
+      bindProductImage(image, item.image, 600);
       var badge = document.createElement('span');
       badge.className = 'card-badge';
       badge.textContent = 'Trending';
