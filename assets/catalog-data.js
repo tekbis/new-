@@ -127,7 +127,8 @@ var ZanderCatalog = [
     "name": "Chunky Square Sunglasses With Yellow Tinted Frame in Light Tortoise Shell",
     "price": 48,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/chunky-square-sunglasses-with-yellow-tinted-frame-in-light-tortoise-shell"
+    "url": "https://www.zander88llc.net/product-page/chunky-square-sunglasses-with-yellow-tinted-frame-in-light-tortoise-shell",
+    "description": "Bold chunky square sunglasses with a light tortoise shell frame and yellow-tinted lenses. A statement everyday pair that adds warmth and retro edge while helping shield your eyes from the sun.\n\n• Chunky square silhouette\n• Light tortoise shell frame with yellow tint\n• Comfortable everyday wear\n• One size fits most"
   },
   {
     "cat": "JEWELRY",
@@ -139,7 +140,8 @@ var ZanderCatalog = [
     "name": "Black Pin-Up Style Sunglasses With Geometric Design and Cat Eyes",
     "price": 54,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/black-pin-up-style-sunglasses-with-geometric-design-and-cat-eyes"
+    "url": "https://www.zander88llc.net/product-page/black-pin-up-style-sunglasses-with-geometric-design-and-cat-eyes",
+    "description": "Black pin-up style sunglasses with a geometric cat-eye design. Dramatic angles and a classic dark frame give vintage glam that works from daytime errands to evening looks.\n\n• Geometric cat-eye shape\n• Black pin-up inspired frame\n• Lightweight everyday fit\n• One size fits most"
   },
   {
     "cat": "JEWELRY",
@@ -177,7 +179,8 @@ var ZanderCatalog = [
     "name": "Levis Mens X 32, Color: Blue | 100% Authentic",
     "price": 96,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/levis-mens-x-32-color-blue-100-authentic"
+    "url": "https://www.zander88llc.net/product-page/levis-mens-x-32-color-blue-100-authentic",
+    "description": "Authentic Levi’s men’s jeans in blue, size X 32. A classic denim staple with the iconic fit and finish you expect from Levi’s—ready for casual everyday wear.\n\n• 100% authentic Levi’s\n• Color: Blue\n• Size: X 32\n• Everyday denim essential"
   },
   {
     "cat": "Clothing",
@@ -304,7 +307,8 @@ var ZanderCatalog = [
       "L",
       "XL",
       "2XL"
-    ]
+    ],
+    "description": "Plus-size women’s two-piece set with a long-sleeve printed top and matching casual dress silhouette. Soft, easy-wearing pieces made for comfortable everyday style with a coordinated look.\n\n• Printed long-sleeve two-piece set\n• Plus-size friendly fit\n• Casual everyday styling\n• Easy mix-and-match pieces"
   },
   {
     "cat": "HANDBAG/PURSES",
@@ -316,7 +320,8 @@ var ZanderCatalog = [
     "name": "Flower Cat Tote Travel Bag w/Shoe Storage",
     "price": 50,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/flower-cat-tote-travel-bag-w-shoe-storage"
+    "url": "https://www.zander88llc.net/product-page/flower-cat-tote-travel-bag-w-shoe-storage",
+    "description": "Flower Cat tote travel bag with dedicated shoe storage. Roomy enough for weekend getaways, with a playful floral-cat design and a smart compartment to keep shoes separate from clothes.\n\n• Travel tote with shoe storage\n• Playful flower-cat design\n• Spacious main compartment\n• Ideal for short trips and overnight stays"
   },
   {
     "cat": "TRAVEL/LUGGAGE",
@@ -328,7 +333,8 @@ var ZanderCatalog = [
     "name": "Suitcase VOYAGE EXECUTIVE MANHATTAN – BYMANYC ® New York Eco Travel",
     "price": 551,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/suitcase-voyage-executive-manhattan-bymanyc-new-york-eco-travel"
+    "url": "https://www.zander88llc.net/product-page/suitcase-voyage-executive-manhattan-bymanyc-new-york-eco-travel",
+    "description": "VOYAGE EXECUTIVE MANHATTAN suitcase by BYMANYC® New York—an eco-minded travel piece with a sleek executive look. Built for smooth rolling and organized packing on city trips and longer journeys.\n\n• Eco travel design by BYMANYC® New York\n• Executive Manhattan styling\n• Organized interior packing space\n• Smooth travel mobility"
   },
   {
     "cat": "TRAVEL/LUGGAGE",
@@ -399,7 +405,8 @@ var ZanderCatalog = [
     "name": "3-In-1 Electric Facial Cleansing Brush",
     "price": 35.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/3-in-1-electric-facial-cleansing-brush"
+    "url": "https://www.zander88llc.net/product-page/3-in-1-electric-facial-cleansing-brush",
+    "description": "3-in-1 electric facial cleansing brush for a deeper everyday clean. Soft rotating bristles help lift away dirt, oil, and makeup residue while leaving skin feeling refreshed and smooth.\n\n• Electric facial cleansing brush\n• 3-in-1 multi-use design\n• Helps remove dirt, oil & makeup\n• Leaves skin feeling fresh and clean"
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -423,7 +430,7 @@ var ZanderCatalog = [
       "S": 106.75,
       "M": 106.75
     },
-    "description": "Description: Sexy Chainmaille Party Dress with Deep V Neck Plunge Metal Fabric\n\nStyle: Sexy, Chainmaille, Party, Night Out, Celebrity, Red Carpet, Designer,\n\n Size: XS, S, M, L (please review the measurement chart below) Measurements are in CentimetersXS: Bust: 82 Waist: 64 Hips: 84 S: Bust: 86 Waist: 68 Hips: 88 M: Bust: 90 Waist: 72 Hips: 92 L: Bust: 94 Waist: 76 Hips: 96\n\nShipping Time: 10-14 days to USA, Europe and Australia"
+    "description": "A striking chainmaille party dress with a deep V-neck plunge and metallic fabric that catches the light. Designed for nights out, celebrity-inspired looks, and red-carpet energy—bold, sexy, and unforgettable.\n\nStyle: Sexy, Chainmaille, Party, Night Out, Celebrity, Red Carpet, Designer\n\nSize: XS, S, M, L (please review the measurement chart below)\nMeasurements are in Centimeters\nXS: Bust: 82 Waist: 64 Hips: 84\nS: Bust: 86 Waist: 68 Hips: 88\nM: Bust: 90 Waist: 72 Hips: 92\nL: Bust: 94 Waist: 76 Hips: 96\n\nShipping Time: 10-14 days to USA, Europe and Australia"
   },
   {
     "cat": "MEN'CLOTHING",
@@ -461,7 +468,8 @@ var ZanderCatalog = [
     "name": "Koi Small Blue Satchel",
     "price": 450,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/koi-small-blue-satchel"
+    "url": "https://www.zander88llc.net/product-page/koi-small-blue-satchel",
+    "description": "Koi small blue satchel with a compact, polished silhouette. Perfect for essentials on the go—phone, wallet, keys—while adding a fresh pop of blue to casual and dressy outfits.\n\n• Compact blue satchel\n• Ideal for everyday essentials\n• Easy carry for day-to-night looks\n• Lightweight and stylish"
   },
   {
     "cat": "FRAGRANCE",
@@ -622,7 +630,8 @@ var ZanderCatalog = [
     "name": "Beverly Hills (Jo Malone Pomegranate Noir Inspired) Luxury Fragrance",
     "price": 99.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/beverly-hills-jo-malone-pomegranate-noir-inspired-luxury-fragrance"
+    "url": "https://www.zander88llc.net/product-page/beverly-hills-jo-malone-pomegranate-noir-inspired-luxury-fragrance",
+    "description": "Beverly Hills luxury fragrance inspired by Jo Malone Pomegranate Noir. A rich, sophisticated scent with dark fruit depth and warm elegance—crafted for evenings, dinners, and elevated everyday wear.\n\n• Luxury inspired fragrance\n• Dark fruit & warm elegance\n• Ideal for evening and special occasions\n• Long-lasting wearable scent"
   },
   {
     "cat": "FRAGRANCE",
@@ -673,7 +682,8 @@ var ZanderCatalog = [
     "name": "Antwon 33 (Portrait of a Lady Inspired) Luxury Fragrance",
     "price": 99.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/antwon-33-portrait-of-a-lady-inspired-luxury-fragrance"
+    "url": "https://www.zander88llc.net/product-page/antwon-33-portrait-of-a-lady-inspired-luxury-fragrance",
+    "description": "Antwon 33 luxury fragrance inspired by Portrait of a Lady. A bold, refined blend with floral depth and woody warmth—dramatic, memorable, and made for confident wear.\n\n• Luxury inspired fragrance\n• Floral-woody character\n• Bold and memorable trail\n• Perfect for evenings and special occasions"
   },
   {
     "cat": "FRAGRANCE",
@@ -724,7 +734,8 @@ var ZanderCatalog = [
     "name": "JEAN PAUL GAULTIER - Scandal Pour Homme Eau De Toilette Refillable Spray",
     "price": 209,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/jean-paul-gaultier-scandal-pour-homme-eau-de-toilette-refillable-spray"
+    "url": "https://www.zander88llc.net/product-page/jean-paul-gaultier-scandal-pour-homme-eau-de-toilette-refillable-spray",
+    "description": "Jean Paul Gaultier Scandal Pour Homme Eau de Toilette refillable spray. A modern masculine scent with a confident, vibrant character—fresh enough for daytime and bold enough for nights out.\n\n• Scandal Pour Homme EDT\n• Refillable spray bottle\n• Modern masculine fragrance\n• Day-to-night versatility"
   },
   {
     "cat": "FRAGRANCE",
@@ -736,7 +747,8 @@ var ZanderCatalog = [
     "name": "TOM FORD - Private Blend Noir De Noir Eau De Parfum Spray",
     "price": 450,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/tom-ford-private-blend-noir-de-noir-eau-de-parfum-spray"
+    "url": "https://www.zander88llc.net/product-page/tom-ford-private-blend-noir-de-noir-eau-de-parfum-spray",
+    "description": "TOM FORD Private Blend Noir de Noir Eau de Parfum. A dark, seductive floral oriental with rose, black truffle, and patchouli depth—luxurious, intense, and made for evening wear.\n\n• Private Blend Noir de Noir EDP\n• Dark floral oriental character\n• Rich and long-lasting\n• Ideal for evenings and special occasions"
   },
   {
     "cat": "FRAGRANCE",
@@ -774,7 +786,8 @@ var ZanderCatalog = [
     "name": "TOM FORD - Private Blend Fabulous Eau De Parfum Spray",
     "price": 601.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/tom-ford-private-blend-fabulous-eau-de-parfum-spray"
+    "url": "https://www.zander88llc.net/product-page/tom-ford-private-blend-fabulous-eau-de-parfum-spray",
+    "description": "TOM FORD Private Blend Fabulous Eau de Parfum. A warm, creamy, and addictive scent with almond, tonka, and leather accents—smooth, confident, and unmistakably luxurious.\n\n• Private Blend Fabulous EDP\n• Warm creamy leather character\n• Long-lasting luxury wear\n• Perfect for day or night"
   },
   {
     "cat": "WATCHES MAN/WOMAN",
@@ -787,7 +800,8 @@ var ZanderCatalog = [
     "name": "Inverness - Multi Bamboo & Brown Leather",
     "price": 45,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/inverness-multi-bamboo-brown-leather"
+    "url": "https://www.zander88llc.net/product-page/inverness-multi-bamboo-brown-leather",
+    "description": "Inverness watch with multi bamboo dial detailing and a brown leather strap. A natural, refined everyday timepiece that pairs easily with casual and smart-casual looks.\n\n• Multi bamboo inspired dial\n• Brown leather strap\n• Everyday wearable design\n• Casual to smart-casual styling"
   },
   {
     "cat": "WATCHES MAN/WOMAN",
@@ -800,7 +814,8 @@ var ZanderCatalog = [
     "name": "STOND DC-4 automatic blue",
     "price": 648.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/stond-dc-4-automatic-blue"
+    "url": "https://www.zander88llc.net/product-page/stond-dc-4-automatic-blue",
+    "description": "STOND DC-4 automatic watch in blue. A mechanical everyday piece with a clean blue dial and automatic movement—built for style without needing a battery change.\n\n• Automatic movement\n• Blue dial finish\n• Everyday men’s watch styling\n• No battery required"
   },
   {
     "cat": "WATCHES MAN/WOMAN",
@@ -813,7 +828,8 @@ var ZanderCatalog = [
     "name": "STROND Concorde 24h automatic in navy blue",
     "price": 630,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/strond-concorde-24h-automatic-in-navy-blue"
+    "url": "https://www.zander88llc.net/product-page/strond-concorde-24h-automatic-in-navy-blue",
+    "description": "STROND Concorde 24h automatic watch in navy blue. A distinctive 24-hour dial paired with automatic movement for a technical, modern look that stands out on the wrist.\n\n• 24-hour Concorde dial\n• Automatic movement\n• Navy blue finish\n• Modern technical styling"
   },
   {
     "cat": "WATCHES MAN/WOMAN",
@@ -826,7 +842,8 @@ var ZanderCatalog = [
     "name": "Men's Scuba 200 Auto",
     "price": 997,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/men-s-scuba-200-auto-1"
+    "url": "https://www.zander88llc.net/product-page/men-s-scuba-200-auto-1",
+    "description": "Men’s Scuba 200 Auto dive-inspired automatic watch. Built with sporty presence and automatic movement for reliable everyday wear in and out of the water lifestyle look.\n\n• Scuba-inspired automatic watch\n• Sporty men’s design\n• Everyday durable styling\n• Automatic movement"
   },
   {
     "cat": "WATCHES MAN/WOMAN",
@@ -839,7 +856,8 @@ var ZanderCatalog = [
     "name": "Women's Bold",
     "price": 195.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/women-s-bold"
+    "url": "https://www.zander88llc.net/product-page/women-s-bold",
+    "description": "Women’s Bold watch with a confident, clean design made for everyday wear. A versatile accessory that adds polish to casual outfits and dresses alike.\n\n• Women’s everyday watch\n• Bold, clean design\n• Easy day-to-night styling\n• Comfortable wearable fit"
   },
   {
     "cat": "WATCHES MAN/WOMAN",
@@ -852,7 +870,8 @@ var ZanderCatalog = [
     "name": "Women's Swell",
     "price": 596.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/women-s-swell"
+    "url": "https://www.zander88llc.net/product-page/women-s-swell",
+    "description": "Women’s Swell watch with a fresh, modern look. Lightweight and stylish for daily wear—an easy finishing touch for work, weekends, and travel.\n\n• Women’s everyday watch\n• Modern Swell design\n• Lightweight wearable style\n• Perfect for daily outfits"
   },
   {
     "cat": "WATCHES MAN/WOMAN",
@@ -865,7 +884,8 @@ var ZanderCatalog = [
     "name": "Men's Raceway",
     "price": 195.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/men-s-raceway"
+    "url": "https://www.zander88llc.net/product-page/men-s-raceway",
+    "description": "Men’s Raceway watch with sport-inspired styling. A sharp everyday timepiece that brings racing energy to casual and active looks.\n\n• Sport-inspired men’s watch\n• Raceway design details\n• Everyday wearable style\n• Casual and active outfits"
   },
   {
     "cat": "WATCHES MAN/WOMAN",
@@ -878,7 +898,8 @@ var ZanderCatalog = [
     "name": "Men's Driver",
     "price": 651.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/men-s-driver"
+    "url": "https://www.zander88llc.net/product-page/men-s-driver",
+    "description": "Men’s Driver watch with a classic motoring-inspired look. Clean lines and everyday comfort make it a go-to accessory for casual and smart-casual wear.\n\n• Driver-inspired men’s watch\n• Classic everyday design\n• Comfortable wearable fit\n• Casual to smart-casual styling"
   },
   {
     "cat": "WATCHES MAN/WOMAN",
@@ -891,7 +912,8 @@ var ZanderCatalog = [
     "name": "Inverness SS - Multi Bamboo",
     "price": 60,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/inverness-ss-multi-bamboo"
+    "url": "https://www.zander88llc.net/product-page/inverness-ss-multi-bamboo",
+    "description": "Inverness SS watch with multi bamboo detailing and a stainless steel finish. A natural-meets-modern look that elevates everyday outfits with light, refined texture.\n\n• Multi bamboo dial detailing\n• Stainless steel finish\n• Everyday refined styling\n• Easy to pair with most outfits"
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -1019,7 +1041,8 @@ var ZanderCatalog = [
     "name": "Rain Set",
     "price": 8.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/rain-set"
+    "url": "https://www.zander88llc.net/product-page/rain-set",
+    "description": "Rain Set for wet-weather days—practical coverage with a clean, wearable look. Designed to keep you comfortable and put-together when the forecast calls for rain.\n\n• Everyday rain-ready set\n• Practical wet-weather coverage\n• Easy on-the-go wear\n• Clean, simple styling"
   },
   {
     "cat": "WATCHES MAN/WOMAN",
@@ -1032,7 +1055,8 @@ var ZanderCatalog = [
     "name": "STROND DC3 Mkll All Black &amp; Bronze",
     "price": 496.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/strond-dc3-mkll-all-black-amp-bronze"
+    "url": "https://www.zander88llc.net/product-page/strond-dc3-mkll-all-black-amp-bronze",
+    "description": "STROND DC3 MkII automatic watch in all black and bronze. A bold dual-tone look with automatic movement—modern, masculine, and built for everyday statement wear.\n\n• DC3 MkII automatic\n• All black & bronze finish\n• Bold everyday styling\n• No battery required"
   },
   {
     "cat": "KIDS/BABIES",
@@ -1063,7 +1087,8 @@ var ZanderCatalog = [
     "name": "Wall Stickers - Wooden Toys",
     "price": 39,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/wall-stickers-wooden-toys"
+    "url": "https://www.zander88llc.net/product-page/wall-stickers-wooden-toys",
+    "description": "Wooden toys wall stickers for kids’ rooms and play spaces. Easy decorative accents that add warmth and playful charm to nursery walls, bedrooms, and creative corners.\n\n• Kids’ room wall stickers\n• Wooden toys theme\n• Easy decorative accent\n• Great for nurseries and playrooms"
   },
   {
     "cat": "KIDS/BABIES",
@@ -1093,7 +1118,8 @@ var ZanderCatalog = [
     "name": "Bambini Baby Gift Set",
     "price": 10,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/bambini-baby-gift-set"
+    "url": "https://www.zander88llc.net/product-page/bambini-baby-gift-set",
+    "description": "Bambini baby gift set—a thoughtful bundle of soft essentials for newborns and baby showers. A ready-to-gift collection designed for comfort, cuteness, and first moments.\n\n• Baby gift set\n• Soft everyday essentials\n• Ideal for baby showers & newborns\n• Ready-to-gift presentation"
   },
   {
     "cat": "KIDS/BABIES",
@@ -1105,7 +1131,8 @@ var ZanderCatalog = [
     "name": "The VP Infant Bodysuit - Light Blue",
     "price": 38,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/the-vp-infant-bodysuit-light-blue"
+    "url": "https://www.zander88llc.net/product-page/the-vp-infant-bodysuit-light-blue",
+    "description": "The VP infant bodysuit in light blue. Soft, everyday babywear with an easy snap fit for quick changes—comfortable for playtime, outings, and rest.\n\n• Infant bodysuit\n• Light blue color\n• Soft everyday comfort\n• Easy dressing for babies"
   },
   {
     "cat": "KIDS/BABIES",
@@ -1117,7 +1144,8 @@ var ZanderCatalog = [
     "name": "Bamboo Rayon Alien Hooded Turkish Towel:Baby",
     "price": 30,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/bamboo-rayon-alien-hooded-turkish-towel-baby"
+    "url": "https://www.zander88llc.net/product-page/bamboo-rayon-alien-hooded-turkish-towel-baby",
+    "description": "Bamboo rayon alien hooded Turkish towel for babies. Ultra-soft, absorbent, and gentle on sensitive skin—perfect after bath time with a playful hooded design.\n\n• Bamboo rayon Turkish towel\n• Hooded baby design\n• Soft & absorbent\n• Gentle for sensitive skin"
   },
   {
     "cat": "KIDS/BABIES",
@@ -1148,7 +1176,8 @@ var ZanderCatalog = [
     "name": "Ivory Rabbit Richie Plush Animal by Happy Horse",
     "price": 29,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/ivory-rabbit-richie-plush-animal-by-happy-horse"
+    "url": "https://www.zander88llc.net/product-page/ivory-rabbit-richie-plush-animal-by-happy-horse",
+    "description": "Ivory Rabbit Richie plush animal by Happy Horse. A soft, huggable companion for little ones—ideal for bedtime comfort, travel, and thoughtful baby gifts.\n\n• Happy Horse plush rabbit\n• Soft ivory finish\n• Comfort companion for kids\n• Great baby & toddler gift"
   },
   {
     "cat": "KIDS/BABIES",
@@ -1209,7 +1238,8 @@ var ZanderCatalog = [
     "name": "Kids T-Shirt - 3D Flying Owl",
     "price": 38,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/kids-t-shirt-3d-flying-owl"
+    "url": "https://www.zander88llc.net/product-page/kids-t-shirt-3d-flying-owl",
+    "description": "Kids T-shirt featuring a fun 3D flying owl design. Soft everyday cotton-feel wear that brings playful personality to school days, weekends, and playdates.\n\n• Kids graphic T-shirt\n• 3D flying owl design\n• Everyday comfort fit\n• Fun casual wear"
   },
   {
     "cat": "KIDS/BABIES",
@@ -1221,7 +1251,8 @@ var ZanderCatalog = [
     "name": "Bamboo Rayon Piggy Hooded Turkish Towel: Little Kid",
     "price": 35,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/bamboo-rayon-piggy-hooded-turkish-towel-little-kid"
+    "url": "https://www.zander88llc.net/product-page/bamboo-rayon-piggy-hooded-turkish-towel-little-kid",
+    "description": "Bamboo rayon piggy hooded Turkish towel for little kids. Soft, absorbent, and playful after-bath cover-up that makes drying off part of the fun.\n\n• Bamboo rayon Turkish towel\n• Piggy hooded design\n• Soft & absorbent\n• Perfect for little kids"
   },
   {
     "cat": "KIDS/BABIES",
@@ -1505,7 +1536,8 @@ var ZanderCatalog = [
     "name": "SERENITY Wireless Sleep Mask Headphones Bluetooth 5.0 [Free Shipping]",
     "price": 40,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/serenity-wireless-sleep-mask-headphones-bluetooth-5-0-free-shipping"
+    "url": "https://www.zander88llc.net/product-page/serenity-wireless-sleep-mask-headphones-bluetooth-5-0-free-shipping",
+    "description": "SERENITY wireless sleep mask headphones with Bluetooth 5.0. Soft eye-mask comfort plus built-in audio for podcasts, music, or white noise—ideal for travel, naps, and better rest.\n\n• Wireless sleep mask headphones\n• Bluetooth 5.0 connectivity\n• Soft eye-mask comfort\n• Free shipping"
   },
   {
     "cat": "Electronics",
@@ -1517,7 +1549,8 @@ var ZanderCatalog = [
     "name": "Macaron Earbuds - Light Blue",
     "price": 25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/macaron-earbuds-light-blue"
+    "url": "https://www.zander88llc.net/product-page/macaron-earbuds-light-blue",
+    "description": "Macaron earbuds in light blue—compact wireless listening with a sweet pastel look. Easy everyday earbuds for calls, music, and on-the-go use.\n\n• Wireless macaron-style earbuds\n• Light blue finish\n• Compact everyday listening\n• Portable and stylish"
   },
   {
     "cat": "HOUSEHOLD",
@@ -1543,7 +1576,8 @@ var ZanderCatalog = [
     "name": "Men's Scuba 200 Auto",
     "price": 997,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/men-s-scuba-200-auto"
+    "url": "https://www.zander88llc.net/product-page/men-s-scuba-200-auto",
+    "description": "Men’s Scuba 200 Auto dive-inspired automatic watch. Sporty presence with automatic movement for reliable everyday wear and an active lifestyle look.\n\n• Scuba-inspired automatic watch\n• Sporty men’s design\n• Everyday durable styling\n• Automatic movement"
   },
   {
     "cat": "MEN'CLOTHING",
@@ -1704,7 +1738,8 @@ var ZanderCatalog = [
     "name": "Miami Ohio Redhawks Tie Bar",
     "price": 13,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/miami-ohio-redhawks-tie-bar"
+    "url": "https://www.zander88llc.net/product-page/miami-ohio-redhawks-tie-bar",
+    "description": "Miami Ohio Redhawks tie bar—a sharp collegiate accessory for game days, formal events, and alumni style. A clean finishing touch for ties and dress looks.\n\n• Miami Ohio Redhawks design\n• Classic tie bar accessory\n• Formal & game-day styling\n• Easy clip-on wear"
   },
   {
     "cat": "MEN'CLOTHING",
@@ -1857,7 +1892,7 @@ var ZanderCatalog = [
       "M",
       "L"
     ],
-    "description": "Description: Womans White Shirt Dress Size: XS, S, M, L (please review the measurement chart below) Measurements are in Centimeters (standard UK sizes) XS: Bust: 80-82 Waist: 62 Hips: 80-82 S: Bust: 84-86 Waist: 66 Hips: 84-86 M: Bust: 88-90 Waist: 70 Hips: 88-90 L: Bust: 92-94 Waist: 74 Hips: 92-94\n\nShipping Time: 10-15 days"
+    "description": "A crisp women’s white shirt dress with clean lines and effortless polish. Wear it belted for shape or open and easy for everyday chic—from brunch to work-adjacent looks.\n\nSize: XS, S, M, L (please review the measurement chart below)\nMeasurements are in Centimeters (standard UK sizes)\nXS: Bust: 80-82 Waist: 62 Hips: 80-82\nS: Bust: 84-86 Waist: 66 Hips: 84-86\nM: Bust: 88-90 Waist: 70 Hips: 88-90\nL: Bust: 92-94 Waist: 74 Hips: 92-94\n\nShipping Time: 10-15 days"
   },
   {
     "cat": "JEWELRY",
@@ -1895,7 +1930,8 @@ var ZanderCatalog = [
     "name": "Flower Cocktail Ring Rosegold",
     "price": null,
     "stock": false,
-    "url": "https://www.zander88llc.net/product-page/flower-cocktail-ring-rosegold"
+    "url": "https://www.zander88llc.net/product-page/flower-cocktail-ring-rosegold",
+    "description": "Flower cocktail ring in rose gold tone. A blooming statement piece that adds soft glam to evenings, celebrations, and dressed-up everyday outfits.\n\n• Flower cocktail ring\n• Rose gold tone finish\n• Statement evening accessory\n• Eye-catching floral design"
   },
   {
     "cat": "JEWELRY",
@@ -1946,7 +1982,8 @@ var ZanderCatalog = [
     "name": "Zodiac Star Sign Pendant Necklace Silver Sagittarius",
     "price": 26.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/zodiac-star-sign-pendant-necklace-silver-sagittarius"
+    "url": "https://www.zander88llc.net/product-page/zodiac-star-sign-pendant-necklace-silver-sagittarius",
+    "description": "Zodiac star sign pendant necklace in silver for Sagittarius. A meaningful everyday piece that celebrates your sign with clean, wearable silver styling.\n\n• Sagittarius zodiac pendant\n• Silver finish\n• Everyday wearable necklace\n• Meaningful personal gift"
   },
   {
     "cat": "JEWELRY",
@@ -1958,7 +1995,8 @@ var ZanderCatalog = [
     "name": "Zodiac Star Sign Pendant Necklace Gold Libra",
     "price": 123,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/zodiac-star-sign-pendant-necklace-gold-libra"
+    "url": "https://www.zander88llc.net/product-page/zodiac-star-sign-pendant-necklace-gold-libra",
+    "description": "Zodiac star sign pendant necklace in gold for Libra. A refined personal piece that brings balance and shine to everyday layering or solo wear.\n\n• Libra zodiac pendant\n• Gold finish\n• Everyday wearable necklace\n• Meaningful personal gift"
   },
   {
     "cat": "JEWELRY",
@@ -1983,7 +2021,8 @@ var ZanderCatalog = [
     "name": "Zodiac Star Sign Pendant Necklace Gold Pisces",
     "price": 123,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/zodiac-star-sign-pendant-necklace-gold-pisces"
+    "url": "https://www.zander88llc.net/product-page/zodiac-star-sign-pendant-necklace-gold-pisces",
+    "description": "Zodiac star sign pendant necklace in gold for Pisces. Soft gold shine with a personal zodiac charm—ideal for gifting or everyday self-expression.\n\n• Pisces zodiac pendant\n• Gold finish\n• Everyday wearable necklace\n• Meaningful personal gift"
   },
   {
     "cat": "JEWELRY",
@@ -1995,7 +2034,8 @@ var ZanderCatalog = [
     "name": "Hamsa Opalite Turquoise Blue Necklace Gold",
     "price": null,
     "stock": false,
-    "url": "https://www.zander88llc.net/product-page/hamsa-opalite-turquoise-blue-necklace-gold"
+    "url": "https://www.zander88llc.net/product-page/hamsa-opalite-turquoise-blue-necklace-gold",
+    "description": "Hamsa opalite turquoise blue necklace in gold tone. A protective-inspired pendant with cool blue tones and warm gold finish for layered everyday style.\n\n• Hamsa pendant design\n• Opalite turquoise blue tones\n• Gold tone finish\n• Everyday spiritual-inspired jewelry"
   },
   {
     "cat": "JEWELRY",
@@ -2007,7 +2047,8 @@ var ZanderCatalog = [
     "name": "Mini Porcelain Rose Charm Gold-Filled Necklace",
     "price": 170.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/mini-porcelain-rose-charm-gold-filled-necklace"
+    "url": "https://www.zander88llc.net/product-page/mini-porcelain-rose-charm-gold-filled-necklace",
+    "description": "Mini porcelain rose charm on a gold-filled necklace. Delicate floral detail with lasting gold-filled quality—romantic, light, and perfect for everyday wear or gifting.\n\n• Mini porcelain rose charm\n• Gold-filled necklace\n• Delicate everyday jewelry\n• Romantic gift-ready piece"
   },
   {
     "cat": "JEWELRY",
@@ -2019,7 +2060,8 @@ var ZanderCatalog = [
     "name": "Porcelain Floral Lockets Statement Necklace",
     "price": 380.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/porcelain-floral-lockets-statement-necklace"
+    "url": "https://www.zander88llc.net/product-page/porcelain-floral-lockets-statement-necklace",
+    "description": "Porcelain floral lockets statement necklace. Romantic floral porcelain details meet a bold necklace silhouette for weddings, evenings, and standout everyday looks.\n\n• Porcelain floral lockets\n• Statement necklace design\n• Romantic floral detailing\n• Ideal for special occasions"
   },
   {
     "cat": "JEWELRY",
@@ -2031,7 +2073,8 @@ var ZanderCatalog = [
     "name": "Maireni Necklace",
     "price": 85.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/maireni-necklace"
+    "url": "https://www.zander88llc.net/product-page/maireni-necklace",
+    "description": "Maireni necklace with a refined, wearable design. An elegant everyday piece that layers well or stands alone as a polished finishing touch.\n\n• Everyday necklace\n• Refined Maireni design\n• Easy to layer or wear solo\n• Polished finishing accessory"
   },
   {
     "cat": "JEWELRY",
@@ -2043,7 +2086,8 @@ var ZanderCatalog = [
     "name": "Ankh Crystal Charm",
     "price": null,
     "stock": false,
-    "url": "https://www.zander88llc.net/product-page/ankh-crystal-charm"
+    "url": "https://www.zander88llc.net/product-page/ankh-crystal-charm",
+    "description": "Ankh crystal charm with spiritual symbolism and soft crystal shimmer. A meaningful pendant accent for everyday necklaces, charm styling, and intentional gifting.\n\n• Ankh crystal charm\n• Spiritual-inspired design\n• Soft crystal detail\n• Everyday meaningful accessory"
   },
   {
     "cat": "JEWELRY",
@@ -2055,7 +2099,8 @@ var ZanderCatalog = [
     "name": "Beatrice Oval Gemstone Pendant Necklace Silver Sapphire Hydro",
     "price": null,
     "stock": false,
-    "url": "https://www.zander88llc.net/product-page/beatrice-oval-gemstone-pendant-necklace-silver-sapphire-hydro"
+    "url": "https://www.zander88llc.net/product-page/beatrice-oval-gemstone-pendant-necklace-silver-sapphire-hydro",
+    "description": "Beatrice oval gemstone pendant necklace in silver with sapphire hydro stone. Classic oval shape and cool blue tones for elegant everyday wear.\n\n• Oval gemstone pendant\n• Sapphire hydro stone\n• Silver finish\n• Elegant everyday necklace"
   },
   {
     "cat": "JEWELRY",
@@ -2067,7 +2112,8 @@ var ZanderCatalog = [
     "name": "Petite Drop Necklace Gold Amethyst Hydro",
     "price": null,
     "stock": false,
-    "url": "https://www.zander88llc.net/product-page/petite-drop-necklace-gold-amethyst-hydro"
+    "url": "https://www.zander88llc.net/product-page/petite-drop-necklace-gold-amethyst-hydro",
+    "description": "Petite drop necklace in gold with amethyst hydro stone. A delicate drop silhouette with soft purple sparkle—light, feminine, and easy to wear daily.\n\n• Petite drop pendant\n• Amethyst hydro stone\n• Gold finish\n• Delicate everyday jewelry"
   },
   {
     "cat": "JEWELRY",
@@ -2079,7 +2125,8 @@ var ZanderCatalog = [
     "name": "Heart Mum Pendant Necklace Silver",
     "price": 134,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/heart-mum-pendant-necklace-silver"
+    "url": "https://www.zander88llc.net/product-page/heart-mum-pendant-necklace-silver",
+    "description": "Heart Mum pendant necklace in silver. A sweet sentimental piece made to celebrate Mum—perfect for Mother’s Day, birthdays, and meaningful everyday wear.\n\n• Heart Mum pendant\n• Silver finish\n• Sentimental gift piece\n• Everyday wearable necklace"
   },
   {
     "cat": "JEWELRY",
@@ -2091,7 +2138,8 @@ var ZanderCatalog = [
     "name": "Double Chain Amethyst Pendant Necklace",
     "price": 110.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/double-chain-amethyst-pendant-necklace"
+    "url": "https://www.zander88llc.net/product-page/double-chain-amethyst-pendant-necklace",
+    "description": "Double chain amethyst pendant necklace. Layered chain detail with cool purple amethyst tones for a modern, feminine look that works day or night.\n\n• Double chain design\n• Amethyst pendant\n• Feminine everyday styling\n• Day-to-night accessory"
   },
   {
     "cat": "JEWELRY",
@@ -2103,7 +2151,8 @@ var ZanderCatalog = [
     "name": "Joie Lover Necklace",
     "price": 116.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/joie-lover-necklace"
+    "url": "https://www.zander88llc.net/product-page/joie-lover-necklace",
+    "description": "Joie Lover necklace—a romantic everyday piece with affectionate charm. Soft, wearable, and gift-ready for anniversaries, dates, and self-love moments.\n\n• Romantic lover necklace\n• Everyday wearable design\n• Gift-ready sentimental piece\n• Soft feminine styling"
   },
   {
     "cat": "JEWELRY",
@@ -2115,7 +2164,8 @@ var ZanderCatalog = [
     "name": "Words of Love Necklace",
     "price": 129.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/words-of-love-necklace"
+    "url": "https://www.zander88llc.net/product-page/words-of-love-necklace",
+    "description": "Words of Love necklace with a heartfelt message design. A meaningful accessory for gifting someone special or keeping close as a daily reminder.\n\n• Words of Love design\n• Meaningful message jewelry\n• Everyday wearable necklace\n• Thoughtful gift piece"
   },
   {
     "cat": "JEWELRY",
@@ -2127,7 +2177,8 @@ var ZanderCatalog = [
     "name": "Zodiac Star Sign Pendant Necklace Gold Aquarius",
     "price": 122.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/zodiac-star-sign-pendant-necklace-gold-aquarius"
+    "url": "https://www.zander88llc.net/product-page/zodiac-star-sign-pendant-necklace-gold-aquarius",
+    "description": "Zodiac star sign pendant necklace in gold for Aquarius. Personal, polished, and made for everyday wear or a thoughtful birthday gift.\n\n• Aquarius zodiac pendant\n• Gold finish\n• Everyday wearable necklace\n• Meaningful personal gift"
   },
   {
     "cat": "JEWELRY",
@@ -2139,7 +2190,8 @@ var ZanderCatalog = [
     "name": "Zodiac Star Sign Pendant Necklace Gold Sagittarius",
     "price": 122.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/zodiac-star-sign-pendant-necklace-gold-sagittarius"
+    "url": "https://www.zander88llc.net/product-page/zodiac-star-sign-pendant-necklace-gold-sagittarius",
+    "description": "Zodiac star sign pendant necklace in gold for Sagittarius. A bright personal charm with gold shine—ideal for layering or wearing alone.\n\n• Sagittarius zodiac pendant\n• Gold finish\n• Everyday wearable necklace\n• Meaningful personal gift"
   },
   {
     "cat": "JEWELRY",
@@ -2151,7 +2203,8 @@ var ZanderCatalog = [
     "name": "Zodiac Star Sign Pendant Necklace Silver Capricorn",
     "price": 60.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/zodiac-star-sign-pendant-necklace-silver-capricorn"
+    "url": "https://www.zander88llc.net/product-page/zodiac-star-sign-pendant-necklace-silver-capricorn",
+    "description": "Zodiac star sign pendant necklace in silver for Capricorn. Clean silver styling with a personal star-sign pendant for everyday meaning and polish.\n\n• Capricorn zodiac pendant\n• Silver finish\n• Everyday wearable necklace\n• Meaningful personal gift"
   },
   {
     "cat": "JEWELRY",
@@ -2163,7 +2216,8 @@ var ZanderCatalog = [
     "name": "Santa Maria Extra Large Gemstone Cross Pendant Gold",
     "price": 203.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/santa-maria-extra-large-gemstone-cross-pendant-gold"
+    "url": "https://www.zander88llc.net/product-page/santa-maria-extra-large-gemstone-cross-pendant-gold",
+    "description": "Santa Maria extra large gemstone cross pendant in gold tone. A bold faith-inspired statement piece with gemstone detail for elevated everyday or occasion wear.\n\n• Extra large cross pendant\n• Gemstone detailing\n• Gold tone finish\n• Bold statement jewelry"
   },
   {
     "cat": "JEWELRY",
@@ -2188,7 +2242,8 @@ var ZanderCatalog = [
     "name": "Brazalete Vintange Plata",
     "price": 17.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/brazalete-vintange-plata"
+    "url": "https://www.zander88llc.net/product-page/brazalete-vintange-plata",
+    "description": "Vintage-inspired silver bracelet (Brazalete Vintage Plata). Classic metal shine with timeless character—pair with casual outfits or dress looks for an easy polished finish.\n\n• Vintage-inspired silver bracelet\n• Classic everyday accessory\n• Easy stack or solo wear\n• Timeless metal finish"
   },
   {
     "cat": "JEWELRY",
@@ -2200,7 +2255,8 @@ var ZanderCatalog = [
     "name": "2.00 CTW Natural Swiss Blue Topaz Stud Earrings in 14K Yellow Gold",
     "price": 389.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/2-00-ctw-natural-swiss-blue-topaz-stud-earrings-in-14k-yellow-gold"
+    "url": "https://www.zander88llc.net/product-page/2-00-ctw-natural-swiss-blue-topaz-stud-earrings-in-14k-yellow-gold",
+    "description": "2.00 CTW natural Swiss blue topaz stud earrings in 14K yellow gold. Bright blue gemstone sparkle set in solid gold for everyday elegance and special occasions.\n\n• 2.00 CTW Swiss blue topaz\n• Natural gemstone studs\n• 14K yellow gold\n• Everyday & occasion wear"
   },
   {
     "cat": "JEWELRY",
@@ -2212,7 +2268,8 @@ var ZanderCatalog = [
     "name": "Antique Gold Plated Snake Industrial Barbell",
     "price": 20.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/antique-gold-plated-snake-industrial-barbell"
+    "url": "https://www.zander88llc.net/product-page/antique-gold-plated-snake-industrial-barbell",
+    "description": "Antique gold plated snake industrial barbell. A bold body jewelry piece with serpent detailing and vintage gold tone for an edgy, standout look.\n\n• Snake industrial barbell\n• Antique gold plated finish\n• Bold statement body jewelry\n• Edgy everyday styling"
   },
   {
     "cat": "JEWELRY",
@@ -2237,7 +2294,8 @@ var ZanderCatalog = [
     "name": "2.00 CTW Natural Red Garnet Stud Earrings in 14K Yellow Gold - Handcrafted USA",
     "price": 389.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/2-00-ctw-natural-red-garnet-stud-earrings-in-14k-yellow-gold-handcrafted-usa"
+    "url": "https://www.zander88llc.net/product-page/2-00-ctw-natural-red-garnet-stud-earrings-in-14k-yellow-gold-handcrafted-usa",
+    "description": "2.00 CTW natural red garnet stud earrings in 14K yellow gold—handcrafted in the USA. Deep red gemstone color with solid gold settings for classic, lasting elegance.\n\n• 2.00 CTW natural red garnet\n• 14K yellow gold studs\n• Handcrafted in the USA\n• Classic everyday & occasion wear"
   },
   {
     "cat": "JEWELRY",
@@ -2262,7 +2320,8 @@ var ZanderCatalog = [
     "name": "Pink Wink Celebration Multi Charm Necklace",
     "price": 33.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/pink-wink-celebration-multi-charm-necklace"
+    "url": "https://www.zander88llc.net/product-page/pink-wink-celebration-multi-charm-necklace",
+    "description": "Pink Wink celebration multi charm necklace. Playful layered charms in a festive pink-inspired look—perfect for parties, birthdays, and joyful everyday style.\n\n• Multi charm necklace\n• Pink Wink celebration design\n• Playful festive styling\n• Fun gift-ready piece"
   },
   {
     "cat": "JEWELRY",
@@ -2274,7 +2333,8 @@ var ZanderCatalog = [
     "name": "15 CTW Lab Created Moissanite Tennis Necklace - G-H Color, SI Clarity",
     "price": 355.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/15-ctw-lab-created-moissanite-tennis-necklace-g-h-color-si-clarity"
+    "url": "https://www.zander88llc.net/product-page/15-ctw-lab-created-moissanite-tennis-necklace-g-h-color-si-clarity",
+    "description": "15 CTW lab-created moissanite tennis necklace in G-H color with SI clarity. Continuous brilliant sparkle for formal events, evenings, and elevated everyday glam.\n\n• 15 CTW lab-created moissanite\n• Tennis necklace design\n• G-H color, SI clarity\n• Brilliant occasion-ready sparkle"
   },
   {
     "cat": "HOUSEHOLD",
@@ -2406,8 +2466,7 @@ var ZanderCatalog = [
     "name": "Inverness - Walnut & Black Leather",
     "price": 80,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/inverness-walnut-black-leather"
+    "url": "https://www.zander88llc.net/product-page/inverness-walnut-black-leather",
+    "description": "Inverness watch with walnut wood detailing and a black leather strap. Natural texture meets clean modern styling for an everyday timepiece with quiet sophistication.\n\n• Walnut wood detailing\n• Black leather strap\n• Everyday refined styling\n• Natural modern look"
   }
-];
-if (typeof window !== 'undefined') window.ZanderCatalog = ZanderCatalog;
-if (typeof module !== 'undefined' && module.exports) module.exports = ZanderCatalog;
+]
