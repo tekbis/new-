@@ -10,7 +10,8 @@ var ZanderCatalog = [
     "name": "Midnight Renewal Emulsified Foaming Sugar Scrub – Holiday Super Size (24 Oz)",
     "price": 34,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/midnight-renewal-emulsified-foaming-sugar-scrub-holiday-super-size-24-oz"
+    "url": "https://www.zander88llc.net/product-page/midnight-renewal-emulsified-foaming-sugar-scrub-holiday-super-size-24-oz",
+    "description": "A luxurious spa-style sugar scrub that gently exfoliates, foams on contact with water, and rinses clean without stripping your skin. Leaves skin silky-smooth, glowing, and deeply nourished.\n\nBenefits\n\n• Gently exfoliates & smooths\n\n• Emulsified + foaming (no oily tub)\n\n• Hydrates while cleansing\n\n• Perfect for winter dry skin"
   },
   {
     "cat": "HOUSEHOLD",
@@ -22,7 +23,8 @@ var ZanderCatalog = [
     "name": "Apricot Body Scrub",
     "price": 17,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/apricot-body-scrub"
+    "url": "https://www.zander88llc.net/product-page/apricot-body-scrub",
+    "description": "Do you want to pamper your skin with a luxurious body scrub?\n\nIndulge in the gentle exfoliation of our Apricot Body Scrub, meticulously crafted with apricot seeds and Himalayan salt to refine skin texture. Enriched with a luxurious blend of almond, oat, sunflower, coconut, and avocado oils, this all-natural formula nourishes while it polishes, making it suitable for use from neck to toe. Available in two refined fragrances, each 8oz jar delivers a spa-quality experience that honors both your skin and the integrity of natural ingredients.\n\nFEATURES:🌿All-Natural: Our Apricot Body Scrub is formulated with all-natural ingredients like Apricot Seeds, Himalayan Salt, Almond Oil, Oat Oil, Sunflower |Coconut Oil, Avocado Oil, and Fragrance Oil (Perfume).\n🧴Gentle: Gentle enough to be used head to toe, this body scrub is perfect for all skin types.\n💧Moisturizing: Our Apricot Body Scrub is enriched with hydrating oils like Almond Oil, Oat Oil, Sunflower |Coconut Oil, and Avocado Oil for a deeply nourishing experience.\n\nSPECIFICATIONS:- 8oz jar\n- Two different fragrances\n- All-natural ingredients\n\nHOW IT WORKS:Apricot Body Scrub is easy to use. Simply scoop a small amount of scrub onto your hands, massage it into your skin, and rinse it off with warm water. Use it once or twice a week for a deeply nourishing experience."
   },
   {
     "cat": "HOUSEHOLD",
@@ -34,7 +36,8 @@ var ZanderCatalog = [
     "name": "Repair System",
     "price": 70.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/repair-system"
+    "url": "https://www.zander88llc.net/product-page/repair-system",
+    "description": "Transform damaged, stressed hair with our complete Repair System. This luxurious duo combines the deep conditioning power of our Intensive Hair Mask with the daily nourishment of our Silk Therapy Conditioner for the ultimate hair restoration experience.\n\nPerfect for those seeking comprehensive hair repair, this system works synergistically to rebuild strength, restore moisture, and revive your hair's natural beauty. The intensive mask provides weekly deep treatment while the silk conditioner maintains softness and manageability every day.\n\nWhat's Included:\n\n• Deep Repair Hair Masque (12oz) - Deep conditioning treatment\n\n• Silk Therapy Conditioner (12oz) - Daily softening conditioner\n\nComplete System Benefits:\n\n• Repairs and strengthens damaged hair\n\n• Restores moisture and elasticity\n\n• Smooths frizz and enhances shine\n\n• Detangles and improves manageability\n\n• Perfect for dry, color-treated, or chemically processed hair\n\nUse the Intensive Hair Mask weekly for deep repair, and the Silk Therapy Conditioner daily for ongoing nourishment and protection."
   },
   {
     "cat": "HOUSEHOLD",
@@ -46,7 +49,8 @@ var ZanderCatalog = [
     "name": "Shower Steamers",
     "price": 21,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/shower-steamers"
+    "url": "https://www.zander88llc.net/product-page/shower-steamers",
+    "description": "Do you ever feel like you need a vacation, but you can't get away?\n\nBring the vacation to you with our shower steamers! Our eucalyptus shower steamer will transport you to a far-off, exotic land with its refreshing, calming scent. Just place the steamer on the floor of your shower, out of the direct stream of water, and enjoy!\n\nOur shower steamers are also available in various other scents, so you can choose the perfect one for your mood. Whether you're looking to relax, rejuvenate, or just escape the everyday, we have a scent for you.\n\nFeatures & Benefits:\n\n-Refreshing, calming scent: Our eucalyptus shower steamer will transport you to a far-off, exotic land with its refreshing, calming scent.\n\n-Available in various other scents: Whether you're looking to relax, rejuvenate, or just escape the everyday, we have a scent for you.\n\nHow it works:\n\nJust place the steamer on the floor of your shower, out of the direct stream of water, and enjoy!"
   },
   {
     "cat": "HOUSEHOLD",
@@ -58,7 +62,8 @@ var ZanderCatalog = [
     "name": "Simply Lavender Soy Aromatherapy Candle",
     "price": 13,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/simply-lavender-soy-aromatherapy-candle"
+    "url": "https://www.zander88llc.net/product-page/simply-lavender-soy-aromatherapy-candle",
+    "description": "This candle is a friendly reminder around your house or workspace, that everything just isn't worth your beautiful energy. Light this up and relax with this lavender scented candle!\n\nCandles are made simple: they're all made with a beautiful blend of renewable, vegan, order less coconut and apricot wax, high quality fragrance oils, and organic cotton wicks.\n\nThe fragrances we use are paraben-free, phthalate-free, and not tested on animals!\n\nScent notes: Lavender Size: 9oz Glass jar with lid Wax:\n\nCoconut apricot wax blend candle\n\nDimensions 1.5x1.5x2 80+ hr. burn time\n\n*Gift Set Comes with 4 Bath Bombs*"
   },
   {
     "cat": "HOUSEHOLD",
@@ -70,7 +75,8 @@ var ZanderCatalog = [
     "name": "Essentials Self Care Kit (7-Piece Set)",
     "price": 60,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/essentials-self-care-kit-7-piece-set"
+    "url": "https://www.zander88llc.net/product-page/essentials-self-care-kit-7-piece-set",
+    "description": "Self-care isn’t always fancy, 10-step routines. Sometimes, the best thing you can do for yourself is keep it simple and fuss-free. This Simple Self-Care Kit has everything you need for an easy skincare routine that gets the job done and leaves you feeling fresh and clean.\n\nChoose between our Balance (Oily, Combination Skin), Calm (Sensitive, Acne-prone Skin), Hydrate (Dry Skin), Timeless (Mature Skin), and Shine (Normal/Dull Skin) sets. Not sure what products suit your skin type? Take our quiz !\n\nFor every set sold, we plant a tree through . Learn more .\n\nIncludes: (1) Cleansing Bar, (1) Face Salve, (1) Lip Balm, (1) Deodorant, (1) Bamboo Toothbrush, (1) Floss, (1) Set of Cotton Buds"
   },
   {
     "cat": "JEWELRY",
@@ -82,7 +88,8 @@ var ZanderCatalog = [
     "name": "Unityth - Geometric Retro Round Vintage Fashion Aviator Sunglasses",
     "price": 23.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/unityth-geometric-retro-round-vintage-fashion-aviator-sunglasses"
+    "url": "https://www.zander88llc.net/product-page/unityth-geometric-retro-round-vintage-fashion-aviator-sunglasses",
+    "description": "• Frame Material: Plastic\n\n• Lens Material: PC\n\n• Lens Width: 55mm\n\n• Lens Height: 47mm\n\n• Bridge Width: 16mm\n\n• Temple Length: 146mm\n\n• 100% UVA & UVB Protection\n\n• One size fits most"
   },
   {
     "cat": "JEWELRY",
@@ -94,7 +101,8 @@ var ZanderCatalog = [
     "name": "Glammed in Crystals Sunglasses",
     "price": 30,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/glammed-in-crystals-sunglasses"
+    "url": "https://www.zander88llc.net/product-page/glammed-in-crystals-sunglasses",
+    "description": "PRODUCT DETAILS\n\n• Oversized Square Shape\n\n• Beautiful Framed Crystals\n\n• UV 400 Protection\n\n• Comfortable Fit\n\n• Lead & Nickel Compliant\n\n• One Size Fit All\n\n• Case Included\n\nSHIPPING TIME: 1-3 Business Days)"
   },
   {
     "cat": "JEWELRY",
@@ -106,7 +114,8 @@ var ZanderCatalog = [
     "name": "Titanium Aviators - V2 - Changeable Lenses",
     "price": 179.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/titanium-aviators-v2-changeable-lenses"
+    "url": "https://www.zander88llc.net/product-page/titanium-aviators-v2-changeable-lenses",
+    "description": "We present our new TITAN V2. Our take on the aviator model is a luxurious and very lightweight version and is made of high quality titanium. This best selling pair of eyewear has a patented mechanism that makes it easy to change lenses without hazzle so that you can change between a wide selection of colorful and polarized lenses. If you are looking for a pair of sunglasses that would fit any outfit we would definitely tell you to go for a pair of Titan Aviators.\n\nMany sunglasses out there can't take any damage without breaking and are often heavily over prized. We wanted to find a way to make our version as durable as we could, and at the same time keep the frame as thin and delicate as they should be. After a lot of testing we found that titanium is the perfect material for sunglasses due to it's high strength-to-weight-ratio. Even though they are delicate they are extremely durable. Add extreme temperature and corrosion resistance and you have the perfect material for a pair of high caliber sunglasses.\n\nWe dare to say that the lenses are the most important part of a pair of sunglasses. And of course we wanted to make sure that they match the high quality of the titanium frames? We have searched long and hard to find the right lenses and are proud to present the optics for our Titanium Aviator Sunglasses.\n\nFirst off we use 5 layer polarized lenses that effectively reduces glare, eliminating dazzling light reflection and scattered light which makes the vision more soft and clear. The Polaroid lenses have seven layers composite materials with UV400 ultraviolet ray standard. This means that they block all wavelengths of light from 400 nm, which covers all of the UV spectrum. The first and last layer features a clear and durable scratch-resistant layer to avoid any damage you expose them to.\n\n• SUPER light, weigh only 14 grams.\n\n• Hyper-extendable german OBE hinges.\n\n• Polarized lenses UV400, 100% UVA/UVB-protection.\n\n• Strong 5 layer lenses.\n\n• Flexible and durable.\n\n• 100% real grade 5 titanium.\n\n• Rubber Ear rests .\n\n• New easy technique for lens change.\n\nOur Titan collection is made specifically for those who love to mix and match and to get the most of their purchase. Instead of spending huge amounts of money we give you the possibility to change up the appearance of your sunglasses. Every pair of our Titan sunglasses comes with an exclusive PU leather box that easily can be folded so it does't take up any space when you have your shades on!"
   },
   {
     "cat": "JEWELRY",
@@ -142,7 +151,8 @@ var ZanderCatalog = [
     "name": "Snap - Chic Square Flat Top Fashion Sunglasses for Women",
     "price": null,
     "stock": false,
-    "url": "https://www.zander88llc.net/product-page/snap-chic-square-flat-top-fashion-sunglasses-for-women"
+    "url": "https://www.zander88llc.net/product-page/snap-chic-square-flat-top-fashion-sunglasses-for-women",
+    "description": "Cramilo chic flat top square sunglasses offer a perfect blend of trendy style and essential sun protection. These sunglasses feature a distinctive square frame with a flat top, adding a touch of modern edge to your look. Cramilo Flat Top women's sunglasses boast UVA and UVB protection, shielding your eyes from the sun's harmful rays. The women's sunglasses feature polycarbonate lenses which are durable and impact-resistant and make them less likely to scratch or break, even with daily wear and tear. The sunglasses come in a complete stylish packaging box, with a microfiber cleaning cloth and pouch. Cramilo chic flat-top square sunglasses are a stylish and affordable option for women who want to protect their eyes from the sun.\n\n𝐏𝐑𝐎𝐃𝐔𝐂𝐓 𝐅𝐄𝐀𝐓𝐔𝐑𝐄𝐒:\n\n• Plastic frames are lightweight and durable which are easy to carry\n• Square design is a classic and trendy style that flatters many face shapes\n• Hand-finished plastic frames with metal hinges\n• Polycarbonate lenses are impact-resistant and lightweight, making them a good choice\n• 100% UVA and UVB protection to protect your eyes from the sun's harmful rays\n• Sunglasses are designed to be stylish and trendy\n• Case & Pouch Included\n• Ships from California, USA!\n\n𝐌𝐄𝐀𝐒𝐔𝐑𝐄𝐒:\n\n• Frame Width: 146mm\n• Lens Width: 52mm\n• Lens Height: 50mm\n• Bridge Width: 21mm\n• Temple Length: 141mm\n\n𝐒𝐐𝐔𝐀𝐑𝐄 𝐅𝐋𝐀𝐓 𝐓𝐎𝐏 𝐃𝐄𝐒𝐈𝐆𝐍: The flat top square design sunglasses are easy to match with your outfit, highlight your charm and trendy in the crowd. Perfect for both casual outings and special occasions, these sunglasses are a versatile accessory.\n\n𝐌𝐔𝐋𝐓𝐈𝐏𝐋𝐄 𝐂𝐎𝐋𝐎𝐑 𝐎𝐏𝐓𝐈𝐎𝐍: Cramilo fashion offers a variety of frame and lens color combinations, you can find the perfect pair to match your personal style. With multiple color options are available, allowing you to complement your style and taste.\n\n𝟏𝟎𝟎% 𝐔𝐕𝐀 & 𝐔𝐕𝐁 𝐏𝐑𝐎𝐓𝐄𝐂𝐓𝐈𝐎𝐍: UVA & UVB PROTECTION feature is for protecting your eyes from the sun's harmful ultraviolet rays. By blocking both UVA and UVB rays, these sunglasses help safeguard your eye health in the long term.\n\n𝐏𝐎𝐋𝐘𝐂𝐀𝐑𝐁𝐎𝐍𝐀𝐓𝐄 𝐋𝐄𝐍𝐒: The sunglasses are equipped with polycarbonate lenses that provide excellent clarity and visual protection. It's lightweight and impact-resistant, making it comfortable to wear and hard to break if dropped.\n\n𝐃𝐔𝐑𝐀𝐁𝐋𝐄 𝐀𝐍𝐃 𝐋𝐈𝐆𝐇𝐓𝐖𝐄𝐈𝐆𝐇𝐓 𝐅𝐑𝐀𝐌𝐄: Crafted with a sturdy plastic frame, these sunglasses are built to last. The plastic material ensures durability while keeping the glasses lightweight for comfortable all-day wear.\n\n𝐂𝐀𝐑𝐄𝐅𝐔𝐋 𝐏𝐀𝐂𝐊𝐀𝐆𝐈𝐍𝐆: Each pair of sunglasses undergoes meticulous quality inspection before shipment. They are elegantly presented in a stylish packaging box, complete with a microfiber cleaning cloth and pouch, making them an ideal gift."
   },
   {
     "cat": "JEWELRY",
@@ -154,7 +164,8 @@ var ZanderCatalog = [
     "name": "Luminara - Retro Round Cat Eye Women Fashion Sunglasses",
     "price": 20,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/luminara-retro-round-cat-eye-women-fashion-sunglasses"
+    "url": "https://www.zander88llc.net/product-page/luminara-retro-round-cat-eye-women-fashion-sunglasses",
+    "description": "Discover the essence of style with our Chic Women's retro round cat eye sunglasses, a perfect fusion of timeless elegance and modern flair. Crafted with high-quality polycarbonate lenses, these sunglasses offer impeccable clarity and scratch resistance, while providing essential UV protection against the sun's harmful rays. The iconic round cat eye design complements any face shape, making it a versatile choice for all your fashion needs. Embrace the blend of fashion and function with these must-have chic shades.\n\n𝐏𝐑𝐎𝐃𝐔𝐂𝐓 𝐅𝐄𝐀𝐓𝐔𝐑𝐄𝐒:\n\n• Plastic frames are lightweight and durable which are easy to carry\n• Retro round cat eye design is a classic and trendy style that flatters many face shapes\n• Hand-finished plastic frames with metal hinges\n• Polycarbonate lenses are impact-resistant and lightweight, making them a good choice\n• 100% UVA and UVB protection to protect your eyes from the sun's harmful rays\n• Sunglasses are designed to be stylish and trendy\n• Case & Pouch Included\n• Ships from California, USA!\n\n𝐌𝐄𝐀𝐒𝐔𝐑𝐄𝐒:\n\n• Frame Width: 150mm\n• Lens Width: 50mm\n• Lens Height: 38mm\n• Bridge Width: 27mm\n• Temple Length: 140mm\n\n𝐅𝐀𝐒𝐇𝐈𝐎𝐍-𝐅𝐎𝐑𝐖𝐀𝐑𝐃 𝐃𝐄𝐒𝐈𝐆𝐍: The round cat eye frame combines a vintage vibe with a modern twist, making these sunglasses a trendy accessory for any outfit.\n\n𝐃𝐈𝐕𝐄𝐑𝐒𝐄 𝐂𝐎𝐋𝐎𝐑 𝐒𝐄𝐋𝐄𝐂𝐓𝐈𝐎𝐍: Choose from an array of frame and lens colors to find the perfect match for your personal flair.\n\n𝐕𝐄𝐑𝐒𝐀𝐓𝐈𝐋𝐄 𝐒𝐓𝐘𝐋𝐄: Cramilo Cat-Eye Sunglasses are the epitome of versatile fashion. They're the go-to accessory that effortlessly transitions from casual to formal.\n\n𝐏𝐑𝐄𝐌𝐈𝐔𝐌 𝐏𝐀𝐂𝐊𝐀𝐆𝐈𝐍𝐆: Each pair is carefully inspected and arrives in sophisticated packaging with a microfiber cleaning cloth and a protective pouch.\n\n𝐓𝐇𝐄 𝐈𝐃𝐄𝐀𝐋 𝐆𝐈𝐅𝐓: Whether for a birthday, anniversary or just because, Cramilo sunglasses are a thoughtful present that combines practicality with style."
   },
   {
     "cat": "MEN'CLOTHING",
@@ -190,7 +201,8 @@ var ZanderCatalog = [
     "sizePrices": {
       "3XL": 26,
       "2XL": 24
-    }
+    },
+    "description": "This amazing tee features one of the most famous Dalí masterpieces: 'Figura en una finestra'. This view would appear in other paintings made by the artist, and It shows the painter's sister Ana Maria, seen from behind in front of a window at Cadaqués.\n\nOur super soft and smooth jersey t shirt fits like a well-loved favorite, featuring a crew neck, short sleeves and designed with superior combed and ring-spun cotton. Main features include:\n\n• 4.3 oz/yd *women's tees are fitted. check our size chart*\n• 100% Combed Ring Spun Cotton (Heather 10% Polyester)\n• Preshrunk jersey knit Fabric 32/1\n• Side seamed\n• Shoulder-to-shoulder tape and seamed collar\n• Double-needle sleeve and bottom hems\n• Oeko-Tex® Standard 100 Certified"
   },
   {
     "cat": "HOUSEHOLD",
@@ -202,7 +214,8 @@ var ZanderCatalog = [
     "name": "Lilac and Lavender Spa Gift Basket for Women",
     "price": 45,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/lilac-and-lavender-spa-gift-basket-for-women"
+    "url": "https://www.zander88llc.net/product-page/lilac-and-lavender-spa-gift-basket-for-women",
+    "description": "A Calming Retreat in a Box\n\nUnwind, relax, and restore with this luxurious Lilac & Lavender Spa Gift Basket — a soothing self-care experience designed for women who deserve pure tranquility. Each item is infused with the calming aromas of fresh lilac blossoms and gentle lavender, blending floral sweetness with herbal serenity for the ultimate spa-at-home ritual.\n\n🧺 Includes:• Whipped Body Butter (4oz) – Deeply moisturizing with shea and cocoa butter to leave skin soft and glowing.\n\n• Relaxing Bath Soak (8oz) – A mineral-rich blend of Epsom salt, lavender buds, and lilac essence.\n\n• Aromatic Candle (8oz) – Hand-poured coconut-apricot wax candle with calming lavender essential oil.\n\n• Hydrating Body Lotion (4oz pump) – Lightweight, fast-absorbing formula for daily use.\n\n• Loofah Sponge – Natural exfoliation to polish and renew the skin.\n\n• Optional Add-ons: Lavender bath bomb, lip balm, or silk eye mask.\n\n💜 Highlights:• 100% Handmade with clean, cruelty-free ingredients\n\n• Subtle floral fragrance that soothes the senses\n\n• Perfect for birthdays, holidays, anniversaries, or “just because” moments\n\n• Packaged in a reusable basket or kraft gift box with ribbon"
   },
   {
     "cat": "MEN'CLOTHING",
@@ -214,7 +227,8 @@ var ZanderCatalog = [
     "name": "Miami Shop Snapback",
     "price": 25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/miami-shop-snapback"
+    "url": "https://www.zander88llc.net/product-page/miami-shop-snapback",
+    "description": "• Firm Front Panel • Vibrant Printing • 5 panel cap • 100% Cotton • Comfort Fit Visor • 6 Rows Stitching on Visor • Matching Fabric Undervisor • Matching Color Sweatband • Plastic Adjustable Snap • Size: OSFM"
   },
   {
     "cat": "JEWELRY",
@@ -226,7 +240,8 @@ var ZanderCatalog = [
     "name": "Old English Zodiac Necklace",
     "price": 15,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/old-english-zodiac-necklace"
+    "url": "https://www.zander88llc.net/product-page/old-english-zodiac-necklace",
+    "description": "Now trending: zodiac names in an Olde English font. Each zodiac is beautifully lettered in a classy font, made with a dense, high-quality metal. Great to wear on its own or layer with any necklace in your collection!\n\n18 inch chain with 2 inch extender. Stainless steel gold plated.\n\nMade in China"
   },
   {
     "cat": "FRAGRANCE",
@@ -238,7 +253,8 @@ var ZanderCatalog = [
     "name": "BVLGARI - Man Wood Neroli Eau De Parfum Spray",
     "price": 116,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/bvlgari-man-wood-neroli-eau-de-parfum-spray"
+    "url": "https://www.zander88llc.net/product-page/bvlgari-man-wood-neroli-eau-de-parfum-spray",
+    "description": "A woody floral fragrance for modern men\nFresh, spicy, sweet, elegant, warm & appealing\nTop notes are bergamot & neroli\nMiddle notes are orange blossom, Virginia cedar & cypriol oil or nagarmotha\nBase notes are leather, white musk, amber, ambergris & woody accord\nLaunched in 2019\nRecommended for spring or summer wear\n\n783320403897"
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -255,7 +271,8 @@ var ZanderCatalog = [
       "S",
       "M",
       "L"
-    ]
+    ],
+    "description": "A fluid halter maxi dress that plays with contrast and confidence. Cut in a lightweight, ivory-toned fabric scattered with classic black polka dots, the silhouette feels effortless from a distance and sharply intentional up close. The plunging neckline draws the eye downward to a fitted lace corset panel at the waist, cinching the body and introducing a darker, seductive tension against the softness of the print.\n\nThe open back reveals clean lines and bare skin, balanced by the gentle drape of the skirt as it moves with ease and weightless flow. Feminine, nostalgic, and quietly provocative, this piece reinterprets a timeless motif through a distinctly modern lens.\n\nDesigned for evenings that blur elegance and attitude—playful, composed, and unmistakably bold."
   },
   {
     "cat": "FRAGRANCE",
@@ -267,7 +284,8 @@ var ZanderCatalog = [
     "name": "VERSACE - Eros Eau De Parfum Spray",
     "price": 127.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/versace-eros-eau-de-parfum-spray"
+    "url": "https://www.zander88llc.net/product-page/versace-eros-eau-de-parfum-spray",
+    "description": "A floral woody fragrance for contemporary women\nCrisp, bright, sensual, feminine & voluptuous\nTop notes of Sicilian lemon, Calabrian bergamot & pomegranate accords\nHeart notes of lemon, sambac jasmine absolute, jasmine & peony\nBase notes of sandalwood, ambrox, musk & woody accords\n8011003823529"
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -322,7 +340,8 @@ var ZanderCatalog = [
     "name": "Brangio Luxurious Spinner Luggage",
     "price": 314.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/brangio-luxurious-spinner-luggage"
+    "url": "https://www.zander88llc.net/product-page/brangio-luxurious-spinner-luggage",
+    "description": "W-15\" H-22\" SL-8\"\n\nTravel in elegance with this stunning spinner luggage, featuring a glossy finish adorned with delicate stud accents. Designed to turn heads, this suitcase combines premium style with exceptional functionality. The spacious interior is organized with compartments to securely store your belongings, while the smooth spinner wheels and telescopic handle provide effortless maneuverability.\n\nKey Features:\n\n• Durable glossy finish with a sophisticated studded design\n\n• Smooth 360-degree spinner wheels for easy mobility\n\n• Telescopic handle for a comfortable grip\n\n• Spacious interior with multiple compartments for organization\n\n• Secure zippered closure for added safety\n\nMake every journey a fashionable adventure with this statement-making luggage piece."
   },
   {
     "cat": "TRAVEL/LUGGAGE",
@@ -334,7 +353,8 @@ var ZanderCatalog = [
     "name": "Brangio  Luxurious Glossy Trolley Bag",
     "price": 314.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/brangio-luxurious-glossy-trolley-bag"
+    "url": "https://www.zander88llc.net/product-page/brangio-luxurious-glossy-trolley-bag",
+    "description": "W: 14.5\" H: 9.75\" Side: 5.5\" Handle: 6\" + Complimentary Adjustable Shoulder Strap\n\nTravel in unparalleled style with this luxurious glossy trolley bag. Featuring a high-shine finish and adorned with a striking regal emblem, this bag is the perfect blend of elegance and functionality. Equipped with a sturdy retractable handle and smooth-rolling wheels, it ensures effortless mobility. The spacious interior and front compartment provide ample storage for your essentials, making it ideal for both business trips and leisure travel.\n\nKey Features:\n\n• High-gloss finish for a sophisticated, premium look\n\n• Regal emblem detailing for a distinctive and elegant touch\n\n• Sturdy retractable handle for convenient maneuverability\n\n• Smooth-rolling wheels for effortless travel\n\n• Spacious interior with a secure zip closure to keep belongings organized\n\n• Front compartment for easy access to essentials\n\n• Durable construction for long-lasting use\n\nMake every journey a stylish statement with this stunning trolley bag."
   },
   {
     "cat": "TRAVEL/LUGGAGE",
@@ -346,7 +366,8 @@ var ZanderCatalog = [
     "name": "Arosa Glam Luxe Spinner Luxury Luggage",
     "price": 268,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/arosa-glam-luxe-spinner-luxury-luggage"
+    "url": "https://www.zander88llc.net/product-page/arosa-glam-luxe-spinner-luxury-luggage",
+    "description": "Travel in style with the Glam Luxe Spinner Luggage, where sophistication meets practicality. Perfectly designed for those who seek luxury and convenience on their journeys.\n\nKey Features:\n\n• Luxurious Finish: Stunning glossy crocodile-texture exterior in deep purple, accented with a sparkling rhinestone front panel for a bold, glamorous look.\n\n• Durable Build: Made from high-quality materials to ensure durability and long-lasting beauty.\n\n• Smooth Mobility: Equipped with 360-degree spinner wheels and a telescopic handle for effortless navigation.\n\n• Spacious Interior: Fully lined with compartments for organized packing and a secure zipper closure.\n\n• Secure Storage: Includes TSA-approved locks for peace of mind during travel.\n\nRedefine your travel experience with the Glam Luxe Spinner Luggage – a perfect blend of elegance and functionality for the discerning traveler.\n\n• W-15\" H-22\" SL-8\""
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -365,7 +386,8 @@ var ZanderCatalog = [
       "M",
       "L",
       "XL"
-    ]
+    ],
+    "description": "Length: Ankle length. Subcategory: Pants. Leg: Flare. Style: Urban. Detail: Belt loops. Fabric: Faux leather. Pockets: Five pockets. Zipper: Zip fastening. Product details: Functional pockets. runs small. S.\n\n20% Polyester 76% Viscose 5% Elastane"
   },
   {
     "cat": "Electronics",
@@ -400,7 +422,8 @@ var ZanderCatalog = [
       "XS": 106.75,
       "S": 106.75,
       "M": 106.75
-    }
+    },
+    "description": "Description: Sexy Chainmaille Party Dress with Deep V Neck Plunge Metal Fabric\n\nStyle: Sexy, Chainmaille, Party, Night Out, Celebrity, Red Carpet, Designer,\n\n Size: XS, S, M, L (please review the measurement chart below) Measurements are in CentimetersXS: Bust: 82 Waist: 64 Hips: 84 S: Bust: 86 Waist: 68 Hips: 88 M: Bust: 90 Waist: 72 Hips: 92 L: Bust: 94 Waist: 76 Hips: 96\n\nShipping Time: 10-14 days to USA, Europe and Australia"
   },
   {
     "cat": "MEN'CLOTHING",
@@ -424,7 +447,8 @@ var ZanderCatalog = [
     "sizePrices": {
       "2XL": 32,
       "3XL": 33.5
-    }
+    },
+    "description": "This tee has Vincent's famous skeleton head artwork. It's a satirical comment on conservative academic practices. Before it was common to use live humans as models, the academic routine included the study of skeletons to develop an understanding of human anatomy.\n\nOur super soft and smooth jersey shirt fits like a well-loved favorite, featuring a crew neck, short sleeves and designed with superior combed and ring-spun cotton. Main features include:\n\n● 4.3 oz/yd\n● 100% Combed Ring Spun Cotton\n● Preshrunk jersey knit Fabric 32/1\n● Side seamed\n● Shoulder-to-shoulder tape and seamed collar\n● Double-needle sleeve and bottom hems\n● Oeko-Tex® Standard 100 Certified"
   },
   {
     "cat": "HANDBAG/PURSES",
@@ -449,7 +473,8 @@ var ZanderCatalog = [
     "name": "COACH - For Men Eau De Toilette Spray",
     "price": 85,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/coach-for-men-eau-de-toilette-spray"
+    "url": "https://www.zander88llc.net/product-page/coach-for-men-eau-de-toilette-spray",
+    "description": "A sensual fragrance for men who love freedom & exploration\nPassionate, fresh, vibrant, warm & masculine\nTop notes of citrus & pear\nMiddle notes of cardamom & coriander\nBase notes of vetiver, suede & ambergris\nSuitable for all occasions\n3386460086325"
   },
   {
     "cat": "FRAGRANCE",
@@ -461,7 +486,8 @@ var ZanderCatalog = [
     "name": "CHRISTIAN DIOR - Dior Homme Cologne Spray",
     "price": 179,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/christian-dior-dior-homme-cologne-spray"
+    "url": "https://www.zander88llc.net/product-page/christian-dior-dior-homme-cologne-spray",
+    "description": "A citrus fragrance for men\nCrisp, sharp, simple, natural & invigorating\nTop note of Calabrian bergamot\nHeart note of Italian grapefruit blossom\nBase note of musk\nLaunched in 2013\nSuitable for day time or spring/summer wear\n3348901242424"
   },
   {
     "cat": "FRAGRANCE",
@@ -473,7 +499,8 @@ var ZanderCatalog = [
     "name": "CHLOE - Eau De Parfum Spray",
     "price": 122.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/chloe-eau-de-parfum-spray"
+    "url": "https://www.zander88llc.net/product-page/chloe-eau-de-parfum-spray",
+    "description": "An oriental floral fragrance for modern women\nClassy, crisp, elegant, feminine & voluptuous\nTop notes of peony, freesia & litchi\nHeart notes of rose, Lily-of-the-Valley & magnolia\nBase notes of Virginia cedar & amber\nLaunched in 2008\nPerfect for all occasions\n3614220808840"
   },
   {
     "cat": "MEN'CLOTHING",
@@ -493,7 +520,8 @@ var ZanderCatalog = [
       "XL",
       "2XL",
       "3XL"
-    ]
+    ],
+    "description": "Introducing our Heritage Explorer Hoodie – a timeless classic designed for your next outdoor escapade! Crafted with care, this hoodie combines comfort, functionality, and sustainability. These hoodies run small. Please size up 1-2 sizes, depending on your fit preference.\n\n🌟 Features:\n\n• Soft and Cozy: The 100% cotton face feels like a gentle hug against your skin. Whether you’re hiking, camping, or simply strolling along the coast, this hoodie keeps you snug.\n\n• Practical Pockets: The front pouch pocket is perfect for storing your essentials – from trail mix to your phone. Keep your hands warm or stash small treasures during your adventures.\n\n• Stylish Details: The matching flat drawstrings add a touch of sophistication, while the 3-panel hood provides extra warmth when the wind picks up.\n\n• Thoughtful Production: We create each hoodie on demand, just for you. By avoiding mass production, we reduce waste and environmental impact. Thank you for choosing conscious consumption!\n\n🔥 Embrace the outdoors with our Heritage Explorer Hoodie – because every adventure deserves comfort and purpose! 🚀\n\nSize guide\n\nCHEST WIDTH (inches)\n\nLENGTH (inches)\n\nS\n\n20\n\n27\n\nM\n\n21\n\n28\n\nL\n\n23\n\n29\n\nXL\n\n25\n\n30\n\n2XL\n\n26 ½\n\n31\n\n3XL\n\n28\n\n32\n\nCHEST WIDTH (cm)\n\nLENGTH (cm)\n\nS\n\n50.8\n\n68.6\n\nM\n\n53.3\n\n71.1\n\nL\n\n58.4\n\n73.7\n\nXL\n\n63.5\n\n76.2\n\n2XL\n\n67.3\n\n78.7\n\n3XL\n\n71.1\n\n81.3"
   },
   {
     "cat": "MEN'CLOTHING",
@@ -517,7 +545,8 @@ var ZanderCatalog = [
     "sizePrices": {
       "2XL": 55,
       "3XL": 56
-    }
+    },
+    "description": "Elevate your fashion game with our WORK HARD DREAM BIG Hoodie digitally printed hoodie, the epitome of modern chic. Designed and crafted in the USA with meticulous attention to detail, this hoodie features captivating patterns that stand out from the crowd. Embrace your happy girl spirit and wear it with pride, or gift it to a special mom who deserves nothing but the best."
   },
   {
     "cat": "MEN'CLOTHING",
@@ -542,7 +571,8 @@ var ZanderCatalog = [
       "5XL",
       "6XL",
       "7XL"
-    ]
+    ],
+    "description": "As quoted in Joshua 1:9, \"Be Brave, Be Bold, Be Courageous.\" This came from God to Joshua after he picked up where his mentor, Moses, left off. If you don't know the details of this remarkable story, look up the Holy Bible and start reading Exodus. Continue until you finish Joshua's story. Hopefully, you'll have a deeper understanding (and love) for God and what he's done for his people. If you're reading this, clearly you're one of them.\n\nAlthough this is just a sweatshirt, it makes a bold statement. Christians are living in a world that hates them and hates God's ways. We're living in an era where we cannot afford to be lukewarm (read Revelation 3:16).\n\nThis hoodie allows you to make your statement in comfort with its scuba-style fabric design.\n\nAdditional Product Specifications:\n\nFabric: Scuba (95% polyester and 5% spandex)\n\nRegular fit\n\nDrawstring, front pocket, and black inner hood\n\nFabric Weight: 230 g/m².\n\nCare Instruction: Machine wash cold with similar colors. Do not bleach. Tumble dry on low. Do not iron and do not dry clean.\n\nNotice: A variety of factors may cause slight differences between the actual product and the mock-up, including but not limited to colors and precision of elemental position. This is normal."
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -560,7 +590,8 @@ var ZanderCatalog = [
       "M",
       "L",
       "XL"
-    ]
+    ],
+    "description": "The Trois Seamless Legging is unique within our collection as it features two different fabric designs within the same legging! The colorful black and green striped design alternates with pure black ruched/stippled fabric areas, which gives these leggings style and sophistication combined with practicality of the highest level.\n\nUnique and chic style coupled with a high-compression bodycon fabric makes the Trois legging one of the best in our collection.\n\nPair it up with the Trois Black/Green Sports Bra for our Trois Two Set OR - and this is ALSO what makes this style unique - pair it with the Sports Bra AND the Trois Black/Green Jacket for that ultra-sophisticated winter Trois 3 Set look! (Sports bra and jacket pictured here but sold separately).\n\nOur model is wearing size medium.\n\nComposition & Care:\n\n• Fabric composition: 10% Spandex; 60% Nylon & 30% Polyester\n\n• Made in China\n\n• Model is wearing a size medium\n\n• Hand wash normal\n\n• Do not bleach\n\n• Line dry in the shade\n\n• Iron at low temperature\n\n• Do not dry clean"
   },
   {
     "cat": "KIDS/BABIES",
@@ -578,7 +609,8 @@ var ZanderCatalog = [
       "6m",
       "12m",
       "18m"
-    ]
+    ],
+    "description": "Let's start the wonderful journey of your little one with a gorgeous camel on his/her side! The details of gold stitching is so impeccable and irresistible, so there is no doubt that your little one will catch everybody‰۪s attention!! It makes a perfect gift too!\n\nI cut out felt pieces and they are appliqu̩d to the shirt. This infant bodysuit is made to order. It is handmade & hand-stitched with 100% love by me!"
   },
   {
     "cat": "FRAGRANCE",
@@ -602,7 +634,8 @@ var ZanderCatalog = [
     "name": "GUCCI - Bamboo Eau De Toilette Spray",
     "price": 197.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/gucci-bamboo-eau-de-toilette-spray"
+    "url": "https://www.zander88llc.net/product-page/gucci-bamboo-eau-de-toilette-spray",
+    "description": "A floral fragrance for modern women\nLight, crisp, clean, creamy, elegant & inviting\nTop notes of Sicilian bergamot, Italian mandarin, pear & orange blossom\nHeart notes of Casablanca lily, ylang-ylang & jasmine\nBase notes of ambergris, sandalwood, vanilla & white musk\nLaunched in 2016\nSuitable for spring or summer wear\n8005610295046"
   },
   {
     "cat": "FRAGRANCE",
@@ -614,7 +647,8 @@ var ZanderCatalog = [
     "name": "YVES SAINT LAURENT - Libre Eau De Parfum Spray",
     "price": 171,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/yves-saint-laurent-libre-eau-de-parfum-spray"
+    "url": "https://www.zander88llc.net/product-page/yves-saint-laurent-libre-eau-de-parfum-spray",
+    "description": "An oriental fougere fragrance for modern women\nCrisp, spicy, sweet, vibrant, sophisticated & energizing\nTop notes are mandarin orange, lavender, blackcurrant & petitgrain\nMiddle notes are jasmine, lavender & orange blossom\nBase notes are Madagascar vanilla, cedar, ambergris & musk\nLaunched in 2019\nSuitable for everyday wear & special occasions\n3614272648401"
   },
   {
     "cat": "FRAGRANCE",
@@ -626,7 +660,8 @@ var ZanderCatalog = [
     "name": "GUCCI - Bloom Eau De Parfum Spray",
     "price": 132,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/gucci-bloom-eau-de-parfum-spray"
+    "url": "https://www.zander88llc.net/product-page/gucci-bloom-eau-de-parfum-spray",
+    "description": "A floral fragrance for modern women\nCrisp, sweet, creamy, elegant, feminine & intoxicating\nTop notes of orange & green accord\nHeart notes of tuberose, honeysuckle & jasmine sambac\nBase notes of orris root, sandalwood & vanilla\nLaunched in 2017\nPerfect for all occasions\n8005610481043"
   },
   {
     "cat": "FRAGRANCE",
@@ -650,7 +685,8 @@ var ZanderCatalog = [
     "name": "GIVENCHY - Gentleman Intense Eau De Toilette Spray",
     "price": 144.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/givenchy-gentleman-intense-eau-de-toilette-spray"
+    "url": "https://www.zander88llc.net/product-page/givenchy-gentleman-intense-eau-de-toilette-spray",
+    "description": "A woody aromatic fragrance for men\nFresh, spicy, warm, powdery & charismatic\nTop notes of cardamom, basil & bergamot\nMiddle notes of cypress & iris\nBase notes of coumarin & cedar\nLaunched in 2021\nPerfect for all occasions\n\n3274872423008"
   },
   {
     "cat": "FRAGRANCE",
@@ -662,7 +698,8 @@ var ZanderCatalog = [
     "name": "GUCCI - Guilty Pour Homme Eau De Toilette Spray",
     "price": 137.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/gucci-guilty-pour-homme-eau-de-toilette-spray"
+    "url": "https://www.zander88llc.net/product-page/gucci-guilty-pour-homme-eau-de-toilette-spray",
+    "description": "A woody, aromatic fragrance for men\nCrisp, masculine, elegant & captivating\nScent opens with citrus, lavender & pink pepper\nThe heart contains orange blossom & neroli\nDries down to woody notes of patchouli, cedar & amber\nPerfect for all occasions\n\n737052339047"
   },
   {
     "cat": "FRAGRANCE",
@@ -674,7 +711,8 @@ var ZanderCatalog = [
     "name": "HERMES - Terre d'Hermes Eau De Toilette Spray",
     "price": 151.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/hermes-terre-d-hermes-eau-de-toilette-spray"
+    "url": "https://www.zander88llc.net/product-page/hermes-terre-d-hermes-eau-de-toilette-spray",
+    "description": "A plant & mineral scent combining heaven & earth\nBlends citrus accents, mineral notes of flint with plants & spices\nDesigned for men who are simple & complex, tender & determined\nTop notes of grapefruit, orange & flint\nMiddle notes of pepper, geranium leaves & patchouli\nBase notes of cedar, vetiver & benzoin\n\n3346131409914"
   },
   {
     "cat": "FRAGRANCE",
@@ -710,7 +748,8 @@ var ZanderCatalog = [
     "name": "CHRISTIAN DIOR - Sauvage Eau De Parfum Spray",
     "price": 258.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/christian-dior-sauvage-eau-de-parfum-spray"
+    "url": "https://www.zander88llc.net/product-page/christian-dior-sauvage-eau-de-parfum-spray",
+    "description": "An aromatic fougere fragrance for modern men Classy, crisp, spicy, clean, warm & uplifting Top notes of Sichuan pepper & Calabrian bergamot Heart notes of geranium, lavender, elemi, pink pepper, vetiver & patchouli Base notes of cedar, labdanum & ambroxan\n3348901368247"
   },
   {
     "cat": "FRAGRANCE",
@@ -722,7 +761,8 @@ var ZanderCatalog = [
     "name": "GUCCI - Guilty Pour Homme Eau De Parfum Spray",
     "price": 151.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/gucci-guilty-pour-homme-eau-de-parfum-spray"
+    "url": "https://www.zander88llc.net/product-page/gucci-guilty-pour-homme-eau-de-parfum-spray",
+    "description": "A woody spicy fragrance for men\nFresh, clean, warm, earthy, elegant & captivating\nTop notes are Rose, Balsamic Vinegar, Red Chilli Pepper & Salt\nMiddle notes are Orange Blossom, Lavender & Neroli\nBase notes are Cedar & Patchouli\nLaunched in 2020\nPerfect for all occasions\n\n3614229382112"
   },
   {
     "cat": "FRAGRANCE",
@@ -869,7 +909,8 @@ var ZanderCatalog = [
       "M",
       "L",
       "XL"
-    ]
+    ],
+    "description": "The high-collared zip-up Trois Seamless Sports Jacket is unique within our collection as it features two different fabric designs! The colorful black and navy striped design alternates with pure black ruched/stippled fabric areas, which gives this crop-top jacket style and sophistication combined with practicality of the highest level.\n\nIts unique and chic style makes the Trois jacket an amazing addition to your workout wardrobe.\n\nPair it up with the Trois Black/Navy Legging and Sports Bra set to make the stunning Trois 3 Set! You'll be the standout at the gym! (Leggings and sports bra pictured here but sold separately).\n\nOur model is wearing size medium.\n\nComposition & Care:\n\n• Fabric composition: 10% Spandex; 60% Nylon & 30% Polyester\n\n• Made in China\n\n• Model is wearing a size medium\n\n• Hand wash normal\n\n• Do not bleach\n\n• Line dry in the shade\n\n• Iron at low temperature\n\n• Do not dry clean"
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -886,7 +927,8 @@ var ZanderCatalog = [
       "S",
       "M",
       "L"
-    ]
+    ],
+    "description": "Mesh Detail Legging with Ribbing in Grey\n\nTake your game to the next level in our ultra-luxurious mesh leggings with ribbing detail in grey. Featuring a sturdy and form-fitting fabric to shape around your body and cutout mesh detailing for extra cooling and breathability. Look your best during your workouts or just a casual day about town.\n\nFeatures at a Glance:\n\n• High-compression fabric\n\n• Reflective protection\n\n• Moisture-resistant material\n\n• 50+ UV protection\n\n• Fashionable style\n\n• Smooth waistband for comfort\n\n• Thermal comfort\n\n• Machine washable\n\nHIGH COMPRESSION: When you really need high-performance athletic wear, you can't go wrong with Savoy Active's compression leggings. With a superior layer of support and a high waistband that shapes your core, you'll be ready for any workout, including CrossFit, running, hiking, dancing, Pilates, kickboxing, Zumba, cycling, and spin class.\n\nHIGH WAISTBAND: The high waist on these leggings forms and flatters your every move, while a seam-free outside means there\\'s nothing but smooth, sculpted legs. They shape your curves and streamline your figure naturally, making them a stylish addition to your activewear.\n\nMOISTURE WICKING: Designed to trap heat and dry quickly, these athletic leggings are effective in cold weather. Made with 92% Polyamide and 8% Elastane, they wick sweat away from your skin, and the lightweight, breathable material is great when you want to stay comfortable whatever the weather.\n\n50+ UV PROTECTION: Superior-grade fabric provides 50+ UV sun protection when you are out in direct sunlight. Blocking 98% of UV rays with the highest sun guard rating, these leggings will prevent burning and skin damage.\n\nComposition & Care\n\n• 92% Polyamide, 8% Elastane\n\n• Machine wash cold\n\n• Made in China\n\n• Model is wearing size small\n\nNote: Top or Sports Bra Not Included\n\nMEASUREMENT CHART\n\nSmall\n\nMedium\n\nLarge\n\nBACK\n\n15-16in\n38-40cm\n\n16-17in\n41-42cm\n\n17-18in\n43-44cm\n\nBUST\n\n35-37in\n90-94cm\n\n37-38in\n95-98cm\n\n39-40in\n99-102cm\n\nWAIST\n\n25-28in\n65-71cm\n\n28-31in\n72-78cm\n\n31-34in\n79-85cm\n\nLOW WAIST\n\n28-31in\n72-78cm\n\n31-34in\n77-85cm\n\n35-38in\n89-95cm\n\nHIP\n\n38-39in\n96-99cm\n\n39-42in\n100-106cm\n\n42-44in\n107-112cm\n\nHOW TO MEASURE YOUR SIZE:\n\nTo choose the correct size, measure your body as follows:\n\n• Back: Measure shoulder to shoulder.\n\n• Bust: Measure around the chest horizontally.\n\n• Waist: Measure around the waist, just above the hip bone about 2cm above the navel.\n\n• Low Waist: Measure the hip bone area, 2 cm below the navel.\n\n• Hips: Measure 20 cm below the natural waist, the most prominent area of the hip."
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -906,7 +948,8 @@ var ZanderCatalog = [
       "M",
       "L",
       "XL"
-    ]
+    ],
+    "description": "Fashionable Reflective High-Compression Leggings with Moisture-Resistant Material\n\nHIGH COMPRESSION: When you really need high-performance athletic wear, you can't go wrong with Savoy Active's compression leggings. With a superior layer of support and a high waistband that shapes your core, you'll be ready for any workout, including CrossFit, running, hiking, dancing, Pilates, kickboxing, Zumba, cycling, and spin class.\n\nREFLECTIVE FABRIC: Stay safe during hours of low light with these leggings by Savoy Active! With reflective fabric strips that run from the waist to the ankle, these leggings will keep you safe on the road, blending high-quality athleticism with premium protection. Enjoy your night-time activities outdoors, including running, hiking, cycling, and walking.\n\nHIGH WAISTBAND: The high waist on these leggings forms and flatters your every move, while a seam-free outside means there\\'s nothing but smooth, sculpted legs. They shape your curves and streamline your figure naturally, making them a stylish addition to your activewear.\n\nMOISTURE WICKING: Designed to trap heat and dry quickly, these athletic leggings are effective in cold weather. Made with 88% Polyester and 12% Elastane, they wick sweat away from your skin, and the lightweight, breathable material is great when you want to stay comfortable whatever the weather.\n\n50+ UV PROTECTION: Superior-grade fabric provides 50+ UV sun protection when you are out in direct sunlight. Blocking 98% of UV rays with the highest sun guard rating, these leggings will prevent burning and skin damage.\n\nNote: Top or Sports Bra Not Included\n\nGet your workout on in style with these high-compression leggings from Savoy Active!\n\nThe fit of these leggings is very flattering, and they work well in all temperatures. Tapered legs that stop at your ankles keep your entire leg warm for greater thermal comfort. And the reflective strip gives you extra visibility on dark nights and early mornings.\n\nFeatures at a Glance:\n\n• High-compression fabric\n\n• Reflective protection\n\n• Moisture-resistant material\n\n• 50+ UV protection\n\n• Fashionable style\n\n• Smooth waistband for comfort\n\n• Thermal comfort\n\n• Machine washable\n\nMEASUREMENT CHART\n\nSize\n\nWaist\n\nHip\n\n0 / XXS\n\n23\" / 59cm\n\n33\" / 84cm\n\n2 / XS\n\n25\" / 64cm\n\n35\" / 89cm\n\n4 / S\n\n27\" / 69cm\n\n37\" / 94cm\n\n6 / M\n\n29\" / 74cm\n\n39\" / 99cm\n\n8 / L\n\n31\" / 79cm\n\n41\" / 104cm\n\n10 / XL\n\n33\" / 84cm\n\n42\" / 106cm\n\n12 / XXL\n\n35\" / 89cm\n\n45\" / 114cm\n\nHOW TO MEASURE YOUR SIZE:\nTo choose the correct size, measure your body as follows:\n\n• Back: Measure shoulder to shoulder.\n\n• Bust: Measure around the chest horizontally.\n\n• Waist: Measure around the waist, just above the hip bone about 2cm above the navel.\n\n• Low Waist: Measure the hip bone area, 2 cm below the navel.\n\n• Hips: Measure 20 cm below the natural waist, the most prominent area of the hip."
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -924,7 +967,8 @@ var ZanderCatalog = [
       "M",
       "L",
       "XL"
-    ]
+    ],
+    "description": "The Savoy Active Laguna Set - Leggings & Sports Bra in white delivers form-fitting compression with stylish design. Add a touch of style to your basic routine with these highly functional yet eye-catchingly stylish striped leggings and comfy racerback sports bra!\n\nFeatures at a Glance:\n\n• 90% polyester, 10% spandex\n\n• Made in China\n\n• Sculpted compression fit\n\n• Performance tested\n\n• Machine washable\n\n• Set includes both leggings & sports bra\n\nFEMININE DESIGN: Feel confident during your workout with Savoy Active's shapely sports bra and leggings. This set will give your curves a lift, all while you go from the gym to your daily activities in full fashion\n\nSUPPORT AND MOBILITY: With its racerback design, this athletic bra allows for full mobility. The thick elastic band perfectly holds your body snug without any pressure.\n\nSCULPTED FIT: Wearing like a second skin, our sports leggings form to your shape and ensure a close fit. Constructed from performance material that is stretchable and comfortable, you'll have a full range of motion and be ready for any pose or movement.\n\nSIMPLE DESIGN: With a clasp-free style, this pullover sports bra is easy to put on and take off. It features comfortable racerback straps for full mobility, and a smooth colorful elastic band giving you a complementary look.\n\nMID-RISE WAIST: The mid-rise, elastic waistband clinches at the sides for a slimming and snug flattering fit. The added style provides a sleek look that keeps everything in place for superior control during any activity.\n\nPREMIUM MATERIAL: Made from high-quality fabric, this athletic set can be worn as a base layer for colder climates, or on its own. While the material is flexible and allows for a full range of motion, it also keeps you cool and dry, so you don’t feel sweaty after your workout.\n\nLUXURY STYLING: Exquisite stitching and first-class craftsmanship make this workout set a top-notch pick. Designed to resist chafing or any other skin irritation, you’ll reach for this set again and again."
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -942,7 +986,8 @@ var ZanderCatalog = [
       "M",
       "L",
       "XL"
-    ]
+    ],
+    "description": "Take your game to the next level in our ultra-luxurious Bentley Leggings with faux woven textured fabric in black. Featuring a sturdy and form-fitting fabric to shape your body and lift your booty!\n\nFeatures at a Glance:\n\n• Tight fit slimming, butt lifting fabric\n\n• Fashionable style\n\n• Smooth high waistband for waist slimming control & comfort\n\n• Machine washable\n\nHIGH-QUALITY MATERIAL: Skinny, breathable and very soft to wear, comfortable fit. SLIMMING EFFECT: The tight fit material keeps all your assets in place while creating a slim fit look giving you a lift in all the right places.\nHIGH-WAISTED SUPPORT: Tummy control waist band supports your mid section during workouts.\nPERFORMANCE TESTED : Low, medium, and high Impact tested great for running, pilates, strength training, dance workouts, and more.\n\nComposition & Care\n\n• 90% Polyester 10% Spandex\n\n• Machine wash cold\n\n• Made in China\n\n• Model is wearing size small\n\nNote: Top Not Included/ Available as a Set or Sold Separately\n\nMEASUREMENT CHART\n\nSmall\n\nMedium\n\nLarge\n\nBACK\n\n15-16in\n38-40cm\n\n16-17in\n41-42cm\n\n17-18in\n43-44cm\n\nBUST\n\n35-37in\n90-94cm\n\n37-38in\n95-98cm\n\n39-40in\n99-102cm\n\nWAIST\n\n25-28in\n65-71cm\n\n28-31in\n72-78cm\n\n31-34in\n79-85cm\n\nLOW WAIST\n\n28-31in\n72-78cm\n\n31-34in\n77-85cm\n\n35-38in\n89-95cm\n\nHIP\n\n38-39in\n96-99cm\n\n39-42in\n100-106cm\n\n42-44in\n107-112cm\n\nHOW TO MEASURE YOUR SIZE:\n\nTo choose the correct size, measure your body as follows:\n\n• Back: Measure shoulder to shoulder.\n\n• Bust: Measure around the chest horizontally.\n\n• Waist: Measure around the waist, just above the hip bone about 2cm above the navel.\n\n• Low Waist: Measure the hip bone area, 2 cm below the navel.\n\n• Hips: Measure 20 cm below the natural waist, the most prominent area of the hip."
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -961,7 +1006,8 @@ var ZanderCatalog = [
       "M",
       "L",
       "XL"
-    ]
+    ],
+    "description": "Oh these capris! Our classic black capris have the perfect mesh detail at the bottom that adds the flair you love and the soft comfort you love about our activewear. You can wear these all day during your busy life and you'll love the four pockets for all your essentials - the two deep side pockets fit your phone, gym pass, ID and snacks while on your run, the back reflector zipper pocket for keys and a waistband pocket for hair clips. These fit true to size.\n\n• Product Details:\n\n• Pockets on each side, fits most sizes of phones including iPhone + sizes\n\n• Black zipper pocket in the back (4\" x 2\")\n\n• Drawstring in waist\n\n• Lightweight, breathable, moisture wicking fabric\n\n• Tagless\n\n• Hidden key pocket in waistline\n\n• Model is 5'9'' in XS size\n\n• If you are unsure or between sizes we recommend sizing up\n\n• Fabric and Care:\n\n• Polyester/ Spandex blend\n\n• Machine wash cold\n\n• Tumble dry low\n\n• Do not bleach\n\n• Do not iron\n\n*All items are true to size\n\nUS SIZES\n\nWAIST *in\n\nHIP *in\n\nXS\n\n0 - 2\n\n25 ½ - 26 ½\n\n34 ½ - 35 ½\n\nSMALL\n\n4 - 6\n\n27 ½ - 28 ½\n\n36 ½ - 37 ½\n\nMEDIUM\n\n8 - 10\n\n28 ½ - 30 ½\n\n38 ½ - 39 ½\n\nLARGE\n\n12 - 14\n\n32 - 33 ½\n\n41 - 42 ½\n\nXL\n\n16\n\n35 - 36 ½\n\n44 - 45 ½"
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -1004,7 +1050,8 @@ var ZanderCatalog = [
       "S",
       "M",
       "L"
-    ]
+    ],
+    "description": "Boy's Pastel Sleeveless Tank Top Shirt made from 100% cotton rib knit fabric. These soft tank tops are not only beautiful but they're an Easter must-have. Keep your little guy cool this spring in this staple piece pack.\n\n Colors: Pastel Variety\n 6 Per Pack\n\n• 100% Cotton Rib Knit Material for Comfort and Breathability\n• Stays soft after wash\n• Machine Wash / Tumble Dry\n• Available Sizes: NB S, M, L"
   },
   {
     "cat": "KIDS/BABIES",
@@ -1033,7 +1080,8 @@ var ZanderCatalog = [
       "0-3 months",
       "3-6 months",
       "6-9 months"
-    ]
+    ],
+    "description": "This charming kitten footie is made of the softest 100% cotton interlock material for the comfort of your baby. It is the perfect outfit for play dates and everyday. Front and bottom snaps for easy and quick dressing and undressing Feel super soft Kitten design on the front Kitten patterned feet 100% cotton Made in Turkey"
   },
   {
     "cat": "KIDS/BABIES",
@@ -1087,7 +1135,8 @@ var ZanderCatalog = [
       "6m",
       "12m",
       "18m"
-    ]
+    ],
+    "description": "Ready to take your little one down the rabbit hole to visit the wonderland! The White Rabbit is ready for you guys!\n\nI cut out felt pieces and they are appliqu̩ed to the bodysuit. This infant bodysuit is made to order. It is handmade & hand-stitched with 100% love by me in Paradise!"
   },
   {
     "cat": "KIDS/BABIES",
@@ -1117,7 +1166,8 @@ var ZanderCatalog = [
       "6m",
       "12m",
       "18m"
-    ]
+    ],
+    "description": "Your little one will love rocking this The Queen of Tejano Music!\n\nI cut out felt pieces and they are appliquéd to the shirt. This infant bodysuit is made to order. It is handmade & hand-stitched with 100% love by me in Paradise!"
   },
   {
     "cat": "KIDS/BABIES",
@@ -1129,7 +1179,8 @@ var ZanderCatalog = [
     "name": "Bambini Fleece Robe With Hoodie",
     "price": 10,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/bambini-fleece-robe-with-hoodie"
+    "url": "https://www.zander88llc.net/product-page/bambini-fleece-robe-with-hoodie",
+    "description": "This Boy's Bath Robe with Rabbit Ears Style Hoodie is the cutest way to get your little man dry and warm out of the tub. Make bath time even more fun by wrapping up your little rabbit in this fun robe.\n\n100% Polyester FleeceCotton Interlock Fabric\n\nSize: NB, S, M, L\n\nColors:Blue\n\n1 Per Pack\n\nNOTE: Patterns shown are for illustration purposes only. You may receive a different pattern in the color you select."
   },
   {
     "cat": "KIDS/BABIES",
@@ -1145,7 +1196,8 @@ var ZanderCatalog = [
     "sizes": [
       "8 (Ages 7-8)",
       "10 (Ages 9-10)"
-    ]
+    ],
+    "description": "Product Description A Unique stretched pants design that is comfortable, stylish and well crafted.\n\nThis soft and stretchy pants, glimmer with its multi color Glitter. The flattering cut, combined with the Holographic sequins creates the perfect look.\n\nHighlights:\n\n- Unique soft stretchy fabric\n\n- Rock these pants on your special occasions or on the dance floor.\n\n- Flattering cut\n\n- Made With Love In NYC\n\nCare Information\n\n- 90% polyester, 10% spandex\n\n- Dry clean/ Machine wash cold / Hand wash separately."
   },
   {
     "cat": "KIDS/BABIES",
@@ -1189,7 +1241,8 @@ var ZanderCatalog = [
       "Youth 9/10",
       "Youth 11/12",
       "Youth 14/Adult XS"
-    ]
+    ],
+    "description": "Get your elbows into our cool new MOTOR MOUTHS™ NEW YORK and drive your car... yes, baby you can drive your car!\n\nBold photorealistic motor mouth car engine opens up and roars. Kids provide the \"vroom vroom vroom\" ... and drive you crazy! Each Motor Mouth comes in a different color and location... from the open road of Route 66 to the San Francisco Golden Gate Bridge, to New York's Brooklyn Bridge and south to South Beach, Miami. Start your engines and rev 'em up!\n\n• Get your fierce on with the Original Mouthman® Chomping Hoodie Shirts that present a giant mouth when you hug yourself!\n\n• Lightweight, moisture wicking and UPF50+ makes all of our shirts good for Sun Fun, Sports Fun, Water Fun, Fan Fun!\n\n• Dye sublimated- eco-friendly, water-based, chemical-free inks.\n\n• High quality silky soft 100% polyester sport jersey fabric made from recycled PET plastic bottles.\n\n• Designed by nZilla in the USA and created by and originally patented by Journey bass player Ross Valory and The Tubes drummer Prairie Prince.\n\n• Proudly designed and made in beautiful Northern California, USA\n\n• One our top sellers and most popular!"
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -1215,7 +1268,8 @@ var ZanderCatalog = [
       "2": 15.5,
       "3": 15.5,
       "5": 15.5
-    }
+    },
+    "description": "Velvet touch light wash skinny jeans. Equipped with an adjustable elastic waistband.\nHook button and zipper fly with front and back hand sanding details.\n\n98% Cotton, 2% Elastane\n\nMachine wash in cold with like colors."
   },
   {
     "cat": "Clothing",
@@ -1234,7 +1288,8 @@ var ZanderCatalog = [
       "6-12 months",
       "12-18 months",
       "18-24 months"
-    ]
+    ],
+    "description": "Introducing our adorable Orange Cozy Pants for babies, made from 100% organic cotton. These pants offer ultimate comfort, warmth, and style, making them a must-have addition to your little one's wardrobe.\n\nCrafted with care from premium organic cotton, these pants provide a soft and gentle touch against your baby's delicate skin. The breathable fabric ensures maximum comfort, allowing your baby to move and play freely.\n\nThe vibrant orange color adds a cheerful and lively touch to your baby's outfit. Whether it's a playdate or a family outing, these cozy pants will make your little one stand out with their vibrant style.\n\nDesigned with practicality in mind, these pants feature an elastic waistband that ensures a secure and comfortable fit. It allows for easy on and off, making diaper changes a breeze for parents.\n\nWe are committed to sustainability, which is why these cozy pants are made from 100% organic cotton. They are free from harmful chemicals and pesticides, providing a safer and healthier choice for your baby and the environment.\n\nElevate your baby's comfort and style with our Orange Cozy Pants. Made from premium organic cotton, they offer superior softness, durability, and a conscious choice for your baby's delicate skin. Let your little one enjoy cozy and fashionable adventures in these adorable pants."
   },
   {
     "cat": "KIDS/BABIES",
@@ -1255,7 +1310,8 @@ var ZanderCatalog = [
       "5/6T",
       "Youth Small",
       "Youth Medium"
-    ]
+    ],
+    "description": "The Hatter is ready for an adventure and so is your little one! ;)\n\nI cut out eco felt pieces and they are appliquéd to the shirt. This toddler shirt is made to order. It is handmade & hand-stitched with 100% love by me in Paradise!"
   },
   {
     "cat": "KIDS/BABIES",
@@ -1276,7 +1332,8 @@ var ZanderCatalog = [
       "5/6T",
       "Youth Small",
       "Youth Medium"
-    ]
+    ],
+    "description": "It's time to have a MEGA fun with TNT! :)\n\nI cut out felt pieces and they are appliqu̩ed to the shirt. This infant bodysuit is made to order. It is handmade & hand-stitched with 100% love by me in Paradise!"
   },
   {
     "cat": "KIDS/BABIES",
@@ -1294,7 +1351,8 @@ var ZanderCatalog = [
       "6m",
       "12m",
       "18m"
-    ]
+    ],
+    "description": "Proud to be made in Austin, Texas! mi cielo is introducing a Texas theme collection! This unique longhorn shirt will make a perfect gift too! :)\n\nI cut out felt pieces and they are appliqu̩d to the shirt. This infant bodysuit is made to order. It is handmade & hand-stitched with 100% love by me in Paradise!"
   },
   {
     "cat": "KIDS/BABIES",
@@ -1312,7 +1370,8 @@ var ZanderCatalog = [
       "6m",
       "12m",
       "18m"
-    ]
+    ],
+    "description": "Imagine this HUGE while approaching you and your sailboat...!!!\nContrast of a big white whale on a black bodysuit is so eye catching that there is no doubt that your little one will be a talk of town! :)\n\nI cut out felt pieces and they are appliqu̩d to the shirt. This infant bodysuit is made to order. It is handmade & hand-stitched with 100% love by me in Paradise!"
   },
   {
     "cat": "KIDS/BABIES",
@@ -1330,7 +1389,8 @@ var ZanderCatalog = [
       "6m",
       "12m",
       "18m"
-    ]
+    ],
+    "description": "+++ SPECIAL LIMITED TIME EDITION +++\n+++ mi cielo xåÊMatthew LangilleåÊ+++\n\nmi cielo is honored to present our special collaboration project with Matthew Langille!! Matthew is a well know illustrator who has worked with companies like Swatch, Speedo, etc.åÊ\n\nI cut out felt pieces and they are appliqu̩d to the shirt. This infant bodysuit is made to order. It is handmade & hand-stitched with 100% love by me in Paradise!"
   },
   {
     "cat": "KIDS/BABIES",
@@ -1360,7 +1420,8 @@ var ZanderCatalog = [
       "KID 6",
       "KID 6.5",
       "KID 7"
-    ]
+    ],
+    "description": "Embrace the serene yet dynamic energy of downtown's waterfront with the BATTERY PARK Vegan Sneakers, a sophisticated addition to BYMANYC ® New York's collection of responsible luxury children's footwear. These sneakers capture the refreshing essence and scenic views of Battery Park, transforming its open, inviting character into a high-fashion statement for the adventurous young individual. Each pair is a singular masterpiece, meticulously handcrafted in Italy by master artisans, guaranteeing exceptional quality and the undeniable exclusivity of a truly bespoke item.\n\nBYMANYC ® New York stands at the forefront of redefining luxury, seamlessly blending captivating New York design with the revered traditions of Italian craftsmanship. Our unwavering commitment to the planet is evident in our exclusive use of premium vegan synthetic materials. These materials are chosen not only for their luxurious feel and enduring quality but also for their profound environmental consciousness. More than just sneakers, they are a conscious choice, empowering the next generation with ethical luxury footwear that champions both distinctive style and a sustainable future.\n\nChoosing the BATTERY PARK Vegan Sneakers means investing in a piece of wearable art for your child—a symbol of discerning taste and a dedication to a better world. It’s an acquisition of true ethical luxury, designed to make an impact, and crafted exclusively for those who appreciate genuine distinction and visionary design."
   },
   {
     "cat": "KIDS/BABIES",
@@ -1376,7 +1437,8 @@ var ZanderCatalog = [
     "sizes": [
       "Kids XL",
       "Kids XXL"
-    ]
+    ],
+    "description": "About Product\n\n• Online Only Product\n\n•\n\n• Packed in our complementary limited edition clutch bag\n\nFeatures\n\n• A comfortable cushioned rubber surface and soft straps for long walks\n\n• Sandal body is made with durable material for long term use\n\n• Our products are all handmade in New York City.\n\nMaterials\n\n• Insole-EVA/ Outsole-Rubber/ Strap-PVC\n\nMaintenance:\n\n• Wash the sandal body with soap to maintain the cleanness of the products\n\n• Part of sales will go to to preserve clean water\n\n• Products will ship from New York City and can be sent internationally.\n\n• Only 1 to 4 business days for production. Every sandals are made to order.\n\n• For more shipping information, click ."
   },
   {
     "cat": "KIDS/BABIES",
@@ -1392,7 +1454,8 @@ var ZanderCatalog = [
     "sizes": [
       "0-6 months",
       "6-12 months"
-    ]
+    ],
+    "description": "0-6 months and 6-12 months available\n\nUltimate Road Trip Collection\n\n100% bamboo"
   },
   {
     "cat": "KIDS/BABIES",
@@ -1410,7 +1473,8 @@ var ZanderCatalog = [
       "10 (Ages 9-10)",
       "12 (Ages 11-12)",
       "14 (Ages 13-14)"
-    ]
+    ],
+    "description": "Product Description Our Stella Top is made of Ultra Soft and stretchy Bamboo Jersey fabric, with Holographic sequins Saturn belt stripe.\n\nIt has an expansive yet comfortable look and feel, and is a perfect match to any pant, jeans or skirt you have in your closet.\n\nHighlights:\n\n- Silky soft fabric for Best comfort and movement\n\n- Sophisticated design\n\n- Made With Love In NYC\n\nCare Information\n\n- 95% Bamboo, 5% Spandex/ 90% polyester, 10% spandex\n\n- Dry clean/ Machine wash cold / Hand wash separately."
   },
   {
     "cat": "KIDS/BABIES",
@@ -1428,7 +1492,8 @@ var ZanderCatalog = [
       "10 (Ages 9-10)",
       "12 (Ages 11-12)",
       "14 (Ages 13-14)"
-    ]
+    ],
+    "description": "Product Description Our Unique stretched pants designs are comfortable, Stylish and well crafted.\n\nMia pants, are made of soft and stretchy, dizzy Unicorn spandex fabric, and topped with Holographic sequins fabric, to create an A- symmetric skort on the front. Finished with an integrated velvet unicorn belt, These Pants are simply out of this world!\n\nHighlights:\n\n- Fabulous Dizzy stretchy fabric\n\n- Great Masterpiece to add to your closet\n\n- Unique design\n\n- Flattering cut\n\n- Comfort and chic\n\n- Made With Love In NYC\n\nCare Information\n\n - 90% polyester, 10% spandex\n\n - Dry clean/ Machine wash cold on reverse side / Hand wash separately."
   },
   {
     "cat": "Electronics",
@@ -1464,7 +1529,8 @@ var ZanderCatalog = [
     "name": "Modern Feather Wooden Miniature Figurines",
     "price": 32.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/modern-feather-wooden-miniature-figurines"
+    "url": "https://www.zander88llc.net/product-page/modern-feather-wooden-miniature-figurines",
+    "description": "Home Decoration Accessories for Living Room Table or Office"
   },
   {
     "cat": "WATCHES MAN/WOMAN",
@@ -1498,7 +1564,8 @@ var ZanderCatalog = [
       "34",
       "36",
       "38"
-    ]
+    ],
+    "description": "• Garment Dyed Four Pocket Twill Walkshort with 9 Inch inseam\n\n• Made in China\n\n• 97% Cotton 3% Spandex\n\n• Fits True to Size.\n\n• Questions about this product, or its sizing? We'd love to hear from you\n\n• Style Number: 3PS4107M / 7PS4050M Tan"
   },
   {
     "cat": "MEN'CLOTHING",
@@ -1516,7 +1583,8 @@ var ZanderCatalog = [
       "M",
       "L",
       "XL"
-    ]
+    ],
+    "description": "Sleeveless Color block Top\n\nUS sizing\nGold shoulder zippers\nDesigned in Vancouver, Canada\n\nModel is wearing size Medium\n\nModel Height:\n6'0 (182 cm)\n\nFabric: 95% cotton/5%spandex\nColor: Mixed (white, yellow and black)\nSKU: MSS1601"
   },
   {
     "cat": "SHOES",
@@ -1541,7 +1609,8 @@ var ZanderCatalog = [
       "11.5",
       "12",
       "13"
-    ]
+    ],
+    "description": "We dropped the classic work boot “mocc-toe” style onto our ridiculously comfortable Rambler construction (same as the \"Grover\") and called it the “Cooper”. Classic Steel Grey Suede, Burnished Oxblood and a fresh new Tan Crazy Horse Leather complete the look of this instant Hound & Hammer classic."
   },
   {
     "cat": "MEN'CLOTHING",
@@ -1559,7 +1628,8 @@ var ZanderCatalog = [
       "M",
       "L",
       "XL"
-    ]
+    ],
+    "description": "Pickup Truck with Surf Boards Grey T ShirtSometimes it's the hunt that's fun, searching for the best break with the windows down and the boards in the back.\n\nPrinted in my garage with black water based ink on Deep Heather Grey 52% combed and ring-spun cotton 48% poly construction tee. Simply the softest tee that feels like a well-loved favorite.\n\n*Free Shipping on all orders over $50 within the USA"
   },
   {
     "cat": "MEN'CLOTHING",
@@ -1577,7 +1647,8 @@ var ZanderCatalog = [
       "M",
       "L",
       "XL"
-    ]
+    ],
+    "description": "Growing up in the mountains and living half of my adult life at the beach, this truck represents both. Inspired by photographer Chris Burkard who documents his adventures all over the globe in his Land Rover. To see his amazing images check him out on Instagram @chrisburkard\n\nBlack water based ink on Light Blue Heather 50/50 cotton poly blend. The softest, smoothest, best-looking T-shirt available anywhere.\n\n*Free Shipping on all orders over $50 within the USA"
   },
   {
     "cat": "MEN'CLOTHING",
@@ -1601,7 +1672,8 @@ var ZanderCatalog = [
     "sizePrices": {
       "2XL": 24,
       "3XL": 26
-    }
+    },
+    "description": "Sometime between October and December 1912, Pablo Picasso (1881–1973) made a guitar. Cobbled together from cardboard, paper, string, and wire, materials that he cut, folded, threaded, and glued, Picasso’s silent instrument resembled no sculpture ever seen before. It bracket an incandescent period of material and structural experimentation in Picasso’s work.\n\nOur super soft and smooth jersey t shirt fits like a well-loved favorite, featuring a crew neck, short sleeves and designed with superior combed and ring-spun cotton. Main features include:\n\n• 4.3 oz/yd *women's tees are fitted. check our size chart*\n• 100% Combed Ring Spun Cotton (Heather 10% Polyester)\n• Preshrunk jersey knit Fabric 32/1\n• Side seamed\n• Shoulder-to-shoulder tape and seamed collar\n• Double-needle sleeve and bottom hems\n• Oeko-Tex® Standard 100 Certified"
   },
   {
     "cat": "MEN'CLOTHING",
@@ -1619,7 +1691,8 @@ var ZanderCatalog = [
       "M",
       "L",
       "XL"
-    ]
+    ],
+    "description": "Safari shorts\n\nUS sizing\nWool fabric\nDesigned in Vancouver, Canada\n\nModel is wearing size Medium\n\nModel Height: 5'9\n\nBody fabric: 97% cotton / 3% spandex\n\nDetail fabric: 50% wool / 50% polyester\n\nLining: 97% polyester / 3% spandex\n\nColor: Two Tones, Brown and Black. Brown & White\nSKU: MSS1610"
   },
   {
     "cat": "JEWELRY",
@@ -1651,7 +1724,8 @@ var ZanderCatalog = [
       "34 waist",
       "36 waist",
       "38 waist"
-    ]
+    ],
+    "description": "Get comfortable and noticed in our signature men's chino short. Classic straight fit with sharp detailing. Khaki color. Our khaki chino short is available in waist sizes 30/32/33/34/36/38. Refer to our . Imported. The perfect fitting shorts to keep you cool at the office or on your day off.\n\n#65mcmlxvChinoShort\n\nFeatures\n\n• Contrast chambray inside waistband with logo embroidery\n\n• Logo embroidery below front coin pocket\n\n• Flat front\n\n• Zip fly closure; belt loops\n\n• Rear welt pockets with button closure\n\n• Front quarter-top pockets\n\n• Logo label on back waistband and welt pocket\n\n• Front welt coin pocket with button tab\n\n• Back welt coin pocket with button tab\n\nProduct Details\n\n• Extra-soft 100% Cotton washed twill\n\n• Tapered leg\n\n• 10 inch inseam\n\n• Machine wash, cold, inside out."
   },
   {
     "cat": "MEN'CLOTHING",
@@ -1669,7 +1743,8 @@ var ZanderCatalog = [
       "M",
       "L",
       "XL"
-    ]
+    ],
+    "description": "Long Sleeve Dress Shirt\n\nUS sizing\nFront pockets\nDesigned in Vancouver, Canada\n\nModel is wearing size Medium\n\nModel Height: 6'0 (182 cm)\n\nBody fabric: 97% cotton/ 3% Spandex\n\nDetail fabric: 100% cotton\n\nColor: Two Tone, Black & White\nSKU: MSS1604"
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -1687,7 +1762,8 @@ var ZanderCatalog = [
       "S",
       "M",
       "L"
-    ]
+    ],
+    "description": "Sleeveless Plunge Sequin Playsuit\n\nStyle: Sexy, Day to Night, Party, Trendy, Chic\n\nColor: Beige\n\nSize: XS, S, M, L (please review the measurement chart below)\n\nMeasurements are in Centimeters\n\nuk 6=XS bust 80 waist 64 hips 82\n\nuk 8=S bust 84 waist 68 hips 86\n\nuk 10=M bust 88 waist 72 hips 90\n\nuk 12=L bust 92 waist 76 hips 94"
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -1705,7 +1781,8 @@ var ZanderCatalog = [
       "M",
       "L",
       "XL"
-    ]
+    ],
+    "description": "These seamless sports leggings in black will give you a gorgeous, sleek, and stylish look. Pick up one - or more - pairs today!"
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -1723,7 +1800,8 @@ var ZanderCatalog = [
       "M",
       "L",
       "XL"
-    ]
+    ],
+    "description": "A Cut-Out Crystal Embellished T-Shirt Top is a black short-sleeve piece with crystal bow accents. Perfect for bold events, this high-quality top offers a perfect match for a glamorous look. This short-sleeve top features a deep V-neckline with dazzling crystal bow embellishments at the front, adding a touch of glamour to the classic t-shirt silhouette. Ideal for bold occasions like parties, fashion events, or upscale nights out, this high-quality top ensures a perfect match when paired with a stylish skirt or pants, offering a modern, glamorous look that stands out effortlessly.\n\nProduct features: Black short-sleeve t-shirt top, deep V-neckline, crystal bow embellishments, high-quality, perfect match for bold occasions like parties, fashion events, or upscale nights out."
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -1740,7 +1818,8 @@ var ZanderCatalog = [
       "S",
       "M",
       "L"
-    ]
+    ],
+    "description": "Get ready to turn heads with The Becca Floral Sequin Dress - perfect for OMG-worthy nights out! Featuring ditsy flower straps, shimmering sequin details, and a fully lined shift silhouette, this mini dress is the perfect choice for any party or homecoming event. Get ready to have a fun night that you'll never forget!\n\n• Made in Los Angeles\n\n• 95% Polyester, 5% Mesh\n\n• Model is wearing a Small\n\n• Model Measurements: 5'8''/ 32 B-24 W-36 H"
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -1758,7 +1837,8 @@ var ZanderCatalog = [
       "M",
       "L",
       "XL"
-    ]
+    ],
+    "description": "A stunning beige cocktail dress with resort sparkling style. This black mesh maxi, encrusted with crystals, offers a glamorous look for any event. This breathtaking cocktail dress perfect for a resort sparkling style. This floor-length black mesh gown, adorned with shimmering crystals, exudes glamour and sophistication for any upscale event."
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -1776,7 +1856,8 @@ var ZanderCatalog = [
       "S",
       "M",
       "L"
-    ]
+    ],
+    "description": "Description: Womans White Shirt Dress Size: XS, S, M, L (please review the measurement chart below) Measurements are in Centimeters (standard UK sizes) XS: Bust: 80-82 Waist: 62 Hips: 80-82 S: Bust: 84-86 Waist: 66 Hips: 84-86 M: Bust: 88-90 Waist: 70 Hips: 88-90 L: Bust: 92-94 Waist: 74 Hips: 92-94\n\nShipping Time: 10-15 days"
   },
   {
     "cat": "JEWELRY",
@@ -1788,7 +1869,8 @@ var ZanderCatalog = [
     "name": "9.5MM Domed Ring by Eklexic",
     "price": 127.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/9-5mm-domed-ring-by-eklexic"
+    "url": "https://www.zander88llc.net/product-page/9-5mm-domed-ring-by-eklexic",
+    "description": "Fulfilled by our friends at eklexic\n\n9.5mm wide domed brass ring\nAvailable in sizes 5, 6, 7, 8 & 9\nFinishes available:\n10K Yellow Gold\nRhodium-Silver"
   },
   {
     "cat": "JEWELRY",
@@ -1800,7 +1882,8 @@ var ZanderCatalog = [
     "name": "2 1/15 CTW Round Lab Grown Diamond Ring 14K White Gold (G-Vs)",
     "price": 1502,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/2-1-15-ctw-round-lab-grown-diamond-ring-14k-white-gold-g-vs"
+    "url": "https://www.zander88llc.net/product-page/2-1-15-ctw-round-lab-grown-diamond-ring-14k-white-gold-g-vs",
+    "description": "Lab Grown Diamonds - Echo Friendly\nMade in USAProduct Details:This 14K white gold lab-grown diamond anniversary band is a beautiful trellis set ring. Totaling 2 1/15 carats, this ring offers an abundance of sparkle. The Stone Weight and Carat Total Weight (CTW) represent the approximate weight of each of the diamonds in the complete set. Each stone may vary no more than 1/15 below the total stated weight.\n\nSpecification:\n\nSize\n\n7\n\nCarat Total Weight\n\n2 1/15 CTW\n\nStone Cut Grade\n\nExcellent\n\nStone Cut Clarity\n\nVS1+\n\nStone Count\n\n13\n\nMetal Type & Color\n\n14K White Gold\n\nAverage Band Width\n\n3.54mm\n\nSetting Height\n\n2.73mm\n\nHeight\n\n2.73mm"
   },
   {
     "cat": "JEWELRY",
@@ -1824,7 +1907,8 @@ var ZanderCatalog = [
     "name": "1 CTW Oval Lab Grown Diamond Three Stone Engagement Ring 14K White Gold (G-Vs)",
     "price": 900.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/1-ctw-oval-lab-grown-diamond-three-stone-engagement-ring-14k-white-gold-g-vs"
+    "url": "https://www.zander88llc.net/product-page/1-ctw-oval-lab-grown-diamond-three-stone-engagement-ring-14k-white-gold-g-vs",
+    "description": "Lab Grown Diamonds - Echo Friendly\nMade in USAProduct Details:Tell the story of a love rooted in the past, present, and future with this three-stone engagement ring featuring a lab-grown diamond. This three-stone engagement ring showcases a trio of oval stones that sit in a lovely 14K white gold trellis setting. The Stone Weight and Carat Total Weight (CTW) represent the approximate weight of each of the diamonds in the complete set. Each stone may vary no more than 1/15 below the total stated weight.\n\nSpecification:\n\nSize\n\n7\n\nCarat Total Weight\n\n1 CTW\n\nStone Cut Grade\n\nExcellent\n\nStone Cut Clarity\n\nVS1+\n\nStone Count\n\n3\n\nMetal Type & Color\n\n14K White Gold"
   },
   {
     "cat": "JEWELRY",
@@ -1836,7 +1920,8 @@ var ZanderCatalog = [
     "name": "Peacock Cocktail Ring Gold",
     "price": 301.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/peacock-cocktail-ring-gold"
+    "url": "https://www.zander88llc.net/product-page/peacock-cocktail-ring-gold",
+    "description": "This gorgeous cocktail ring is inspired by the majestic peacock, perfect for adding a touch of glamour to any outfit. It's made from 925 sterling silver and dipped in gold. The beautiful peacock motif is adorned with blue, green and white zirconia stones and is a must-have for fashionistas everywhere.\n\nThe majestic peacock has long been a symbol of beauty and good luck. In many cultures, the peacock serves as a reminder that true beauty comes from within – its feathers dazzlingly displaying its hidden inner light. In other cultures, the peacock is seen as a symbol of nobility and grace. No matter what culture you come from, this beautiful creature is sure to make a statement as part of your jewellery collection.\n\nThe ring is available in three sizes, so you can choose the perfect fit. The peacock motif measures L5cm W2cm designed to lay along the length of your finger and weighs 8.9 grams, making it a statement piece that will add a touch of luxury to any outfit.\n\nWhether you're an animal lover or simply looking for a stunning accessory to dress up for a night out or just adding a finishing touch to your everyday look, this ring is sure to turn heads."
   },
   {
     "cat": "JEWELRY",
@@ -1848,7 +1933,8 @@ var ZanderCatalog = [
     "name": "Penelope Stack",
     "price": 189.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/penelope-stack"
+    "url": "https://www.zander88llc.net/product-page/penelope-stack",
+    "description": "The Penelope stack is DELUXE. Choose between all 14k gold fill or sterling silver and get ready to stare at your hand all day. This 5 ring beauty includes the textured Jules Coin, Abbi, Med Becca Twist, Lg Jennifer Sparkler and Lg Modern Paige rings."
   },
   {
     "cat": "JEWELRY",
@@ -1884,7 +1970,8 @@ var ZanderCatalog = [
     "name": "Micro Royal Chain With XL Baroque Pearl Pendant Necklace by Eklexic",
     "price": 136,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/micro-royal-chain-with-xl-baroque-pearl-pendant-necklace-by-eklexic"
+    "url": "https://www.zander88llc.net/product-page/micro-royal-chain-with-xl-baroque-pearl-pendant-necklace-by-eklexic",
+    "description": "Fulfilled by our friends at eklexic\n\nMaterial: Brass & AA+ Freshwater Baroque Pearl\nFinishes available: 14K Gold Plating or Rhodium Plating + ecoat\n\nMicro Rolo Chain measures:\n5.5mm wide\nXL Freshwater Baroque Pearl Pendant measures 20-23mm x12-14mm wide\n\nPlease note the shape, color, & size may slightly vary as these are all natural one-of-a-kind fresh water pearls.\n\nAvailable in the following lengths:\n14.5”, 15” 16”, 18”, 20”, 22”"
   },
   {
     "cat": "JEWELRY",
@@ -2088,7 +2175,8 @@ var ZanderCatalog = [
     "name": "Sterling Silver Pineapple Stud Earrings by Sterling Forever",
     "price": null,
     "stock": false,
-    "url": "https://www.zander88llc.net/product-page/sterling-silver-pineapple-stud-earrings-by-sterling-forever"
+    "url": "https://www.zander88llc.net/product-page/sterling-silver-pineapple-stud-earrings-by-sterling-forever",
+    "description": "Fulfilled by our friends at Sterling Forever\n\nLooking for an accessory that's as sweet and fresh as you are? This pair of sterling silver pineapple studs is sure to make you feel happy everywhere you wear them! Available in gold, silver, and rose gold, they're guaranteed to be the new faves of your jewelry collection.\n\nMaterials: 14K rose gold vermeil or sterling silver\n\nFeatures: 12.5mm stud, Lead & Nickel free, post back"
   },
   {
     "cat": "JEWELRY",
@@ -2136,7 +2224,8 @@ var ZanderCatalog = [
     "name": "2.00 CTW Round CZ Stud Earrings in 14K White or Yellow Gold – Handcrafted Luxury",
     "price": 299.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/2-00-ctw-round-cz-stud-earrings-in-14k-white-or-yellow-gold-handcrafted-luxury"
+    "url": "https://www.zander88llc.net/product-page/2-00-ctw-round-cz-stud-earrings-in-14k-white-or-yellow-gold-handcrafted-luxury",
+    "description": "Experience timeless elegance with these 2.00 CTW round CZ stud earrings, masterfully handcrafted in the USA from your choice of pure 14K white or yellow gold. Each 6mm stone is expertly cut for maximum brilliance and securely set in a classic four-prong design, offering both sophistication and everyday comfort. Presented in a luxury gift box and backed by a 30-day money-back guarantee, these earrings are the perfect statement of refined taste for those who appreciate fine jewelry and responsible craftsmanship.\n\nFeatures:\n\n• Round brilliant CZ stones for exceptional sparkle and ethical sourcing\n\n• Handcrafted in the USA with meticulous attention to detail\n\n• Available in pure 14K white or yellow gold to suit your style\n\n• Classic four-prong setting ensures stability and lasting beauty\n\n• Push-back closure for secure, comfortable all-day wear\n\n• Presented in a luxury gift box – ideal for gifting\n\n• Includes a 30-day money-back guarantee for peace of mind\n\nSpecifications:\n\n• Total Carat Weight: 2.00 CTW (1.00 CTW per earring)\n\n• Stone Type: Cubic Zirconia (CZ)\n\n• Stone Cut: Round Brilliant\n\n• Stone Size: 6mm diameter\n\n• Metal: Solid 14K White Gold or 14K Yellow Gold\n\n• Setting: Four-prong\n\n• Closure: Push-back\n\n• Origin: Handcrafted in the USA\n\n• Packaging: Luxury gift box included\n\n• Guarantee: 30-day money-back guarantee"
   },
   {
     "cat": "JEWELRY",
@@ -2160,7 +2249,8 @@ var ZanderCatalog = [
     "name": "12.5 Ct. DEW Created Moissanite Tennis Necklace - Available in 6 Sizes",
     "price": 399.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/12-5-ct-dew-created-moissanite-tennis-necklace-available-in-6-sizes"
+    "url": "https://www.zander88llc.net/product-page/12-5-ct-dew-created-moissanite-tennis-necklace-available-in-6-sizes",
+    "description": "This created moissanite tennis necklace showcases a continuous row of created, round cut created moissanite gemstones, offering unparalleled sparkle and elegance. Crafted in durable 14K over brass, this necklace is designed for those who appreciate luxury and sustainability. With a diamond equivalent weight of 12 1/2 carats, this eco-friendly statement piece delivers dazzling brilliance while maintaining ethical standards. Backed by a 30-day money-back guarantee, it’s the perfect choice for upscale jewelry lovers seeking timeless sophistication.\n\nFeatures:\n\n• Created Moissanite: Ethically sourced stones with unmatched brilliance\n\n• Elegant Design: Continuous row of round brilliant-cut gemstones for maximum sparkle\n\n• Gifting: Gift Pouch included\n\n• Peace of Mind: Includes a 30-day money-back guarantee\n\nSpecifications:\n\n• Stone Type: Created moissanite\n\n• Diamond Equivalent Weight (DEW): 12 1/2 carats\n\n• Stone Shape & Cut: Round, brilliant/full cut\n\n• Metal: 14K gold over brass\n\n• Width: Approx. 2.90mm\n\n• Stone Color: White\n\n• Available Chain Lengths: 16\", 17\", 18\", 20\", 22\", 24\""
   },
   {
     "cat": "JEWELRY",
@@ -2196,7 +2286,8 @@ var ZanderCatalog = [
     "name": "Elegante Mantelería Abierta De Crochet en Blanco Con Servicios",
     "price": 54,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/elegante-manteler%C3%ADa-abierta-de-crochet-en-blanco-con-servicios"
+    "url": "https://www.zander88llc.net/product-page/elegante-manteler%C3%ADa-abierta-de-crochet-en-blanco-con-servicios",
+    "description": "Elegante mantelería de crochet en blanco, disponible en medidas, 150x150cm., 150x200cm. y 150x250cm. con sus servicios 6, 6 y 8, respectivamente. También disponible: funda de cojín 40x40cm. y cortina 150x200cm."
   },
   {
     "cat": "WATCHES MAN/WOMAN",
@@ -2208,7 +2299,8 @@ var ZanderCatalog = [
     "name": "Luxury  Analog Business Wristwatch",
     "price": 74,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/luxury-analog-business-wristwatch"
+    "url": "https://www.zander88llc.net/product-page/luxury-analog-business-wristwatch",
+    "description": "Item Type: Quartz Wristwatches\nWater Resistance Depth: 3Bar\nCase Shape: Round\nBoxes & Cases Material: Paper\nFeature: Water Resistant,Complete Calendar\nDial Diameter: 40mm\nStyle: Fashion & Casual\nClasp Type: Bracelet Clasp\nCase Thickness: 10mm\nBand Material Type: Alloy\nCase Material: Alloy\nBand Width: 20mm\nBand Length: 20cm\nMovement: Quartz\nGender: Men\nDial Window Material Type: Hardlex"
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -2225,7 +2317,8 @@ var ZanderCatalog = [
       "S",
       "M",
       "L"
-    ]
+    ],
+    "description": "Collar: V-neck neckline. Detail: Accessory not included. Fabric: Lightweight woven fabric . Fit: Wrap front. Length: Maxi length. Print: Animal print. Product details: Fully lined. Seam: Shirred stretch cuffs. Sleeves: Long Sleeves. Style: Boho. Subcategory: Dress. Waist: Elastic waist. runs true to size. S.\n\n100% Polyester LINING 100% Polyester"
   },
   {
     "cat": "FRAGRANCE",
@@ -2237,7 +2330,8 @@ var ZanderCatalog = [
     "name": "CHRISTIAN DIOR - Sauvage Eau De Toilette Spray",
     "price": 182.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/christian-dior-sauvage-eau-de-toilette-spray"
+    "url": "https://www.zander88llc.net/product-page/christian-dior-sauvage-eau-de-toilette-spray",
+    "description": "An aromatic fougere fragrance for modern men. Classy, crisp, spicy, clean, warm & uplifting. Top notes of Sichuan pepper & Calabrian bergamot. Heart notes of geranium, lavender, elemi, pink pepper, vetiver & patchouli. Base notes of cedar, labdanum & ambroxan. Launched in 2015. Recommended for spring or summer wear.\n3348901250146"
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -2255,7 +2349,8 @@ var ZanderCatalog = [
       "M",
       "L",
       "XL"
-    ]
+    ],
+    "description": "Long Sleeves V Neck Plunge Maxi Dress\n\nSize: S, M, L, XL\n\nColors: Dark Red, Black, White"
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -2272,7 +2367,8 @@ var ZanderCatalog = [
       "S",
       "M",
       "L"
-    ]
+    ],
+    "description": "• A Line Mini Dress\n\n• Floral Embroidered Trim\n\n• Adjustable Straps\n\n• Front bust area Lined\n\n• 76% Polyester, 21% Rayon, 3% Spandex\n\n• Designed and Made in Los Angeles\n\n• Item Care: Machine Wash Cold, Do not Bleach, Tumble Dry Low/ Steam Dry."
   },
   {
     "cat": "MEN'CLOTHING",
@@ -2296,7 +2392,8 @@ var ZanderCatalog = [
     "sizePrices": {
       "2XL": 24,
       "3XL": 26
-    }
+    },
+    "description": "This amazing tee features one of Picasso's Doves of Peace. Picasso developed this image into a simple, graphic line drawing that is one of the world's most recognizable symbols of peace. He also named his fourth child 'Paloma', the Spanish word for 'dove'.\n\nOur super soft and smooth jersey t shirt fits like a well-loved favorite, featuring a crew neck, short sleeves and designed with superior combed and ring-spun cotton. Main features include:\n\n• 4.3 oz/yd *women's tees are fitted. check our size chart*\n• 100% Combed Ring Spun Cotton (Heather 10% Polyester)\n• Preshrunk jersey knit Fabric 32/1\n• Side seamed\n• Shoulder-to-shoulder tape and seamed collar\n• Double-needle sleeve and bottom hems\n• Oeko-Tex® Standard 100 Certified"
   },
   {
     "cat": "WATCHES MAN/WOMAN",
