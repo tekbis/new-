@@ -532,8 +532,6 @@
 
   function initStore() {
     document.body.classList.add('z88-enhanced');
-    setupScrollProgress();
-    setupPointerGlow();
     rebuildHeader();
     setupNavDrawer();
     buildHeroSlider();
@@ -546,7 +544,6 @@
 
   function initCheckout() {
     document.body.classList.add('z88-checkout-enhanced');
-    setupScrollProgress();
     setupRipples();
     var progress = document.querySelector('.progress-rail');
     if (progress) progress.remove();

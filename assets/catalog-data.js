@@ -178,7 +178,19 @@ var ZanderCatalog = [
     "name": "Salvador Dali Young Woman at a Window Artwork T-Shirt",
     "price": 22,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/salvador-dali-young-woman-at-a-window-artwork-t-shirt"
+    "url": "https://www.zander88llc.net/product-page/salvador-dali-young-woman-at-a-window-artwork-t-shirt",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "sizePrices": {
+      "3XL": 26,
+      "2XL": 24
+    }
   },
   {
     "cat": "HOUSEHOLD",
@@ -238,7 +250,12 @@ var ZanderCatalog = [
     "name": "Noir Halter Lace Maxi Dress",
     "price": 94.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/noir-halter-lace-maxi-dress"
+    "url": "https://www.zander88llc.net/product-page/noir-halter-lace-maxi-dress",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ]
   },
   {
     "cat": "FRAGRANCE",
@@ -262,7 +279,14 @@ var ZanderCatalog = [
     "name": "2019Hot Sale Long Sleeve Printed Two Piece Set Women Plus Size Casual Dress",
     "price": 31.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/2019hot-sale-long-sleeve-printed-two-piece-set-women-plus-size-casual-dress"
+    "url": "https://www.zander88llc.net/product-page/2019hot-sale-long-sleeve-printed-two-piece-set-women-plus-size-casual-dress",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+    ]
   },
   {
     "cat": "HANDBAG/PURSES",
@@ -334,7 +358,14 @@ var ZanderCatalog = [
     "name": "Stretch Faux Leather Flare Pants in Black",
     "price": 84,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/stretch-faux-leather-flare-pants-in-black"
+    "url": "https://www.zander88llc.net/product-page/stretch-faux-leather-flare-pants-in-black",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ]
   },
   {
     "cat": "Electronics",
@@ -358,7 +389,18 @@ var ZanderCatalog = [
     "name": "Chainmaille Party Dress",
     "price": 94.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/chainmaille-party-dress"
+    "url": "https://www.zander88llc.net/product-page/chainmaille-party-dress",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "sizePrices": {
+      "XS": 106.75,
+      "S": 106.75,
+      "M": 106.75
+    }
   },
   {
     "cat": "MEN'CLOTHING",
@@ -370,7 +412,19 @@ var ZanderCatalog = [
     "name": "Van Gogh Skull of a Skeleton With Burning Cigarette 1886 Long Sleeve Shirt",
     "price": 30,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/van-gogh-skull-of-a-skeleton-with-burning-cigarette-1886-long-sleeve-shirt"
+    "url": "https://www.zander88llc.net/product-page/van-gogh-skull-of-a-skeleton-with-burning-cigarette-1886-long-sleeve-shirt",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "sizePrices": {
+      "2XL": 32,
+      "3XL": 33.5
+    }
   },
   {
     "cat": "HANDBAG/PURSES",
@@ -431,7 +485,15 @@ var ZanderCatalog = [
     "name": "Find Your Coast® Heritage Sunset Explorer Hoodie",
     "price": 53.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/find-your-coast-heritage-sunset-explorer-hoodie"
+    "url": "https://www.zander88llc.net/product-page/find-your-coast-heritage-sunset-explorer-hoodie",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ]
   },
   {
     "cat": "MEN'CLOTHING",
@@ -443,7 +505,19 @@ var ZanderCatalog = [
     "name": "WORK HARD DREAM BIG Hoodie",
     "price": 54,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/work-hard-dream-big-hoodie"
+    "url": "https://www.zander88llc.net/product-page/work-hard-dream-big-hoodie",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "sizePrices": {
+      "2XL": 55,
+      "3XL": 56
+    }
   },
   {
     "cat": "MEN'CLOTHING",
@@ -455,7 +529,20 @@ var ZanderCatalog = [
     "name": "Be Brave Be Bold Men's Hoodie Sweatshirt",
     "price": 50,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/be-brave-be-bold-men-s-hoodie-sweatshirt"
+    "url": "https://www.zander88llc.net/product-page/be-brave-be-bold-men-s-hoodie-sweatshirt",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL",
+      "4XL",
+      "5XL",
+      "6XL",
+      "7XL"
+    ]
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -467,7 +554,13 @@ var ZanderCatalog = [
     "name": "Trois Seamless Legging - Black With Green",
     "price": 8.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/trois-seamless-legging-black-with-green"
+    "url": "https://www.zander88llc.net/product-page/trois-seamless-legging-black-with-green",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ]
   },
   {
     "cat": "KIDS/BABIES",
@@ -479,7 +572,13 @@ var ZanderCatalog = [
     "name": "Gorgeous Camel Infant Bodysuit",
     "price": 38,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/gorgeous-camel-infant-bodysuit"
+    "url": "https://www.zander88llc.net/product-page/gorgeous-camel-infant-bodysuit",
+    "sizes": [
+      "Newborn",
+      "6m",
+      "12m",
+      "18m"
+    ]
   },
   {
     "cat": "FRAGRANCE",
@@ -764,7 +863,13 @@ var ZanderCatalog = [
     "name": "Trois Seamless Sports Jacket - Black With Navy",
     "price": 8.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/trois-seamless-sports-jacket-black-with-navy"
+    "url": "https://www.zander88llc.net/product-page/trois-seamless-sports-jacket-black-with-navy",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ]
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -776,7 +881,12 @@ var ZanderCatalog = [
     "name": "Mesh Seamless Legging With Ribbing Detail - Grey Purple",
     "price": 8.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/mesh-seamless-legging-with-ribbing-detail-grey-purple"
+    "url": "https://www.zander88llc.net/product-page/mesh-seamless-legging-with-ribbing-detail-grey-purple",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ]
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -788,7 +898,15 @@ var ZanderCatalog = [
     "name": "Puissante High-Waisted Full-Length Black Leggings",
     "price": 53.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/puissante-high-waisted-full-length-black-leggings"
+    "url": "https://www.zander88llc.net/product-page/puissante-high-waisted-full-length-black-leggings",
+    "sizes": [
+      "XXS",
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ]
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -800,7 +918,13 @@ var ZanderCatalog = [
     "name": "Laguna Set - Leggings & Sports Bra - White",
     "price": 8.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/laguna-set-leggings-sports-bra-white"
+    "url": "https://www.zander88llc.net/product-page/laguna-set-leggings-sports-bra-white",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ]
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -812,7 +936,13 @@ var ZanderCatalog = [
     "name": "Bentley Leggings - Black",
     "price": 8.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/bentley-leggings-black"
+    "url": "https://www.zander88llc.net/product-page/bentley-leggings-black",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ]
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -824,7 +954,14 @@ var ZanderCatalog = [
     "name": "Black Mesh 2.0 - Pocket Capri",
     "price": 39,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/black-mesh-2-0-pocket-capri"
+    "url": "https://www.zander88llc.net/product-page/black-mesh-2-0-pocket-capri",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ]
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -861,7 +998,13 @@ var ZanderCatalog = [
     "name": "Bambini Boy's Six Pack Pastel Tank Top",
     "price": 15,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/bambini-boy-s-six-pack-pastel-tank-top"
+    "url": "https://www.zander88llc.net/product-page/bambini-boy-s-six-pack-pastel-tank-top",
+    "sizes": [
+      "Newborn",
+      "S",
+      "M",
+      "L"
+    ]
   },
   {
     "cat": "KIDS/BABIES",
@@ -885,7 +1028,12 @@ var ZanderCatalog = [
     "name": "Kitten Footie",
     "price": 22,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/kitten-footie"
+    "url": "https://www.zander88llc.net/product-page/kitten-footie",
+    "sizes": [
+      "0-3 months",
+      "3-6 months",
+      "6-9 months"
+    ]
   },
   {
     "cat": "KIDS/BABIES",
@@ -933,7 +1081,13 @@ var ZanderCatalog = [
     "name": "The White Rabbit - Alice's Adventure in Wonderland - Infant Bodysuit",
     "price": 38,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/the-white-rabbit-alice-s-adventure-in-wonderland-infant-bodysuit"
+    "url": "https://www.zander88llc.net/product-page/the-white-rabbit-alice-s-adventure-in-wonderland-infant-bodysuit",
+    "sizes": [
+      "Newborn",
+      "6m",
+      "12m",
+      "18m"
+    ]
   },
   {
     "cat": "KIDS/BABIES",
@@ -957,7 +1111,13 @@ var ZanderCatalog = [
     "name": "The Queen of Tejano Music - Infant Bodysuit",
     "price": 36,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/the-queen-of-tejano-music-infant-bodysuit"
+    "url": "https://www.zander88llc.net/product-page/the-queen-of-tejano-music-infant-bodysuit",
+    "sizes": [
+      "Newborn",
+      "6m",
+      "12m",
+      "18m"
+    ]
   },
   {
     "cat": "KIDS/BABIES",
@@ -981,7 +1141,11 @@ var ZanderCatalog = [
     "name": "Ori Pants, With Pocketwist™. Glitter Stretch Velvet With Sleek Design.",
     "price": 69.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/ori-pants-with-pocketwist-glitter-stretch-velvet-with-sleek-design"
+    "url": "https://www.zander88llc.net/product-page/ori-pants-with-pocketwist-glitter-stretch-velvet-with-sleek-design",
+    "sizes": [
+      "8 (Ages 7-8)",
+      "10 (Ages 9-10)"
+    ]
   },
   {
     "cat": "KIDS/BABIES",
@@ -1017,7 +1181,15 @@ var ZanderCatalog = [
     "name": "MOUTH MOBILES™ NEW YORK - Hoodie Chomp Shirt by MOUTHMAN®",
     "price": 23,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/mouth-mobiles-new-york-hoodie-chomp-shirt-by-mouthman"
+    "url": "https://www.zander88llc.net/product-page/mouth-mobiles-new-york-hoodie-chomp-shirt-by-mouthman",
+    "sizes": [
+      "Tot 3/4",
+      "Youth 5/6",
+      "Youth 7/8",
+      "Youth 9/10",
+      "Youth 11/12",
+      "Youth 14/Adult XS"
+    ]
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -1029,7 +1201,21 @@ var ZanderCatalog = [
     "name": "Skinny Bright Indigo Skinny Jeans",
     "price": 15.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/skinny-bright-indigo-skinny-jeans"
+    "url": "https://www.zander88llc.net/product-page/skinny-bright-indigo-skinny-jeans",
+    "sizes": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "sizePrices": {
+      "2": 15.5,
+      "3": 15.5,
+      "5": 15.5
+    }
   },
   {
     "cat": "Clothing",
@@ -1041,7 +1227,14 @@ var ZanderCatalog = [
     "name": "Orange Cozy Pants",
     "price": 9,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/orange-cozy-pants"
+    "url": "https://www.zander88llc.net/product-page/orange-cozy-pants",
+    "sizes": [
+      "0-3 months",
+      "3-6 months",
+      "6-12 months",
+      "12-18 months",
+      "18-24 months"
+    ]
   },
   {
     "cat": "KIDS/BABIES",
@@ -1053,7 +1246,16 @@ var ZanderCatalog = [
     "name": "The Hatter - Alice's Adventure in Wonderland - Kids T-Shirt",
     "price": 38,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/the-hatter-alice-s-adventure-in-wonderland-kids-t-shirt"
+    "url": "https://www.zander88llc.net/product-page/the-hatter-alice-s-adventure-in-wonderland-kids-t-shirt",
+    "sizes": [
+      "18mT",
+      "2T",
+      "3T",
+      "4T",
+      "5/6T",
+      "Youth Small",
+      "Youth Medium"
+    ]
   },
   {
     "cat": "KIDS/BABIES",
@@ -1065,7 +1267,16 @@ var ZanderCatalog = [
     "name": "TNT - Minecraft Inspired - Kids Light Blue T-Shirt",
     "price": 38,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/tnt-minecraft-inspired-kids-light-blue-t-shirt"
+    "url": "https://www.zander88llc.net/product-page/tnt-minecraft-inspired-kids-light-blue-t-shirt",
+    "sizes": [
+      "18mT",
+      "2T",
+      "3T",
+      "4T",
+      "5/6T",
+      "Youth Small",
+      "Youth Medium"
+    ]
   },
   {
     "cat": "KIDS/BABIES",
@@ -1077,7 +1288,13 @@ var ZanderCatalog = [
     "name": "Texas Longhorns Onesie - We Love Texas!",
     "price": 38,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/texas-longhorns-onesie-we-love-texas"
+    "url": "https://www.zander88llc.net/product-page/texas-longhorns-onesie-we-love-texas",
+    "sizes": [
+      "Newborn",
+      "6m",
+      "12m",
+      "18m"
+    ]
   },
   {
     "cat": "KIDS/BABIES",
@@ -1089,7 +1306,13 @@ var ZanderCatalog = [
     "name": "Baby Onesie - Big Whale and Little Sailboat",
     "price": 38,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/baby-onesie-big-whale-and-little-sailboat"
+    "url": "https://www.zander88llc.net/product-page/baby-onesie-big-whale-and-little-sailboat",
+    "sizes": [
+      "Newborn",
+      "6m",
+      "12m",
+      "18m"
+    ]
   },
   {
     "cat": "KIDS/BABIES",
@@ -1101,7 +1324,13 @@ var ZanderCatalog = [
     "name": "Baby Onesie - Bunny - Mi Cielo X Matthew Langille",
     "price": 38,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/baby-onesie-bunny-mi-cielo-x-matthew-langille"
+    "url": "https://www.zander88llc.net/product-page/baby-onesie-bunny-mi-cielo-x-matthew-langille",
+    "sizes": [
+      "Newborn",
+      "6m",
+      "12m",
+      "18m"
+    ]
   },
   {
     "cat": "KIDS/BABIES",
@@ -1113,7 +1342,25 @@ var ZanderCatalog = [
     "name": "Kids' Vegan Luxury Sneakers BATTERY PARK BYMANYC ® New York",
     "price": 225.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/kids-vegan-luxury-sneakers-battery-park-bymanyc-new-york"
+    "url": "https://www.zander88llc.net/product-page/kids-vegan-luxury-sneakers-battery-park-bymanyc-new-york",
+    "sizes": [
+      "KID 11.5",
+      "KID 12",
+      "KID 12.5",
+      "KID 13",
+      "KID 1.5",
+      "KID 2",
+      "KID 2.5",
+      "KID 3",
+      "KID 3.5",
+      "KID 4",
+      "KID 4.5",
+      "KID 5",
+      "KID 5.5",
+      "KID 6",
+      "KID 6.5",
+      "KID 7"
+    ]
   },
   {
     "cat": "KIDS/BABIES",
@@ -1125,7 +1372,11 @@ var ZanderCatalog = [
     "name": "Lips - Big Kids Flip Flops Sandal-Red Crystal Embroidery Motifs for Girls",
     "price": 19,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/lips-big-kids-flip-flops-sandal-red-crystal-embroidery-motifs-for-girls"
+    "url": "https://www.zander88llc.net/product-page/lips-big-kids-flip-flops-sandal-red-crystal-embroidery-motifs-for-girls",
+    "sizes": [
+      "Kids XL",
+      "Kids XXL"
+    ]
   },
   {
     "cat": "KIDS/BABIES",
@@ -1137,7 +1388,11 @@ var ZanderCatalog = [
     "name": "Blue and White Stripe Ruffle Bamboo Bloomer Headband Set",
     "price": 15,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/blue-and-white-stripe-ruffle-bamboo-bloomer-headband-set"
+    "url": "https://www.zander88llc.net/product-page/blue-and-white-stripe-ruffle-bamboo-bloomer-headband-set",
+    "sizes": [
+      "0-6 months",
+      "6-12 months"
+    ]
   },
   {
     "cat": "KIDS/BABIES",
@@ -1149,7 +1404,13 @@ var ZanderCatalog = [
     "name": "Stella, Bamboo Jersey and Holographic Sequin Top",
     "price": 42,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/stella-bamboo-jersey-and-holographic-sequin-top"
+    "url": "https://www.zander88llc.net/product-page/stella-bamboo-jersey-and-holographic-sequin-top",
+    "sizes": [
+      "8 (Ages 7-8)",
+      "10 (Ages 9-10)",
+      "12 (Ages 11-12)",
+      "14 (Ages 13-14)"
+    ]
   },
   {
     "cat": "KIDS/BABIES",
@@ -1161,7 +1422,13 @@ var ZanderCatalog = [
     "name": "Mia, Dizzy Unicorn Stretch Pants",
     "price": 68.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/mia-dizzy-unicorn-stretch-pants"
+    "url": "https://www.zander88llc.net/product-page/mia-dizzy-unicorn-stretch-pants",
+    "sizes": [
+      "8 (Ages 7-8)",
+      "10 (Ages 9-10)",
+      "12 (Ages 11-12)",
+      "14 (Ages 13-14)"
+    ]
   },
   {
     "cat": "Electronics",
@@ -1222,7 +1489,16 @@ var ZanderCatalog = [
     "name": "Adan Twill Shorts",
     "price": 50,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/adan-twill-shorts"
+    "url": "https://www.zander88llc.net/product-page/adan-twill-shorts",
+    "sizes": [
+      "30",
+      "31",
+      "32",
+      "33",
+      "34",
+      "36",
+      "38"
+    ]
   },
   {
     "cat": "MEN'CLOTHING",
@@ -1234,7 +1510,13 @@ var ZanderCatalog = [
     "name": "Sleeveless Colorblock Top",
     "price": 65.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/sleeveless-colorblock-top"
+    "url": "https://www.zander88llc.net/product-page/sleeveless-colorblock-top",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ]
   },
   {
     "cat": "SHOES",
@@ -1246,7 +1528,20 @@ var ZanderCatalog = [
     "name": "The Cooper | Grey Suede",
     "price": 99.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/the-cooper-grey-suede"
+    "url": "https://www.zander88llc.net/product-page/the-cooper-grey-suede",
+    "sizes": [
+      "7.5",
+      "8",
+      "8.5",
+      "9",
+      "9.5",
+      "10",
+      "10.5",
+      "11",
+      "11.5",
+      "12",
+      "13"
+    ]
   },
   {
     "cat": "MEN'CLOTHING",
@@ -1258,7 +1553,13 @@ var ZanderCatalog = [
     "name": "Pickup Surf Heather Storm Grey",
     "price": 10,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/pickup-surf-heather-storm-grey"
+    "url": "https://www.zander88llc.net/product-page/pickup-surf-heather-storm-grey",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ]
   },
   {
     "cat": "MEN'CLOTHING",
@@ -1270,7 +1571,13 @@ var ZanderCatalog = [
     "name": "Surf Truck Blue",
     "price": 32,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/surf-truck-blue"
+    "url": "https://www.zander88llc.net/product-page/surf-truck-blue",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ]
   },
   {
     "cat": "MEN'CLOTHING",
@@ -1282,7 +1589,19 @@ var ZanderCatalog = [
     "name": "Pablo Picasso Guitar Sculpture 1912 Artwork T-Shirt",
     "price": 22,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/pablo-picasso-guitar-sculpture-1912-artwork-t-shirt"
+    "url": "https://www.zander88llc.net/product-page/pablo-picasso-guitar-sculpture-1912-artwork-t-shirt",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "sizePrices": {
+      "2XL": 24,
+      "3XL": 26
+    }
   },
   {
     "cat": "MEN'CLOTHING",
@@ -1294,7 +1613,13 @@ var ZanderCatalog = [
     "name": "Safari Shorts",
     "price": 93.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/safari-shorts"
+    "url": "https://www.zander88llc.net/product-page/safari-shorts",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ]
   },
   {
     "cat": "JEWELRY",
@@ -1318,7 +1643,15 @@ var ZanderCatalog = [
     "name": "65 McMlxv Men's Khaki Chino Short",
     "price": 30,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/65-mcmlxv-men-s-khaki-chino-short"
+    "url": "https://www.zander88llc.net/product-page/65-mcmlxv-men-s-khaki-chino-short",
+    "sizes": [
+      "30 waist",
+      "32 waist",
+      "33 waist",
+      "34 waist",
+      "36 waist",
+      "38 waist"
+    ]
   },
   {
     "cat": "MEN'CLOTHING",
@@ -1330,7 +1663,13 @@ var ZanderCatalog = [
     "name": "Men's Long Sleeve Dress Shirt",
     "price": 112.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/men-s-long-sleeve-dress-shirt"
+    "url": "https://www.zander88llc.net/product-page/men-s-long-sleeve-dress-shirt",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ]
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -1342,7 +1681,13 @@ var ZanderCatalog = [
     "name": "Beige Sequin Playsuit Romper",
     "price": 54,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/beige-sequin-playsuit-romper"
+    "url": "https://www.zander88llc.net/product-page/beige-sequin-playsuit-romper",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ]
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -1354,7 +1699,13 @@ var ZanderCatalog = [
     "name": "Baxter Seamless Sports Legging - Black",
     "price": 8.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/baxter-seamless-sports-legging-black"
+    "url": "https://www.zander88llc.net/product-page/baxter-seamless-sports-legging-black",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ]
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -1366,7 +1717,13 @@ var ZanderCatalog = [
     "name": "Xena Cut-Out Crystal Embellished Top Black",
     "price": 67.25,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/xena-cut-out-crystal-embellished-top-black"
+    "url": "https://www.zander88llc.net/product-page/xena-cut-out-crystal-embellished-top-black",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ]
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -1378,7 +1735,12 @@ var ZanderCatalog = [
     "name": "The Becca Floral Sequin Dress",
     "price": 54,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/the-becca-floral-sequin-dress"
+    "url": "https://www.zander88llc.net/product-page/the-becca-floral-sequin-dress",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ]
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -1390,7 +1752,13 @@ var ZanderCatalog = [
     "name": "Frema Diamante Mesh Maxi Evening Dress Nude",
     "price": 82,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/frema-diamante-mesh-maxi-evening-dress-nude"
+    "url": "https://www.zander88llc.net/product-page/frema-diamante-mesh-maxi-evening-dress-nude",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ]
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -1402,7 +1770,13 @@ var ZanderCatalog = [
     "name": "Kendra White Shirt Dress",
     "price": 69.5,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/kendra-white-shirt-dress"
+    "url": "https://www.zander88llc.net/product-page/kendra-white-shirt-dress",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ]
   },
   {
     "cat": "JEWELRY",
@@ -1846,7 +2220,12 @@ var ZanderCatalog = [
     "name": "Tiered Maxi Wrap Dress With Long Sleeve in Green",
     "price": null,
     "stock": false,
-    "url": "https://www.zander88llc.net/product-page/tiered-maxi-wrap-dress-with-long-sleeve-in-green"
+    "url": "https://www.zander88llc.net/product-page/tiered-maxi-wrap-dress-with-long-sleeve-in-green",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ]
   },
   {
     "cat": "FRAGRANCE",
@@ -1870,7 +2249,13 @@ var ZanderCatalog = [
     "name": "Felicity Sexy Deep v Neck Gown",
     "price": 178.75,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/felicity-sexy-deep-v-neck-gown"
+    "url": "https://www.zander88llc.net/product-page/felicity-sexy-deep-v-neck-gown",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ]
   },
   {
     "cat": "WOMEN'SCLOTHING",
@@ -1882,7 +2267,12 @@ var ZanderCatalog = [
     "name": "Skyler Floral Trim Mini Dress",
     "price": 32,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/skyler-floral-trim-mini-dress"
+    "url": "https://www.zander88llc.net/product-page/skyler-floral-trim-mini-dress",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ]
   },
   {
     "cat": "MEN'CLOTHING",
@@ -1894,7 +2284,19 @@ var ZanderCatalog = [
     "name": "Pablo Picasso Dove of Peace 1949 Artwork T-Shirt",
     "price": 22,
     "stock": true,
-    "url": "https://www.zander88llc.net/product-page/pablo-picasso-dove-of-peace-1949-artwork-t-shirt"
+    "url": "https://www.zander88llc.net/product-page/pablo-picasso-dove-of-peace-1949-artwork-t-shirt",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "sizePrices": {
+      "2XL": 24,
+      "3XL": 26
+    }
   },
   {
     "cat": "WATCHES MAN/WOMAN",

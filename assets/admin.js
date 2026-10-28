@@ -342,6 +342,10 @@
     $('productSpecs').value = product && Array.isArray(product.specs) ? product.specs.map(function (row) {
       return row[0] + ' | ' + row[1];
     }).join('\n') : '';
+    var sizePrices = product && product.sizePrices ? product.sizePrices : {};
+    $('productSizes').value = product && Array.isArray(product.sizes) ? product.sizes.map(function (size) {
+      return sizePrices[size] != null ? size + '=' + sizePrices[size] : size;
+    }).join(', ') : '';
     $('modalMessage').textContent = '';
     gallery = [];
     if (product && Array.isArray(product.images) && product.images.length) {
@@ -381,6 +385,7 @@
       highlights: $('productHighlights').value,
       description: $('productDescription').value.trim(),
       specs: $('productSpecs').value,
+      sizes: $('productSizes').value,
       images: images,
       image: images && images[0] ? images[0].src : '',
       stock: $('productStock').checked

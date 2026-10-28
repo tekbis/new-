@@ -185,6 +185,7 @@
         image: item.image,
         category: prettyCatName(item.cat),
         cat: item.cat,
+        hasSizes: Array.isArray(item.sizes) && item.sizes.length > 0,
         page: 'product.html?id=' + item.id
       };
     });
@@ -198,6 +199,10 @@
     var collection = product.collection || extra.collection || category;
     var highlights = (product.highlights && product.highlights.length) ? product.highlights : extra.highlights;
     var specs = (product.specs && product.specs.length) ? product.specs : extra.specs;
+    var sizes = Array.isArray(product.sizes) ? product.sizes.filter(Boolean) : [];
+    var soldOutSizes = Array.isArray(product.soldOutSizes) ? product.soldOutSizes : [];
+    var sizePrices = product.sizePrices && typeof product.sizePrices === 'object' ? product.sizePrices : {};
+    if (sizes.length && !sizes.some(function (size) { return soldOutSizes.indexOf(size) === -1; })) inStock = false;
     return {
       pageTitle: product.name + ' | Zander88LLC',
       product: {
@@ -211,6 +216,9 @@
         itemCode: product.itemCode || extra.itemCode || ('Z88-' + product.id),
         image: image,
         images: galleryFor(product, extra, image),
+        sizes: sizes,
+        soldOutSizes: soldOutSizes,
+        sizePrices: sizePrices,
         intro: product.intro || extra.intro || (product.name + ' is part of the Zander88LLC ' + category.toLowerCase() + ' collection. Review the listing photo and details, then add it to your cart when you are ready.'),
         highlights: highlights || [
           'From the ' + category + ' collection',
@@ -222,10 +230,11 @@
           ['Category', category],
           ['Collection', collection],
           ['Availability', inStock ? 'In stock' : 'Out of stock'],
+        ].concat(sizes.length ? [['Sizes', sizes.join(', ')]] : []).concat([
           ['Ships in', '3–7 business days'],
           ['Delivery area', 'United States'],
           ['Return window', '7 days']
-        ],
+        ]),
         rating: product.rating || extra.rating || '4.8',
         reviews: product.reviews || extra.reviews || String(10 + (Number(product.id) % 18))
       },

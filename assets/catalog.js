@@ -79,14 +79,63 @@
     button.type = 'button';
     button.className = 'add-btn';
     button.dataset.id = String(product.id);
-    button.textContent = product.stock ? 'Add to Cart' : 'Unavailable';
+    var hasSizes = Array.isArray(product.sizes) && product.sizes.length > 0;
+    if (hasSizes) {
+      button.dataset.sizeLink = detailHref;
+      button.setAttribute('aria-label', 'Choose a size for ' + product.name);
+    }
+    button.textContent = product.stock ? (hasSizes ? 'Choose Size' : 'Add to Cart') : 'Unavailable';
     button.disabled = !product.stock;
     row.append(price, button);
-    copy.append(category, title, row);
+    var cardSizes = null;
+    if (Array.isArray(product.sizes) && product.sizes.length) {
+      cardSizes = document.createElement('div');
+      cardSizes.className = 'card-sizes';
+      cardSizes.setAttribute('aria-label', 'Available sizes: ' + product.sizes.join(', '));
+      var label = document.createElement('span');
+      label.className = 'card-sizes-label';
+      label.textContent = 'Sizes';
+      cardSizes.appendChild(label);
+      /* Keep the row to one line on any card width: show sizes until a short
+         character budget is used, then a "+N" chip. The full list is on the product page. */
+      var shown = [];
+      var budget = 0;
+      for (var si = 0; si < product.sizes.length; si += 1) {
+        var cost = String(product.sizes[si]).length + 2;
+        if (shown.length >= 1 && (shown.length >= 4 || budget + cost > 14)) break;
+        shown.push(product.sizes[si]);
+        budget += cost;
+      }
+      shown.forEach(function (size) {
+        var chip = document.createElement('span');
+        chip.className = 'card-size';
+        chip.textContent = size;
+        chip.title = size;
+        cardSizes.appendChild(chip);
+      });
+      if (product.sizes.length > shown.length) {
+        var extra = document.createElement('span');
+        extra.className = 'card-size card-size-more';
+        extra.textContent = '+' + (product.sizes.length - shown.length);
+        cardSizes.appendChild(extra);
+      }
+    }
+    if (cardSizes) copy.append(category, title, cardSizes, row);
+    else copy.append(category, title, row);
     article.append(media, copy);
     fragment.appendChild(article);
   });
   grid.replaceChildren(fragment);
+
+  /* Clothing and shoes need a size, so their card button opens the product page
+     instead of adding straight to the cart. Capture phase runs before the cart handlers. */
+  grid.addEventListener('click', function (event) {
+    var button = event.target instanceof Element ? event.target.closest('.add-btn[data-size-link]') : null;
+    if (!button || button.disabled) return;
+    event.preventDefault();
+    event.stopPropagation();
+    window.location.href = button.dataset.sizeLink;
+  }, true);
 
   /* Retain existing cart quantities while correcting formerly saved product prices. */
   try {
@@ -100,10 +149,12 @@
       oldCart.forEach(function (item) {
         var current = byId.get(Number(item.id)) || byName.get(String(item.name || '').trim().toLowerCase());
         if (!current || !current.stock) return;
-        if (item.id === current.id && item.name === current.name && item.price === current.price && item.img === current.image && item.cat === current.cat) return;
+        var sized = item.size && current.sizePrices && current.sizePrices[item.size] != null;
+        var price = sized ? Number(current.sizePrices[item.size]) : current.price;
+        if (item.id === current.id && item.name === current.name && item.price === price && item.img === current.image && item.cat === current.cat) return;
         item.id = current.id;
         item.name = current.name;
-        item.price = current.price;
+        item.price = price;
         item.img = current.image;
         item.cat = current.cat;
         changed = true;

@@ -26,9 +26,9 @@
   <meta name="twitter:image" content="https://www.zander88llc.net/og.jpg?v=3">
   <link rel="image_src" href="https://www.zander88llc.net/og.jpg?v=3">
   <!-- /share-meta -->
-  <link rel="stylesheet" href="assets/product-page.css?v=9">
-  <script src="assets/catalog-data.js?v=13"></script>
-  <script src="assets/products-data.js?v=8"></script>
+  <link rel="stylesheet" href="assets/product-page.css?v=13">
+  <script src="assets/catalog-data.js?v=14"></script>
+  <script src="assets/products-data.js?v=9"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to product</a>
@@ -113,6 +113,19 @@
         </div>
         <p class="intro" id="productIntro"></p>
         <ul class="highlights" id="productHighlights" aria-label="Product highlights"></ul>
+        <fieldset class="size-picker" id="sizePicker" hidden>
+          <legend class="size-legend">
+            <span class="size-legend-left">Size
+              <button class="size-guide-link" id="sizeGuideOpen" type="button" aria-haspopup="dialog">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8.5 8.5 3 21 15.5 15.5 21z"/><path d="m7 7 2 2M10 4.5 11.5 6M10 10l2 2M13 7.5 14.5 9M13 13l2 2M16 10.5 17.5 12"/></svg>
+                Size guide
+              </button>
+            </span>
+            <span class="size-selected" id="sizeSelected">Choose a size</span>
+          </legend>
+          <div class="size-options" id="sizeOptions"></div>
+          <p class="size-error" id="sizeError" role="alert"></p>
+        </fieldset>
         <div class="purchase-row">
           <div class="quantity" aria-label="Quantity selector">
             <button type="button" data-qty="-1" aria-label="Decrease quantity">−</button>
@@ -197,8 +210,26 @@
     </div>
   </aside>
 
+  <dialog class="size-guide" id="sizeGuide" aria-labelledby="sizeGuideTitle">
+    <div class="size-guide-head">
+      <div>
+        <span class="eyebrow">Fit help</span>
+        <h2 id="sizeGuideTitle">Size guide</h2>
+        <p class="size-guide-sub" id="sizeGuideSub"></p>
+      </div>
+      <button class="drawer-close" type="button" id="sizeGuideClose" aria-label="Close size guide">×</button>
+    </div>
+    <div class="size-guide-units" role="group" aria-label="Measurement units">
+      <button type="button" data-unit="in" class="is-active" aria-pressed="true">Inches</button>
+      <button type="button" data-unit="cm" aria-pressed="false">Centimeters</button>
+    </div>
+    <div class="size-guide-table-wrap" id="sizeGuideTable"></div>
+    <div class="size-guide-tips" id="sizeGuideTips"></div>
+    <p class="size-guide-note">This is a general U.S. sizing guide. Fit can vary slightly by brand and style. If you are between sizes, we suggest choosing the larger size.</p>
+  </dialog>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="assets/product-page.js?v=10"></script>
+  <script src="assets/product-page.js?v=14"></script>
 </body>
 </html>

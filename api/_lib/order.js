@@ -62,28 +62,55 @@ function quoteOrder(cart, shippingValue, couponCode) {
     const merged = new Map();
     cart.forEach(function (item) {
       const id = Number(item && item.id);
-    if (!Number.isFinite(id)) {
-      const err = new Error('One or more items are unavailable.');
-      err.statusCode = 400;
-      throw err;
-    }
+      if (!Number.isFinite(id)) {
+        const err = new Error('One or more items are unavailable.');
+        err.statusCode = 400;
+        throw err;
+      }
+      const size = String((item && item.size) || '').trim().slice(0, 40);
+      const key = id + '|' + size;
       const qty = Math.min(MAX_QTY, Math.max(1, parseInt(item.qty, 10) || 1));
-      merged.set(id, Math.min(MAX_QTY, (merged.get(id) || 0) + qty));
+      const current = merged.get(key);
+      merged.set(key, {
+        id: id,
+        size: size,
+        qty: Math.min(MAX_QTY, (current ? current.qty : 0) + qty)
+      });
     });
 
     const lines = [];
-    merged.forEach(function (qty, id) {
-      const product = byId.get(id);
-    if (!product || !product.stock || product.price == null) {
-      const err = new Error('One or more items are unavailable.');
-      err.statusCode = 400;
-      throw err;
-    }
+    merged.forEach(function (entry) {
+      const product = byId.get(entry.id);
+      if (!product || !product.stock || product.price == null) {
+        const err = new Error('One or more items are unavailable.');
+        err.statusCode = 400;
+        throw err;
+      }
+      const sizes = Array.isArray(product.sizes) ? product.sizes : [];
+      let price = Number(product.price);
+      let name = product.name;
+      if (sizes.length) {
+        const soldOut = Array.isArray(product.soldOutSizes) ? product.soldOutSizes : [];
+        if (!entry.size || sizes.indexOf(entry.size) === -1) {
+          const err = new Error('Please choose a size for ' + product.name + '.');
+          err.statusCode = 400;
+          throw err;
+        }
+        if (soldOut.indexOf(entry.size) !== -1) {
+          const err = new Error(product.name + ' is sold out in size ' + entry.size + '.');
+          err.statusCode = 400;
+          throw err;
+        }
+        const sizePrice = product.sizePrices && product.sizePrices[entry.size];
+        if (sizePrice != null && Number.isFinite(Number(sizePrice))) price = Number(sizePrice);
+        name = product.name + ' (Size ' + entry.size + ')';
+      }
       lines.push({
         id: product.id,
-        name: product.name,
-        unitAmount: Math.round(Number(product.price) * 100),
-        qty: qty
+        size: sizes.length ? entry.size : '',
+        name: name,
+        unitAmount: Math.round(price * 100),
+        qty: entry.qty
       });
     });
 
@@ -155,7 +182,7 @@ function metadataFromQuote(quote) {
   return {
     coupon: quote.coupon || '',
     items: quote.lines.map(function (line) {
-      return line.id + ':' + line.qty;
+      return line.id + (line.size ? '[' + line.size + ']' : '') + ':' + line.qty;
     }).join(',').slice(0, 500)
   };
 }

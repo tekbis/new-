@@ -278,8 +278,8 @@
     .layout > *{min-width:0}
     .item > div{min-width:0}
   </style>
-  <script src="assets/catalog-data.js"></script>
-  <script src="assets/products-data.js"></script>
+  <script src="assets/catalog-data.js?v=14"></script>
+  <script src="assets/products-data.js?v=9"></script>
 </head>
 <body>
 
@@ -548,7 +548,16 @@ document.addEventListener('DOMContentLoaded', function () {
     cart = cart.filter(function (item) {
       var p = byId[Number(item && item.id)];
       if (!p || !p.stock || p.price == null) return false;
-      item.name = p.name; item.price = p.price; item.cat = p.cat; item.code = p.itemCode;
+      var sizes = Array.isArray(p.sizes) ? p.sizes : [];
+      if (sizes.length) {
+        /* Sized items (clothing/shoes) need a valid, in-stock size */
+        if (!item.size || sizes.indexOf(item.size) === -1) return false;
+        if (Array.isArray(p.soldOutSizes) && p.soldOutSizes.indexOf(item.size) !== -1) return false;
+      } else {
+        delete item.size;
+      }
+      var sizePrice = item.size && p.sizePrices ? p.sizePrices[item.size] : null;
+      item.name = p.name; item.price = sizePrice != null ? Number(sizePrice) : p.price; item.cat = p.cat; item.code = p.itemCode;
       item.img = localPhoto(p.id) || (p.images && p.images[0] && p.images[0].src) || p.image || item.img;
       item.qty = Math.min(MAX_QTY, Math.max(1, parseInt(item.qty, 10) || 1));
       return true;
@@ -566,7 +575,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function paymentMethod() { var s = document.querySelector('input[name="paymentMethod"]:checked'); return s ? s.value : 'card'; }
   function billingDifferent() { return $('billingToggle').checked; }
   function toast(t) { var el = $('toast'); el.textContent = t; el.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(function () { el.classList.remove('show'); }, 3000); }
-  function saveCart() { try { localStorage.setItem(CART_KEY, JSON.stringify(cart.map(function (i) { return { id: i.id, name: i.name, price: i.price, img: i.img, qty: i.qty }; }))); } catch (e) {} }
+  function saveCart() { try { localStorage.setItem(CART_KEY, JSON.stringify(cart.map(function (i) { var line = { id: i.id, name: i.name, price: i.price, img: i.img, qty: i.qty }; if (i.size) line.size = i.size; return line; }))); } catch (e) {} }
 
   var form = $('checkoutForm'), payBtn = $('placeOrder'), payLabel = $('placeLabel');
   var coupon = '';
@@ -589,12 +598,13 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!cart.length) {
       box.innerHTML = '<div class="empty">Your cart is empty.<br><a href="/#products">Continue shopping</a></div>';
     } else {
-      box.innerHTML = cart.map(function (item) {
-        var name = esc(item.name), id = esc(item.id);
+      box.innerHTML = cart.map(function (item, index) {
+        var name = esc(item.name), id = String(index);
+        var size = item.size ? '<div class="item-sku">Size: ' + esc(item.size) + '</div>' : '';
         var sku = item.code ? esc(item.code) : 'Z88-' + esc(item.id);
         return '<div class="item">' +
           '<div class="item-img"><img src="' + esc(safeSrc(item.img)) + '" alt="' + name + '" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'assets/images/product-placeholder.svg\'"></div>' +
-          '<div><div class="item-name">' + name + '</div><div class="item-sku">' + sku + '</div><div class="item-price">' + money(item.price) + '</div></div>' +
+          '<div><div class="item-name">' + name + '</div><div class="item-sku">' + sku + '</div>' + size + '<div class="item-price">' + money(item.price) + '</div></div>' +
           '<div class="item-side"><span class="stepper"><button type="button" data-action="minus" data-id="' + id + '" aria-label="Decrease quantity of ' + name + '">−</button><span>' + pad(item.qty) + '</span><button type="button" data-action="plus" data-id="' + id + '" aria-label="Increase quantity of ' + name + '">+</button></span>' +
           '<button class="remove" type="button" data-action="remove" data-id="' + id + '">Remove</button></div></div>';
       }).join('');
@@ -681,7 +691,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function orderPayload() {
     var n = nameParts(val('fullName'));
     return {
-      cart: cart.map(function (i) { return { id: i.id, qty: i.qty }; }),
+      cart: cart.map(function (i) { return i.size ? { id: i.id, size: i.size, qty: i.qty } : { id: i.id, qty: i.qty }; }),
       shipping: shippingValue(),
       coupon: coupon,
       note: $('noteToggle').checked ? val('note') : '',
@@ -773,13 +783,13 @@ document.addEventListener('DOMContentLoaded', function () {
   $('summaryItems').addEventListener('click', function (e) {
     var b = e.target.closest('[data-action]');
     if (!b) return;
-    var id = String(b.getAttribute('data-id'));
-    var item = cart.filter(function (i) { return String(i.id) === id; })[0];
+    var index = Number(b.getAttribute('data-id'));
+    var item = cart[index];
     if (!item) return;
     var a = b.getAttribute('data-action');
     if (a === 'plus') item.qty = Math.min(MAX_QTY, item.qty + 1);
     if (a === 'minus') item.qty = Math.max(1, item.qty - 1);
-    if (a === 'remove') { cart = cart.filter(function (i) { return String(i.id) !== id; }); toast('Item removed.'); }
+    if (a === 'remove') { cart = cart.filter(function (i, at) { return at !== index; }); toast('Item removed.'); }
     render();
   });
 

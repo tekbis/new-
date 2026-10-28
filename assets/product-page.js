@@ -8,6 +8,15 @@
   var cart = readList(cartKey);
   var wishlist = readList(wishlistKey);
   var toastTimer;
+  var selectedSize = '';
+  var productSizes = Array.isArray(product.sizes) ? product.sizes : [];
+  var soldOutSizes = Array.isArray(product.soldOutSizes) ? product.soldOutSizes : [];
+  var sizePrices = product.sizePrices || {};
+
+  function priceForSize(size) {
+    var special = size ? sizePrices[size] : null;
+    return special != null && isFinite(Number(special)) ? Number(special) : product.price;
+  }
 
   function cleanWixUrl(value, size) {
     var s = String(value || '').trim();
@@ -236,38 +245,42 @@
     });
   }
 
-  function addToCart(item, amount, openAfter) {
+  function addToCart(item, amount, openAfter, size) {
     if (!item || item.stock === false || item.price == null) {
       showToast('This product is currently unavailable.');
       return;
     }
     var id = Number(item.id);
-    var existing = cart.find(function (entry) { return Number(entry.id) === id; });
+    var lineSize = size ? String(size) : '';
+    var linePrice = lineSize && item === product ? priceForSize(lineSize) : Number(item.price);
+    var existing = cart.find(function (entry) { return Number(entry.id) === id && String(entry.size || '') === lineSize; });
     if (existing) {
-      existing.qty = Number(existing.qty || 0) + amount;
+      existing.qty = Math.min(20, Number(existing.qty || 0) + amount);
       existing.name = item.name;
-      existing.price = Number(item.price);
+      existing.price = Number(linePrice);
       existing.img = item.image || item.img;
       existing.cat = item.category || item.cat;
     } else {
-      cart.push({
+      var line = {
         id: id,
         name: item.name,
-        price: Number(item.price),
+        price: Number(linePrice),
         qty: amount,
         img: item.image || item.img,
         cat: item.category || item.cat
-      });
+      };
+      if (lineSize) line.size = lineSize;
+      cart.push(line);
     }
     saveList(cartKey, cart);
     updateCartBadges();
     renderCart();
-    showToast(item.name + ' added to your cart.');
+    showToast(item.name + (lineSize ? ' (Size ' + lineSize + ')' : '') + ' added to your cart.');
     if (openAfter) openDrawer();
   }
 
-  function removeFromCart(id) {
-    cart = cart.filter(function (entry) { return Number(entry.id) !== Number(id); });
+  function removeFromCart(index) {
+    cart = cart.filter(function (entry, at) { return at !== index; });
     saveList(cartKey, cart);
     updateCartBadges();
     renderCart();
@@ -281,7 +294,7 @@
     if (!cart.length) {
       items.innerHTML = '<p class="drawer-empty">Your cart is waiting for a great find.</p>';
     } else {
-      cart.forEach(function (item) {
+      cart.forEach(function (item, index) {
         var row = document.createElement('article');
         row.className = 'drawer-item';
 
@@ -295,14 +308,21 @@
         title.textContent = item.name;
         var detail = document.createElement('p');
         detail.textContent = Number(item.qty || 0) + ' × ' + money(item.price);
-        copy.append(title, detail);
+        copy.appendChild(title);
+        if (item.size) {
+          var sizeLine = document.createElement('p');
+          sizeLine.className = 'item-size';
+          sizeLine.textContent = 'Size: ' + item.size;
+          copy.appendChild(sizeLine);
+        }
+        copy.appendChild(detail);
 
         var remove = document.createElement('button');
         remove.className = 'remove-item';
         remove.type = 'button';
-        remove.setAttribute('aria-label', 'Remove ' + item.name);
+        remove.setAttribute('aria-label', 'Remove ' + item.name + (item.size ? ' size ' + item.size : ''));
         remove.textContent = '×';
-        remove.addEventListener('click', function () { removeFromCart(item.id); });
+        remove.addEventListener('click', function () { removeFromCart(index); });
 
         row.append(image, copy, remove);
         items.appendChild(row);
@@ -417,6 +437,10 @@
       add.addEventListener('click', function (event) {
         event.preventDefault();
         event.stopPropagation();
+        if (item.hasSizes && item.page) {
+          window.location.href = item.page;
+          return;
+        }
         addToCart(item, 1, false);
       });
       if (item.page) {
@@ -507,10 +531,255 @@
   var quantityInput = document.getElementById('quantity');
   if (quantityInput) quantityInput.addEventListener('change', currentQuantity);
 
+  function showSizePrice() {
+    var price = priceForSize(selectedSize);
+    text('productPrice', price == null ? 'Out of stock' : money(price));
+    text('installmentAmount', price == null ? '$0.00' : money(Number(price) / 4));
+  }
+
+  function setSizeError(message) {
+    var picker = document.getElementById('sizePicker');
+    var error = document.getElementById('sizeError');
+    if (error) error.textContent = message || '';
+    if (picker) picker.classList.toggle('has-error', Boolean(message));
+  }
+
+  function setupSizes() {
+    var picker = document.getElementById('sizePicker');
+    var options = document.getElementById('sizeOptions');
+    if (!picker || !options || !productSizes.length) return;
+    picker.hidden = false;
+    options.innerHTML = '';
+    options.setAttribute('role', 'radiogroup');
+    var longest = productSizes.reduce(function (max, size) { return Math.max(max, String(size).length); }, 0);
+    options.classList.toggle('is-compact', longest > 5);
+    options.setAttribute('aria-label', 'Choose a size');
+    productSizes.forEach(function (size) {
+      var soldOut = soldOutSizes.indexOf(size) !== -1;
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'size-option';
+      button.textContent = size;
+      if (String(size).length > 9) button.classList.add('is-long');
+      button.setAttribute('role', 'radio');
+      button.setAttribute('aria-checked', 'false');
+      button.disabled = soldOut;
+      if (soldOut) {
+        button.title = 'Sold out';
+        button.setAttribute('aria-label', size + ', sold out');
+      }
+      button.addEventListener('click', function () {
+        selectedSize = size;
+        options.querySelectorAll('.size-option').forEach(function (node) {
+          var active = node === button;
+          node.classList.toggle('is-selected', active);
+          node.setAttribute('aria-checked', String(active));
+        });
+        var special = sizePrices[size];
+        text('sizeSelected', 'Selected: ' + size + (special != null && Number(special) !== Number(product.price) ? ' · ' + money(special) : ''));
+        setSizeError('');
+        showSizePrice();
+      });
+      options.appendChild(button);
+    });
+    var available = productSizes.filter(function (size) { return soldOutSizes.indexOf(size) === -1; });
+    if (available.length === 1) {
+      var only = options.querySelector('.size-option:not(:disabled)');
+      if (only) only.click();
+    }
+  }
+
+  /* ---------- Size guide ---------- */
+  // Measurements in inches as [min, max]; converted to cm on request.
+  var GUIDES = {
+    tops: {
+      title: 'Clothing size guide', sub: 'Unisex and men\'s tops, hoodies and shirts. Measured on the body.',
+      cols: ['Chest', 'Waist'],
+      rows: { XS: [[31, 34], [26, 28]], S: [[34, 37], [28, 30]], M: [[38, 41], [31, 33]], L: [[42, 45], [34, 36]], XL: [[46, 49], [37, 40]], '2XL': [[50, 53], [41, 44]], '3XL': [[54, 57], [45, 48]], '4XL': [[58, 61], [49, 52]], '5XL': [[62, 65], [53, 56]], '6XL': [[66, 69], [57, 60]], '7XL': [[70, 73], [61, 64]] },
+      tips: [['Chest', 'Measure around the fullest part of your chest, under the arms.'], ['Waist', 'Measure around your natural waistline, keeping the tape comfortably loose.']]
+    },
+    women: {
+      title: 'Women\'s size guide', sub: 'Dresses, tops, leggings and sets. Measured on the body.',
+      cols: ['Bust', 'Waist', 'Hips'],
+      rows: { XXS: [[30, 31], [23, 24], [33, 34]], XS: [[32, 33], [25, 26], [35, 36]], S: [[34, 35], [27, 28], [37, 38]], M: [[36, 37], [29, 30], [39, 40]], L: [[38, 40], [31, 33], [41, 43]], XL: [[41, 43], [34, 36], [44, 46]], '2XL': [[44, 46], [37, 39], [47, 49]],
+        '2': [[32, 33], [24, 25], [34, 35]], '3': [[33, 33], [25, 25], [35, 35]], '4': [[33, 34], [25, 26], [35, 36]], '5': [[34, 34], [26, 26], [36, 36]], '6': [[34, 35], [26, 27], [36, 37]], '7': [[35, 35], [27, 27], [37, 37]], '8': [[35, 36], [27, 28], [37, 38]] },
+      tips: [['Bust', 'Measure around the fullest part of your bust.'], ['Waist', 'Measure around the narrowest part of your waist.'], ['Hips', 'Stand with feet together and measure around the fullest part of your hips.']]
+    },
+    waist: {
+      title: 'Men\'s bottoms size guide', sub: 'Shorts and pants are sized by waist measurement.',
+      cols: ['Waist', 'Hips'],
+      rows: { '30': [[30, 30.5], [37, 38]], '31': [[31, 31.5], [38, 39]], '32': [[32, 32.5], [39, 40]], '33': [[33, 33.5], [40, 41]], '34': [[34, 34.5], [41, 42]], '36': [[36, 36.5], [43, 44]], '38': [[38, 38.5], [45, 46]] },
+      tips: [['Waist', 'Measure around where you normally wear your pants, just above the hip bones.'], ['Hips', 'Measure around the fullest part of your seat.']]
+    },
+    shoes: {
+      title: 'Shoe size guide', sub: 'Men\'s U.S. shoe sizes by foot length.',
+      cols: ['Foot length', 'EU size'],
+      rows: { '7.5': [[9.6, 9.6], 'eu:40.5'], '8': [[9.75, 9.75], 'eu:41'], '8.5': [[9.9, 9.9], 'eu:41.5'], '9': [[10.1, 10.1], 'eu:42'], '9.5': [[10.25, 10.25], 'eu:42.5'], '10': [[10.4, 10.4], 'eu:43'], '10.5': [[10.6, 10.6], 'eu:43.5'], '11': [[10.75, 10.75], 'eu:44'], '11.5': [[10.9, 10.9], 'eu:44.5'], '12': [[11.1, 11.1], 'eu:45'], '13': [[11.4, 11.4], 'eu:46'] },
+      tips: [['Foot length', 'Stand on a sheet of paper, mark your heel and longest toe, and measure the distance. Measure both feet and use the longer one.']]
+    },
+    kidsShoes: {
+      title: 'Kids\' shoe size guide', sub: 'U.S. kids\' sizes by foot length.',
+      cols: ['Foot length', 'EU size'],
+      rows: { 'KID 11.5': [[6.9, 6.9], 'eu:29'], 'KID 12': [[7.1, 7.1], 'eu:30'], 'KID 12.5': [[7.25, 7.25], 'eu:30.5'], 'KID 13': [[7.4, 7.4], 'eu:31'], 'KID 1.5': [[7.9, 7.9], 'eu:33'], 'KID 2': [[8.1, 8.1], 'eu:33.5'], 'KID 2.5': [[8.25, 8.25], 'eu:34'], 'KID 3': [[8.4, 8.4], 'eu:34.5'], 'KID 3.5': [[8.6, 8.6], 'eu:35'], 'KID 4': [[8.75, 8.75], 'eu:36'], 'KID 4.5': [[8.9, 8.9], 'eu:36.5'], 'KID 5': [[9.1, 9.1], 'eu:37'], 'KID 5.5': [[9.25, 9.25], 'eu:37.5'], 'KID 6': [[9.4, 9.4], 'eu:38'], 'KID 6.5': [[9.6, 9.6], 'eu:38.5'], 'KID 7': [[9.75, 9.75], 'eu:39'] },
+      tips: [['Foot length', 'Have your child stand on paper with their heel against a wall. Mark the longest toe and measure. Add about 0.5 in (1.3 cm) for growing room.']]
+    },
+    baby: {
+      title: 'Baby & toddler size guide', sub: 'Sizes by your child\'s weight and height.',
+      cols: ['Weight (lb)', 'Height'],
+      rows: { Newborn: ['w:5–8', [18, 21.5]], '0-3 months': ['w:8–12', [21.5, 24]], '3-6 months': ['w:12–16', [24, 26.5]], '6m': ['w:12–17', [24, 27]], '6-9 months': ['w:16–20', [26.5, 28.5]], '0-6 months': ['w:8–16', [21.5, 26.5]], '6-12 months': ['w:16–22', [26.5, 29.5]], '12m': ['w:17–22', [27, 29.5]], '12-18 months': ['w:22–27', [29.5, 31.5]], '18m': ['w:22–27', [29.5, 32]], '18mT': ['w:24–27', [30.5, 32.5]], '18-24 months': ['w:27–30', [31.5, 33.5]], '2T': ['w:29–32', [33.5, 35]], '3T': ['w:32–35', [35.5, 38]], '4T': ['w:35–39', [38.5, 41]], '5/6T': ['w:39–46', [41.5, 45]], 'Youth Small': ['w:46–56', [45, 50]], 'Youth Medium': ['w:56–70', [50, 54]] },
+      tips: [['Height', 'Measure from the top of the head to the heels while your child stands or lies straight.'], ['Tip', 'If your child is between sizes, or growing fast, choose the larger size.']]
+    },
+    kids: {
+      title: 'Kids\' size guide', sub: 'Sizes by your child\'s height and chest.',
+      cols: ['Height', 'Chest'],
+      rows: { '8 (Ages 7-8)': [[50, 52], [26, 27]], '10 (Ages 9-10)': [[53, 55], [27.5, 28.5]], '12 (Ages 11-12)': [[56, 58], [29, 30.5]], '14 (Ages 13-14)': [[59, 61], [31, 32.5]],
+        'Tot 3/4': [[37, 41], [21, 22]], 'Youth 5/6': [[42, 47], [23, 24]], 'Youth 7/8': [[48, 52], [25, 26.5]], 'Youth 9/10': [[53, 55], [27, 28.5]], 'Youth 11/12': [[56, 58], [29, 30.5]], 'Youth 14/Adult XS': [[59, 62], [31, 33]],
+        S: [[35, 41], [20, 22]], M: [[41, 47], [22, 24]], L: [[47, 52], [24, 26]] },
+      tips: [['Height', 'Measure standing straight, without shoes, from head to heels.'], ['Chest', 'Measure around the fullest part of the chest, under the arms.']]
+    }
+  };
+
+  function guideKey() {
+    var cat = String(product.category || '').toLowerCase();
+    var name = String(product.name || '').toLowerCase();
+    var sizes = productSizes.map(function (s) { return String(s); });
+    var has = function (re) { return sizes.some(function (s) { return re.test(s); }); };
+    if (has(/^KID \d/)) return 'kidsShoes';
+    if (/shoe/.test(cat) || /sneaker|shoe|boot|loafer|\bthe cooper\b/.test(name)) return 'shoes';
+    if (has(/month|^newborn$|^\d+m$|^\d+mT$|^\d+T$|^5\/6T$/i)) return 'baby';
+    if (has(/\(ages|^youth|^tot /i)) return 'kids';
+    if (/kid|bab/.test(cat)) return 'kids';
+    if (has(/waist$/i) || (/men/.test(cat) && !/women/.test(cat) && has(/^\d{2}$/))) return 'waist';
+    if (/women/.test(cat)) return 'women';
+    return 'tops';
+  }
+
+  function guideRowKey(size) {
+    return String(size).replace(/\s*waist$/i, '').trim();
+  }
+
+  var guideUnit = 'in';
+  function fmtMeasure(value) {
+    if (typeof value === 'string') {
+      if (value.indexOf('eu:') === 0) return value.slice(3);
+      if (value.indexOf('w:') === 0) return value.slice(2);
+      return value;
+    }
+    var precise = value[0] % 1 !== 0 && value[0] === value[1];
+    var conv = function (n) { return guideUnit === 'cm' ? (precise ? Math.round(n * 25.4) / 10 : Math.round(n * 2.54)) : n; };
+    var unit = guideUnit === 'cm' ? ' cm' : '"';
+    var a = conv(value[0]), b = conv(value[1]);
+    return (a === b ? String(a) : a + '–' + b) + unit;
+  }
+
+  function renderGuide() {
+    var guide = GUIDES[guideKey()];
+    var wrap = document.getElementById('sizeGuideTable');
+    if (!guide || !wrap) return;
+    text('sizeGuideTitle', guide.title);
+    text('sizeGuideSub', guide.sub);
+    var rows = productSizes.map(function (size) { return [size, guide.rows[guideRowKey(size)]]; });
+    var known = rows.filter(function (row) { return row[1]; });
+    var table = document.createElement('table');
+    table.className = 'size-guide-table';
+    var head = document.createElement('thead');
+    var headRow = document.createElement('tr');
+    ['Size'].concat(guide.cols).forEach(function (label) {
+      var th = document.createElement('th');
+      th.scope = 'col';
+      th.textContent = label;
+      headRow.appendChild(th);
+    });
+    head.appendChild(headRow);
+    var body = document.createElement('tbody');
+    rows.forEach(function (row) {
+      var tr = document.createElement('tr');
+      if (row[0] === selectedSize) tr.className = 'is-selected';
+      var th = document.createElement('th');
+      th.scope = 'row';
+      th.textContent = row[0];
+      tr.appendChild(th);
+      guide.cols.forEach(function (col, i) {
+        var td = document.createElement('td');
+        td.textContent = row[1] ? fmtMeasure(row[1][i]) : '—';
+        tr.appendChild(td);
+      });
+      body.appendChild(tr);
+    });
+    table.append(head, body);
+    wrap.replaceChildren(table);
+    var tips = document.getElementById('sizeGuideTips');
+    if (tips) {
+      var list = document.createElement('dl');
+      guide.tips.forEach(function (tip) {
+        var dt = document.createElement('dt');
+        var dd = document.createElement('dd');
+        dt.textContent = tip[0];
+        dd.textContent = tip[1];
+        list.append(dt, dd);
+      });
+      var heading = document.createElement('h3');
+      heading.textContent = 'How to measure';
+      tips.replaceChildren(heading, list);
+    }
+  }
+
+  function setupSizeGuide() {
+    var dialog = document.getElementById('sizeGuide');
+    var open = document.getElementById('sizeGuideOpen');
+    var guide = GUIDES[guideKey()];
+    var matches = guide ? productSizes.filter(function (size) { return guide.rows[guideRowKey(size)]; }).length : 0;
+    // Only offer the guide when the chart covers this product's sizes.
+    if (!dialog || !open || !productSizes.length || !matches) {
+      if (open) open.hidden = true;
+      return;
+    }
+    function close() {
+      if (typeof dialog.close === 'function' && dialog.open) dialog.close();
+      dialog.removeAttribute('open');
+      document.body.classList.remove('guide-open');
+      open.focus({ preventScroll: true });
+    }
+    open.addEventListener('click', function () {
+      renderGuide();
+      document.body.classList.add('guide-open');
+      if (typeof dialog.showModal === 'function') dialog.showModal();
+      else dialog.setAttribute('open', '');
+    });
+    document.getElementById('sizeGuideClose').addEventListener('click', close);
+    dialog.addEventListener('click', function (event) { if (event.target === dialog) close(); });
+    dialog.addEventListener('close', function () { document.body.classList.remove('guide-open'); });
+    dialog.querySelectorAll('[data-unit]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        guideUnit = button.dataset.unit;
+        dialog.querySelectorAll('[data-unit]').forEach(function (node) {
+          var active = node === button;
+          node.classList.toggle('is-active', active);
+          node.setAttribute('aria-pressed', String(active));
+        });
+        renderGuide();
+      });
+    });
+  }
+
+  function requireSize() {
+    if (!productSizes.length || selectedSize) return true;
+    setSizeError('Please choose a size before adding to cart.');
+    var picker = document.getElementById('sizePicker');
+    var first = picker && picker.querySelector('.size-option:not(:disabled)');
+    if (picker) picker.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (first) first.focus({ preventScroll: true });
+    return false;
+  }
+
+  setupSizes();
+  setupSizeGuide();
+
   document.querySelectorAll('[data-add-main]').forEach(function (button) {
     button.addEventListener('click', function () {
       if (!product.stock) return;
-      addToCart(product, currentQuantity(), false);
+      if (!requireSize()) return;
+      addToCart(product, currentQuantity(), false, selectedSize);
       var message = document.getElementById('purchaseMessage');
       if (message) message.textContent = currentQuantity() + (currentQuantity() === 1 ? ' item added' : ' items added') + ' to your cart.';
     });
@@ -518,7 +787,8 @@
   document.querySelectorAll('[data-buy-main]').forEach(function (button) {
     button.addEventListener('click', function () {
       if (!product.stock) return;
-      addToCart(product, currentQuantity(), true);
+      if (!requireSize()) return;
+      addToCart(product, currentQuantity(), true, selectedSize);
     });
   });
 

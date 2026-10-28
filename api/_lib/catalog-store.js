@@ -212,6 +212,46 @@ function normalizeSpecs(value) {
   }).filter(function (row) { return row[0] && row[1]; }).slice(0, 8);
 }
 
+/* Sizes for clothing and shoes.
+   sizes: ["S", "M", "L"]  ·  soldOutSizes: ["L"]  ·  sizePrices: { "2XL": 24 }
+   The admin form sends sizes as text, e.g. "S, M, L, 2XL=24", and sold-out sizes as "L". */
+function sizeList(value) {
+  const raw = Array.isArray(value) ? value : String(value || '').split(/[,\n;]/);
+  const seen = {};
+  return raw.map(function (item) { return String(item == null ? '' : item).trim().slice(0, 40); })
+    .filter(function (item) {
+      if (!item || seen[item.toLowerCase()]) return false;
+      seen[item.toLowerCase()] = true;
+      return true;
+    }).slice(0, 40);
+}
+
+function normalizeSizes(input) {
+  const prices = {};
+  const sizes = sizeList(input && input.sizes).map(function (entry) {
+    const match = entry.match(/^(.*?)\s*=\s*\$?\s*(\d+(?:\.\d{1,2})?)$/);
+    if (!match || !match[1]) return entry;
+    prices[match[1]] = Number(match[2]);
+    return match[1];
+  });
+  // Text from the admin form carries its own =prices; stored arrays keep their sizePrices object.
+  const given = input && Array.isArray(input.sizes) && input.sizePrices && typeof input.sizePrices === 'object' ? input.sizePrices : {};
+  Object.keys(given).forEach(function (key) {
+    const amount = Number(given[key]);
+    if (sizes.indexOf(key) !== -1 && Number.isFinite(amount) && amount >= 0 && amount <= 100000 && prices[key] == null) {
+      prices[key] = amount;
+    }
+  });
+  const soldOut = sizeList(input && input.soldOutSizes).filter(function (size) {
+    return sizes.indexOf(size) !== -1;
+  });
+  const sizePrices = {};
+  Object.keys(prices).forEach(function (key) {
+    if (sizes.indexOf(key) !== -1) sizePrices[key] = Math.round(prices[key] * 100) / 100;
+  });
+  return { sizes: sizes, soldOutSizes: soldOut, sizePrices: sizePrices };
+}
+
 function slugify(value) {
   return String(value || '')
     .toLowerCase()
@@ -298,6 +338,12 @@ function normalizeProduct(input, fallbackId) {
   if (description) product.description = description;
   if (highlights.length) product.highlights = highlights;
   if (specs.length) product.specs = specs;
+  const sizing = normalizeSizes(input);
+  if (sizing.sizes.length) {
+    product.sizes = sizing.sizes;
+    if (sizing.soldOutSizes.length) product.soldOutSizes = sizing.soldOutSizes;
+    if (Object.keys(sizing.sizePrices).length) product.sizePrices = sizing.sizePrices;
+  }
   if (Number.isFinite(ratingRaw) && ratingRaw >= 1 && ratingRaw <= 5) {
     product.rating = ratingRaw.toFixed(1);
   }
