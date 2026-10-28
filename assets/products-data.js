@@ -82,11 +82,11 @@
       if (base) {
         var file = base[1];
         var name = file.split('/').pop();
-        return file + '/v1/fill/w_1000,h_1000,al_c,q_85/' + name;
+        return file + '/v1/fill/w_720,h_720,al_c,q_80/' + name;
       }
-      return s.replace(/,enc_avif(?:,quality_auto)?/gi, '').replace(/w_\d+,h_\d+/g, 'w_1000,h_1000');
+      return s.replace(/,enc_avif(?:,quality_auto)?/gi, '').replace(/w_\d+,h_\d+/g, 'w_720,h_720');
     }
-    return s.replace(/w_\d+,h_\d+/g, 'w_1000,h_1000');
+    return s.replace(/w_\d+,h_\d+/g, 'w_720,h_720');
   }
 
   function prettyCatName(name) {

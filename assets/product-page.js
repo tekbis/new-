@@ -49,35 +49,57 @@
     return 'assets/images/product-placeholder.svg';
   }
 
-  // Mobile often blocks the image proxy; desktop often cannot resolve Wix DNS.
-  // Try direct Wix first, then proxy, then placeholder.
+  // Prefer the image proxy first so we do not wait on a slow Wix DNS timeout.
+  // If the proxy fails (some mobile networks), fall back to direct Wix, then placeholder.
   function bindProductImage(el, rawSrc, size) {
     if (!el) return;
     var src = String(rawSrc || '').trim();
+    var dim = size || 720;
     if (!src) {
       el.src = 'assets/images/product-placeholder.svg';
       return;
     }
     if (/^assets\//i.test(src)) {
       el.referrerPolicy = 'no-referrer';
+      el.decoding = 'async';
       el.src = src;
       return;
     }
-    var direct = cleanWixUrl(src, size || 800);
-    var proxied = proxyMediaUrl(src, size || 800);
+    if (/^https?:\/\/(wsrv\.nl|images\.weserv\.nl)\//i.test(src)) {
+      el.referrerPolicy = 'no-referrer';
+      el.decoding = 'async';
+      el.src = src;
+      return;
+    }
+    var direct = cleanWixUrl(src, dim);
+    var proxied = proxyMediaUrl(src, dim);
     var stage = 0;
     el.referrerPolicy = 'no-referrer';
     el.decoding = 'async';
     el.onerror = function () {
       stage += 1;
-      if (stage === 1 && proxied && el.src !== proxied) {
-        el.src = proxied;
+      if (stage === 1 && direct && el.src !== direct) {
+        el.src = direct;
         return;
       }
       el.onerror = null;
       el.src = 'assets/images/product-placeholder.svg';
     };
-    el.src = /static\.wixstatic\.com/i.test(src) ? direct : safeMediaUrl(src);
+    el.src = /static\.wixstatic\.com/i.test(src) ? proxied : safeMediaUrl(src);
+  }
+
+  function preloadMainImage(src) {
+    if (!src || !document.head) return;
+    var href = /^assets\//i.test(src) ? src : proxyMediaUrl(src, 720);
+    if (!href || href.indexOf('placeholder') !== -1) return;
+    if (document.querySelector('link[data-z88-preload="main"]')) return;
+    var link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = href;
+    link.setAttribute('fetchpriority', 'high');
+    link.setAttribute('data-z88-preload', 'main');
+    document.head.appendChild(link);
   }
 
   function text(id, value) {
@@ -149,9 +171,11 @@
     var main = document.getElementById('mainImage');
     if (main && product.images && product.images.length) {
       main.alt = product.images[0].alt || product.name || '';
-      main.width = 1000;
-      main.height = 1000;
-      bindProductImage(main, product.images[0].src, 1000);
+      main.width = 720;
+      main.height = 720;
+      main.fetchPriority = 'high';
+      preloadMainImage(product.images[0].src);
+      bindProductImage(main, product.images[0].src, 720);
     }
 
     var thumbnails = document.getElementById('thumbnailRow');
@@ -167,10 +191,10 @@
         button.setAttribute('aria-label', 'Show image ' + (index + 1) + ' of ' + product.name);
         var thumb = document.createElement('img');
         thumb.alt = '';
-        thumb.width = 250;
-        thumb.height = 250;
-        thumb.loading = 'lazy';
-        bindProductImage(thumb, image.src, 400);
+        thumb.width = 240;
+        thumb.height = 240;
+        thumb.loading = index === 0 ? 'eager' : 'lazy';
+        bindProductImage(thumb, image.src, 240);
         button.appendChild(thumb);
         thumbnails.appendChild(button);
       });
@@ -365,7 +389,7 @@
           item.setAttribute('aria-pressed', String(active));
         });
         window.setTimeout(function () {
-          bindProductImage(main, button.dataset.galleryImage || product.image, 1000);
+          bindProductImage(main, button.dataset.galleryImage || product.image, 720);
           main.alt = button.dataset.galleryAlt || product.name;
           main.classList.remove('is-switching');
         }, 100);
@@ -425,7 +449,7 @@
       image.alt = item.name;
       image.loading = 'lazy';
       image.decoding = 'async';
-      bindProductImage(image, item.image, 600);
+      bindProductImage(image, item.image, 400);
       var badge = document.createElement('span');
       badge.className = 'card-badge';
       badge.textContent = 'Trending';
