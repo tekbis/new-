@@ -23,6 +23,7 @@ const TYPES = {
   '.woff2': 'font/woff2'
 };
 
+//  for test
 function loadEnv() {
   const file = path.join(ROOT, '.env');
   if (!fs.existsSync(file)) return;
