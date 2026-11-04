@@ -2469,4 +2469,6 @@ var ZanderCatalog = [
     "url": "https://www.zander88llc.net/product-page/inverness-walnut-black-leather",
     "description": "Inverness watch with walnut wood detailing and a black leather strap. Natural texture meets clean modern styling for an everyday timepiece with quiet sophistication.\n\n• Walnut wood detailing\n• Black leather strap\n• Everyday refined styling\n• Natural modern look"
   }
-]
+];
+if (typeof window !== 'undefined') window.ZanderCatalog = ZanderCatalog;
+if (typeof module !== 'undefined' && module.exports) module.exports = ZanderCatalog;

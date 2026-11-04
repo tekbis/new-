@@ -12,10 +12,23 @@ function clone(value) {
   return JSON.parse(JSON.stringify(value));
 }
 
+function seedFromJsText() {
+  const text = fs.readFileSync(JS_PATH, 'utf8');
+  const start = text.indexOf('[');
+  const end = text.lastIndexOf(']');
+  if (start < 0 || end <= start) return null;
+  const parsed = JSON.parse(text.slice(start, end + 1));
+  return Array.isArray(parsed) && parsed.length ? clone(parsed) : null;
+}
+
 function seedCatalog() {
-  const seed = require('../../assets/catalog-data.js');
-  if (Array.isArray(seed)) return clone(seed);
-  if (seed && Array.isArray(seed.default)) return clone(seed.default);
+  try {
+    const seed = require('../../assets/catalog-data.js');
+    if (Array.isArray(seed) && seed.length) return clone(seed);
+    if (seed && Array.isArray(seed.default) && seed.default.length) return clone(seed.default);
+  } catch (error) { /* Fall through to parsing the catalog JS snapshot. */ }
+  const fromFile = seedFromJsText();
+  if (fromFile) return fromFile;
   throw new Error('Catalog could not be loaded.');
 }
 
